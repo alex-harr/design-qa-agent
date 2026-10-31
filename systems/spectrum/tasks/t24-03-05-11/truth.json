@@ -1,0 +1,157 @@
+{
+  "task": "t24-03-05-11",
+  "screen": [
+    "03-notifications.html",
+    "05-empty-state.html",
+    "11-team-members.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".member-email"
+      },
+      "description": "color hard-coded as #505050 instead of var(--spectrum-neutral-subdued-content-color-default)",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: #505050",
+      "elements": [
+        "team-members-email-1",
+        "team-members-email-2",
+        "team-members-email-3"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "semantic_text",
+      "rule": "R7",
+      "target": {
+        "selector": ".note-meta"
+      },
+      "description": "secondary text colored var(--spectrum-negative-content-color-default), which signals a status it doesn't have",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: var(--spectrum-negative-content-color-default)",
+      "elements": [
+        "notifications-meta-1",
+        "notifications-meta-2",
+        "notifications-meta-3"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "danger_safe",
+      "rule": "R7",
+      "target": {
+        "qa": "notifications-btn-mark-all"
+      },
+      "description": "safe action \"Mark all as read\" styled as a danger button",
+      "original": "<button class=\"spectrum-Button spectrum-Button--outline spectrum-Button--secondary spectrum-Button--sizeS\" type=\"button\" data-qa=\"notifications-btn-mark-all\">",
+      "mutated": "<button class=\"spectrum-Button spectrum-Button--outline spectrum-Button--negative spectrum-Button--sizeS\" type=\"button\" data-qa=\"notifications-btn-mark-all\">",
+      "elements": [
+        "notifications-btn-mark-all",
+        "notifications-btn-mark-all-label"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "rebuild_button",
+      "rule": "R6",
+      "target": {
+        "qa": "team-members-btn-remove-2"
+      },
+      "description": "button rebuilt by hand instead of using .spectrum-Button (spectrum-Button spectrum-Button--outline spectrum-Button--negative spectrum-Button--sizeS)",
+      "original": "<button class=\"spectrum-Button spectrum-Button--outline spectrum-Button--negative spectrum-Button--sizeS\" type=\"button\" data-qa=\"team-members-btn-remove-2\">",
+      "mutated": "<button style=\"background: rgba(0, 0, 0, 0); color: rgb(215, 50, 32); border: 2px solid rgb(215, 50, 32); border-radius: 12px; padding: 0px 11px; font-size: 12px; font-weight: 700\" type=\"button\" data-qa=\"team-members-btn-remove-2\">",
+      "elements": [
+        "team-members-btn-remove-2",
+        "team-members-btn-remove-2-label"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".empty-heading"
+      },
+      "description": "color set to an off-palette hex near var(--spectrum-neutral-content-color-default)",
+      "original": "color: var(--spectrum-neutral-content-color-default)",
+      "mutated": "color: #292924",
+      "elements": [
+        "empty-state-heading"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".team-note"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: var(--spectrum-disabled-content-color)",
+      "accept_colors": [
+        "rgb(41, 41, 41)",
+        "rgb(80, 80, 80)"
+      ],
+      "elements": [
+        "team-members-note"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".note-dot"
+      },
+      "description": "margin-top uses 5px, off the spacing scale",
+      "original": "margin-top: var(--spectrum-spacing-75)",
+      "mutated": "margin-top: 5px",
+      "elements": [
+        "notifications-dot-1",
+        "notifications-dot-2",
+        "notifications-dot-3"
+      ]
+    },
+    {
+      "id": "m8",
+      "op": "rebuild_label",
+      "rule": "R6",
+      "target": {
+        "qa": "team-members-role-1"
+      },
+      "description": "status pill rebuilt by hand instead of using .spectrum-Badge (spectrum-Badge spectrum-Badge--neutral member-role)",
+      "original": "<div class=\"spectrum-Badge spectrum-Badge--neutral member-role\" data-qa=\"team-members-role-1\">",
+      "mutated": "<div class=\"member-role\" style=\"display: inline-block; padding: 0 0px; font-size: 16px; font-weight: 400; color: rgb(255, 255, 255); border: 1px solid rgba(0, 0, 0, 0); border-radius: 999px\" data-qa=\"team-members-role-1\">",
+      "elements": [
+        "team-members-role-1",
+        "team-members-role-1-text"
+      ]
+    },
+    {
+      "id": "m9",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".member-name"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--spectrum-neutral-content-color-default)",
+      "mutated": "color: var(--spectrum-disabled-content-color)",
+      "accept_colors": [
+        "rgb(41, 41, 41)",
+        "rgb(80, 80, 80)"
+      ],
+      "elements": [
+        "team-members-name-1",
+        "team-members-name-2",
+        "team-members-name-3"
+      ]
+    }
+  ]
+}

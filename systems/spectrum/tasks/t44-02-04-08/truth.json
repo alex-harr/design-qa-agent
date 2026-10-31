@@ -1,0 +1,138 @@
+{
+  "task": "t44-02-04-08",
+  "screen": [
+    "02-sign-in.html",
+    "04-pricing.html",
+    "08-profile-card.html"
+  ],
+  "split": "heldout",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".plan-price"
+      },
+      "description": "margin uses 19px, off the spacing scale",
+      "original": "margin: 0 0 var(--spectrum-spacing-300)",
+      "mutated": "margin: 0 0 19px",
+      "elements": [
+        "pricing-price-free",
+        "pricing-price-team"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "danger_safe",
+      "rule": "R7",
+      "target": {
+        "qa": "pricing-cta-free"
+      },
+      "description": "safe action \"Current plan\" styled as a danger button",
+      "original": "<button class=\"spectrum-Button spectrum-Button--outline spectrum-Button--secondary plan-cta\" type=\"button\" data-qa=\"pricing-cta-free\">",
+      "mutated": "<button class=\"spectrum-Button spectrum-Button--outline spectrum-Button--negative plan-cta\" type=\"button\" data-qa=\"pricing-cta-free\">",
+      "elements": [
+        "pricing-cta-free",
+        "pricing-cta-free-label"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".auth-input"
+      },
+      "description": "margin-bottom uses 18px, off the spacing scale",
+      "original": "margin-bottom: var(--spectrum-spacing-300)",
+      "mutated": "margin-bottom: 18px",
+      "elements": [
+        "sign-in-input-login-wrap",
+        "sign-in-input-password-wrap"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "danger_safe",
+      "rule": "R7",
+      "target": {
+        "qa": "profile-card-btn-follow"
+      },
+      "description": "safe action \"Follow\" styled as a danger button",
+      "original": "<button class=\"spectrum-Button spectrum-Button--fill spectrum-Button--accent profile-follow\" type=\"button\" data-qa=\"profile-card-btn-follow\">",
+      "mutated": "<button class=\"spectrum-Button spectrum-Button--fill spectrum-Button--negative profile-follow\" type=\"button\" data-qa=\"profile-card-btn-follow\">",
+      "elements": [
+        "profile-card-btn-follow",
+        "profile-card-btn-follow-label"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".auth-footer"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--spectrum-neutral-content-color-default)",
+      "mutated": "color: var(--spectrum-disabled-content-color)",
+      "accept_colors": [
+        "rgb(41, 41, 41)",
+        "rgb(80, 80, 80)"
+      ],
+      "elements": [
+        "sign-in-footer"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".auth-legal"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: var(--spectrum-disabled-content-color)",
+      "accept_colors": [
+        "rgb(41, 41, 41)",
+        "rgb(80, 80, 80)"
+      ],
+      "elements": [
+        "sign-in-legal"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".plan"
+      },
+      "description": "background set to an off-palette hex near var(--spectrum-background-layer-2-color)",
+      "original": "background: var(--spectrum-background-layer-2-color)",
+      "mutated": "background: #f9ffff",
+      "elements": [
+        "pricing-plan-free",
+        "pricing-plan-team"
+      ]
+    },
+    {
+      "id": "m8",
+      "op": "rebuild_button",
+      "rule": "R6",
+      "target": {
+        "qa": "pricing-cta-team"
+      },
+      "description": "button rebuilt by hand instead of using .spectrum-Button (spectrum-Button spectrum-Button--fill spectrum-Button--accent plan-cta)",
+      "original": "<button class=\"spectrum-Button spectrum-Button--fill spectrum-Button--accent plan-cta\" type=\"button\" data-qa=\"pricing-cta-team\">",
+      "mutated": "<button class=\"plan-cta\" style=\"background: rgb(59, 99, 251); color: rgb(255, 255, 255); border: 2px solid rgba(0, 0, 0, 0); border-radius: 16px; padding: 0px 14px; font-size: 14px; font-weight: 700\" type=\"button\" data-qa=\"pricing-cta-team\">",
+      "elements": [
+        "pricing-cta-team",
+        "pricing-cta-team-label"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "task": "t14-01-07-09",
+  "screen": [
+    "01-account-settings.html",
+    "07-issue-list.html",
+    "09-billing-summary.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".issues-head"
+      },
+      "description": "gap uses 15px, off the spacing scale",
+      "original": "gap: var(--spectrum-spacing-300)",
+      "mutated": "gap: 15px",
+      "elements": [
+        "issue-list-head"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".bill-actions"
+      },
+      "description": "padding-top uses 18px, off the spacing scale",
+      "original": "padding-top: var(--spectrum-spacing-300)",
+      "mutated": "padding-top: 18px",
+      "elements": [
+        "billing-summary-actions"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".issues-closed"
+      },
+      "description": "color set to an off-palette hex near var(--spectrum-neutral-subdued-content-color-default)",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: #4c5050",
+      "elements": [
+        "issue-list-closed-count"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".field-help"
+      },
+      "description": "color set to an off-palette hex near var(--spectrum-neutral-subdued-content-color-default)",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: #505054",
+      "elements": [
+        "account-settings-help-name",
+        "account-settings-help-email"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".field-label"
+      },
+      "description": "font-weight hard-coded as 700 instead of var(--spectrum-bold-font-weight)",
+      "original": "font-weight: var(--spectrum-bold-font-weight)",
+      "mutated": "font-weight: 700",
+      "elements": [
+        "account-settings-label-name",
+        "account-settings-label-email"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".billing-title"
+      },
+      "description": "font-weight hard-coded as 700 instead of var(--spectrum-bold-font-weight)",
+      "original": "font-weight: var(--spectrum-bold-font-weight)",
+      "mutated": "font-weight: 700",
+      "elements": [
+        "billing-summary-title"
+      ]
+    }
+  ]
+}

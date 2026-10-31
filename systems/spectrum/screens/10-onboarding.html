@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Get started</title>
+<link rel="stylesheet" href="design-system/spectrum.css">
+<style>
+.onboard { max-width: 560px; margin: var(--spectrum-spacing-700) auto; padding: 0 var(--spectrum-spacing-300); }
+.onboard-title { margin: 0 0 var(--spectrum-spacing-75); font-size: var(--spectrum-font-size-400); font-weight: var(--spectrum-bold-font-weight); }
+.onboard-sub { margin: 0 0 var(--spectrum-spacing-300); color: var(--spectrum-neutral-subdued-content-color-default); }
+.onboard-progress { width: 100%; margin-bottom: var(--spectrum-spacing-100); }
+.onboard-count { margin: 0 0 var(--spectrum-spacing-400); font-size: var(--spectrum-font-size-75); color: var(--spectrum-neutral-subdued-content-color-default); }
+.steps { background: var(--spectrum-background-layer-2-color); border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); border-radius: var(--spectrum-corner-radius-200); }
+.step { display: flex; gap: var(--spectrum-spacing-200); align-items: center; padding: var(--spectrum-spacing-200) var(--spectrum-spacing-300); border-top: var(--spectrum-border-width-100) solid var(--spectrum-gray-200); }
+.step-first { border-top: 0; }
+.step-mark { flex: none; width: var(--spectrum-spacing-300); height: var(--spectrum-spacing-300); border-radius: var(--spectrum-corner-radius-100); border: var(--spectrum-border-width-200) solid var(--spectrum-gray-400); }
+.step-mark-done { background: var(--spectrum-positive-visual-color); border-color: var(--spectrum-positive-visual-color); }
+.step-text { margin: 0; color: var(--spectrum-neutral-content-color-default); }
+.step-done-text { color: var(--spectrum-neutral-subdued-content-color-default); text-decoration: line-through; }
+.onboard-actions { display: flex; justify-content: space-between; margin-top: var(--spectrum-spacing-400); }
+</style>
+</head>
+<body class="spectrum spectrum--light spectrum--medium">
+<main class="onboard" data-qa="onboard">
+  <h1 class="onboard-title" data-qa="title">Get started with your workspace</h1>
+  <p class="onboard-sub" data-qa="subtitle">Finish these steps to invite your team.</p>
+  <div class="spectrum-ProgressBar spectrum-ProgressBar--sizeM onboard-progress" role="progressbar" aria-valuenow="50" aria-label="Setup progress" data-qa="progress"><div class="spectrum-ProgressBar-track" data-qa="progress-track"><div class="spectrum-ProgressBar-fill" style="width: 50%" data-qa="progress-fill"></div></div></div>
+  <p class="onboard-count" data-qa="count">2 of 4 complete</p>
+  <div class="steps" data-qa="steps">
+    <div class="step step-first" data-qa="step-1"><span class="step-mark step-mark-done" data-qa="mark-1"></span><p class="step-text step-done-text" data-qa="text-1">Create a workspace</p></div>
+    <div class="step" data-qa="step-2"><span class="step-mark step-mark-done" data-qa="mark-2"></span><p class="step-text step-done-text" data-qa="text-2">Connect your repository</p></div>
+    <div class="step" data-qa="step-3"><span class="step-mark" data-qa="mark-3"></span><p class="step-text" data-qa="text-3">Set up branch protection</p></div>
+    <div class="step" data-qa="step-4"><span class="step-mark" data-qa="mark-4"></span><p class="step-text" data-qa="text-4">Invite teammates</p></div>
+  </div>
+  <div class="onboard-actions" data-qa="actions">
+    <button class="spectrum-Button spectrum-Button--outline spectrum-Button--secondary" type="button" data-qa="btn-skip"><span class="spectrum-Button-label" data-qa="btn-skip-label">Skip for now</span></button>
+    <button class="spectrum-Button spectrum-Button--fill spectrum-Button--accent" type="button" data-qa="btn-continue"><span class="spectrum-Button-label" data-qa="btn-continue-label">Continue setup</span></button>
+  </div>
+</main>
+</body>
+</html>

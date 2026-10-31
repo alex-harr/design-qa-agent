@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "problems": [],
+  "changed_lines": 6,
+  "proposal": {
+    "target_category": "T4 Wrong fix",
+    "change_summary": "Expand step 3 with a short fix-value method: round raw numbers to the nearest scale token (checking vendor values when unlisted), map raw colors by role, replace hand-built lookalikes' inline styles entirely with component classes while keeping existing classes/attributes, and choose button/Label variant and size from what the element does and its siblings.",
+    "why_it_generalizes": "It's a procedure keyed to RULES.md's own scales, tokens and component variants (nearest-step arithmetic, role-based token choice, full component replacement, sibling matching), so it applies to any off-scale value or rebuilt component on any screen without naming screen classes or values.",
+    "risk": "Variant guidance may nudge the agent to re-style buttons that were already correct (more T5 regressions), and longer step 3 could slightly crowd out the sweep (T3); T1/T2 misses are not addressed, so passes may move little even if net fixed rises."
+  },
+  "cost_usd": 0.3905962,
+  "diff": "--- before\n+++ after\n@@ -11,3 +11,7 @@\n 2. Find anything that breaks a rule.\n-3. Fix each problem in the screen using the design system's tokens and components.\n+3. Fix each problem in the screen using the design system's tokens and components. Pick the fix value carefully:\n+   - **Raw number \u2192 token:** convert to px (1rem = 16px), list the scale tokens just below and just above, and pick the one with the smaller difference. Never round down by habit. If a token's px value isn't in RULES.md, look it up in `design-system/vendor/` before choosing.\n+   - **Raw color \u2192 token:** pick the token whose role matches what the element is (body text \u2192 default, secondary/metadata \u2192 muted, link \u2192 accent), not only the nearest hex.\n+   - **Hand-built lookalike \u2192 component:** replace the element's inline `style` entirely with the component classes; don't just swap its raw values for tokens. Keep the element's own existing classes, `data-*` attributes, `type` and text.\n+   - **Choosing variant and size:** take the variant from what the element does (main safe action \u2192 `btn-primary`, destructive \u2192 `btn-danger`, low-emphasis inline action \u2192 `btn-invisible`, otherwise plain `btn`; Label color from the status it reports). Add `btn-sm` when the lookalike was compact or sits beside other `btn-sm` buttons in the same row or list. Match sibling elements that already use the component.\n 4. Record each problem you found and how you fixed it."
+}

@@ -1,0 +1,106 @@
+{
+  "task": "t40-02-04-08",
+  "screen": [
+    "02-sign-in.html",
+    "04-pricing.html",
+    "08-profile-card.html"
+  ],
+  "split": "heldout",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".profile-handle"
+      },
+      "description": "color hard-coded as #505050 instead of var(--spectrum-neutral-subdued-content-color-default)",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: #505050",
+      "elements": [
+        "profile-card-handle"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".auth-heading"
+      },
+      "description": "font-weight hard-coded as 400 instead of var(--spectrum-regular-font-weight)",
+      "original": "font-weight: var(--spectrum-regular-font-weight)",
+      "mutated": "font-weight: 400",
+      "elements": [
+        "sign-in-heading"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".plans-sub"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: var(--spectrum-disabled-content-color)",
+      "accept_colors": [
+        "rgb(41, 41, 41)",
+        "rgb(80, 80, 80)"
+      ],
+      "elements": [
+        "pricing-subtitle"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".plan-per"
+      },
+      "description": "text color set to var(--spectrum-neutral-visual-color), a real token that fails contrast here",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: var(--spectrum-neutral-visual-color)",
+      "accept_colors": [
+        "rgb(41, 41, 41)",
+        "rgb(80, 80, 80)"
+      ],
+      "elements": [
+        "pricing-per-free",
+        "pricing-per-team"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "danger_safe",
+      "rule": "R7",
+      "target": {
+        "qa": "pricing-cta-free"
+      },
+      "description": "safe action \"Current plan\" styled as a danger button",
+      "original": "<button class=\"spectrum-Button spectrum-Button--outline spectrum-Button--secondary plan-cta\" type=\"button\" data-qa=\"pricing-cta-free\">",
+      "mutated": "<button class=\"spectrum-Button spectrum-Button--outline spectrum-Button--negative plan-cta\" type=\"button\" data-qa=\"pricing-cta-free\">",
+      "elements": [
+        "pricing-cta-free",
+        "pricing-cta-free-label"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".profile-avatar"
+      },
+      "description": "margin-bottom uses 13px, off the spacing scale",
+      "original": "margin-bottom: var(--spectrum-spacing-200)",
+      "mutated": "margin-bottom: 13px",
+      "elements": [
+        "profile-card-avatar"
+      ]
+    }
+  ]
+}

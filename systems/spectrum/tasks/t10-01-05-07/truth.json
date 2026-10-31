@@ -1,0 +1,101 @@
+{
+  "task": "t10-01-05-07",
+  "screen": [
+    "01-account-settings.html",
+    "05-empty-state.html",
+    "07-issue-list.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".projects"
+      },
+      "description": "margin uses 37px, off the spacing scale",
+      "original": "margin: var(--spectrum-spacing-600) auto",
+      "mutated": "margin: 37px auto",
+      "elements": [
+        "empty-state-projects"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "danger_safe",
+      "rule": "R7",
+      "target": {
+        "qa": "empty-state-btn-new"
+      },
+      "description": "safe action \"New project\" styled as a danger button",
+      "original": "<button class=\"spectrum-Button spectrum-Button--fill spectrum-Button--accent\" type=\"button\" data-qa=\"empty-state-btn-new\">",
+      "mutated": "<button class=\"spectrum-Button spectrum-Button--fill spectrum-Button--negative\" type=\"button\" data-qa=\"empty-state-btn-new\">",
+      "elements": [
+        "empty-state-btn-new",
+        "empty-state-btn-new-label"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".empty-note"
+      },
+      "description": "color set to an off-palette hex near var(--spectrum-neutral-subdued-content-color-default)",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: #505650",
+      "elements": [
+        "empty-state-note"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".issues-head"
+      },
+      "description": "gap uses 17px, off the spacing scale",
+      "original": "gap: var(--spectrum-spacing-300)",
+      "mutated": "gap: 17px",
+      "elements": [
+        "issue-list-head"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".empty-link"
+      },
+      "description": "text color set to var(--spectrum-neutral-visual-color), a real token that fails contrast here",
+      "original": "color: var(--spectrum-accent-content-color-default)",
+      "mutated": "color: var(--spectrum-neutral-visual-color)",
+      "elements": [
+        "empty-state-link-learn"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".empty-heading"
+      },
+      "description": "text color set to var(--spectrum-gray-300), a real token that fails contrast here",
+      "original": "color: var(--spectrum-neutral-content-color-default)",
+      "mutated": "color: var(--spectrum-gray-300)",
+      "accept_colors": [
+        "rgb(41, 41, 41)",
+        "rgb(80, 80, 80)"
+      ],
+      "elements": [
+        "empty-state-heading"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "task": "t31-06-10-12",
+  "screen": [
+    "06-danger-zone.html",
+    "10-onboarding.html",
+    "12-upload-dialog.html"
+  ],
+  "split": "heldout",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "semantic_text",
+      "rule": "R7",
+      "target": {
+        "selector": ".file-size"
+      },
+      "description": "secondary text colored var(--spectrum-accent-content-color-default), which signals a status it doesn't have",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: var(--spectrum-accent-content-color-default)",
+      "elements": [
+        "upload-dialog-file-size"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "rebuild_button",
+      "rule": "R6",
+      "target": {
+        "qa": "upload-dialog-btn-upload"
+      },
+      "description": "button rebuilt by hand instead of using .spectrum-Button (spectrum-Button spectrum-Button--fill spectrum-Button--accent)",
+      "original": "<button class=\"spectrum-Button spectrum-Button--fill spectrum-Button--accent\" type=\"button\" data-qa=\"upload-dialog-btn-upload\">",
+      "mutated": "<button style=\"background: rgb(59, 99, 251); color: rgb(255, 255, 255); border: 2px solid rgba(0, 0, 0, 0); border-radius: 16px; padding: 0px 14px; font-size: 14px; font-weight: 700\" type=\"button\" data-qa=\"upload-dialog-btn-upload\">",
+      "elements": [
+        "upload-dialog-btn-upload",
+        "upload-dialog-btn-upload-label"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".section-title"
+      },
+      "description": "text color set to var(--spectrum-gray-300), a real token that fails contrast here",
+      "original": "color: var(--spectrum-neutral-content-color-default)",
+      "mutated": "color: var(--spectrum-gray-300)",
+      "accept_colors": [
+        "rgb(41, 41, 41)",
+        "rgb(80, 80, 80)"
+      ],
+      "elements": [
+        "danger-zone-title"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".confirm-label"
+      },
+      "description": "margin-bottom uses 7px, off the spacing scale",
+      "original": "margin-bottom: var(--spectrum-spacing-100)",
+      "mutated": "margin-bottom: 7px",
+      "elements": [
+        "danger-zone-confirm-label"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "raw_border_width",
+      "rule": "R4",
+      "target": {
+        "selector": ".step"
+      },
+      "description": "border width hard-coded instead of var(--spectrum-border-width-100)",
+      "original": "border-top: var(--spectrum-border-width-100) solid var(--spectrum-gray-200)",
+      "mutated": "border-top: 1px solid var(--spectrum-gray-200)",
+      "elements": [
+        "onboarding-step-1",
+        "onboarding-step-2",
+        "onboarding-step-3",
+        "onboarding-step-4"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "raw_border_width",
+      "rule": "R4",
+      "target": {
+        "selector": ".step-mark"
+      },
+      "description": "border width hard-coded instead of var(--spectrum-border-width-200)",
+      "original": "border: var(--spectrum-border-width-200) solid var(--spectrum-gray-400)",
+      "mutated": "border: 2px solid var(--spectrum-gray-400)",
+      "elements": [
+        "onboarding-mark-1",
+        "onboarding-mark-2",
+        "onboarding-mark-3",
+        "onboarding-mark-4"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".drop-title"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--spectrum-neutral-content-color-default)",
+      "mutated": "color: var(--spectrum-disabled-content-color)",
+      "accept_colors": [
+        "rgb(41, 41, 41)",
+        "rgb(80, 80, 80)"
+      ],
+      "elements": [
+        "upload-dialog-drop-title"
+      ]
+    },
+    {
+      "id": "m8",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".upload-title"
+      },
+      "description": "color set to an off-palette hex near var(--spectrum-neutral-content-color-default)",
+      "original": "color: var(--spectrum-neutral-content-color-default)",
+      "mutated": "color: #252929",
+      "elements": [
+        "upload-dialog-title"
+      ]
+    }
+  ]
+}

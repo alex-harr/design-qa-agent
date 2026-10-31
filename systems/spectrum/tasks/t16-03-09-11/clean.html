@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Notifications · Billing summary · Team members</title>
+<link rel="stylesheet" href="design-system/spectrum.css">
+<style>
+.inbox { max-width: 760px; margin: var(--spectrum-spacing-500) auto; padding: 0 var(--spectrum-spacing-300); }
+.inbox-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spectrum-spacing-300); }
+.inbox-title { margin: 0; font-size: var(--spectrum-font-size-400); font-weight: var(--spectrum-bold-font-weight); }
+.inbox-list { background: var(--spectrum-background-layer-2-color); border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); border-radius: var(--spectrum-corner-radius-200); }
+.note { display: flex; gap: var(--spectrum-spacing-200); align-items: flex-start; padding: var(--spectrum-spacing-300); border-top: var(--spectrum-border-width-100) solid var(--spectrum-gray-200); }
+.note-first { border-top: 0; }
+.note-dot { flex: none; width: var(--spectrum-spacing-100); height: var(--spectrum-spacing-100); margin-top: var(--spectrum-spacing-75); border-radius: var(--spectrum-corner-radius-75); background: var(--spectrum-accent-visual-color); }
+.note-dot-read { background: var(--spectrum-gray-300); }
+.note-main { flex: 1; }
+.note-title { display: flex; align-items: center; gap: var(--spectrum-spacing-100); margin: 0 0 var(--spectrum-spacing-75); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.note-meta { margin: 0; font-size: var(--spectrum-font-size-75); color: var(--spectrum-neutral-subdued-content-color-default); }
+.billing { max-width: 720px; margin: var(--spectrum-spacing-600) auto; padding: 0 var(--spectrum-spacing-300); }
+.billing-title { margin: 0 0 var(--spectrum-spacing-300); font-size: var(--spectrum-font-size-400); font-weight: var(--spectrum-bold-font-weight); }
+.billing-alert { margin-bottom: var(--spectrum-spacing-300); }
+.bill-table { width: 100%; }
+.bill-amount { text-align: right; }
+.bill-strong { font-weight: var(--spectrum-medium-font-weight); }
+.bill-total { padding: var(--spectrum-spacing-300) 0; text-align: right; font-size: var(--spectrum-font-size-200); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.bill-actions { display: flex; justify-content: flex-end; gap: var(--spectrum-spacing-100); padding-top: var(--spectrum-spacing-300); border-top: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); }
+.team { max-width: 760px; margin: var(--spectrum-spacing-600) auto; padding: 0 var(--spectrum-spacing-300); }
+.team-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spectrum-spacing-300); }
+.team-title { margin: 0; font-size: var(--spectrum-font-size-400); font-weight: var(--spectrum-bold-font-weight); }
+.team-list { background: var(--spectrum-background-layer-2-color); border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); border-radius: var(--spectrum-corner-radius-200); }
+.member { display: flex; align-items: center; gap: var(--spectrum-spacing-200); padding: var(--spectrum-spacing-200) var(--spectrum-spacing-300); border-top: var(--spectrum-border-width-100) solid var(--spectrum-gray-200); }
+.member-first { border-top: 0; }
+.member-avatar { flex: none; width: var(--spectrum-spacing-500); height: var(--spectrum-spacing-500); border-radius: var(--spectrum-corner-radius-800); background: var(--spectrum-gray-200); }
+.member-main { flex: 1; }
+.member-name { margin: 0; font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.member-email { margin: 0; font-size: var(--spectrum-font-size-75); color: var(--spectrum-neutral-subdued-content-color-default); }
+.member-role { margin-right: var(--spectrum-spacing-100); }
+.team-note { margin-top: var(--spectrum-spacing-200); font-size: var(--spectrum-font-size-75); color: var(--spectrum-neutral-subdued-content-color-default); }
+</style>
+</head>
+<body class="spectrum spectrum--light spectrum--medium">
+<section>
+<main class="inbox" data-qa="notifications-inbox">
+  <div class="inbox-top" data-qa="notifications-top">
+    <h1 class="inbox-title" data-qa="notifications-title">Notifications</h1>
+    <button class="spectrum-Button spectrum-Button--outline spectrum-Button--secondary spectrum-Button--sizeS" type="button" data-qa="notifications-btn-mark-all"><span class="spectrum-Button-label" data-qa="notifications-btn-mark-all-label">Mark all as read</span></button>
+  </div>
+  <div class="inbox-list" data-qa="notifications-list">
+    <div class="note note-first" data-qa="notifications-row-1">
+      <span class="note-dot" data-qa="notifications-dot-1"></span>
+      <div class="note-main" data-qa="notifications-main-1">
+        <p class="note-title" data-qa="notifications-title-1"><span data-qa="notifications-title-1-text">Build failed on main</span> <div class="spectrum-Badge spectrum-Badge--negative" data-qa="notifications-label-1"><div class="spectrum-Badge-label" data-qa="notifications-label-1-text">Failed</div></div></p>
+        <p class="note-meta" data-qa="notifications-meta-1">deploy-pipeline · 4 minutes ago</p>
+      </div>
+    </div>
+    <div class="note" data-qa="notifications-row-2">
+      <span class="note-dot" data-qa="notifications-dot-2"></span>
+      <div class="note-main" data-qa="notifications-main-2">
+        <p class="note-title" data-qa="notifications-title-2"><span data-qa="notifications-title-2-text">Staging deploy is live</span> <div class="spectrum-Badge spectrum-Badge--informative" data-qa="notifications-label-2"><div class="spectrum-Badge-label" data-qa="notifications-label-2-text">Live</div></div></p>
+        <p class="note-meta" data-qa="notifications-meta-2">billing-service · 1 hour ago</p>
+      </div>
+    </div>
+    <div class="note" data-qa="notifications-row-3">
+      <span class="note-dot note-dot-read" data-qa="notifications-dot-3"></span>
+      <div class="note-main" data-qa="notifications-main-3">
+        <p class="note-title" data-qa="notifications-title-3"><span data-qa="notifications-title-3-text">Release 2.4 shipped</span> <div class="spectrum-Badge spectrum-Badge--positive" data-qa="notifications-label-3"><div class="spectrum-Badge-label" data-qa="notifications-label-3-text">Done</div></div></p>
+        <p class="note-meta" data-qa="notifications-meta-3">mobile-app · yesterday</p>
+      </div>
+    </div>
+  </div>
+</main>
+</section>
+<section>
+<main class="billing" data-qa="billing-summary-billing">
+  <h1 class="billing-title" data-qa="billing-summary-title">Billing summary</h1>
+  <div class="spectrum-InLineAlert spectrum-InLineAlert--info billing-alert" data-qa="billing-summary-flash"><div class="spectrum-InLineAlert-content" data-qa="billing-summary-flash-text">Your next invoice is due on November 1.</div></div>
+  <table class="spectrum-Table spectrum-Table--sizeM bill-table" data-qa="billing-summary-table">
+    <thead class="spectrum-Table-head" data-qa="billing-summary-thead">
+      <tr data-qa="billing-summary-head-row">
+        <th class="spectrum-Table-headCell" data-qa="billing-summary-th-item">Item</th>
+        <th class="spectrum-Table-headCell" data-qa="billing-summary-th-seats">Seats</th>
+        <th class="spectrum-Table-headCell bill-amount" data-qa="billing-summary-th-amount">Amount</th>
+      </tr>
+    </thead>
+    <tbody class="spectrum-Table-body" data-qa="billing-summary-tbody">
+      <tr class="spectrum-Table-row" data-qa="billing-summary-row-plan">
+        <td class="spectrum-Table-cell" data-qa="billing-summary-td-plan">Team plan</td>
+        <td class="spectrum-Table-cell" data-qa="billing-summary-td-plan-seats">12</td>
+        <td class="spectrum-Table-cell bill-amount bill-strong" data-qa="billing-summary-td-plan-amount">$96.00</td>
+      </tr>
+      <tr class="spectrum-Table-row" data-qa="billing-summary-row-storage">
+        <td class="spectrum-Table-cell" data-qa="billing-summary-td-storage">Extra storage</td>
+        <td class="spectrum-Table-cell" data-qa="billing-summary-td-storage-seats">n/a</td>
+        <td class="spectrum-Table-cell bill-amount bill-strong" data-qa="billing-summary-td-storage-amount">$10.00</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="bill-total" data-qa="billing-summary-total">Total due: $106.00</div>
+  <div class="bill-actions" data-qa="billing-summary-actions">
+    <button class="spectrum-Button spectrum-Button--outline spectrum-Button--secondary" type="button" data-qa="billing-summary-btn-download"><span class="spectrum-Button-label" data-qa="billing-summary-btn-download-label">Download invoice</span></button>
+    <button class="spectrum-Button spectrum-Button--fill spectrum-Button--accent" type="button" data-qa="billing-summary-btn-pay"><span class="spectrum-Button-label" data-qa="billing-summary-btn-pay-label">Pay now</span></button>
+  </div>
+</main>
+</section>
+<section>
+<main class="team" data-qa="team-members-team">
+  <div class="team-bar" data-qa="team-members-bar">
+    <h1 class="team-title" data-qa="team-members-title">Team members</h1>
+    <button class="spectrum-Button spectrum-Button--fill spectrum-Button--accent" type="button" data-qa="team-members-btn-invite"><span class="spectrum-Button-label" data-qa="team-members-btn-invite-label">Invite member</span></button>
+  </div>
+  <div class="team-list" data-qa="team-members-list">
+    <div class="member member-first" data-qa="team-members-member-1">
+      <span class="member-avatar" data-qa="team-members-avatar-1"></span>
+      <div class="member-main" data-qa="team-members-main-1"><p class="member-name" data-qa="team-members-name-1">Jordan Lee</p><p class="member-email" data-qa="team-members-email-1">jordan@example.com</p></div>
+      <div class="spectrum-Badge spectrum-Badge--neutral member-role" data-qa="team-members-role-1"><div class="spectrum-Badge-label" data-qa="team-members-role-1-text">Owner</div></div>
+      <button class="spectrum-Button spectrum-Button--outline spectrum-Button--secondary spectrum-Button--sizeS" type="button" data-qa="team-members-btn-edit-1"><span class="spectrum-Button-label" data-qa="team-members-btn-edit-1-label">Edit</span></button>
+    </div>
+    <div class="member" data-qa="team-members-member-2">
+      <span class="member-avatar" data-qa="team-members-avatar-2"></span>
+      <div class="member-main" data-qa="team-members-main-2"><p class="member-name" data-qa="team-members-name-2">Priya Raman</p><p class="member-email" data-qa="team-members-email-2">priya@example.com</p></div>
+      <div class="spectrum-Badge spectrum-Badge--neutral member-role" data-qa="team-members-role-2"><div class="spectrum-Badge-label" data-qa="team-members-role-2-text">Member</div></div>
+      <button class="spectrum-Button spectrum-Button--outline spectrum-Button--negative spectrum-Button--sizeS" type="button" data-qa="team-members-btn-remove-2"><span class="spectrum-Button-label" data-qa="team-members-btn-remove-2-label">Remove</span></button>
+    </div>
+    <div class="member" data-qa="team-members-member-3">
+      <span class="member-avatar" data-qa="team-members-avatar-3"></span>
+      <div class="member-main" data-qa="team-members-main-3"><p class="member-name" data-qa="team-members-name-3">Sam Kowalski</p><p class="member-email" data-qa="team-members-email-3">sam@example.com</p></div>
+      <div class="spectrum-StatusLight spectrum-StatusLight--sizeM spectrum-StatusLight--notice member-role" data-qa="team-members-role-3">Pending invite</div>
+      <button class="spectrum-Button spectrum-Button--outline spectrum-Button--negative spectrum-Button--sizeS" type="button" data-qa="team-members-btn-remove-3"><span class="spectrum-Button-label" data-qa="team-members-btn-remove-3-label">Cancel invite</span></button>
+    </div>
+  </div>
+  <p class="team-note" data-qa="team-members-note">Owners can change roles and billing.</p>
+</main>
+</section>
+</body>
+</html>

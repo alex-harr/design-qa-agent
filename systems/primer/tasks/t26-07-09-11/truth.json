@@ -1,0 +1,141 @@
+{
+  "task": "t26-07-09-11",
+  "screen": [
+    "07-issue-list.html",
+    "09-billing-summary.html",
+    "11-team-members.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".member-name"
+      },
+      "description": "color set to an off-palette hex near var(--fgColor-default)",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: #232328",
+      "elements": [
+        "team-members-name-1",
+        "team-members-name-2",
+        "team-members-name-3"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".bill-actions"
+      },
+      "description": "gap uses 9px, off the spacing scale",
+      "original": "gap: var(--base-size-8)",
+      "mutated": "gap: 9px",
+      "elements": [
+        "billing-summary-actions"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".bill-td"
+      },
+      "description": "text color set to var(--borderColor-default), a real token that fails contrast here",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: var(--borderColor-default)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "billing-summary-td-plan",
+        "billing-summary-td-plan-seats",
+        "billing-summary-td-plan-amount",
+        "billing-summary-td-storage",
+        "billing-summary-td-storage-seats",
+        "billing-summary-td-storage-amount"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".bill-th"
+      },
+      "description": "color hard-coded as #59636e instead of var(--fgColor-muted)",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: #59636e",
+      "elements": [
+        "billing-summary-th-item",
+        "billing-summary-th-seats",
+        "billing-summary-th-amount"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "semantic_label",
+      "rule": "R7",
+      "target": {
+        "qa": "team-members-role-3"
+      },
+      "description": "status pill uses Label--done, which contradicts what it reports",
+      "original": "<span class=\"Label Label--attention member-role\" data-qa=\"team-members-role-3\">",
+      "mutated": "<span class=\"Label Label--done member-role\" data-qa=\"team-members-role-3\">",
+      "elements": [
+        "team-members-role-3"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".team-note"
+      },
+      "description": "text color set to var(--borderColor-default), a real token that fails contrast here",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--borderColor-default)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "team-members-note"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "rebuild_label",
+      "rule": "R6",
+      "target": {
+        "qa": "issue-list-issue-2-triage"
+      },
+      "description": "status pill rebuilt by hand instead of using .Label (Label Label--done)",
+      "original": "<span class=\"Label Label--done\" data-qa=\"issue-list-issue-2-triage\">",
+      "mutated": "<span style=\"display: inline-block; padding: 0 8px; font-size: 12px; font-weight: 500; color: rgb(130, 80, 223); border: 1px solid rgb(130, 80, 223); border-radius: 999px\" data-qa=\"issue-list-issue-2-triage\">",
+      "elements": [
+        "issue-list-issue-2-triage"
+      ]
+    },
+    {
+      "id": "m8",
+      "op": "rebuild_button",
+      "rule": "R6",
+      "target": {
+        "qa": "issue-list-btn-new"
+      },
+      "description": "button rebuilt by hand instead of using .btn (btn btn-primary)",
+      "original": "<button class=\"btn btn-primary\" type=\"button\" data-qa=\"issue-list-btn-new\">",
+      "mutated": "<button style=\"background: rgb(31, 136, 61); color: rgb(255, 255, 255); border: 1px solid rgba(31, 35, 40, 0.15); border-radius: 6px; padding: 5px 16px; font-size: 14px; font-weight: 500\" type=\"button\" data-qa=\"issue-list-btn-new\">",
+      "elements": [
+        "issue-list-btn-new"
+      ]
+    }
+  ]
+}

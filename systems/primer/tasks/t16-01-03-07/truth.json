@@ -1,0 +1,118 @@
+{
+  "task": "t16-01-03-07",
+  "screen": [
+    "01-account-settings.html",
+    "03-notifications.html",
+    "07-issue-list.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".settings-title"
+      },
+      "description": "color set to an off-palette hex near var(--fgColor-default)",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: #1f2828",
+      "elements": [
+        "account-settings-title"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".issues-head"
+      },
+      "description": "color hard-coded as #1f2328 instead of var(--fgColor-default)",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: #1f2328",
+      "elements": [
+        "issue-list-head"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "danger_safe",
+      "rule": "R7",
+      "target": {
+        "qa": "account-settings-btn-cancel"
+      },
+      "description": "safe action \"Cancel\" styled as a danger button",
+      "original": "<button class=\"btn\" type=\"button\" data-qa=\"account-settings-btn-cancel\">",
+      "mutated": "<button class=\"btn btn-danger\" type=\"button\" data-qa=\"account-settings-btn-cancel\">",
+      "elements": [
+        "account-settings-btn-cancel"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "off_type",
+      "rule": "R3",
+      "target": {
+        "selector": ".note-meta"
+      },
+      "description": "font-size 8px instead of var(--text-body-size-small)",
+      "original": "font-size: var(--text-body-size-small)",
+      "mutated": "font-size: 8px",
+      "elements": [
+        "notifications-meta-1",
+        "notifications-meta-2",
+        "notifications-meta-3"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".settings"
+      },
+      "description": "margin uses 39px, off the spacing scale",
+      "original": "margin: var(--base-size-40) auto",
+      "mutated": "margin: 39px auto",
+      "elements": [
+        "account-settings-settings"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".note-title"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: var(--fgColor-disabled)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "notifications-title-1",
+        "notifications-title-2",
+        "notifications-title-3"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "danger_safe",
+      "rule": "R7",
+      "target": {
+        "qa": "account-settings-btn-save"
+      },
+      "description": "safe action \"Save changes\" styled as a danger button",
+      "original": "<button class=\"btn btn-primary\" type=\"button\" data-qa=\"account-settings-btn-save\">",
+      "mutated": "<button class=\"btn btn-danger\" type=\"button\" data-qa=\"account-settings-btn-save\">",
+      "elements": [
+        "account-settings-btn-save"
+      ]
+    }
+  ]
+}

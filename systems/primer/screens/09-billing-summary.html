@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" data-color-mode="light" data-light-theme="light">
+<head>
+<meta charset="utf-8">
+<title>Billing</title>
+<link rel="stylesheet" href="design-system/primer.css">
+<style>
+.billing { max-width: 720px; margin: var(--base-size-40) auto; padding: 0 var(--base-size-16); }
+.billing-title { margin: 0 0 var(--base-size-16); font-size: var(--text-title-size-medium); font-weight: var(--text-title-weight-medium); }
+.billing-flash { margin-bottom: var(--base-size-16); }
+.bill-table { width: 100%; border-collapse: collapse; }
+.bill-th { padding: var(--base-size-8) var(--base-size-16); text-align: left; font-size: var(--text-body-size-small); font-weight: var(--base-text-weight-semibold); color: var(--fgColor-muted); background: var(--bgColor-muted); border-bottom: var(--borderWidth-thin) solid var(--borderColor-default); }
+.bill-td { padding: var(--base-size-12) var(--base-size-16); border-bottom: var(--borderWidth-thin) solid var(--borderColor-muted); color: var(--fgColor-default); }
+.bill-amount { text-align: right; font-weight: var(--base-text-weight-medium); }
+.bill-total { padding: var(--base-size-16); text-align: right; font-size: var(--text-body-size-large); font-weight: var(--base-text-weight-semibold); color: var(--fgColor-default); }
+.bill-actions { display: flex; justify-content: flex-end; gap: var(--base-size-8); }
+</style>
+</head>
+<body>
+<main class="billing" data-qa="billing">
+  <h1 class="billing-title" data-qa="title">Billing summary</h1>
+  <div class="flash billing-flash" data-qa="flash">Your next invoice is due on November 1.</div>
+  <div class="Box" data-qa="box">
+    <table class="bill-table" data-qa="table">
+      <thead>
+        <tr>
+          <th class="bill-th" data-qa="th-item">Item</th>
+          <th class="bill-th" data-qa="th-seats">Seats</th>
+          <th class="bill-th bill-amount" data-qa="th-amount">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="bill-td" data-qa="td-plan">Team plan</td>
+          <td class="bill-td" data-qa="td-plan-seats">12</td>
+          <td class="bill-td bill-amount" data-qa="td-plan-amount">$96.00</td>
+        </tr>
+        <tr>
+          <td class="bill-td" data-qa="td-storage">Extra storage</td>
+          <td class="bill-td" data-qa="td-storage-seats">n/a</td>
+          <td class="bill-td bill-amount" data-qa="td-storage-amount">$10.00</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="bill-total" data-qa="total">Total due: $106.00</div>
+    <div class="Box-footer bill-actions" data-qa="actions">
+      <button class="btn" type="button" data-qa="btn-download">Download invoice</button>
+      <button class="btn btn-primary" type="button" data-qa="btn-pay">Pay now</button>
+    </div>
+  </div>
+</main>
+</body>
+</html>

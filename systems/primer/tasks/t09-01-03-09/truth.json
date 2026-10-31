@@ -1,0 +1,149 @@
+{
+  "task": "t09-01-03-09",
+  "screen": [
+    "01-account-settings.html",
+    "03-notifications.html",
+    "09-billing-summary.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".bill-total"
+      },
+      "description": "padding uses 17px, off the spacing scale",
+      "original": "padding: var(--base-size-16)",
+      "mutated": "padding: 17px",
+      "elements": [
+        "billing-summary-total"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".billing"
+      },
+      "description": "margin uses 39px, off the spacing scale",
+      "original": "margin: var(--base-size-40) auto",
+      "mutated": "margin: 39px auto",
+      "elements": [
+        "billing-summary-billing"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "rebuild_button",
+      "rule": "R6",
+      "target": {
+        "qa": "account-settings-btn-save"
+      },
+      "description": "button rebuilt by hand instead of using .btn (btn btn-primary)",
+      "original": "<button class=\"btn btn-primary\" type=\"button\" data-qa=\"account-settings-btn-save\">",
+      "mutated": "<button style=\"background: rgb(31, 136, 61); color: rgb(255, 255, 255); border: 1px solid rgba(31, 35, 40, 0.15); border-radius: 6px; padding: 5px 16px; font-size: 14px; font-weight: 500\" type=\"button\" data-qa=\"account-settings-btn-save\">",
+      "elements": [
+        "account-settings-btn-save"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "off_type",
+      "rule": "R3",
+      "target": {
+        "selector": ".bill-th"
+      },
+      "description": "font-size 10px instead of var(--text-body-size-small)",
+      "original": "font-size: var(--text-body-size-small)",
+      "mutated": "font-size: 10px",
+      "elements": [
+        "billing-summary-th-item",
+        "billing-summary-th-seats",
+        "billing-summary-th-amount"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "raw_border_width",
+      "rule": "R4",
+      "target": {
+        "selector": ".bill-td"
+      },
+      "description": "border width hard-coded instead of var(--borderWidth-thin)",
+      "original": "border-bottom: var(--borderWidth-thin) solid var(--borderColor-muted)",
+      "mutated": "border-bottom: 1px solid var(--borderColor-muted)",
+      "elements": [
+        "billing-summary-td-plan",
+        "billing-summary-td-plan-seats",
+        "billing-summary-td-plan-amount",
+        "billing-summary-td-storage",
+        "billing-summary-td-storage-seats",
+        "billing-summary-td-storage-amount"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".bill-amount"
+      },
+      "description": "font-weight hard-coded as 500 instead of var(--base-text-weight-medium)",
+      "original": "font-weight: var(--base-text-weight-medium)",
+      "mutated": "font-weight: 500",
+      "elements": [
+        "billing-summary-th-amount",
+        "billing-summary-td-plan-amount",
+        "billing-summary-td-storage-amount"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".note-title"
+      },
+      "description": "color hard-coded as #1f2328 instead of var(--fgColor-default)",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: #1f2328",
+      "elements": [
+        "notifications-title-1",
+        "notifications-title-2",
+        "notifications-title-3"
+      ]
+    },
+    {
+      "id": "m8",
+      "op": "rebuild_button",
+      "rule": "R6",
+      "target": {
+        "qa": "account-settings-btn-cancel"
+      },
+      "description": "button rebuilt by hand instead of using .btn (btn)",
+      "original": "<button class=\"btn\" type=\"button\" data-qa=\"account-settings-btn-cancel\">",
+      "mutated": "<button style=\"background: rgb(246, 248, 250); color: rgb(37, 41, 46); border: 1px solid rgb(209, 217, 224); border-radius: 6px; padding: 5px 16px; font-size: 14px; font-weight: 500\" type=\"button\" data-qa=\"account-settings-btn-cancel\">",
+      "elements": [
+        "account-settings-btn-cancel"
+      ]
+    },
+    {
+      "id": "m9",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".settings-lede"
+      },
+      "description": "color hard-coded as #59636e instead of var(--fgColor-muted)",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: #59636e",
+      "elements": [
+        "account-settings-lede"
+      ]
+    }
+  ]
+}

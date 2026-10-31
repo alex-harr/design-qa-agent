@@ -1,0 +1,141 @@
+{
+  "task": "t34-02-06-12",
+  "screen": [
+    "02-sign-in.html",
+    "06-danger-zone.html",
+    "12-upload-dialog.html"
+  ],
+  "split": "heldout",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".upload-title"
+      },
+      "description": "color hard-coded as #292929 instead of var(--spectrum-neutral-content-color-default)",
+      "original": "color: var(--spectrum-neutral-content-color-default)",
+      "mutated": "color: #292929",
+      "elements": [
+        "upload-dialog-title"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".auth-card"
+      },
+      "description": "padding uses 27px, off the spacing scale",
+      "original": "padding: var(--spectrum-spacing-400)",
+      "mutated": "padding: 27px",
+      "elements": [
+        "sign-in-card"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".repo-settings"
+      },
+      "description": "padding uses 17px, off the spacing scale",
+      "original": "padding: 0 var(--spectrum-spacing-300)",
+      "mutated": "padding: 0 17px",
+      "elements": [
+        "danger-zone-settings"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".danger-name"
+      },
+      "description": "font-weight hard-coded as 700 instead of var(--spectrum-bold-font-weight)",
+      "original": "font-weight: var(--spectrum-bold-font-weight)",
+      "mutated": "font-weight: 700",
+      "elements": [
+        "danger-zone-name-visibility",
+        "danger-zone-name-delete"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "raw_border_width",
+      "rule": "R4",
+      "target": {
+        "selector": ".upload"
+      },
+      "description": "border width hard-coded instead of var(--spectrum-border-width-100)",
+      "original": "border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300)",
+      "mutated": "border: 1px solid var(--spectrum-gray-300)",
+      "elements": [
+        "upload-dialog-dialog"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "rebuild_button",
+      "rule": "R6",
+      "target": {
+        "qa": "upload-dialog-btn-remove-file"
+      },
+      "description": "button rebuilt by hand instead of using .spectrum-Button (spectrum-Button spectrum-Button--outline spectrum-Button--secondary spectrum-Button--sizeS)",
+      "original": "<button class=\"spectrum-Button spectrum-Button--outline spectrum-Button--secondary spectrum-Button--sizeS\" type=\"button\" data-qa=\"upload-dialog-btn-remove-file\">",
+      "mutated": "<button style=\"background: rgba(0, 0, 0, 0); color: rgb(41, 41, 41); border: 2px solid rgb(218, 218, 218); border-radius: 12px; padding: 0px 11px; font-size: 12px; font-weight: 700\" type=\"button\" data-qa=\"upload-dialog-btn-remove-file\">",
+      "elements": [
+        "upload-dialog-btn-remove-file",
+        "upload-dialog-btn-remove-file-label"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "danger_safe",
+      "rule": "R7",
+      "target": {
+        "qa": "sign-in-btn-submit"
+      },
+      "description": "safe action \"Sign in\" styled as a danger button",
+      "original": "<button class=\"spectrum-Button spectrum-Button--fill spectrum-Button--accent auth-submit\" type=\"button\" data-qa=\"sign-in-btn-submit\">",
+      "mutated": "<button class=\"spectrum-Button spectrum-Button--fill spectrum-Button--negative auth-submit\" type=\"button\" data-qa=\"sign-in-btn-submit\">",
+      "elements": [
+        "sign-in-btn-submit",
+        "sign-in-btn-submit-label"
+      ]
+    },
+    {
+      "id": "m8",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".auth-link"
+      },
+      "description": "color hard-coded as #3b63fb instead of var(--spectrum-accent-content-color-default)",
+      "original": "color: var(--spectrum-accent-content-color-default)",
+      "mutated": "color: #3b63fb",
+      "elements": [
+        "sign-in-create-link"
+      ]
+    },
+    {
+      "id": "m9",
+      "op": "raw_border_width",
+      "rule": "R4",
+      "target": {
+        "selector": ".drop"
+      },
+      "description": "border width hard-coded instead of var(--spectrum-border-width-200)",
+      "original": "border: var(--spectrum-border-width-200) dashed var(--spectrum-gray-400)",
+      "mutated": "border: 2px dashed var(--spectrum-gray-400)",
+      "elements": [
+        "upload-dialog-drop"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "task": "t37-02-08-12",
+  "screen": [
+    "02-sign-in.html",
+    "08-profile-card.html",
+    "12-upload-dialog.html"
+  ],
+  "split": "heldout",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".drop-title"
+      },
+      "description": "text color set to var(--fgColor-onEmphasis), a real token that fails contrast here",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: var(--fgColor-onEmphasis)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "upload-dialog-drop-title"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".auth-footer"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: var(--fgColor-disabled)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "sign-in-footer"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".profile-bio"
+      },
+      "description": "margin uses 17px, off the spacing scale",
+      "original": "margin: 0 0 var(--base-size-16)",
+      "mutated": "margin: 0 0 17px",
+      "elements": [
+        "profile-card-bio"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "off_type",
+      "rule": "R3",
+      "target": {
+        "selector": ".auth-forgot"
+      },
+      "description": "font-size 9px instead of var(--text-body-size-small)",
+      "original": "font-size: var(--text-body-size-small)",
+      "mutated": "font-size: 9px",
+      "elements": [
+        "sign-in-forgot"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "raw_border_width",
+      "rule": "R4",
+      "target": {
+        "selector": ".file"
+      },
+      "description": "border width hard-coded instead of var(--borderWidth-thin)",
+      "original": "border: var(--borderWidth-thin) solid var(--borderColor-default)",
+      "mutated": "border: 1px solid var(--borderColor-default)",
+      "elements": [
+        "upload-dialog-file"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".auth-label"
+      },
+      "description": "font-weight hard-coded as 600 instead of var(--base-text-weight-semibold)",
+      "original": "font-weight: var(--base-text-weight-semibold)",
+      "mutated": "font-weight: 600",
+      "elements": [
+        "sign-in-label-login",
+        "sign-in-label-password"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".auth-input"
+      },
+      "description": "margin-bottom uses 15px, off the spacing scale",
+      "original": "margin-bottom: var(--base-size-16)",
+      "mutated": "margin-bottom: 15px",
+      "elements": [
+        "sign-in-input-login",
+        "sign-in-input-password"
+      ]
+    },
+    {
+      "id": "m8",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".profile-num"
+      },
+      "description": "color hard-coded as #1f2328 instead of var(--fgColor-default)",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: #1f2328",
+      "elements": [
+        "profile-card-num-followers",
+        "profile-card-num-following",
+        "profile-card-num-repos"
+      ]
+    }
+  ]
+}

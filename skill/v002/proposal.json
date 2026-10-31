@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "problems": [],
+  "changed_lines": 11,
+  "proposal": {
+    "target_category": "T2 Readability not checked",
+    "change_summary": "Add a short R5 check that goes through every text color declaration and compares the token's documented role from RULES.md with what the text does, with fixed mappings for disabled, onEmphasis and border/bg tokens used as text.",
+    "why_it_generalizes": "The check is keyed to token roles that RULES.md itself defines (disabled controls only, onEmphasis only on emphasis backgrounds, fgColor tokens for text), so it applies to any `color:` declaration on any screen, with no screen-specific classes or values.",
+    "risk": "The agent could over-apply it: muting text that sits on a real emphasis background, or touching a correctly disabled control (T5 regressions). It could also pick default where muted was meant (T4). The extra steps might also crowd out the raw-value sweep (T3)."
+  },
+  "cost_usd": 0.3393222,
+  "diff": "--- before\n+++ after\n@@ -13 +13,12 @@\n 4. Record each problem you found and how you fixed it.\n+\n+## Text-color role check (R5)\n+\n+A real token can still be the wrong token: being a valid `var(--\u2026)` does not make text readable. For every `color:` that applies to text (in CSS rules and inline `style`), ask: is this token's role in RULES.md the job this text is doing?\n+\n+- `--fgColor-default` or `--fgColor-muted`: fine for ordinary text.\n+- `--fgColor-disabled`: only on a disabled control. On any other text it fails contrast. Fix: `--fgColor-default` for primary text (titles, names, labels, cell values), `--fgColor-muted` for secondary text (help, notes, meta, headers).\n+- `--fgColor-onEmphasis`: only on a `*-emphasis` background. Find the element's actual background; if it is a default, muted or `*-muted` surface, the text is near-invisible. Fix with default or muted as above.\n+- Any `--borderColor-*` or `--bgColor-*` token used as a text color: wrong role, fails contrast. Fix with default or muted as above.\n+\n+Report each of these as R5. Don't flag a token that is in its documented role."
+}

@@ -1,0 +1,118 @@
+{
+  "task": "t21-03-09-11",
+  "screen": [
+    "03-notifications.html",
+    "09-billing-summary.html",
+    "11-team-members.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".team-note"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--fgColor-disabled)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "team-members-note"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".bill-actions"
+      },
+      "description": "gap uses 9px, off the spacing scale",
+      "original": "gap: var(--base-size-8)",
+      "mutated": "gap: 9px",
+      "elements": [
+        "billing-summary-actions"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".bill-total"
+      },
+      "description": "font-weight hard-coded as 600 instead of var(--base-text-weight-semibold)",
+      "original": "font-weight: var(--base-text-weight-semibold)",
+      "mutated": "font-weight: 600",
+      "elements": [
+        "billing-summary-total"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".billing"
+      },
+      "description": "margin uses 39px, off the spacing scale",
+      "original": "margin: var(--base-size-40) auto",
+      "mutated": "margin: 39px auto",
+      "elements": [
+        "billing-summary-billing"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".note-meta"
+      },
+      "description": "color hard-coded as #59636e instead of var(--fgColor-muted)",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: #59636e",
+      "elements": [
+        "notifications-meta-1",
+        "notifications-meta-2",
+        "notifications-meta-3"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "rebuild_button",
+      "rule": "R6",
+      "target": {
+        "qa": "billing-summary-btn-download"
+      },
+      "description": "button rebuilt by hand instead of using .btn (btn)",
+      "original": "<button class=\"btn\" type=\"button\" data-qa=\"billing-summary-btn-download\">",
+      "mutated": "<button style=\"background: rgb(246, 248, 250); color: rgb(37, 41, 46); border: 1px solid rgb(209, 217, 224); border-radius: 6px; padding: 5px 16px; font-size: 14px; font-weight: 500\" type=\"button\" data-qa=\"billing-summary-btn-download\">",
+      "elements": [
+        "billing-summary-btn-download"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".note-title"
+      },
+      "description": "font-weight hard-coded as 600 instead of var(--base-text-weight-semibold)",
+      "original": "font-weight: var(--base-text-weight-semibold)",
+      "mutated": "font-weight: 600",
+      "elements": [
+        "notifications-title-1",
+        "notifications-title-2",
+        "notifications-title-3"
+      ]
+    }
+  ]
+}

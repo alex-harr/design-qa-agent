@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" data-color-mode="light" data-light-theme="light">
+<head>
+<meta charset="utf-8">
+<title>Account settings</title>
+<link rel="stylesheet" href="design-system/primer.css">
+<style>
+.settings { max-width: 640px; margin: var(--base-size-40) auto; padding: 0 var(--base-size-16); }
+.settings-title { margin: 0 0 var(--base-size-4); font-size: var(--text-title-size-large); font-weight: var(--text-title-weight-large); color: var(--fgColor-default); }
+.settings-lede { margin: 0 0 var(--base-size-24); font-size: var(--text-body-size-large); color: var(--fgColor-muted); }
+.field { margin-bottom: var(--base-size-16); }
+.field-label { display: block; margin-bottom: var(--base-size-6); font-weight: var(--base-text-weight-semibold); color: var(--fgColor-default); }
+.field-input { width: 100%; }
+.field-help { margin: var(--base-size-4) 0 0; font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+.actions { display: flex; gap: var(--base-size-8); margin-top: var(--base-size-24); padding-top: var(--base-size-16); border-top: var(--borderWidth-thin) solid var(--borderColor-default); }
+</style>
+</head>
+<body>
+<main class="settings" data-qa="settings">
+  <h1 class="settings-title" data-qa="title">Account settings</h1>
+  <p class="settings-lede" data-qa="lede">Update how your name and email appear to your team.</p>
+  <div class="Box" data-qa="form-box">
+    <div class="Box-body" data-qa="form-body">
+      <div class="field" data-qa="field-name">
+        <label class="field-label" for="name" data-qa="label-name">Display name</label>
+        <input class="form-control field-input" id="name" value="Rae Okafor" data-qa="input-name">
+        <p class="field-help" data-qa="help-name">Shown on comments and mentions.</p>
+      </div>
+      <div class="field" data-qa="field-email">
+        <label class="field-label" for="email" data-qa="label-email">Email</label>
+        <input class="form-control field-input" id="email" value="rae@example.com" data-qa="input-email">
+        <p class="field-help" data-qa="help-email">We'll send security alerts here.</p>
+      </div>
+      <div class="actions" data-qa="actions">
+        <button class="btn btn-primary" type="button" data-qa="btn-save">Save changes</button>
+        <button class="btn" type="button" data-qa="btn-cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Repository settings · Mateo Alvarez · Upload files</title>
+<link rel="stylesheet" href="design-system/spectrum.css">
+<style>
+.repo-settings { max-width: 720px; margin: var(--spectrum-spacing-600) auto; padding: 0 var(--spectrum-spacing-300); }
+.section-title { margin: 0 0 var(--spectrum-spacing-100); font-size: var(--spectrum-font-size-400); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.section-warn { margin-bottom: var(--spectrum-spacing-300); }
+.danger-box { background: var(--spectrum-background-layer-2-color); border: var(--spectrum-border-width-100) solid var(--spectrum-negative-border-color-default); border-radius: var(--spectrum-corner-radius-200); }
+.danger-row { display: flex; justify-content: space-between; align-items: center; gap: var(--spectrum-spacing-300); padding: var(--spectrum-spacing-300); }
+.danger-row-next { border-top: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); }
+.danger-name { margin: 0 0 var(--spectrum-spacing-50); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.danger-desc { margin: 0; font-size: var(--spectrum-font-size-100); color: var(--spectrum-neutral-subdued-content-color-default); }
+.confirm { margin-top: var(--spectrum-spacing-400); }
+.confirm-label { display: block; margin-bottom: var(--spectrum-spacing-100); font-weight: var(--spectrum-bold-font-weight); }
+.confirm-input { width: 100%; }
+.profile { max-width: 380px; margin: var(--spectrum-spacing-700) auto; padding: 0 var(--spectrum-spacing-300); }
+.profile-card { padding: var(--spectrum-spacing-400); text-align: center; background: var(--spectrum-background-layer-2-color); border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); border-radius: var(--spectrum-corner-radius-800); }
+.profile-avatar { display: inline-block; width: var(--spectrum-spacing-900); height: var(--spectrum-spacing-900); margin-bottom: var(--spectrum-spacing-200); border-radius: var(--spectrum-corner-radius-800); background: var(--spectrum-gray-200); }
+.profile-name { margin: 0; font-size: var(--spectrum-font-size-400); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.profile-handle { margin: 0 0 var(--spectrum-spacing-200); font-size: var(--spectrum-font-size-200); color: var(--spectrum-neutral-subdued-content-color-default); }
+.profile-bio { margin: 0 0 var(--spectrum-spacing-300); color: var(--spectrum-neutral-content-color-default); }
+.profile-status { display: flex; justify-content: center; margin-bottom: var(--spectrum-spacing-300); }
+.profile-stats { display: flex; justify-content: center; gap: var(--spectrum-spacing-300); margin: 0 0 var(--spectrum-spacing-400); padding: 0; list-style: none; font-size: var(--spectrum-font-size-75); color: var(--spectrum-neutral-subdued-content-color-default); }
+.profile-num { font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.profile-follow { width: 100%; }
+.backdrop { min-height: 100vh; padding: var(--spectrum-spacing-800) var(--spectrum-spacing-300); background: var(--spectrum-background-layer-1-color); }
+.upload { max-width: 520px; margin: 0 auto; background: var(--spectrum-background-layer-2-color); border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); border-radius: var(--spectrum-corner-radius-800); }
+.upload-header { padding: var(--spectrum-spacing-400) var(--spectrum-spacing-400) 0; }
+.upload-title { margin: 0; font-size: var(--spectrum-font-size-400); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.upload-body { padding: var(--spectrum-spacing-300) var(--spectrum-spacing-400); }
+.drop { padding: var(--spectrum-spacing-500); text-align: center; border: var(--spectrum-border-width-200) dashed var(--spectrum-gray-400); border-radius: var(--spectrum-corner-radius-200); background: var(--spectrum-background-layer-1-color); }
+.drop-title { margin: 0 0 var(--spectrum-spacing-75); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.drop-hint { margin: 0; font-size: var(--spectrum-font-size-75); color: var(--spectrum-neutral-subdued-content-color-default); }
+.file { display: flex; justify-content: space-between; align-items: center; margin-top: var(--spectrum-spacing-300); padding: var(--spectrum-spacing-200); border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); border-radius: var(--spectrum-corner-radius-100); }
+.file-name { margin: 0; font-weight: var(--spectrum-medium-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.file-size { margin: 0; font-size: var(--spectrum-font-size-75); color: var(--spectrum-neutral-subdued-content-color-default); }
+.file-error { margin: var(--spectrum-spacing-100) 0 0; }
+.upload-footer { display: flex; justify-content: flex-end; gap: var(--spectrum-spacing-100); padding: 0 var(--spectrum-spacing-400) var(--spectrum-spacing-400); }
+</style>
+</head>
+<body class="spectrum spectrum--light spectrum--medium">
+<section>
+<main class="repo-settings" data-qa="danger-zone-settings">
+  <h1 class="section-title" data-qa="danger-zone-title">Danger zone</h1>
+  <div class="spectrum-InLineAlert spectrum-InLineAlert--notice section-warn" data-qa="danger-zone-warning"><div class="spectrum-InLineAlert-content" data-qa="danger-zone-warning-text">These actions can't be undone. Read each one carefully.</div></div>
+  <div class="danger-box" data-qa="danger-zone-box">
+    <div class="danger-row" data-qa="danger-zone-row-visibility">
+      <div data-qa="danger-zone-text-visibility">
+        <p class="danger-name" data-qa="danger-zone-name-visibility">Change visibility</p>
+        <p class="danger-desc" data-qa="danger-zone-desc-visibility">This repository is currently private.</p>
+      </div>
+      <button class="spectrum-Button spectrum-Button--fill spectrum-Button--negative" type="button" data-qa="danger-zone-btn-visibility"><span class="spectrum-Button-label" data-qa="danger-zone-btn-visibility-label">Change visibility</span></button>
+    </div>
+    <div class="danger-row danger-row-next" data-qa="danger-zone-row-delete">
+      <div data-qa="danger-zone-text-delete">
+        <p class="danger-name" data-qa="danger-zone-name-delete">Delete this repository</p>
+        <p class="danger-desc" data-qa="danger-zone-desc-delete">Once you delete a repository, there is no going back.</p>
+      </div>
+      <button class="spectrum-Button spectrum-Button--fill spectrum-Button--negative" type="button" data-qa="danger-zone-btn-delete"><span class="spectrum-Button-label" data-qa="danger-zone-btn-delete-label">Delete this repository</span></button>
+    </div>
+  </div>
+  <div class="confirm" data-qa="danger-zone-confirm">
+    <label class="confirm-label" for="danger-zone-confirm" data-qa="danger-zone-confirm-label">Type the repository name to confirm</label>
+    <div class="spectrum-Textfield confirm-input" data-qa="danger-zone-confirm-input-wrap"><input class="spectrum-Textfield-input" id="danger-zone-confirm" type="text" data-qa="danger-zone-confirm-input"></div>
+  </div>
+</main>
+</section>
+<section>
+<main class="profile" data-qa="profile-card-profile">
+  <div class="profile-card" data-qa="profile-card-card">
+    <span class="profile-avatar" data-qa="profile-card-avatar"></span>
+    <h1 class="profile-name" data-qa="profile-card-name">Mateo Alvarez</h1>
+    <p class="profile-handle" data-qa="profile-card-handle">@mateo-a</p>
+    <p class="profile-bio" data-qa="profile-card-bio">Design engineer working on accessible data tables.</p>
+    <div class="profile-status" data-qa="profile-card-status"><div class="spectrum-Badge spectrum-Badge--positive" data-qa="profile-card-status-label"><div class="spectrum-Badge-label" data-qa="profile-card-status-label-text">Available for review</div></div></div>
+    <ul class="profile-stats" data-qa="profile-card-stats">
+      <li data-qa="profile-card-stat-followers"><span class="profile-num" data-qa="profile-card-num-followers">214</span> followers</li>
+      <li data-qa="profile-card-stat-following"><span class="profile-num" data-qa="profile-card-num-following">87</span> following</li>
+      <li data-qa="profile-card-stat-repos"><span class="profile-num" data-qa="profile-card-num-repos">31</span> repositories</li>
+    </ul>
+    <button class="spectrum-Button spectrum-Button--fill spectrum-Button--accent profile-follow" type="button" data-qa="profile-card-btn-follow"><span class="spectrum-Button-label" data-qa="profile-card-btn-follow-label">Follow</span></button>
+  </div>
+</main>
+</section>
+<section>
+<div class="backdrop" data-qa="upload-dialog-backdrop">
+  <div class="upload" role="dialog" aria-labelledby="upload-title" data-qa="upload-dialog-dialog">
+    <div class="upload-header" data-qa="upload-dialog-header"><h1 class="upload-title" id="upload-dialog-upload-title" data-qa="upload-dialog-title">Upload files</h1></div>
+    <div class="upload-body" data-qa="upload-dialog-body">
+      <div class="drop" data-qa="upload-dialog-drop">
+        <p class="drop-title" data-qa="upload-dialog-drop-title">Drag files here</p>
+        <p class="drop-hint" data-qa="upload-dialog-drop-hint">PNG, JPG or PDF up to 25 MB</p>
+      </div>
+      <div class="file" data-qa="upload-dialog-file">
+        <div data-qa="upload-dialog-file-text"><p class="file-name" data-qa="upload-dialog-file-name">quarterly-report.pdf</p><p class="file-size" data-qa="upload-dialog-file-size">31.2 MB</p></div>
+        <button class="spectrum-Button spectrum-Button--outline spectrum-Button--secondary spectrum-Button--sizeS" type="button" data-qa="upload-dialog-btn-remove-file"><span class="spectrum-Button-label" data-qa="upload-dialog-btn-remove-file-label">Remove</span></button>
+      </div>
+      <div class="spectrum-InLineAlert spectrum-InLineAlert--negative file-error" data-qa="upload-dialog-error"><div class="spectrum-InLineAlert-content" data-qa="upload-dialog-error-text">This file is larger than 25 MB.</div></div>
+    </div>
+    <div class="upload-footer" data-qa="upload-dialog-footer">
+      <button class="spectrum-Button spectrum-Button--outline spectrum-Button--secondary" type="button" data-qa="upload-dialog-btn-cancel"><span class="spectrum-Button-label" data-qa="upload-dialog-btn-cancel-label">Cancel</span></button>
+      <button class="spectrum-Button spectrum-Button--fill spectrum-Button--accent" type="button" data-qa="upload-dialog-btn-upload"><span class="spectrum-Button-label" data-qa="upload-dialog-btn-upload-label">Upload</span></button>
+    </div>
+  </div>
+</div>
+</section>
+</body>
+</html>

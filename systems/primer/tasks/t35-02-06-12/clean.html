@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en" data-color-mode="light" data-light-theme="light">
+<head>
+<meta charset="utf-8">
+<title>Sign in · Repository settings · Upload files</title>
+<link rel="stylesheet" href="design-system/primer.css">
+<style>
+.auth { max-width: 340px; margin: var(--base-size-64) auto; padding: 0 var(--base-size-16); }
+.auth-heading { margin: 0 0 var(--base-size-16); text-align: center; font-size: var(--text-title-size-medium); font-weight: var(--base-text-weight-normal); color: var(--fgColor-default); }
+.auth-card { padding: var(--base-size-20); background: var(--bgColor-muted); border: var(--borderWidth-thin) solid var(--borderColor-default); border-radius: var(--borderRadius-medium); }
+.auth-label { display: block; margin-bottom: var(--base-size-8); font-weight: var(--base-text-weight-semibold); }
+.auth-row { display: flex; justify-content: space-between; align-items: baseline; }
+.auth-forgot { font-size: var(--text-body-size-small); color: var(--fgColor-accent); }
+.auth-input { width: 100%; margin-bottom: var(--base-size-16); }
+.auth-submit { width: 100%; }
+.auth-footer { margin-top: var(--base-size-16); padding: var(--base-size-16); text-align: center; border: var(--borderWidth-thin) solid var(--borderColor-default); border-radius: var(--borderRadius-medium); color: var(--fgColor-default); }
+.auth-link { color: var(--fgColor-accent); }
+.auth-legal { margin-top: var(--base-size-24); text-align: center; font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+.repo-settings { max-width: 720px; margin: var(--base-size-40) auto; padding: 0 var(--base-size-16); }
+.section-title { margin: 0 0 var(--base-size-8); font-size: var(--text-title-size-medium); font-weight: var(--text-title-weight-medium); color: var(--fgColor-default); }
+.section-warn { margin-bottom: var(--base-size-16); }
+.danger-box { border-color: var(--borderColor-danger-emphasis); }
+.danger-row { display: flex; justify-content: space-between; align-items: center; gap: var(--base-size-16); }
+.danger-name { margin: 0 0 var(--base-size-2); font-weight: var(--base-text-weight-semibold); color: var(--fgColor-default); }
+.danger-desc { margin: 0; font-size: var(--text-body-size-medium); color: var(--fgColor-muted); }
+.confirm { margin-top: var(--base-size-24); }
+.confirm-label { display: block; margin-bottom: var(--base-size-8); font-weight: var(--base-text-weight-semibold); }
+.confirm-input { width: 100%; }
+.backdrop { min-height: 100vh; padding: var(--base-size-64) var(--base-size-16); background: var(--bgColor-inset); }
+.upload { max-width: 520px; margin: 0 auto; }
+.drop { padding: var(--base-size-32); text-align: center; border: var(--borderWidth-thick) dashed var(--borderColor-default); border-radius: var(--borderRadius-medium); background: var(--bgColor-muted); }
+.drop-title { margin: 0 0 var(--base-size-4); font-weight: var(--base-text-weight-semibold); color: var(--fgColor-default); }
+.drop-hint { margin: 0; font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+.file { display: flex; justify-content: space-between; align-items: center; margin-top: var(--base-size-16); padding: var(--base-size-12); border: var(--borderWidth-thin) solid var(--borderColor-default); border-radius: var(--borderRadius-medium); }
+.file-name { margin: 0; font-weight: var(--base-text-weight-medium); color: var(--fgColor-default); }
+.file-size { margin: 0; font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+.file-error { margin: var(--base-size-8) 0 0; }
+</style>
+</head>
+<body>
+<section>
+<main class="auth" data-qa="sign-in-auth">
+  <h1 class="auth-heading" data-qa="sign-in-heading">Sign in to Northwind</h1>
+  <div class="auth-card" data-qa="sign-in-card">
+    <label class="auth-label" for="sign-in-login" data-qa="sign-in-label-login">Username or email address</label>
+    <input class="form-control auth-input" id="sign-in-login" data-qa="sign-in-input-login">
+    <div class="auth-row" data-qa="sign-in-password-row">
+      <label class="auth-label" for="sign-in-password" data-qa="sign-in-label-password">Password</label>
+      <a class="auth-forgot" href="#" data-qa="sign-in-forgot">Forgot password?</a>
+    </div>
+    <input class="form-control auth-input" id="sign-in-password" type="password" data-qa="sign-in-input-password">
+    <button class="btn btn-primary auth-submit" type="button" data-qa="sign-in-btn-submit">Sign in</button>
+  </div>
+  <p class="auth-footer" data-qa="sign-in-footer">New to Northwind? <a class="auth-link" href="#" data-qa="sign-in-create-link">Create an account</a></p>
+  <p class="auth-legal" data-qa="sign-in-legal">By signing in you agree to the Terms and Privacy Policy.</p>
+</main>
+</section>
+<section>
+<main class="repo-settings" data-qa="danger-zone-settings">
+  <h1 class="section-title" data-qa="danger-zone-title">Danger zone</h1>
+  <div class="flash flash-warn section-warn" data-qa="danger-zone-warning">These actions can't be undone. Read each one carefully.</div>
+  <div class="Box danger-box" data-qa="danger-zone-box">
+    <div class="Box-row danger-row" data-qa="danger-zone-row-visibility">
+      <div data-qa="danger-zone-text-visibility">
+        <p class="danger-name" data-qa="danger-zone-name-visibility">Change visibility</p>
+        <p class="danger-desc" data-qa="danger-zone-desc-visibility">This repository is currently private.</p>
+      </div>
+      <button class="btn btn-danger" type="button" data-qa="danger-zone-btn-visibility">Change visibility</button>
+    </div>
+    <div class="Box-row danger-row" data-qa="danger-zone-row-delete">
+      <div data-qa="danger-zone-text-delete">
+        <p class="danger-name" data-qa="danger-zone-name-delete">Delete this repository</p>
+        <p class="danger-desc" data-qa="danger-zone-desc-delete">Once you delete a repository, there is no going back.</p>
+      </div>
+      <button class="btn btn-danger" type="button" data-qa="danger-zone-btn-delete">Delete this repository</button>
+    </div>
+  </div>
+  <div class="confirm" data-qa="danger-zone-confirm">
+    <label class="confirm-label" for="danger-zone-confirm" data-qa="danger-zone-confirm-label">Type the repository name to confirm</label>
+    <input class="form-control confirm-input" id="danger-zone-confirm" data-qa="danger-zone-confirm-input">
+  </div>
+</main>
+</section>
+<section>
+<div class="backdrop" data-qa="upload-dialog-backdrop">
+  <div class="Dialog upload" role="dialog" data-qa="upload-dialog-dialog">
+    <div class="Dialog-header" data-qa="upload-dialog-header"><h1 class="Dialog-title" data-qa="upload-dialog-title">Upload files</h1></div>
+    <div class="Dialog-body" data-qa="upload-dialog-body">
+      <div class="drop" data-qa="upload-dialog-drop">
+        <p class="drop-title" data-qa="upload-dialog-drop-title">Drag files here</p>
+        <p class="drop-hint" data-qa="upload-dialog-drop-hint">PNG, JPG or PDF up to 25 MB</p>
+      </div>
+      <div class="file" data-qa="upload-dialog-file">
+        <div data-qa="upload-dialog-file-text"><p class="file-name" data-qa="upload-dialog-file-name">quarterly-report.pdf</p><p class="file-size" data-qa="upload-dialog-file-size">31.2 MB</p></div>
+        <button class="btn btn-sm btn-invisible" type="button" data-qa="upload-dialog-btn-remove-file">Remove</button>
+      </div>
+      <div class="flash flash-error file-error" data-qa="upload-dialog-error">This file is larger than 25 MB.</div>
+    </div>
+    <div class="Dialog-footer" data-qa="upload-dialog-footer">
+      <button class="btn" type="button" data-qa="upload-dialog-btn-cancel">Cancel</button>
+      <button class="btn btn-primary" type="button" data-qa="upload-dialog-btn-upload">Upload</button>
+    </div>
+  </div>
+</div>
+</section>
+</body>
+</html>

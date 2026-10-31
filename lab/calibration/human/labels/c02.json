@@ -1,0 +1,6 @@
+{
+  "at": "2026-10-29T18:58:07.976Z",
+  "fix": "fail",
+  "note": "Plain secondary text is colored like a status, which signals something it isn't, agent didn't correct the it. It should be the Muted text",
+  "report": "fail"
+}

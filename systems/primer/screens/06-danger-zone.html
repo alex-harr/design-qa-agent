@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" data-color-mode="light" data-light-theme="light">
+<head>
+<meta charset="utf-8">
+<title>Repository settings</title>
+<link rel="stylesheet" href="design-system/primer.css">
+<style>
+.repo-settings { max-width: 720px; margin: var(--base-size-40) auto; padding: 0 var(--base-size-16); }
+.section-title { margin: 0 0 var(--base-size-8); font-size: var(--text-title-size-medium); font-weight: var(--text-title-weight-medium); color: var(--fgColor-default); }
+.section-warn { margin-bottom: var(--base-size-16); }
+.danger-box { border-color: var(--borderColor-danger-emphasis); }
+.danger-row { display: flex; justify-content: space-between; align-items: center; gap: var(--base-size-16); }
+.danger-name { margin: 0 0 var(--base-size-2); font-weight: var(--base-text-weight-semibold); color: var(--fgColor-default); }
+.danger-desc { margin: 0; font-size: var(--text-body-size-medium); color: var(--fgColor-muted); }
+.confirm { margin-top: var(--base-size-24); }
+.confirm-label { display: block; margin-bottom: var(--base-size-8); font-weight: var(--base-text-weight-semibold); }
+.confirm-input { width: 100%; }
+</style>
+</head>
+<body>
+<main class="repo-settings" data-qa="settings">
+  <h1 class="section-title" data-qa="title">Danger zone</h1>
+  <div class="flash flash-warn section-warn" data-qa="warning">These actions can't be undone. Read each one carefully.</div>
+  <div class="Box danger-box" data-qa="box">
+    <div class="Box-row danger-row" data-qa="row-visibility">
+      <div data-qa="text-visibility">
+        <p class="danger-name" data-qa="name-visibility">Change visibility</p>
+        <p class="danger-desc" data-qa="desc-visibility">This repository is currently private.</p>
+      </div>
+      <button class="btn btn-danger" type="button" data-qa="btn-visibility">Change visibility</button>
+    </div>
+    <div class="Box-row danger-row" data-qa="row-delete">
+      <div data-qa="text-delete">
+        <p class="danger-name" data-qa="name-delete">Delete this repository</p>
+        <p class="danger-desc" data-qa="desc-delete">Once you delete a repository, there is no going back.</p>
+      </div>
+      <button class="btn btn-danger" type="button" data-qa="btn-delete">Delete this repository</button>
+    </div>
+  </div>
+  <div class="confirm" data-qa="confirm">
+    <label class="confirm-label" for="confirm" data-qa="confirm-label">Type the repository name to confirm</label>
+    <input class="form-control confirm-input" id="confirm" data-qa="confirm-input">
+  </div>
+</main>
+</body>
+</html>

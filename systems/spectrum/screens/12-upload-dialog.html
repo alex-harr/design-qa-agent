@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Upload files</title>
+<link rel="stylesheet" href="design-system/spectrum.css">
+<style>
+.backdrop { min-height: 100vh; padding: var(--spectrum-spacing-800) var(--spectrum-spacing-300); background: var(--spectrum-background-layer-1-color); }
+.upload { max-width: 520px; margin: 0 auto; background: var(--spectrum-background-layer-2-color); border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); border-radius: var(--spectrum-corner-radius-800); }
+.upload-header { padding: var(--spectrum-spacing-400) var(--spectrum-spacing-400) 0; }
+.upload-title { margin: 0; font-size: var(--spectrum-font-size-400); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.upload-body { padding: var(--spectrum-spacing-300) var(--spectrum-spacing-400); }
+.drop { padding: var(--spectrum-spacing-500); text-align: center; border: var(--spectrum-border-width-200) dashed var(--spectrum-gray-400); border-radius: var(--spectrum-corner-radius-200); background: var(--spectrum-background-layer-1-color); }
+.drop-title { margin: 0 0 var(--spectrum-spacing-75); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.drop-hint { margin: 0; font-size: var(--spectrum-font-size-75); color: var(--spectrum-neutral-subdued-content-color-default); }
+.file { display: flex; justify-content: space-between; align-items: center; margin-top: var(--spectrum-spacing-300); padding: var(--spectrum-spacing-200); border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); border-radius: var(--spectrum-corner-radius-100); }
+.file-name { margin: 0; font-weight: var(--spectrum-medium-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.file-size { margin: 0; font-size: var(--spectrum-font-size-75); color: var(--spectrum-neutral-subdued-content-color-default); }
+.file-error { margin: var(--spectrum-spacing-100) 0 0; }
+.upload-footer { display: flex; justify-content: flex-end; gap: var(--spectrum-spacing-100); padding: 0 var(--spectrum-spacing-400) var(--spectrum-spacing-400); }
+</style>
+</head>
+<body class="spectrum spectrum--light spectrum--medium">
+<div class="backdrop" data-qa="backdrop">
+  <div class="upload" role="dialog" aria-labelledby="upload-title" data-qa="dialog">
+    <div class="upload-header" data-qa="header"><h1 class="upload-title" id="upload-title" data-qa="title">Upload files</h1></div>
+    <div class="upload-body" data-qa="body">
+      <div class="drop" data-qa="drop">
+        <p class="drop-title" data-qa="drop-title">Drag files here</p>
+        <p class="drop-hint" data-qa="drop-hint">PNG, JPG or PDF up to 25 MB</p>
+      </div>
+      <div class="file" data-qa="file">
+        <div data-qa="file-text"><p class="file-name" data-qa="file-name">quarterly-report.pdf</p><p class="file-size" data-qa="file-size">31.2 MB</p></div>
+        <button class="spectrum-Button spectrum-Button--outline spectrum-Button--secondary spectrum-Button--sizeS" type="button" data-qa="btn-remove-file"><span class="spectrum-Button-label" data-qa="btn-remove-file-label">Remove</span></button>
+      </div>
+      <div class="spectrum-InLineAlert spectrum-InLineAlert--negative file-error" data-qa="error"><div class="spectrum-InLineAlert-content" data-qa="error-text">This file is larger than 25 MB.</div></div>
+    </div>
+    <div class="upload-footer" data-qa="footer">
+      <button class="spectrum-Button spectrum-Button--outline spectrum-Button--secondary" type="button" data-qa="btn-cancel"><span class="spectrum-Button-label" data-qa="btn-cancel-label">Cancel</span></button>
+      <button class="spectrum-Button spectrum-Button--fill spectrum-Button--accent" type="button" data-qa="btn-upload"><span class="spectrum-Button-label" data-qa="btn-upload-label">Upload</span></button>
+    </div>
+  </div>
+</div>
+</body>
+</html>

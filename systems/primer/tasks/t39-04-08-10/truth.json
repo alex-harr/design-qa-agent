@@ -1,0 +1,11 @@
+{
+  "task": "t39-04-08-10",
+  "screen": [
+    "04-pricing.html",
+    "08-profile-card.html",
+    "10-onboarding.html"
+  ],
+  "split": "heldout",
+  "clean_control": true,
+  "mutations": []
+}

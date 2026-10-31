@@ -1,0 +1,129 @@
+{
+  "task": "t12-01-07-09",
+  "screen": [
+    "01-account-settings.html",
+    "07-issue-list.html",
+    "09-billing-summary.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "semantic_text",
+      "rule": "R7",
+      "target": {
+        "selector": ".settings-lede"
+      },
+      "description": "secondary text colored var(--spectrum-accent-content-color-default), which signals a status it doesn't have",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: var(--spectrum-accent-content-color-default)",
+      "elements": [
+        "account-settings-lede"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "rebuild_label",
+      "rule": "R6",
+      "target": {
+        "qa": "issue-list-issue-3-docs"
+      },
+      "description": "status pill rebuilt by hand instead of using .spectrum-Badge (spectrum-Badge spectrum-Badge--neutral)",
+      "original": "<div class=\"spectrum-Badge spectrum-Badge--neutral\" data-qa=\"issue-list-issue-3-docs\">",
+      "mutated": "<div style=\"display: inline-block; padding: 0 0px; font-size: 16px; font-weight: 400; color: rgb(255, 255, 255); border: 1px solid rgba(0, 0, 0, 0); border-radius: 999px\" data-qa=\"issue-list-issue-3-docs\">",
+      "elements": [
+        "issue-list-issue-3-docs",
+        "issue-list-issue-3-docs-text"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".issue-labels"
+      },
+      "description": "gap uses 5px, off the spacing scale",
+      "original": "gap: var(--spectrum-spacing-75)",
+      "mutated": "gap: 5px",
+      "elements": [
+        "issue-list-issue-1-labels",
+        "issue-list-issue-2-labels",
+        "issue-list-issue-3-labels"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "raw_border_width",
+      "rule": "R4",
+      "target": {
+        "selector": ".bill-actions"
+      },
+      "description": "border width hard-coded instead of var(--spectrum-border-width-100)",
+      "original": "border-top: var(--spectrum-border-width-100) solid var(--spectrum-gray-300)",
+      "mutated": "border-top: 1px solid var(--spectrum-gray-300)",
+      "elements": [
+        "billing-summary-actions"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".field"
+      },
+      "description": "margin-bottom uses 15px, off the spacing scale",
+      "original": "margin-bottom: var(--spectrum-spacing-300)",
+      "mutated": "margin-bottom: 15px",
+      "elements": [
+        "account-settings-field-name",
+        "account-settings-field-email"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".bill-total"
+      },
+      "description": "color hard-coded as #292929 instead of var(--spectrum-neutral-content-color-default)",
+      "original": "color: var(--spectrum-neutral-content-color-default)",
+      "mutated": "color: #292929",
+      "elements": [
+        "billing-summary-total"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "semantic_label",
+      "rule": "R7",
+      "target": {
+        "qa": "issue-list-issue-2-triage"
+      },
+      "description": "status pill uses spectrum-Badge--negative, which contradicts what it reports",
+      "original": "<div class=\"spectrum-Badge spectrum-Badge--informative\" data-qa=\"issue-list-issue-2-triage\">",
+      "mutated": "<div class=\"spectrum-Badge spectrum-Badge--negative\" data-qa=\"issue-list-issue-2-triage\">",
+      "elements": [
+        "issue-list-issue-2-triage",
+        "issue-list-issue-2-triage-text"
+      ]
+    },
+    {
+      "id": "m8",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".settings-title"
+      },
+      "description": "font-weight hard-coded as 800 instead of var(--spectrum-extra-bold-font-weight)",
+      "original": "font-weight: var(--spectrum-extra-bold-font-weight)",
+      "mutated": "font-weight: 800",
+      "elements": [
+        "account-settings-title"
+      ]
+    }
+  ]
+}

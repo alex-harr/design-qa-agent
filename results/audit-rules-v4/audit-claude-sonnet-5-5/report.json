@@ -1,0 +1,19 @@
+{
+  "run": "audit-claude-sonnet-5-5",
+  "runs": 12,
+  "tasks": 12,
+  "trials_per_task": 1,
+  "pass_rate": 1,
+  "pass^1": 1,
+  "pass@1": 1,
+  "detected": 0.0,
+  "fixed_exact": 0.0,
+  "planted_total": 0,
+  "net_fixed": 0,
+  "false_flags_per_run": 0,
+  "regressions_per_run": 0,
+  "by_rule_detected_fixed": {},
+  "self_says_all_fixed": 1,
+  "cost_usd": 0.76,
+  "mean_turns": 6.2
+}

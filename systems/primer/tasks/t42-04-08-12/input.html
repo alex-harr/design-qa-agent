@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en" data-color-mode="light" data-light-theme="light">
+<head>
+<meta charset="utf-8">
+<title>Plans · Profile · Upload files</title>
+<link rel="stylesheet" href="design-system/primer.css">
+<style>
+.plans { max-width: 820px; margin: var(--base-size-48) auto; padding: 0 var(--base-size-16); text-align: center; }
+.plans-title { margin: 0 0 var(--base-size-8); font-size: var(--text-title-size-large); font-weight: var(--text-title-weight-large); }
+.plans-sub { margin: 0 0 var(--base-size-32); font-size: 17px; color: var(--fgColor-muted); }
+.plan-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--base-size-24); text-align: left; }
+.plan { padding: var(--base-size-24); }
+.plan-featured { border-color: var(--borderColor-accent-emphasis); border-width: var(--borderWidth-thick); }
+.plan-name { margin: 0 0 var(--base-size-4); font-size: var(--text-title-size-small); font-weight: var(--text-title-weight-small); }
+.plan-price { margin: 0 0 17px; font-size: var(--text-title-size-large); font-weight: var(--base-text-weight-semibold); color: var(--fgColor-default); }
+.plan-per { font-size: var(--text-body-size-medium); font-weight: var(--base-text-weight-normal); color: var(--fgColor-muted); }
+.plan-list { margin: 0 0 var(--base-size-24); padding-left: var(--base-size-20); color: #1f2328; }
+.plan-item { margin-bottom: var(--base-size-8); }
+.plan-cta { width: 100%; }
+.plan-badge { margin-left: var(--base-size-8); }
+.profile { max-width: 380px; margin: var(--base-size-48) auto; padding: 0 var(--base-size-16); }
+.profile-card { padding: var(--base-size-24); text-align: center; }
+.profile-avatar { width: var(--base-size-80); height: var(--base-size-80); margin-bottom: var(--base-size-12); }
+.profile-name { margin: 0; font-size: var(--text-title-size-medium); font-weight: var(--text-title-weight-medium); color: var(--fgColor-default); }
+.profile-handle { margin: 0 0 var(--base-size-12); font-size: var(--text-body-size-large); color: var(--fgColor-muted); }
+.profile-bio { margin: 0 0 var(--base-size-16); color: var(--fgColor-disabled); }
+.profile-status { margin-bottom: var(--base-size-16); }
+.profile-stats { display: flex; justify-content: center; gap: var(--base-size-16); margin: 0 0 var(--base-size-20); padding: 0; list-style: none; font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+.profile-num { font-weight: var(--base-text-weight-semibold); color: var(--fgColor-disabled); }
+.profile-follow { width: 100%; }
+.backdrop { min-height: 100vh; padding: var(--base-size-64) var(--base-size-16); background: var(--bgColor-inset); }
+.upload { max-width: 520px; margin: 0 auto; }
+.drop { padding: var(--base-size-32); text-align: center; border: var(--borderWidth-thick) dashed var(--borderColor-default); border-radius: var(--borderRadius-medium); background: var(--bgColor-muted); }
+.drop-title { margin: 0 0 var(--base-size-4); font-weight: var(--base-text-weight-semibold); color: var(--fgColor-default); }
+.drop-hint { margin: 0; font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+.file { display: flex; justify-content: space-between; align-items: center; margin-top: var(--base-size-16); padding: var(--base-size-12); border: var(--borderWidth-thin) solid var(--borderColor-default); border-radius: var(--borderRadius-medium); }
+.file-name { margin: 0; font-weight: var(--base-text-weight-medium); color: #1f2324; }
+.file-size { margin: 0; font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+.file-error { margin: var(--base-size-8) 0 0; }
+</style>
+</head>
+<body>
+<section>
+<main class="plans" data-qa="pricing-plans">
+  <h1 class="plans-title" data-qa="pricing-title">Choose a plan</h1>
+  <p class="plans-sub" data-qa="pricing-subtitle">Upgrade or downgrade any time.</p>
+  <div class="plan-grid" data-qa="pricing-grid">
+    <section class="Box plan" data-qa="pricing-plan-free">
+      <h2 class="plan-name" data-qa="pricing-name-free">Free</h2>
+      <p class="plan-price" data-qa="pricing-price-free">$0 <span class="plan-per" data-qa="pricing-per-free">per user / month</span></p>
+      <ul class="plan-list" data-qa="pricing-list-free">
+        <li class="plan-item" data-qa="pricing-item-free-1">Unlimited public projects</li>
+        <li class="plan-item" data-qa="pricing-item-free-2">Community support</li>
+      </ul>
+      <button class="btn plan-cta" type="button" data-qa="pricing-cta-free">Current plan</button>
+    </section>
+    <section class="Box plan plan-featured" data-qa="pricing-plan-team">
+      <h2 class="plan-name" data-qa="pricing-name-team">Team <span class="Label Label--accent plan-badge" data-qa="pricing-badge-team">Popular</span></h2>
+      <p class="plan-price" data-qa="pricing-price-team">$8 <span class="plan-per" data-qa="pricing-per-team">per user / month</span></p>
+      <ul class="plan-list" data-qa="pricing-list-team">
+        <li class="plan-item" data-qa="pricing-item-team-1">Private projects</li>
+        <li class="plan-item" data-qa="pricing-item-team-2">Protected branches</li>
+      </ul>
+      <button class="btn btn-danger plan-cta" type="button" data-qa="pricing-cta-team">Upgrade to Team</button>
+    </section>
+  </div>
+</main>
+</section>
+<section>
+<main class="profile" data-qa="profile-card-profile">
+  <div class="Box profile-card" data-qa="profile-card-card">
+    <span class="avatar profile-avatar" data-qa="profile-card-avatar"></span>
+    <h1 class="profile-name" data-qa="profile-card-name">Mateo Alvarez</h1>
+    <p class="profile-handle" data-qa="profile-card-handle">@mateo-a</p>
+    <p class="profile-bio" data-qa="profile-card-bio">Design engineer working on accessible data tables.</p>
+    <div class="profile-status" data-qa="profile-card-status"><span class="Label Label--success" data-qa="profile-card-status-label">Available for review</span></div>
+    <ul class="profile-stats" data-qa="profile-card-stats">
+      <li data-qa="profile-card-stat-followers"><span class="profile-num" data-qa="profile-card-num-followers">214</span> followers</li>
+      <li data-qa="profile-card-stat-following"><span class="profile-num" data-qa="profile-card-num-following">87</span> following</li>
+      <li data-qa="profile-card-stat-repos"><span class="profile-num" data-qa="profile-card-num-repos">31</span> repositories</li>
+    </ul>
+    <button class="btn btn-primary profile-follow" type="button" data-qa="profile-card-btn-follow">Follow</button>
+  </div>
+</main>
+</section>
+<section>
+<div class="backdrop" data-qa="upload-dialog-backdrop">
+  <div class="Dialog upload" role="dialog" data-qa="upload-dialog-dialog">
+    <div class="Dialog-header" data-qa="upload-dialog-header"><h1 class="Dialog-title" data-qa="upload-dialog-title">Upload files</h1></div>
+    <div class="Dialog-body" data-qa="upload-dialog-body">
+      <div class="drop" data-qa="upload-dialog-drop">
+        <p class="drop-title" data-qa="upload-dialog-drop-title">Drag files here</p>
+        <p class="drop-hint" data-qa="upload-dialog-drop-hint">PNG, JPG or PDF up to 25 MB</p>
+      </div>
+      <div class="file" data-qa="upload-dialog-file">
+        <div data-qa="upload-dialog-file-text"><p class="file-name" data-qa="upload-dialog-file-name">quarterly-report.pdf</p><p class="file-size" data-qa="upload-dialog-file-size">31.2 MB</p></div>
+        <button class="btn btn-sm btn-invisible" type="button" data-qa="upload-dialog-btn-remove-file">Remove</button>
+      </div>
+      <div class="flash flash-error file-error" data-qa="upload-dialog-error">This file is larger than 25 MB.</div>
+    </div>
+    <div class="Dialog-footer" data-qa="upload-dialog-footer">
+      <button class="btn" type="button" data-qa="upload-dialog-btn-cancel">Cancel</button>
+      <button style="background: rgb(31, 136, 61); color: rgb(255, 255, 255); border: 1px solid rgba(31, 35, 40, 0.15); border-radius: 6px; padding: 5px 16px; font-size: 14px; font-weight: 500" type="button" data-qa="upload-dialog-btn-upload">Upload</button>
+    </div>
+  </div>
+</div>
+</section>
+</body>
+</html>

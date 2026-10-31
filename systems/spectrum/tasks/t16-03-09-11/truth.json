@@ -1,0 +1,144 @@
+{
+  "task": "t16-03-09-11",
+  "screen": [
+    "03-notifications.html",
+    "09-billing-summary.html",
+    "11-team-members.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "semantic_label",
+      "rule": "R7",
+      "target": {
+        "qa": "notifications-label-2"
+      },
+      "description": "status pill uses spectrum-Badge--negative, which contradicts what it reports",
+      "original": "<div class=\"spectrum-Badge spectrum-Badge--informative\" data-qa=\"notifications-label-2\">",
+      "mutated": "<div class=\"spectrum-Badge spectrum-Badge--negative\" data-qa=\"notifications-label-2\">",
+      "elements": [
+        "notifications-label-2",
+        "notifications-label-2-text"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".member"
+      },
+      "description": "gap uses 13px, off the spacing scale",
+      "original": "gap: var(--spectrum-spacing-200)",
+      "mutated": "gap: 13px",
+      "elements": [
+        "team-members-member-1",
+        "team-members-member-2",
+        "team-members-member-3"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".inbox"
+      },
+      "description": "margin uses 35px, off the spacing scale",
+      "original": "margin: var(--spectrum-spacing-500) auto",
+      "mutated": "margin: 35px auto",
+      "elements": [
+        "notifications-inbox"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".bill-total"
+      },
+      "description": "color set to an off-palette hex near var(--spectrum-neutral-content-color-default)",
+      "original": "color: var(--spectrum-neutral-content-color-default)",
+      "mutated": "color: #2d2929",
+      "elements": [
+        "billing-summary-total"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "raw_border_width",
+      "rule": "R4",
+      "target": {
+        "selector": ".note"
+      },
+      "description": "border width hard-coded instead of var(--spectrum-border-width-100)",
+      "original": "border-top: var(--spectrum-border-width-100) solid var(--spectrum-gray-200)",
+      "mutated": "border-top: 1px solid var(--spectrum-gray-200)",
+      "elements": [
+        "notifications-row-1",
+        "notifications-row-2",
+        "notifications-row-3"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".billing-title"
+      },
+      "description": "font-weight hard-coded as 700 instead of var(--spectrum-bold-font-weight)",
+      "original": "font-weight: var(--spectrum-bold-font-weight)",
+      "mutated": "font-weight: 700",
+      "elements": [
+        "billing-summary-title"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".note-dot-read"
+      },
+      "description": "background set to an off-palette hex near var(--spectrum-gray-300)",
+      "original": "background: var(--spectrum-gray-300)",
+      "mutated": "background: #d5dada",
+      "elements": [
+        "notifications-dot-3"
+      ]
+    },
+    {
+      "id": "m8",
+      "op": "raw_border_width",
+      "rule": "R4",
+      "target": {
+        "selector": ".team-list"
+      },
+      "description": "border width hard-coded instead of var(--spectrum-border-width-100)",
+      "original": "border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300)",
+      "mutated": "border: 1px solid var(--spectrum-gray-300)",
+      "elements": [
+        "team-members-list"
+      ]
+    },
+    {
+      "id": "m9",
+      "op": "rebuild_button",
+      "rule": "R6",
+      "target": {
+        "qa": "team-members-btn-remove-2"
+      },
+      "description": "button rebuilt by hand instead of using .spectrum-Button (spectrum-Button spectrum-Button--outline spectrum-Button--negative spectrum-Button--sizeS)",
+      "original": "<button class=\"spectrum-Button spectrum-Button--outline spectrum-Button--negative spectrum-Button--sizeS\" type=\"button\" data-qa=\"team-members-btn-remove-2\">",
+      "mutated": "<button style=\"background: rgba(0, 0, 0, 0); color: rgb(215, 50, 32); border: 2px solid rgb(215, 50, 32); border-radius: 12px; padding: 0px 11px; font-size: 12px; font-weight: 700\" type=\"button\" data-qa=\"team-members-btn-remove-2\">",
+      "elements": [
+        "team-members-btn-remove-2",
+        "team-members-btn-remove-2-label"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "c01": {
+    "task": "t15-01-05-09",
+    "run_dir": "runs/v3-h45-rules-a/base-train-a/t15-01-05-09/trial2",
+    "strict_pass": false
+  },
+  "c02": {
+    "task": "t24-01-07-11",
+    "run_dir": "runs/v3-h45-rules-a/base-train-a/t24-01-07-11/trial1",
+    "strict_pass": false
+  },
+  "c03": {
+    "task": "t19-01-03-11",
+    "run_dir": "runs/v3-h45-rules-a/base-train-a/t19-01-03-11/trial2",
+    "strict_pass": false
+  },
+  "c04": {
+    "task": "t16-01-03-07",
+    "run_dir": "runs/v3-h45-rules-a/base-train-a/t16-01-03-07/trial1",
+    "strict_pass": false
+  },
+  "c05": {
+    "task": "t14-03-09-11",
+    "run_dir": "runs/v3-h45-rules-a/base-train-a/t14-03-09-11/trial1",
+    "strict_pass": false
+  },
+  "c06": {
+    "task": "t07-01-05-11",
+    "run_dir": "runs/v3-h45-rules-a/base-train-a/t07-01-05-11/trial2",
+    "strict_pass": true
+  },
+  "c07": {
+    "task": "t12-05-07-11",
+    "run_dir": "runs/v3-h45-rules-a/base-train-a/t12-05-07-11/trial2",
+    "strict_pass": false
+  },
+  "c08": {
+    "task": "t02-01-05-11",
+    "run_dir": "runs/v3-h45-rules-a/base-train-a/t02-01-05-11/trial2",
+    "strict_pass": true
+  },
+  "c09": {
+    "task": "t09-01-03-09",
+    "run_dir": "runs/v3-h45-rules-a/base-train-a/t09-01-03-09/trial1",
+    "strict_pass": false
+  },
+  "c10": {
+    "task": "t09-01-03-09",
+    "run_dir": "runs/v3-h45-rules-a/base-train-a/t09-01-03-09/trial2",
+    "strict_pass": false
+  },
+  "c11": {
+    "task": "t06-01-03-05",
+    "run_dir": "runs/v3-h45-rules-a/base-train-a/t06-01-03-05/trial2",
+    "strict_pass": false
+  },
+  "c12": {
+    "task": "t26-07-09-11",
+    "run_dir": "runs/v3-h45-rules-a/base-train-a/t26-07-09-11/trial1",
+    "strict_pass": false
+  },
+  "c13": {
+    "task": "t01-03-07-11",
+    "run_dir": "runs/v3-h45-rules-a/base-train-a/t01-03-07-11/trial1",
+    "strict_pass": false
+  },
+  "c14": {
+    "task": "t25-01-05-07",
+    "run_dir": "runs/v3-h45-rules-a/base-train-a/t25-01-05-07/trial2",
+    "strict_pass": false
+  },
+  "c15": {
+    "task": "t10-01-03-11",
+    "run_dir": "runs/v3-h45-rules-a/base-train-a/t10-01-03-11/trial1",
+    "strict_pass": false
+  },
+  "c16": {
+    "task": "t22-03-05-09",
+    "run_dir": "runs/v3-h45-rules-a/base-train-a/t22-03-05-09/trial2",
+    "strict_pass": false
+  },
+  "c17": {
+    "task": "t05-01-09-11",
+    "run_dir": "runs/v3-h45-rules-a/base-train-a/t05-01-09-11/trial2",
+    "strict_pass": false
+  },
+  "c18": {
+    "task": "t23-01-05-09",
+    "run_dir": "runs/v3-h45-rules-a/base-train-a/t23-01-05-09/trial1",
+    "strict_pass": true
+  },
+  "c19": {
+    "task": "t07-01-05-11",
+    "run_dir": "runs/v3-h45-rules-a/base-train-a/t07-01-05-11/trial1",
+    "strict_pass": false
+  },
+  "c20": {
+    "task": "t18-01-03-07",
+    "run_dir": "runs/v3-h45-rules-a/base-train-a/t18-01-03-07/trial2",
+    "strict_pass": false
+  }
+}

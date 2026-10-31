@@ -1,0 +1,120 @@
+{
+  "task": "t40-04-06-10",
+  "screen": [
+    "04-pricing.html",
+    "06-danger-zone.html",
+    "10-onboarding.html"
+  ],
+  "split": "heldout",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".plans-sub"
+      },
+      "description": "text color set to var(--borderColor-default), a real token that fails contrast here",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--borderColor-default)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "pricing-subtitle"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "rebuild_button",
+      "rule": "R6",
+      "target": {
+        "qa": "danger-zone-btn-delete"
+      },
+      "description": "button rebuilt by hand instead of using .btn (btn btn-danger)",
+      "original": "<button class=\"btn btn-danger\" type=\"button\" data-qa=\"danger-zone-btn-delete\">",
+      "mutated": "<button style=\"background: rgb(246, 248, 250); color: rgb(209, 36, 47); border: 1px solid rgb(209, 217, 224); border-radius: 6px; padding: 5px 16px; font-size: 14px; font-weight: 500\" type=\"button\" data-qa=\"danger-zone-btn-delete\">",
+      "elements": [
+        "danger-zone-btn-delete"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".section-title"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: var(--fgColor-disabled)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "danger-zone-title"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".plan-price"
+      },
+      "description": "color set to an off-palette hex near var(--fgColor-default)",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: #1f2323",
+      "elements": [
+        "pricing-price-free",
+        "pricing-price-team"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".plan-per"
+      },
+      "description": "color set to an off-palette hex near var(--fgColor-muted)",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: #53636e",
+      "elements": [
+        "pricing-per-free",
+        "pricing-per-team"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "off_type",
+      "rule": "R3",
+      "target": {
+        "selector": ".plans-title"
+      },
+      "description": "font-size 31px instead of var(--text-title-size-large)",
+      "original": "font-size: var(--text-title-size-large)",
+      "mutated": "font-size: 31px",
+      "elements": [
+        "pricing-title"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "danger_safe",
+      "rule": "R7",
+      "target": {
+        "qa": "onboarding-btn-continue"
+      },
+      "description": "safe action \"Continue setup\" styled as a danger button",
+      "original": "<button class=\"btn btn-primary\" type=\"button\" data-qa=\"onboarding-btn-continue\">",
+      "mutated": "<button class=\"btn btn-danger\" type=\"button\" data-qa=\"onboarding-btn-continue\">",
+      "elements": [
+        "onboarding-btn-continue"
+      ]
+    }
+  ]
+}

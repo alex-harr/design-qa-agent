@@ -218,3 +218,15 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# --- design QA lab ---
+# Lab outputs: agent transcripts and screenshots are large and get regenerated.
+# Per-run summaries live in results/ instead.
+systems/*/runs/
+# Screens and tasks link the design system through a symlink the grader creates at run time.
+systems/*/screens/design-system
+systems/*/tasks/*/design-system
+# The agent's working folders must live outside the repo anyway (LAB_WORK_ROOT).
+.design-qa-lab-work/
+# Keep the improvement-loop round logs (evidence, already path-scrubbed)
+!systems/*/analysis/*.log

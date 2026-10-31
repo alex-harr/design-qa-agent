@@ -1,0 +1,135 @@
+{
+  "task": "t27-02-04-10",
+  "screen": [
+    "02-sign-in.html",
+    "04-pricing.html",
+    "10-onboarding.html"
+  ],
+  "split": "heldout",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".onboard"
+      },
+      "description": "padding uses 15px, off the spacing scale",
+      "original": "padding: 0 var(--spectrum-spacing-300)",
+      "mutated": "padding: 0 15px",
+      "elements": [
+        "onboarding-onboard"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "rebuild_label",
+      "rule": "R6",
+      "target": {
+        "qa": "pricing-badge-team"
+      },
+      "description": "status pill rebuilt by hand instead of using .spectrum-Badge (spectrum-Badge spectrum-Badge--accent)",
+      "original": "<div class=\"spectrum-Badge spectrum-Badge--accent\" data-qa=\"pricing-badge-team\">",
+      "mutated": "<div style=\"display: inline-block; padding: 0 0px; font-size: 16px; font-weight: 700; color: rgb(255, 255, 255); border: 1px solid rgba(0, 0, 0, 0); border-radius: 999px\" data-qa=\"pricing-badge-team\">",
+      "elements": [
+        "pricing-badge-team",
+        "pricing-badge-team-text"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".auth-heading"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--spectrum-neutral-content-color-default)",
+      "mutated": "color: var(--spectrum-disabled-content-color)",
+      "accept_colors": [
+        "rgb(41, 41, 41)",
+        "rgb(80, 80, 80)"
+      ],
+      "elements": [
+        "sign-in-heading"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".plan-price"
+      },
+      "description": "font-weight hard-coded as 700 instead of var(--spectrum-bold-font-weight)",
+      "original": "font-weight: var(--spectrum-bold-font-weight)",
+      "mutated": "font-weight: 700",
+      "elements": [
+        "pricing-price-free",
+        "pricing-price-team"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".steps"
+      },
+      "description": "background hard-coded as #ffffff instead of var(--spectrum-background-layer-2-color)",
+      "original": "background: var(--spectrum-background-layer-2-color)",
+      "mutated": "background: #ffffff",
+      "elements": [
+        "onboarding-steps"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".step-text"
+      },
+      "description": "color set to an off-palette hex near var(--spectrum-neutral-content-color-default)",
+      "original": "color: var(--spectrum-neutral-content-color-default)",
+      "mutated": "color: #292924",
+      "elements": [
+        "onboarding-text-1",
+        "onboarding-text-2",
+        "onboarding-text-3",
+        "onboarding-text-4"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "semantic_text",
+      "rule": "R7",
+      "target": {
+        "selector": ".step-done-text"
+      },
+      "description": "secondary text colored var(--spectrum-accent-content-color-default), which signals a status it doesn't have",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: var(--spectrum-accent-content-color-default)",
+      "elements": [
+        "onboarding-text-1",
+        "onboarding-text-2"
+      ]
+    },
+    {
+      "id": "m8",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".plan-list"
+      },
+      "description": "margin uses 25px, off the spacing scale",
+      "original": "margin: 0 0 var(--spectrum-spacing-400)",
+      "mutated": "margin: 0 0 25px",
+      "elements": [
+        "pricing-list-free",
+        "pricing-list-team"
+      ]
+    }
+  ]
+}

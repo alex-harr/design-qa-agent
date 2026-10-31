@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sign in to Northwind</title>
+<link rel="stylesheet" href="design-system/spectrum.css">
+<style>
+.auth { max-width: 340px; margin: var(--spectrum-spacing-800) auto; padding: 0 var(--spectrum-spacing-300); }
+.auth-heading { margin: 0 0 var(--spectrum-spacing-300); text-align: center; font-size: var(--spectrum-font-size-400); font-weight: var(--spectrum-regular-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.auth-card { padding: var(--spectrum-spacing-400); background: var(--spectrum-background-layer-1-color); border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); border-radius: var(--spectrum-corner-radius-100); }
+.auth-label { display: block; margin-bottom: var(--spectrum-spacing-100); font-size: var(--spectrum-font-size-100); font-weight: var(--spectrum-bold-font-weight); }
+.auth-row { display: flex; justify-content: space-between; align-items: baseline; }
+.auth-forgot { font-size: var(--spectrum-font-size-75); color: var(--spectrum-accent-content-color-default); }
+.auth-input { width: 100%; margin-bottom: var(--spectrum-spacing-300); }
+.auth-submit { width: 100%; }
+.auth-footer { margin-top: var(--spectrum-spacing-300); padding: var(--spectrum-spacing-300); text-align: center; border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); border-radius: var(--spectrum-corner-radius-100); color: var(--spectrum-neutral-content-color-default); }
+.auth-link { color: var(--spectrum-accent-content-color-default); }
+.auth-legal { margin-top: var(--spectrum-spacing-400); text-align: center; font-size: var(--spectrum-font-size-75); color: var(--spectrum-neutral-subdued-content-color-default); }
+</style>
+</head>
+<body class="spectrum spectrum--light spectrum--medium">
+<main class="auth" data-qa="auth">
+  <h1 class="auth-heading" data-qa="heading">Sign in to Northwind</h1>
+  <div class="auth-card" data-qa="card">
+    <label class="auth-label" for="login" data-qa="label-login">Username or email address</label>
+    <div class="spectrum-Textfield auth-input" data-qa="input-login-wrap"><input class="spectrum-Textfield-input" id="login" type="text" data-qa="input-login"></div>
+    <div class="auth-row" data-qa="password-row">
+      <label class="auth-label" for="password" data-qa="label-password">Password</label>
+      <a class="auth-forgot" href="#" data-qa="forgot">Forgot password?</a>
+    </div>
+    <div class="spectrum-Textfield auth-input" data-qa="input-password-wrap"><input class="spectrum-Textfield-input" id="password" type="password" data-qa="input-password"></div>
+    <button class="spectrum-Button spectrum-Button--fill spectrum-Button--accent auth-submit" type="button" data-qa="btn-submit"><span class="spectrum-Button-label" data-qa="btn-submit-label">Sign in</span></button>
+  </div>
+  <p class="auth-footer" data-qa="footer">New to Northwind? <a class="auth-link" href="#" data-qa="create-link">Create an account</a></p>
+  <p class="auth-legal" data-qa="legal">By signing in you agree to the Terms and Privacy Policy.</p>
+</main>
+</body>
+</html>

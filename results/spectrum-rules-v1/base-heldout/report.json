@@ -1,0 +1,27 @@
+{
+  "run": "base-heldout",
+  "runs": 54,
+  "tasks": 18,
+  "trials_per_task": 3,
+  "pass_rate": 0.111,
+  "pass^3": 0.056,
+  "pass@3": 0.222,
+  "detected": 0.757,
+  "fixed_exact": 0.697,
+  "planted_total": 366,
+  "net_fixed": 246,
+  "false_flags_per_run": 0.13,
+  "regressions_per_run": 0.04,
+  "by_rule_detected_fixed": {
+    "R1": "78/78 detected, 68/78 fixed",
+    "R2": "58/69 detected, 52/69 fixed",
+    "R3": "30/36 detected, 30/36 fixed",
+    "R4": "38/42 detected, 37/42 fixed",
+    "R5": "32/66 detected, 32/66 fixed",
+    "R6": "26/27 detected, 24/27 fixed",
+    "R7": "15/48 detected, 12/48 fixed"
+  },
+  "self_says_all_fixed": 1,
+  "cost_usd": 5.77,
+  "mean_turns": 13.1
+}

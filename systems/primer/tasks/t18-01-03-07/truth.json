@@ -1,0 +1,11 @@
+{
+  "task": "t18-01-03-07",
+  "screen": [
+    "01-account-settings.html",
+    "03-notifications.html",
+    "07-issue-list.html"
+  ],
+  "split": "train",
+  "clean_control": true,
+  "mutations": []
+}

@@ -1,0 +1,11 @@
+{
+  "task": "t29-02-06-10",
+  "screen": [
+    "02-sign-in.html",
+    "06-danger-zone.html",
+    "10-onboarding.html"
+  ],
+  "split": "heldout",
+  "clean_control": true,
+  "mutations": []
+}

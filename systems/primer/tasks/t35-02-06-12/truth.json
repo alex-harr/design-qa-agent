@@ -1,0 +1,11 @@
+{
+  "task": "t35-02-06-12",
+  "screen": [
+    "02-sign-in.html",
+    "06-danger-zone.html",
+    "12-upload-dialog.html"
+  ],
+  "split": "heldout",
+  "clean_control": true,
+  "mutations": []
+}

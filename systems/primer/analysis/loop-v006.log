@@ -1,0 +1,21 @@
+{
+  "round": "v006",
+  "decision": "revert",
+  "compare": {
+    "base_passes": 7.5,
+    "candidate_passes": 12,
+    "base_net_fixed": 249.0,
+    "candidate_net_fixed": 262,
+    "runs": 52,
+    "delta_passes": 4.5,
+    "delta_net_fixed": 13.0
+  },
+  "proposal": {
+    "target_category": "T1 Meaning not checked",
+    "change_summary": "Add a short check inside step 2: search the screen for the R7 meaning words (danger, success, attention, done, btn-primary), and for each hit read the element's visible text and keep it only if R7 allows that meaning, using one-line rules for buttons, Labels and plain text, plus a 'leave it if two readings fit' guard.",
+    "why_it_generalizes": "It uses only RULES.md's own meaning vocabulary and component names as search terms, so it finds every meaning-bearing token or variant on any screen without a full inventory pass. The verdict comes from the element's own text, not from any screen's classes or values.",
+    "risk": "This is the third T1 attempt (v001 and v005 were reverted); it differs by being a targeted search inside the existing sweep instead of a separate full walk, but the gain may still miss the +48 bar. False flags (T5) could rise if the agent over-reads Labels or recolors legitimate status text. The examples of destructive verbs could be over-matched, and the extra step could still slightly crowd out the raw-value sweep (T3)."
+  },
+  "guard_problems": [],
+  "minutes": 11.3
+}

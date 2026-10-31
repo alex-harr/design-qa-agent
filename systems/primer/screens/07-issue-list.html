@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" data-color-mode="light" data-light-theme="light">
+<head>
+<meta charset="utf-8">
+<title>Issues</title>
+<link rel="stylesheet" href="design-system/primer.css">
+<style>
+.issues { max-width: 840px; margin: var(--base-size-32) auto; padding: 0 var(--base-size-16); }
+.issues-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--base-size-16); }
+.issues-filter { width: 320px; }
+.issues-head { display: flex; gap: var(--base-size-16); font-weight: var(--base-text-weight-semibold); color: var(--fgColor-default); }
+.issues-closed { color: var(--fgColor-muted); font-weight: var(--base-text-weight-normal); }
+.issue { display: flex; justify-content: space-between; gap: var(--base-size-12); }
+.issue-title { margin: 0 0 var(--base-size-4); font-size: var(--text-body-size-large); font-weight: var(--base-text-weight-semibold); color: var(--fgColor-default); }
+.issue-labels { display: inline-flex; gap: var(--base-size-4); margin-left: var(--base-size-8); }
+.issue-meta { margin: 0; font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+.issue-count { align-self: center; }
+</style>
+</head>
+<body>
+<main class="issues" data-qa="issues">
+  <div class="issues-bar" data-qa="bar">
+    <input class="form-control issues-filter" placeholder="Filter issues" data-qa="filter">
+    <button class="btn btn-primary" type="button" data-qa="btn-new">New issue</button>
+  </div>
+  <div class="Box" data-qa="list">
+    <div class="Box-header issues-head" data-qa="head">
+      <span data-qa="open-count">12 Open</span>
+      <span class="issues-closed" data-qa="closed-count">48 Closed</span>
+    </div>
+    <div class="Box-row issue" data-qa="issue-1">
+      <div data-qa="issue-1-main">
+        <p class="issue-title" data-qa="issue-1-title">Search results ignore archived filter<span class="issue-labels" data-qa="issue-1-labels"><span class="Label Label--danger" data-qa="issue-1-bug">bug</span></span></p>
+        <p class="issue-meta" data-qa="issue-1-meta">#482 opened 2 days ago by lena-m</p>
+      </div>
+      <span class="Counter issue-count" data-qa="issue-1-count">5</span>
+    </div>
+    <div class="Box-row issue" data-qa="issue-2">
+      <div data-qa="issue-2-main">
+        <p class="issue-title" data-qa="issue-2-title">Add keyboard shortcut for quick filters<span class="issue-labels" data-qa="issue-2-labels"><span class="Label Label--accent" data-qa="issue-2-enh">enhancement</span><span class="Label Label--done" data-qa="issue-2-triage">triaged</span></span></p>
+        <p class="issue-meta" data-qa="issue-2-meta">#479 opened 4 days ago by sam-k</p>
+      </div>
+      <span class="Counter issue-count" data-qa="issue-2-count">2</span>
+    </div>
+    <div class="Box-row issue" data-qa="issue-3">
+      <div data-qa="issue-3-main">
+        <p class="issue-title" data-qa="issue-3-title">Docs: clarify token rotation steps<span class="issue-labels" data-qa="issue-3-labels"><span class="Label" data-qa="issue-3-docs">docs</span></span></p>
+        <p class="issue-meta" data-qa="issue-3-meta">#471 opened last week by priya-r</p>
+      </div>
+      <span class="Counter issue-count" data-qa="issue-3-count">0</span>
+    </div>
+  </div>
+</main>
+</body>
+</html>

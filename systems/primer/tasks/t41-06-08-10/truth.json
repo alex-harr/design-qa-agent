@@ -1,0 +1,150 @@
+{
+  "task": "t41-06-08-10",
+  "screen": [
+    "06-danger-zone.html",
+    "08-profile-card.html",
+    "10-onboarding.html"
+  ],
+  "split": "heldout",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".onboard"
+      },
+      "description": "padding uses 17px, off the spacing scale",
+      "original": "padding: 0 var(--base-size-16)",
+      "mutated": "padding: 0 17px",
+      "elements": [
+        "onboarding-onboard"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".onboard-progress"
+      },
+      "description": "margin-bottom uses 9px, off the spacing scale",
+      "original": "margin-bottom: var(--base-size-8)",
+      "mutated": "margin-bottom: 9px",
+      "elements": [
+        "onboarding-progress"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".section-title"
+      },
+      "description": "text color set to var(--fgColor-onEmphasis), a real token that fails contrast here",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: var(--fgColor-onEmphasis)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "danger-zone-title"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "semantic_text",
+      "rule": "R7",
+      "target": {
+        "selector": ".profile-handle"
+      },
+      "description": "secondary text colored var(--fgColor-danger), which signals a status it doesn't have",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--fgColor-danger)",
+      "elements": [
+        "profile-card-handle"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "destructive_primary",
+      "rule": "R7",
+      "target": {
+        "qa": "danger-zone-btn-delete"
+      },
+      "description": "destructive action styled as the primary green button",
+      "original": "<button class=\"btn btn-danger\" type=\"button\" data-qa=\"danger-zone-btn-delete\">",
+      "mutated": "<button class=\"btn btn-primary\" type=\"button\" data-qa=\"danger-zone-btn-delete\">",
+      "elements": [
+        "danger-zone-btn-delete"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".step-done-text"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--fgColor-disabled)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "onboarding-text-1",
+        "onboarding-text-2"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".danger-name"
+      },
+      "description": "color hard-coded as #1f2328 instead of var(--fgColor-default)",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: #1f2328",
+      "elements": [
+        "danger-zone-name-visibility",
+        "danger-zone-name-delete"
+      ]
+    },
+    {
+      "id": "m8",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".onboard-sub"
+      },
+      "description": "color set to an off-palette hex near var(--fgColor-muted)",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: #59676e",
+      "elements": [
+        "onboarding-subtitle"
+      ]
+    },
+    {
+      "id": "m9",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".profile-num"
+      },
+      "description": "font-weight hard-coded as 600 instead of var(--base-text-weight-semibold)",
+      "original": "font-weight: var(--base-text-weight-semibold)",
+      "mutated": "font-weight: 600",
+      "elements": [
+        "profile-card-num-followers",
+        "profile-card-num-following",
+        "profile-card-num-repos"
+      ]
+    }
+  ]
+}

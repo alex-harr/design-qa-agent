@@ -1,0 +1,100 @@
+{
+  "task": "t05-01-03-05",
+  "screen": [
+    "01-account-settings.html",
+    "03-notifications.html",
+    "05-empty-state.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".settings-lede"
+      },
+      "description": "margin uses 26px, off the spacing scale",
+      "original": "margin: 0 0 var(--spectrum-spacing-400)",
+      "mutated": "margin: 0 0 26px",
+      "elements": [
+        "account-settings-lede"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".empty-link"
+      },
+      "description": "font-weight hard-coded as 700 instead of var(--spectrum-bold-font-weight)",
+      "original": "font-weight: var(--spectrum-bold-font-weight)",
+      "mutated": "font-weight: 700",
+      "elements": [
+        "empty-state-link-learn"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".note-dot"
+      },
+      "description": "margin-top uses 5px, off the spacing scale",
+      "original": "margin-top: var(--spectrum-spacing-75)",
+      "mutated": "margin-top: 5px",
+      "elements": [
+        "notifications-dot-1",
+        "notifications-dot-2",
+        "notifications-dot-3"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "semantic_text",
+      "rule": "R7",
+      "target": {
+        "selector": ".empty-note"
+      },
+      "description": "secondary text colored var(--spectrum-negative-content-color-default), which signals a status it doesn't have",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: var(--spectrum-negative-content-color-default)",
+      "elements": [
+        "empty-state-note"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".inbox-list"
+      },
+      "description": "background hard-coded as #ffffff instead of var(--spectrum-background-layer-2-color)",
+      "original": "background: var(--spectrum-background-layer-2-color)",
+      "mutated": "background: #ffffff",
+      "elements": [
+        "notifications-list"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".note-meta"
+      },
+      "description": "color set to an off-palette hex near var(--spectrum-neutral-subdued-content-color-default)",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: #505450",
+      "elements": [
+        "notifications-meta-1",
+        "notifications-meta-2",
+        "notifications-meta-3"
+      ]
+    }
+  ]
+}

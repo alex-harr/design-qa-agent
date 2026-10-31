@@ -1,0 +1,104 @@
+{
+  "task": "t24-01-07-11",
+  "screen": [
+    "01-account-settings.html",
+    "07-issue-list.html",
+    "11-team-members.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".field-help"
+      },
+      "description": "color set to an off-palette hex near var(--fgColor-muted)",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: #5f636e",
+      "elements": [
+        "account-settings-help-name",
+        "account-settings-help-email"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "semantic_text",
+      "rule": "R7",
+      "target": {
+        "selector": ".issue-meta"
+      },
+      "description": "secondary text colored var(--fgColor-attention), which signals a status it doesn't have",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--fgColor-attention)",
+      "elements": [
+        "issue-list-issue-1-meta",
+        "issue-list-issue-2-meta",
+        "issue-list-issue-3-meta"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".field-label"
+      },
+      "description": "font-weight hard-coded as 600 instead of var(--base-text-weight-semibold)",
+      "original": "font-weight: var(--base-text-weight-semibold)",
+      "mutated": "font-weight: 600",
+      "elements": [
+        "account-settings-label-name",
+        "account-settings-label-email"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "rebuild_label",
+      "rule": "R6",
+      "target": {
+        "qa": "issue-list-issue-3-docs"
+      },
+      "description": "status pill rebuilt by hand instead of using .Label (Label)",
+      "original": "<span class=\"Label\" data-qa=\"issue-list-issue-3-docs\">",
+      "mutated": "<span style=\"display: inline-block; padding: 0 8px; font-size: 12px; font-weight: 500; color: rgb(89, 99, 110); border: 1px solid rgb(209, 217, 224); border-radius: 999px\" data-qa=\"issue-list-issue-3-docs\">",
+      "elements": [
+        "issue-list-issue-3-docs"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".team-note"
+      },
+      "description": "text color set to var(--borderColor-default), a real token that fails contrast here",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--borderColor-default)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "team-members-note"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "rebuild_button",
+      "rule": "R6",
+      "target": {
+        "qa": "team-members-btn-edit-1"
+      },
+      "description": "button rebuilt by hand instead of using .btn (btn btn-sm btn-invisible)",
+      "original": "<button class=\"btn btn-sm btn-invisible\" type=\"button\" data-qa=\"team-members-btn-edit-1\">",
+      "mutated": "<button style=\"background: rgba(0, 0, 0, 0); color: rgb(9, 105, 218); border: 0px solid rgb(9, 105, 218); border-radius: 6px; padding: 3px 12px; font-size: 12px; font-weight: 500\" type=\"button\" data-qa=\"team-members-btn-edit-1\">",
+      "elements": [
+        "team-members-btn-edit-1"
+      ]
+    }
+  ]
+}

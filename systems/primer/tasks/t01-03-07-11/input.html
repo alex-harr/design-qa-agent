@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en" data-color-mode="light" data-light-theme="light">
+<head>
+<meta charset="utf-8">
+<title>Notifications · Issues · Team members</title>
+<link rel="stylesheet" href="design-system/primer.css">
+<style>
+.inbox { max-width: 760px; margin: var(--base-size-32) auto; padding: 0 var(--base-size-16); }
+.inbox-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--base-size-16); }
+.inbox-title { margin: 0; font-size: var(--text-title-size-medium); font-weight: var(--text-title-weight-medium); }
+.note { display: flex; gap: var(--base-size-12); align-items: flex-start; }
+.note-dot { flex: none; width: var(--base-size-8); height: var(--base-size-8); margin-top: var(--base-size-6); border-radius: var(--borderRadius-full); background: var(--bgColor-accent-emphasis); }
+.note-dot-read { background: var(--bgColor-transparent); }
+.note-main { flex: 1; }
+.note-title { margin: 0 0 var(--base-size-4); font-weight: var(--base-text-weight-semibold); color: #1f2328; }
+.note-meta { margin: 0; font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+.note-label { margin-left: var(--base-size-8); }
+.issues { max-width: 840px; margin: var(--base-size-32) auto; padding: 0 var(--base-size-16); }
+.issues-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--base-size-16); }
+.issues-filter { width: 320px; }
+.issues-head { display: flex; gap: var(--base-size-16); font-weight: var(--base-text-weight-semibold); color: #1f2328; }
+.issues-closed { color: var(--fgColor-success); font-weight: var(--base-text-weight-normal); }
+.issue { display: flex; justify-content: space-between; gap: var(--base-size-12); }
+.issue-title { margin: 0 0 var(--base-size-4); font-size: var(--text-body-size-large); font-weight: var(--base-text-weight-semibold); color: var(--fgColor-default); }
+.issue-labels { display: inline-flex; gap: var(--base-size-4); margin-left: var(--base-size-8); }
+.issue-meta { margin: 0; font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+.issue-count { align-self: center; }
+.team { max-width: 760px; margin: var(--base-size-40) auto; padding: 0 17px; }
+.team-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--base-size-16); }
+.team-title { margin: 0; font-size: var(--text-title-size-medium); font-weight: var(--text-title-weight-medium); }
+.member { display: flex; align-items: center; gap: var(--base-size-12); }
+.member-avatar { width: var(--base-size-32); height: var(--base-size-32); }
+.member-main { flex: 1; }
+.member-name { margin: 0; font-weight: var(--base-text-weight-semibold); color: var(--fgColor-default); }
+.member-email { margin: 0; font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+.member-role { margin-right: 9px; }
+.team-note { margin-top: var(--base-size-12); font-size: 10px; color: var(--fgColor-muted); }
+</style>
+</head>
+<body>
+<section>
+<main class="inbox" data-qa="notifications-inbox">
+  <div class="inbox-top" data-qa="notifications-top">
+    <h1 class="inbox-title" data-qa="notifications-title">Notifications</h1>
+    <button class="btn btn-sm" type="button" data-qa="notifications-btn-mark-all">Mark all as read</button>
+  </div>
+  <div class="Box" data-qa="notifications-list">
+    <div class="Box-row note" data-qa="notifications-row-1">
+      <span class="note-dot" data-qa="notifications-dot-1"></span>
+      <div class="note-main" data-qa="notifications-main-1">
+        <p class="note-title" data-qa="notifications-title-1">Build failed on main <span class="Label Label--danger note-label" data-qa="notifications-label-1">Failed</span></p>
+        <p class="note-meta" data-qa="notifications-meta-1">deploy-pipeline · 4 minutes ago</p>
+      </div>
+    </div>
+    <div class="Box-row note" data-qa="notifications-row-2">
+      <span class="note-dot" data-qa="notifications-dot-2"></span>
+      <div class="note-main" data-qa="notifications-main-2">
+        <p class="note-title" data-qa="notifications-title-2">Ana requested your review <span class="Label Label--accent note-label" data-qa="notifications-label-2">Review</span></p>
+        <p class="note-meta" data-qa="notifications-meta-2">billing-service · 1 hour ago</p>
+      </div>
+    </div>
+    <div class="Box-row note" data-qa="notifications-row-3">
+      <span class="note-dot note-dot-read" data-qa="notifications-dot-3"></span>
+      <div class="note-main" data-qa="notifications-main-3">
+        <p class="note-title" data-qa="notifications-title-3">Release 2.4 shipped <span class="Label Label--success note-label" data-qa="notifications-label-3">Done</span></p>
+        <p class="note-meta" data-qa="notifications-meta-3">mobile-app · yesterday</p>
+      </div>
+    </div>
+  </div>
+</main>
+</section>
+<section>
+<main class="issues" data-qa="issue-list-issues">
+  <div class="issues-bar" data-qa="issue-list-bar">
+    <input class="form-control issues-filter" placeholder="Filter issues" data-qa="issue-list-filter">
+    <button class="btn btn-primary" type="button" data-qa="issue-list-btn-new">New issue</button>
+  </div>
+  <div class="Box" data-qa="issue-list-list">
+    <div class="Box-header issues-head" data-qa="issue-list-head">
+      <span data-qa="issue-list-open-count">12 Open</span>
+      <span class="issues-closed" data-qa="issue-list-closed-count">48 Closed</span>
+    </div>
+    <div class="Box-row issue" data-qa="issue-list-issue-1">
+      <div data-qa="issue-list-issue-1-main">
+        <p class="issue-title" data-qa="issue-list-issue-1-title">Search results ignore archived filter<span class="issue-labels" data-qa="issue-list-issue-1-labels"><span class="Label Label--danger" data-qa="issue-list-issue-1-bug">bug</span></span></p>
+        <p class="issue-meta" data-qa="issue-list-issue-1-meta">#482 opened 2 days ago by lena-m</p>
+      </div>
+      <span class="Counter issue-count" data-qa="issue-list-issue-1-count">5</span>
+    </div>
+    <div class="Box-row issue" data-qa="issue-list-issue-2">
+      <div data-qa="issue-list-issue-2-main">
+        <p class="issue-title" data-qa="issue-list-issue-2-title">Add keyboard shortcut for quick filters<span class="issue-labels" data-qa="issue-list-issue-2-labels"><span class="Label Label--accent" data-qa="issue-list-issue-2-enh">enhancement</span><span class="Label Label--done" data-qa="issue-list-issue-2-triage">triaged</span></span></p>
+        <p class="issue-meta" data-qa="issue-list-issue-2-meta">#479 opened 4 days ago by sam-k</p>
+      </div>
+      <span class="Counter issue-count" data-qa="issue-list-issue-2-count">2</span>
+    </div>
+    <div class="Box-row issue" data-qa="issue-list-issue-3">
+      <div data-qa="issue-list-issue-3-main">
+        <p class="issue-title" data-qa="issue-list-issue-3-title">Docs: clarify token rotation steps<span class="issue-labels" data-qa="issue-list-issue-3-labels"><span class="Label" data-qa="issue-list-issue-3-docs">docs</span></span></p>
+        <p class="issue-meta" data-qa="issue-list-issue-3-meta">#471 opened last week by priya-r</p>
+      </div>
+      <span class="Counter issue-count" data-qa="issue-list-issue-3-count">0</span>
+    </div>
+  </div>
+</main>
+</section>
+<section>
+<main class="team" data-qa="team-members-team">
+  <div class="team-bar" data-qa="team-members-bar">
+    <h1 class="team-title" data-qa="team-members-title">Team members</h1>
+    <button class="btn btn-primary" type="button" data-qa="team-members-btn-invite">Invite member</button>
+  </div>
+  <div class="Box" data-qa="team-members-list">
+    <div class="Box-row member" data-qa="team-members-member-1">
+      <span class="avatar member-avatar" data-qa="team-members-avatar-1"></span>
+      <div class="member-main" data-qa="team-members-main-1"><p class="member-name" data-qa="team-members-name-1">Jordan Lee</p><p class="member-email" data-qa="team-members-email-1">jordan@example.com</p></div>
+      <span class="member-role" style="display: inline-block; padding: 0 8px; font-size: 12px; font-weight: 500; color: rgb(9, 105, 218); border: 1px solid rgb(9, 105, 218); border-radius: 999px" data-qa="team-members-role-1">Owner</span>
+      <button class="btn btn-sm btn-invisible" type="button" data-qa="team-members-btn-edit-1">Edit</button>
+    </div>
+    <div class="Box-row member" data-qa="team-members-member-2">
+      <span class="avatar member-avatar" data-qa="team-members-avatar-2"></span>
+      <div class="member-main" data-qa="team-members-main-2"><p class="member-name" data-qa="team-members-name-2">Priya Raman</p><p class="member-email" data-qa="team-members-email-2">priya@example.com</p></div>
+      <span class="Label member-role" data-qa="team-members-role-2">Member</span>
+      <button class="btn btn-sm btn-danger" type="button" data-qa="team-members-btn-remove-2">Remove</button>
+    </div>
+    <div class="Box-row member" data-qa="team-members-member-3">
+      <span class="avatar member-avatar" data-qa="team-members-avatar-3"></span>
+      <div class="member-main" data-qa="team-members-main-3"><p class="member-name" data-qa="team-members-name-3">Sam Kowalski</p><p class="member-email" data-qa="team-members-email-3">sam@example.com</p></div>
+      <span class="Label Label--attention member-role" data-qa="team-members-role-3">Pending invite</span>
+      <button class="btn btn-sm btn-danger" type="button" data-qa="team-members-btn-remove-3">Cancel invite</button>
+    </div>
+  </div>
+  <p class="team-note" data-qa="team-members-note">Owners can change roles and billing.</p>
+</main>
+</section>
+</body>
+</html>

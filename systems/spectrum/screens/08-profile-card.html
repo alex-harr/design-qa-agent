@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mateo Alvarez</title>
+<link rel="stylesheet" href="design-system/spectrum.css">
+<style>
+.profile { max-width: 380px; margin: var(--spectrum-spacing-700) auto; padding: 0 var(--spectrum-spacing-300); }
+.profile-card { padding: var(--spectrum-spacing-400); text-align: center; background: var(--spectrum-background-layer-2-color); border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); border-radius: var(--spectrum-corner-radius-800); }
+.profile-avatar { display: inline-block; width: var(--spectrum-spacing-900); height: var(--spectrum-spacing-900); margin-bottom: var(--spectrum-spacing-200); border-radius: var(--spectrum-corner-radius-800); background: var(--spectrum-gray-200); }
+.profile-name { margin: 0; font-size: var(--spectrum-font-size-400); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.profile-handle { margin: 0 0 var(--spectrum-spacing-200); font-size: var(--spectrum-font-size-200); color: var(--spectrum-neutral-subdued-content-color-default); }
+.profile-bio { margin: 0 0 var(--spectrum-spacing-300); color: var(--spectrum-neutral-content-color-default); }
+.profile-status { display: flex; justify-content: center; margin-bottom: var(--spectrum-spacing-300); }
+.profile-stats { display: flex; justify-content: center; gap: var(--spectrum-spacing-300); margin: 0 0 var(--spectrum-spacing-400); padding: 0; list-style: none; font-size: var(--spectrum-font-size-75); color: var(--spectrum-neutral-subdued-content-color-default); }
+.profile-num { font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.profile-follow { width: 100%; }
+</style>
+</head>
+<body class="spectrum spectrum--light spectrum--medium">
+<main class="profile" data-qa="profile">
+  <div class="profile-card" data-qa="card">
+    <span class="profile-avatar" data-qa="avatar"></span>
+    <h1 class="profile-name" data-qa="name">Mateo Alvarez</h1>
+    <p class="profile-handle" data-qa="handle">@mateo-a</p>
+    <p class="profile-bio" data-qa="bio">Design engineer working on accessible data tables.</p>
+    <div class="profile-status" data-qa="status"><div class="spectrum-Badge spectrum-Badge--positive" data-qa="status-label"><div class="spectrum-Badge-label" data-qa="status-label-text">Available for review</div></div></div>
+    <ul class="profile-stats" data-qa="stats">
+      <li data-qa="stat-followers"><span class="profile-num" data-qa="num-followers">214</span> followers</li>
+      <li data-qa="stat-following"><span class="profile-num" data-qa="num-following">87</span> following</li>
+      <li data-qa="stat-repos"><span class="profile-num" data-qa="num-repos">31</span> repositories</li>
+    </ul>
+    <button class="spectrum-Button spectrum-Button--fill spectrum-Button--accent profile-follow" type="button" data-qa="btn-follow"><span class="spectrum-Button-label" data-qa="btn-follow-label">Follow</span></button>
+  </div>
+</main>
+</body>
+</html>

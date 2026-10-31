@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "problems": [],
+  "changed_lines": 12,
+  "proposal": {
+    "target_category": "T1 Meaning not checked",
+    "change_summary": "Add a markup-first walk: for every text element, button and .Label in the HTML body, name its role from its text and placement, then check its actual color token and button/Label variant against a role table taken from R5 and R7, fixing only clear contradictions.",
+    "why_it_generalizes": "It starts from what each element is, not from a list of suspicious tokens, and the role-to-token table comes entirely from RULES.md. So it applies to any screen, and it catches valid-but-wrong tokens for both meaning (R7) and readability (R5) in the same pass.",
+    "risk": "Assigning roles may cause more false flags (T5), such as recoloring a correct Label, adding colors to inherited text, or demoting a legitimately primary button. On long screens the walk may also crowd out the raw-value CSS sweep (T3). It also overlaps with the reverted v001 and v002 directions, so the gain may again fall short of the +48 keep bar."
+  },
+  "cost_usd": 0.44368,
+  "diff": "--- before\n+++ after\n@@ -11,3 +11,11 @@\n 2. Find anything that breaks a rule.\n-3. Fix each problem in the screen using the design system's tokens and components.\n-4. Record each problem you found and how you fixed it.\n+3. Walk the screen's HTML body top to bottom (markup, not the CSS). A real token can still be wrong for the element it is on. For each element that shows text, plus every button and `.Label`:\n+   - Name its role from what it says and where it sits: heading, body text, secondary/metadata/count, link, status pill, safe action, main safe action, destructive action.\n+   - Look up the color and variant it actually gets (its classes, its CSS rule, inline style), then check that against the role:\n+     - heading/body \u2192 `--fgColor-default`; secondary, metadata, counts \u2192 `--fgColor-muted`; links \u2192 `--fgColor-accent`.\n+     - Text never uses `--fgColor-disabled` (unless it is a disabled control), `--fgColor-onEmphasis` (unless its own background is an emphasis one), or a `--borderColor-*`/`--bgColor-*` token.\n+     - Destructive or hard-to-undo action \u2192 `.btn-danger`. Safe action \u2192 never `.btn-danger`; `.btn-primary` only for the main safe action.\n+     - `.Label` variant matches the status its text states, per R7's mapping.\n+   - Fix only clear contradictions. Leave alone any token defined in `design-system/vendor/` that fits the role, and don't add colors to elements that inherit them.\n+4. Fix each problem in the screen using the design system's tokens and components.\n+5. Record each problem you found and how you fixed it."
+}

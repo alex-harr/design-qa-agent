@@ -1,0 +1,21 @@
+{
+  "round": "v004",
+  "decision": "revert",
+  "compare": {
+    "base_passes": 7.5,
+    "candidate_passes": 9,
+    "base_net_fixed": 249.0,
+    "candidate_net_fixed": 270,
+    "runs": 52,
+    "delta_passes": 1.5,
+    "delta_net_fixed": 21.0
+  },
+  "proposal": {
+    "target_category": "T4 Wrong fix",
+    "change_summary": "Expand step 3 with a short fix-value method: round raw numbers to the nearest scale token (checking vendor values when unlisted), map raw colors by role, replace hand-built lookalikes' inline styles entirely with component classes while keeping existing classes/attributes, and choose button/Label variant and size from what the element does and its siblings.",
+    "why_it_generalizes": "It's a procedure keyed to RULES.md's own scales, tokens and component variants (nearest-step arithmetic, role-based token choice, full component replacement, sibling matching), so it applies to any off-scale value or rebuilt component on any screen without naming screen classes or values.",
+    "risk": "Variant guidance may nudge the agent to re-style buttons that were already correct (more T5 regressions), and longer step 3 could slightly crowd out the sweep (T3); T1/T2 misses are not addressed, so passes may move little even if net fixed rises."
+  },
+  "guard_problems": [],
+  "minutes": 10.2
+}

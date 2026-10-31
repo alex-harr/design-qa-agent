@@ -1,0 +1,134 @@
+{
+  "task": "t28-02-04-06",
+  "screen": [
+    "02-sign-in.html",
+    "04-pricing.html",
+    "06-danger-zone.html"
+  ],
+  "split": "heldout",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".plans-sub"
+      },
+      "description": "margin uses 31px, off the spacing scale",
+      "original": "margin: 0 0 var(--spectrum-spacing-500)",
+      "mutated": "margin: 0 0 31px",
+      "elements": [
+        "pricing-subtitle"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "semantic_text",
+      "rule": "R7",
+      "target": {
+        "selector": ".plan-per"
+      },
+      "description": "secondary text colored var(--spectrum-accent-content-color-default), which signals a status it doesn't have",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: var(--spectrum-accent-content-color-default)",
+      "elements": [
+        "pricing-per-free",
+        "pricing-per-team"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".plan-item"
+      },
+      "description": "margin-bottom uses 9px, off the spacing scale",
+      "original": "margin-bottom: var(--spectrum-spacing-100)",
+      "mutated": "margin-bottom: 9px",
+      "elements": [
+        "pricing-item-free-1",
+        "pricing-item-free-2",
+        "pricing-item-team-1",
+        "pricing-item-team-2"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".section-title"
+      },
+      "description": "color set to an off-palette hex near var(--spectrum-neutral-content-color-default)",
+      "original": "color: var(--spectrum-neutral-content-color-default)",
+      "mutated": "color: #292d29",
+      "elements": [
+        "danger-zone-title"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "raw_border_width",
+      "rule": "R4",
+      "target": {
+        "selector": ".auth-footer"
+      },
+      "description": "border width hard-coded instead of var(--spectrum-border-width-100)",
+      "original": "border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300)",
+      "mutated": "border: 1px solid var(--spectrum-gray-300)",
+      "elements": [
+        "sign-in-footer"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".plan"
+      },
+      "description": "background set to an off-palette hex near var(--spectrum-background-layer-2-color)",
+      "original": "background: var(--spectrum-background-layer-2-color)",
+      "mutated": "background: #ffffff",
+      "elements": [
+        "pricing-plan-free",
+        "pricing-plan-team"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "semantic_text",
+      "rule": "R7",
+      "target": {
+        "selector": ".auth-legal"
+      },
+      "description": "secondary text colored var(--spectrum-negative-content-color-default), which signals a status it doesn't have",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: var(--spectrum-negative-content-color-default)",
+      "elements": [
+        "sign-in-legal"
+      ]
+    },
+    {
+      "id": "m8",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".danger-desc"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: var(--spectrum-disabled-content-color)",
+      "accept_colors": [
+        "rgb(41, 41, 41)",
+        "rgb(80, 80, 80)"
+      ],
+      "elements": [
+        "danger-zone-desc-visibility",
+        "danger-zone-desc-delete"
+      ]
+    }
+  ]
+}

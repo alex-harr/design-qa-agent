@@ -1,0 +1,114 @@
+{
+  "task": "t17-01-05-11",
+  "screen": [
+    "01-account-settings.html",
+    "05-empty-state.html",
+    "11-team-members.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "semantic_text",
+      "rule": "R7",
+      "target": {
+        "selector": ".settings-lede"
+      },
+      "description": "secondary text colored var(--fgColor-attention), which signals a status it doesn't have",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--fgColor-attention)",
+      "elements": [
+        "account-settings-lede"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "rebuild_button",
+      "rule": "R6",
+      "target": {
+        "qa": "team-members-btn-edit-1"
+      },
+      "description": "button rebuilt by hand instead of using .btn (btn btn-sm btn-invisible)",
+      "original": "<button class=\"btn btn-sm btn-invisible\" type=\"button\" data-qa=\"team-members-btn-edit-1\">",
+      "mutated": "<button style=\"background: rgba(0, 0, 0, 0); color: rgb(9, 105, 218); border: 0px solid rgb(9, 105, 218); border-radius: 6px; padding: 3px 12px; font-size: 12px; font-weight: 500\" type=\"button\" data-qa=\"team-members-btn-edit-1\">",
+      "elements": [
+        "team-members-btn-edit-1"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".empty-note"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--fgColor-disabled)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "empty-state-note"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".settings-title"
+      },
+      "description": "color hard-coded as #1f2328 instead of var(--fgColor-default)",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: #1f2328",
+      "elements": [
+        "account-settings-title"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".empty-body"
+      },
+      "description": "color hard-coded as #59636e instead of var(--fgColor-muted)",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: #59636e",
+      "elements": [
+        "empty-state-body"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".actions"
+      },
+      "description": "gap uses 9px, off the spacing scale",
+      "original": "gap: var(--base-size-8)",
+      "mutated": "gap: 9px",
+      "elements": [
+        "account-settings-actions"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "destructive_primary",
+      "rule": "R7",
+      "target": {
+        "qa": "team-members-btn-remove-3"
+      },
+      "description": "destructive action styled as the primary green button",
+      "original": "<button class=\"btn btn-sm btn-danger\" type=\"button\" data-qa=\"team-members-btn-remove-3\">",
+      "mutated": "<button class=\"btn btn-sm btn-primary\" type=\"button\" data-qa=\"team-members-btn-remove-3\">",
+      "elements": [
+        "team-members-btn-remove-3"
+      ]
+    }
+  ]
+}

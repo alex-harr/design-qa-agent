@@ -1,0 +1,101 @@
+{
+  "task": "t43-02-04-10",
+  "screen": [
+    "02-sign-in.html",
+    "04-pricing.html",
+    "10-onboarding.html"
+  ],
+  "split": "heldout",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".step-done-text"
+      },
+      "description": "text color set to var(--spectrum-gray-300), a real token that fails contrast here",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: var(--spectrum-gray-300)",
+      "accept_colors": [
+        "rgb(41, 41, 41)",
+        "rgb(80, 80, 80)"
+      ],
+      "elements": [
+        "onboarding-text-1",
+        "onboarding-text-2"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".auth-forgot"
+      },
+      "description": "color hard-coded as #3b63fb instead of var(--spectrum-accent-content-color-default)",
+      "original": "color: var(--spectrum-accent-content-color-default)",
+      "mutated": "color: #3b63fb",
+      "elements": [
+        "sign-in-forgot"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "raw_border_width",
+      "rule": "R4",
+      "target": {
+        "selector": ".auth-card"
+      },
+      "description": "border width hard-coded instead of var(--spectrum-border-width-100)",
+      "original": "border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300)",
+      "mutated": "border: 1px solid var(--spectrum-gray-300)",
+      "elements": [
+        "sign-in-card"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".onboard-title"
+      },
+      "description": "font-weight hard-coded as 700 instead of var(--spectrum-bold-font-weight)",
+      "original": "font-weight: var(--spectrum-bold-font-weight)",
+      "mutated": "font-weight: 700",
+      "elements": [
+        "onboarding-title"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".auth-legal"
+      },
+      "description": "color set to an off-palette hex near var(--spectrum-neutral-subdued-content-color-default)",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: #504a50",
+      "elements": [
+        "sign-in-legal"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".plans-title"
+      },
+      "description": "font-weight hard-coded as 800 instead of var(--spectrum-extra-bold-font-weight)",
+      "original": "font-weight: var(--spectrum-extra-bold-font-weight)",
+      "mutated": "font-weight: 800",
+      "elements": [
+        "pricing-title"
+      ]
+    }
+  ]
+}

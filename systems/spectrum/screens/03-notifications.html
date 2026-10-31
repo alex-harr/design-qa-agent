@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Notifications</title>
+<link rel="stylesheet" href="design-system/spectrum.css">
+<style>
+.inbox { max-width: 760px; margin: var(--spectrum-spacing-500) auto; padding: 0 var(--spectrum-spacing-300); }
+.inbox-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spectrum-spacing-300); }
+.inbox-title { margin: 0; font-size: var(--spectrum-font-size-400); font-weight: var(--spectrum-bold-font-weight); }
+.inbox-list { background: var(--spectrum-background-layer-2-color); border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); border-radius: var(--spectrum-corner-radius-200); }
+.note { display: flex; gap: var(--spectrum-spacing-200); align-items: flex-start; padding: var(--spectrum-spacing-300); border-top: var(--spectrum-border-width-100) solid var(--spectrum-gray-200); }
+.note-first { border-top: 0; }
+.note-dot { flex: none; width: var(--spectrum-spacing-100); height: var(--spectrum-spacing-100); margin-top: var(--spectrum-spacing-75); border-radius: var(--spectrum-corner-radius-75); background: var(--spectrum-accent-visual-color); }
+.note-dot-read { background: var(--spectrum-gray-300); }
+.note-main { flex: 1; }
+.note-title { display: flex; align-items: center; gap: var(--spectrum-spacing-100); margin: 0 0 var(--spectrum-spacing-75); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.note-meta { margin: 0; font-size: var(--spectrum-font-size-75); color: var(--spectrum-neutral-subdued-content-color-default); }
+</style>
+</head>
+<body class="spectrum spectrum--light spectrum--medium">
+<main class="inbox" data-qa="inbox">
+  <div class="inbox-top" data-qa="top">
+    <h1 class="inbox-title" data-qa="title">Notifications</h1>
+    <button class="spectrum-Button spectrum-Button--outline spectrum-Button--secondary spectrum-Button--sizeS" type="button" data-qa="btn-mark-all"><span class="spectrum-Button-label" data-qa="btn-mark-all-label">Mark all as read</span></button>
+  </div>
+  <div class="inbox-list" data-qa="list">
+    <div class="note note-first" data-qa="row-1">
+      <span class="note-dot" data-qa="dot-1"></span>
+      <div class="note-main" data-qa="main-1">
+        <p class="note-title" data-qa="title-1"><span data-qa="title-1-text">Build failed on main</span> <div class="spectrum-Badge spectrum-Badge--negative" data-qa="label-1"><div class="spectrum-Badge-label" data-qa="label-1-text">Failed</div></div></p>
+        <p class="note-meta" data-qa="meta-1">deploy-pipeline · 4 minutes ago</p>
+      </div>
+    </div>
+    <div class="note" data-qa="row-2">
+      <span class="note-dot" data-qa="dot-2"></span>
+      <div class="note-main" data-qa="main-2">
+        <p class="note-title" data-qa="title-2"><span data-qa="title-2-text">Staging deploy is live</span> <div class="spectrum-Badge spectrum-Badge--informative" data-qa="label-2"><div class="spectrum-Badge-label" data-qa="label-2-text">Live</div></div></p>
+        <p class="note-meta" data-qa="meta-2">billing-service · 1 hour ago</p>
+      </div>
+    </div>
+    <div class="note" data-qa="row-3">
+      <span class="note-dot note-dot-read" data-qa="dot-3"></span>
+      <div class="note-main" data-qa="main-3">
+        <p class="note-title" data-qa="title-3"><span data-qa="title-3-text">Release 2.4 shipped</span> <div class="spectrum-Badge spectrum-Badge--positive" data-qa="label-3"><div class="spectrum-Badge-label" data-qa="label-3-text">Done</div></div></p>
+        <p class="note-meta" data-qa="meta-3">mobile-app · yesterday</p>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

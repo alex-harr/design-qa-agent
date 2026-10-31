@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Account settings · Notifications · Team members</title>
+<link rel="stylesheet" href="design-system/spectrum.css">
+<style>
+.settings { max-width: 640px; margin: var(--spectrum-spacing-600) auto; padding: 0 var(--spectrum-spacing-300); }
+.settings-title { margin: 0 0 var(--spectrum-spacing-75); font-size: var(--spectrum-font-size-800); font-weight: var(--spectrum-extra-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.settings-lede { margin: 0 0 var(--spectrum-spacing-400); font-size: var(--spectrum-font-size-200); color: var(--spectrum-neutral-subdued-content-color-default); }
+.settings-card { padding: var(--spectrum-spacing-400); background: var(--spectrum-background-layer-2-color); border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); border-radius: var(--spectrum-corner-radius-200); }
+.field { margin-bottom: var(--spectrum-spacing-300); }
+.field-label { display: block; margin-bottom: var(--spectrum-spacing-75); font-size: var(--spectrum-font-size-100); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.field-input { width: 100%; }
+.field-help { margin: var(--spectrum-spacing-75) 0 0; font-size: var(--spectrum-font-size-75); color: var(--spectrum-disabled-content-color); }
+.actions { display: flex; gap: var(--spectrum-spacing-100); margin-top: var(--spectrum-spacing-400); padding-top: var(--spectrum-spacing-300); border-top: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); }
+.inbox { max-width: 760px; margin: var(--spectrum-spacing-500) auto; padding: 0 var(--spectrum-spacing-300); }
+.inbox-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spectrum-spacing-300); }
+.inbox-title { margin: 0; font-size: var(--spectrum-font-size-400); font-weight: var(--spectrum-bold-font-weight); }
+.inbox-list { background: var(--spectrum-background-layer-2-color); border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); border-radius: 11px; }
+.note { display: flex; gap: var(--spectrum-spacing-200); align-items: flex-start; padding: var(--spectrum-spacing-300); border-top: var(--spectrum-border-width-100) solid var(--spectrum-gray-200); }
+.note-first { border-top: 0; }
+.note-dot { flex: none; width: var(--spectrum-spacing-100); height: var(--spectrum-spacing-100); margin-top: var(--spectrum-spacing-75); border-radius: var(--spectrum-corner-radius-75); background: var(--spectrum-accent-visual-color); }
+.note-dot-read { background: var(--spectrum-gray-300); }
+.note-main { flex: 1; }
+.note-title { display: flex; align-items: center; gap: var(--spectrum-spacing-100); margin: 0 0 var(--spectrum-spacing-75); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.note-meta { margin: 0; font-size: var(--spectrum-font-size-75); color: var(--spectrum-neutral-subdued-content-color-default); }
+.team { max-width: 760px; margin: var(--spectrum-spacing-600) auto; padding: 0 var(--spectrum-spacing-300); }
+.team-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spectrum-spacing-300); }
+.team-title { margin: 0; font-size: var(--spectrum-font-size-400); font-weight: var(--spectrum-bold-font-weight); }
+.team-list { background: var(--spectrum-background-layer-2-color); border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); border-radius: var(--spectrum-corner-radius-200); }
+.member { display: flex; align-items: center; gap: var(--spectrum-spacing-200); padding: var(--spectrum-spacing-200) var(--spectrum-spacing-300); border-top: var(--spectrum-border-width-100) solid var(--spectrum-gray-200); }
+.member-first { border-top: 0; }
+.member-avatar { flex: none; width: var(--spectrum-spacing-500); height: var(--spectrum-spacing-500); border-radius: var(--spectrum-corner-radius-800); background: var(--spectrum-gray-200); }
+.member-main { flex: 1; }
+.member-name { margin: 0; font-weight: var(--spectrum-bold-font-weight); color: #292929; }
+.member-email { margin: 0; font-size: var(--spectrum-font-size-75); color: #505050; }
+.member-role { margin-right: var(--spectrum-spacing-100); }
+.team-note { margin-top: var(--spectrum-spacing-200); font-size: var(--spectrum-font-size-75); color: var(--spectrum-neutral-visual-color); }
+</style>
+</head>
+<body class="spectrum spectrum--light spectrum--medium">
+<section>
+<main class="settings" data-qa="account-settings-settings">
+  <h1 class="settings-title" data-qa="account-settings-title">Account settings</h1>
+  <p class="settings-lede" data-qa="account-settings-lede">Update how your name and email appear to your team.</p>
+  <div class="settings-card" data-qa="account-settings-form-card">
+    <div class="field" data-qa="account-settings-field-name">
+      <label class="field-label" for="account-settings-name" data-qa="account-settings-label-name">Display name</label>
+      <div class="spectrum-Textfield field-input" data-qa="account-settings-input-name-wrap"><input class="spectrum-Textfield-input" id="account-settings-name" type="text" value="Rae Okafor" data-qa="account-settings-input-name"></div>
+      <p class="field-help" data-qa="account-settings-help-name">Shown on comments and mentions.</p>
+    </div>
+    <div class="field" data-qa="account-settings-field-email">
+      <label class="field-label" for="account-settings-email" data-qa="account-settings-label-email">Email</label>
+      <div class="spectrum-Textfield field-input" data-qa="account-settings-input-email-wrap"><input class="spectrum-Textfield-input" id="account-settings-email" type="text" value="rae@example.com" data-qa="account-settings-input-email"></div>
+      <p class="field-help" data-qa="account-settings-help-email">We'll send security alerts here.</p>
+    </div>
+    <div class="actions" data-qa="account-settings-actions">
+      <button class="spectrum-Button spectrum-Button--fill spectrum-Button--accent" type="button" data-qa="account-settings-btn-save"><span class="spectrum-Button-label" data-qa="account-settings-btn-save-label">Save changes</span></button>
+      <button class="spectrum-Button spectrum-Button--outline spectrum-Button--secondary" type="button" data-qa="account-settings-btn-cancel"><span class="spectrum-Button-label" data-qa="account-settings-btn-cancel-label">Cancel</span></button>
+    </div>
+  </div>
+</main>
+</section>
+<section>
+<main class="inbox" data-qa="notifications-inbox">
+  <div class="inbox-top" data-qa="notifications-top">
+    <h1 class="inbox-title" data-qa="notifications-title">Notifications</h1>
+    <button class="spectrum-Button spectrum-Button--outline spectrum-Button--secondary spectrum-Button--sizeS" type="button" data-qa="notifications-btn-mark-all"><span class="spectrum-Button-label" data-qa="notifications-btn-mark-all-label">Mark all as read</span></button>
+  </div>
+  <div class="inbox-list" data-qa="notifications-list">
+    <div class="note note-first" data-qa="notifications-row-1">
+      <span class="note-dot" data-qa="notifications-dot-1"></span>
+      <div class="note-main" data-qa="notifications-main-1">
+        <p class="note-title" data-qa="notifications-title-1"><span data-qa="notifications-title-1-text">Build failed on main</span> <div class="spectrum-Badge spectrum-Badge--negative" data-qa="notifications-label-1"><div class="spectrum-Badge-label" data-qa="notifications-label-1-text">Failed</div></div></p>
+        <p class="note-meta" data-qa="notifications-meta-1">deploy-pipeline · 4 minutes ago</p>
+      </div>
+    </div>
+    <div class="note" data-qa="notifications-row-2">
+      <span class="note-dot" data-qa="notifications-dot-2"></span>
+      <div class="note-main" data-qa="notifications-main-2">
+        <p class="note-title" data-qa="notifications-title-2"><span data-qa="notifications-title-2-text">Staging deploy is live</span> <div class="spectrum-Badge spectrum-Badge--informative" data-qa="notifications-label-2"><div class="spectrum-Badge-label" data-qa="notifications-label-2-text">Live</div></div></p>
+        <p class="note-meta" data-qa="notifications-meta-2">billing-service · 1 hour ago</p>
+      </div>
+    </div>
+    <div class="note" data-qa="notifications-row-3">
+      <span class="note-dot note-dot-read" data-qa="notifications-dot-3"></span>
+      <div class="note-main" data-qa="notifications-main-3">
+        <p class="note-title" data-qa="notifications-title-3"><span data-qa="notifications-title-3-text">Release 2.4 shipped</span> <div class="spectrum-Badge spectrum-Badge--positive" data-qa="notifications-label-3"><div class="spectrum-Badge-label" data-qa="notifications-label-3-text">Done</div></div></p>
+        <p class="note-meta" data-qa="notifications-meta-3">mobile-app · yesterday</p>
+      </div>
+    </div>
+  </div>
+</main>
+</section>
+<section>
+<main class="team" data-qa="team-members-team">
+  <div class="team-bar" data-qa="team-members-bar">
+    <h1 class="team-title" data-qa="team-members-title">Team members</h1>
+    <button class="spectrum-Button spectrum-Button--fill spectrum-Button--accent" type="button" data-qa="team-members-btn-invite"><span class="spectrum-Button-label" data-qa="team-members-btn-invite-label">Invite member</span></button>
+  </div>
+  <div class="team-list" data-qa="team-members-list">
+    <div class="member member-first" data-qa="team-members-member-1">
+      <span class="member-avatar" data-qa="team-members-avatar-1"></span>
+      <div class="member-main" data-qa="team-members-main-1"><p class="member-name" data-qa="team-members-name-1">Jordan Lee</p><p class="member-email" data-qa="team-members-email-1">jordan@example.com</p></div>
+      <div class="spectrum-Badge spectrum-Badge--neutral member-role" data-qa="team-members-role-1"><div class="spectrum-Badge-label" data-qa="team-members-role-1-text">Owner</div></div>
+      <button class="spectrum-Button spectrum-Button--outline spectrum-Button--negative spectrum-Button--sizeS" type="button" data-qa="team-members-btn-edit-1"><span class="spectrum-Button-label" data-qa="team-members-btn-edit-1-label">Edit</span></button>
+    </div>
+    <div class="member" data-qa="team-members-member-2">
+      <span class="member-avatar" data-qa="team-members-avatar-2"></span>
+      <div class="member-main" data-qa="team-members-main-2"><p class="member-name" data-qa="team-members-name-2">Priya Raman</p><p class="member-email" data-qa="team-members-email-2">priya@example.com</p></div>
+      <div class="spectrum-Badge spectrum-Badge--neutral member-role" data-qa="team-members-role-2"><div class="spectrum-Badge-label" data-qa="team-members-role-2-text">Member</div></div>
+      <button class="spectrum-Button spectrum-Button--outline spectrum-Button--accent spectrum-Button--sizeS" type="button" data-qa="team-members-btn-remove-2"><span class="spectrum-Button-label" data-qa="team-members-btn-remove-2-label">Remove</span></button>
+    </div>
+    <div class="member" data-qa="team-members-member-3">
+      <span class="member-avatar" data-qa="team-members-avatar-3"></span>
+      <div class="member-main" data-qa="team-members-main-3"><p class="member-name" data-qa="team-members-name-3">Sam Kowalski</p><p class="member-email" data-qa="team-members-email-3">sam@example.com</p></div>
+      <div class="spectrum-StatusLight spectrum-StatusLight--sizeM spectrum-StatusLight--notice member-role" data-qa="team-members-role-3">Pending invite</div>
+      <button class="spectrum-Button spectrum-Button--outline spectrum-Button--negative spectrum-Button--sizeS" type="button" data-qa="team-members-btn-remove-3"><span class="spectrum-Button-label" data-qa="team-members-btn-remove-3-label">Cancel invite</span></button>
+    </div>
+  </div>
+  <p class="team-note" data-qa="team-members-note">Owners can change roles and billing.</p>
+</main>
+</section>
+</body>
+</html>

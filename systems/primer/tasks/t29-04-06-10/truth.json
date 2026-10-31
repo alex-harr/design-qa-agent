@@ -1,0 +1,104 @@
+{
+  "task": "t29-04-06-10",
+  "screen": [
+    "04-pricing.html",
+    "06-danger-zone.html",
+    "10-onboarding.html"
+  ],
+  "split": "heldout",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".plan-grid"
+      },
+      "description": "gap uses 23px, off the spacing scale",
+      "original": "gap: var(--base-size-24)",
+      "mutated": "gap: 23px",
+      "elements": [
+        "pricing-grid"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".section-title"
+      },
+      "description": "margin uses 9px, off the spacing scale",
+      "original": "margin: 0 0 var(--base-size-8)",
+      "mutated": "margin: 0 0 9px",
+      "elements": [
+        "danger-zone-title"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".plan-per"
+      },
+      "description": "font-weight hard-coded as 400 instead of var(--base-text-weight-normal)",
+      "original": "font-weight: var(--base-text-weight-normal)",
+      "mutated": "font-weight: 400",
+      "elements": [
+        "pricing-per-free",
+        "pricing-per-team"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".danger-box"
+      },
+      "description": "border-color set to an off-palette hex near var(--borderColor-danger-emphasis)",
+      "original": "border-color: var(--borderColor-danger-emphasis)",
+      "mutated": "border-color: #cf1d2e",
+      "elements": [
+        "danger-zone-box"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".step-text"
+      },
+      "description": "color set to an off-palette hex near var(--fgColor-default)",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: #1f2928",
+      "elements": [
+        "onboarding-text-1",
+        "onboarding-text-2",
+        "onboarding-text-3",
+        "onboarding-text-4"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".onboard-sub"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--fgColor-disabled)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "onboarding-subtitle"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" data-color-mode="light" data-light-theme="light">
+<head>
+<meta charset="utf-8">
+<title>Team members</title>
+<link rel="stylesheet" href="design-system/primer.css">
+<style>
+.team { max-width: 760px; margin: var(--base-size-40) auto; padding: 0 var(--base-size-16); }
+.team-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--base-size-16); }
+.team-title { margin: 0; font-size: var(--text-title-size-medium); font-weight: var(--text-title-weight-medium); }
+.member { display: flex; align-items: center; gap: var(--base-size-12); }
+.member-avatar { width: var(--base-size-32); height: var(--base-size-32); }
+.member-main { flex: 1; }
+.member-name { margin: 0; font-weight: var(--base-text-weight-semibold); color: var(--fgColor-default); }
+.member-email { margin: 0; font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+.member-role { margin-right: var(--base-size-8); }
+.team-note { margin-top: var(--base-size-12); font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+</style>
+</head>
+<body>
+<main class="team" data-qa="team">
+  <div class="team-bar" data-qa="bar">
+    <h1 class="team-title" data-qa="title">Team members</h1>
+    <button class="btn btn-primary" type="button" data-qa="btn-invite">Invite member</button>
+  </div>
+  <div class="Box" data-qa="list">
+    <div class="Box-row member" data-qa="member-1">
+      <span class="avatar member-avatar" data-qa="avatar-1"></span>
+      <div class="member-main" data-qa="main-1"><p class="member-name" data-qa="name-1">Jordan Lee</p><p class="member-email" data-qa="email-1">jordan@example.com</p></div>
+      <span class="Label Label--accent member-role" data-qa="role-1">Owner</span>
+      <button class="btn btn-sm btn-invisible" type="button" data-qa="btn-edit-1">Edit</button>
+    </div>
+    <div class="Box-row member" data-qa="member-2">
+      <span class="avatar member-avatar" data-qa="avatar-2"></span>
+      <div class="member-main" data-qa="main-2"><p class="member-name" data-qa="name-2">Priya Raman</p><p class="member-email" data-qa="email-2">priya@example.com</p></div>
+      <span class="Label member-role" data-qa="role-2">Member</span>
+      <button class="btn btn-sm btn-danger" type="button" data-qa="btn-remove-2">Remove</button>
+    </div>
+    <div class="Box-row member" data-qa="member-3">
+      <span class="avatar member-avatar" data-qa="avatar-3"></span>
+      <div class="member-main" data-qa="main-3"><p class="member-name" data-qa="name-3">Sam Kowalski</p><p class="member-email" data-qa="email-3">sam@example.com</p></div>
+      <span class="Label Label--attention member-role" data-qa="role-3">Pending invite</span>
+      <button class="btn btn-sm btn-danger" type="button" data-qa="btn-remove-3">Cancel invite</button>
+    </div>
+  </div>
+  <p class="team-note" data-qa="note">Owners can change roles and billing.</p>
+</main>
+</body>
+</html>

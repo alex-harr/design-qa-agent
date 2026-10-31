@@ -1,0 +1,76 @@
+{
+  "name": "Primer",
+  "about": "GitHub Primer, light theme. Tokens: @primer/primitives v11.10.0 (MIT). Components: Primer CSS v22.3.3 (MIT) plus lab-components.css.",
+  "entry_css": "primer.css",
+
+  "token_source": {
+    "files": ["vendor/base-size.css", "vendor/base-typography.css", "vendor/functional-size.css", "vendor/radius.css",
+              "vendor/border.css", "vendor/functional-typography.css", "vendor/theme-light.css"],
+    "scopes": null
+  },
+
+  "agent_copy": {
+    "files": ["RULES.md", "primer.css", "lab-components.css",
+              "vendor/base-size.css", "vendor/base-typography.css", "vendor/functional-size.css", "vendor/radius.css",
+              "vendor/border.css", "vendor/functional-typography.css", "vendor/theme-light.css"],
+    "stubs": {"vendor/primer-components.css": "/* Primer CSS v22.3.3 component bundle (minified, 1 MB) omitted from the agent's copy. Its button and form classes are listed in RULES.md. */\n"}
+  },
+
+  "tokens": {
+    "color": "--(?:fgColor|bgColor|borderColor)-[\\w-]+",
+    "space": "--base-size-\\d+",
+    "type": "--(?:text|base-text)-[\\w-]+",
+    "radius": "--borderRadius-[\\w-]+",
+    "border_width": "--borderWidth-[\\w-]+"
+  },
+
+  "components": {
+    "lint_classes": ["btn", "Label", "flash", "Box", "form-control", "Counter", "Progress", "Progress-item", "avatar", "Dialog"],
+    "button": {
+      "tags": ["button"], "base": "btn", "prefix": "btn",
+      "primary": "btn-primary", "danger": "btn-danger",
+      "swap_to_danger": ["btn-primary"],
+      "never_danger": ["btn-invisible"],
+      "primary_desc": "the primary green button"
+    },
+    "pill": {
+      "tags": ["span"], "base": "Label", "prefix": "Label",
+      "semantic": ["Label--success", "Label--danger", "Label--attention", "Label--done"],
+      "v1_pairs": [["Label--success", "Label--danger"], ["Label--danger", "Label--success"]]
+    }
+  },
+
+  "mutate": {
+    "space_scale_px": [2, 4, 6, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 64, 80, 96, 112, 128],
+    "type_scale_px": [12, 14, 16, 20, 32],
+    "radius_scale_px": [3, 6, 12],
+    "radius_mutable": "--borderRadius-(?:small|medium|large)",
+    "border_width_mutable": "--borderWidth-(?:thin|thick)",
+    "weight_prefix": "var(--base-text-weight-",
+    "text_default": "var(--fgColor-default)",
+    "text_muted": "var(--fgColor-muted)",
+    "text_link": "var(--fgColor-accent)",
+    "text_disabled": "var(--fgColor-disabled)",
+    "status_text": ["var(--fgColor-danger)", "var(--fgColor-success)", "var(--fgColor-attention)"],
+    "contrast_traps": ["var(--borderColor-default)", "var(--fgColor-onEmphasis)"]
+  },
+
+  "labels": {
+    "colors": {
+      "fgColor-default": "Default text", "fgColor-muted": "Muted text", "fgColor-accent": "Link blue",
+      "fgColor-success": "Success green", "fgColor-attention": "Attention yellow", "fgColor-danger": "Danger red",
+      "fgColor-done": "Done purple", "fgColor-onEmphasis": "White text (for dark fills)", "fgColor-disabled": "Disabled gray",
+      "bgColor-default": "Default surface", "bgColor-muted": "Muted surface", "bgColor-inset": "Inset surface",
+      "bgColor-transparent": "Transparent", "bgColor-emphasis": "Dark fill",
+      "borderColor-default": "Default border", "borderColor-muted": "Muted border", "borderColor-emphasis": "Strong border"
+    },
+    "classes": {
+      "btn": "Button", "btn-primary": "primary (green)", "btn-danger": "danger (red)", "btn-invisible": "invisible (text only)",
+      "btn-sm": "small", "Label": "Status pill", "Label--success": "green", "Label--danger": "red",
+      "Label--attention": "yellow", "Label--done": "purple", "Label--accent": "blue", "flash": "Banner",
+      "flash-warn": "warning", "flash-error": "error", "flash-success": "success", "Box": "Box", "form-control": "Text field"
+    },
+    "banner": {"base": "flash", "prefix": "flash-"},
+    "boxy_classes": ["btn", "Label", "flash", "avatar"]
+  }
+}

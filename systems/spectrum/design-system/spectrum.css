@@ -1,0 +1,20 @@
+/* Lab design system entry point.
+   Tokens: Adobe Spectrum CSS @spectrum-css/tokens 16.0.2 (Apache-2.0), Spectrum 2, light color, medium scale.
+   Components: @spectrum-css component packages (Apache-2.0), versions in vendor/PROVENANCE.md.
+   Screens put class="spectrum spectrum--light spectrum--medium" on <body>, as the tokens README says. */
+@import url("vendor/tokens/global-vars.css");
+@import url("vendor/tokens/light-vars.css");
+@import url("vendor/tokens/medium-vars.css");
+@import url("vendor/components/typography.css");
+@import url("vendor/components/button.css");
+@import url("vendor/components/badge.css");
+@import url("vendor/components/statuslight.css");
+@import url("vendor/components/inlinealert.css");
+@import url("vendor/components/fieldlabel.css");
+@import url("vendor/components/helptext.css");
+@import url("vendor/components/textfield.css");
+@import url("vendor/components/table.css");
+@import url("vendor/components/avatar.css");
+@import url("vendor/components/divider.css");
+@import url("vendor/components/progressbar.css");
+@import url("lab-components.css");

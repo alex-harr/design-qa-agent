@@ -1,0 +1,138 @@
+{
+  "task": "t03-03-05-11",
+  "screen": [
+    "03-notifications.html",
+    "05-empty-state.html",
+    "11-team-members.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "off_radius",
+      "rule": "R4",
+      "target": {
+        "selector": ".empty"
+      },
+      "description": "border-radius 12px instead of var(--spectrum-corner-radius-200)",
+      "original": "border-radius: var(--spectrum-corner-radius-200)",
+      "mutated": "border-radius: 12px",
+      "elements": [
+        "empty-state-empty"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "semantic_text",
+      "rule": "R7",
+      "target": {
+        "selector": ".note-meta"
+      },
+      "description": "secondary text colored var(--spectrum-accent-content-color-default), which signals a status it doesn't have",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: var(--spectrum-accent-content-color-default)",
+      "elements": [
+        "notifications-meta-1",
+        "notifications-meta-2",
+        "notifications-meta-3"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".member-role"
+      },
+      "description": "margin-right uses 7px, off the spacing scale",
+      "original": "margin-right: var(--spectrum-spacing-100)",
+      "mutated": "margin-right: 7px",
+      "elements": [
+        "team-members-role-1",
+        "team-members-role-2",
+        "team-members-role-3"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".empty-icon"
+      },
+      "description": "margin-bottom uses 17px, off the spacing scale",
+      "original": "margin-bottom: var(--spectrum-spacing-300)",
+      "mutated": "margin-bottom: 17px",
+      "elements": [
+        "empty-state-icon"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "rebuild_button",
+      "rule": "R6",
+      "target": {
+        "qa": "team-members-btn-remove-2"
+      },
+      "description": "button rebuilt by hand instead of using .spectrum-Button (spectrum-Button spectrum-Button--outline spectrum-Button--negative spectrum-Button--sizeS)",
+      "original": "<button class=\"spectrum-Button spectrum-Button--outline spectrum-Button--negative spectrum-Button--sizeS\" type=\"button\" data-qa=\"team-members-btn-remove-2\">",
+      "mutated": "<button style=\"background: rgba(0, 0, 0, 0); color: rgb(215, 50, 32); border: 2px solid rgb(215, 50, 32); border-radius: 12px; padding: 0px 11px; font-size: 12px; font-weight: 700\" type=\"button\" data-qa=\"team-members-btn-remove-2\">",
+      "elements": [
+        "team-members-btn-remove-2",
+        "team-members-btn-remove-2-label"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".member-name"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--spectrum-neutral-content-color-default)",
+      "mutated": "color: var(--spectrum-disabled-content-color)",
+      "accept_colors": [
+        "rgb(41, 41, 41)",
+        "rgb(80, 80, 80)"
+      ],
+      "elements": [
+        "team-members-name-1",
+        "team-members-name-2",
+        "team-members-name-3"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".member-email"
+      },
+      "description": "color hard-coded as #505050 instead of var(--spectrum-neutral-subdued-content-color-default)",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: #505050",
+      "elements": [
+        "team-members-email-1",
+        "team-members-email-2",
+        "team-members-email-3"
+      ]
+    },
+    {
+      "id": "m8",
+      "op": "destructive_primary",
+      "rule": "R7",
+      "target": {
+        "qa": "team-members-btn-remove-3"
+      },
+      "description": "destructive action styled as the accent (call-to-action) button",
+      "original": "<button class=\"spectrum-Button spectrum-Button--outline spectrum-Button--negative spectrum-Button--sizeS\" type=\"button\" data-qa=\"team-members-btn-remove-3\">",
+      "mutated": "<button class=\"spectrum-Button spectrum-Button--outline spectrum-Button--accent spectrum-Button--sizeS\" type=\"button\" data-qa=\"team-members-btn-remove-3\">",
+      "elements": [
+        "team-members-btn-remove-3",
+        "team-members-btn-remove-3-label"
+      ]
+    }
+  ]
+}

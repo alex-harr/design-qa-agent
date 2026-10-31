@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" data-color-mode="light" data-light-theme="light">
+<head>
+<meta charset="utf-8">
+<title>Sign in · Repository settings · Profile</title>
+<link rel="stylesheet" href="design-system/primer.css">
+<style>
+.auth { max-width: 340px; margin: var(--base-size-64) auto; padding: 0 var(--base-size-16); }
+.auth-heading { margin: 0 0 var(--base-size-16); text-align: center; font-size: var(--text-title-size-medium); font-weight: 400; color: var(--fgColor-default); }
+.auth-card { padding: var(--base-size-20); background: var(--bgColor-muted); border: var(--borderWidth-thin) solid var(--borderColor-default); border-radius: var(--borderRadius-medium); }
+.auth-label { display: block; margin-bottom: var(--base-size-8); font-weight: var(--base-text-weight-semibold); }
+.auth-row { display: flex; justify-content: space-between; align-items: baseline; }
+.auth-forgot { font-size: var(--text-body-size-small); color: #0969da; }
+.auth-input { width: 100%; margin-bottom: var(--base-size-16); }
+.auth-submit { width: 100%; }
+.auth-footer { margin-top: var(--base-size-16); padding: var(--base-size-16); text-align: center; border: 1px solid var(--borderColor-default); border-radius: var(--borderRadius-medium); color: var(--fgColor-default); }
+.auth-link { color: var(--fgColor-accent); }
+.auth-legal { margin-top: var(--base-size-24); text-align: center; font-size: var(--text-body-size-small); color: var(--fgColor-onEmphasis); }
+.repo-settings { max-width: 720px; margin: var(--base-size-40) auto; padding: 0 var(--base-size-16); }
+.section-title { margin: 0 0 var(--base-size-8); font-size: var(--text-title-size-medium); font-weight: var(--text-title-weight-medium); color: var(--fgColor-default); }
+.section-warn { margin-bottom: var(--base-size-16); }
+.danger-box { border-color: #cf222a; }
+.danger-row { display: flex; justify-content: space-between; align-items: center; gap: var(--base-size-16); }
+.danger-name { margin: 0 0 var(--base-size-2); font-weight: var(--base-text-weight-semibold); color: var(--fgColor-default); }
+.danger-desc { margin: 0; font-size: var(--text-body-size-medium); color: var(--fgColor-muted); }
+.confirm { margin-top: var(--base-size-24); }
+.confirm-label { display: block; margin-bottom: var(--base-size-8); font-weight: var(--base-text-weight-semibold); }
+.confirm-input { width: 100%; }
+.profile { max-width: 380px; margin: var(--base-size-48) auto; padding: 0 var(--base-size-16); }
+.profile-card { padding: var(--base-size-24); text-align: center; }
+.profile-avatar { width: var(--base-size-80); height: var(--base-size-80); margin-bottom: var(--base-size-12); }
+.profile-name { margin: 0; font-size: var(--text-title-size-medium); font-weight: var(--text-title-weight-medium); color: var(--fgColor-default); }
+.profile-handle { margin: 0 0 var(--base-size-12); font-size: var(--text-body-size-large); color: var(--borderColor-default); }
+.profile-bio { margin: 0 0 var(--base-size-16); color: var(--fgColor-default); }
+.profile-status { margin-bottom: var(--base-size-16); }
+.profile-stats { display: flex; justify-content: center; gap: var(--base-size-16); margin: 0 0 var(--base-size-20); padding: 0; list-style: none; font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+.profile-num { font-weight: 600; color: var(--fgColor-default); }
+.profile-follow { width: 100%; }
+</style>
+</head>
+<body>
+<section>
+<main class="auth" data-qa="sign-in-auth">
+  <h1 class="auth-heading" data-qa="sign-in-heading">Sign in to Northwind</h1>
+  <div class="auth-card" data-qa="sign-in-card">
+    <label class="auth-label" for="sign-in-login" data-qa="sign-in-label-login">Username or email address</label>
+    <input class="form-control auth-input" id="sign-in-login" data-qa="sign-in-input-login">
+    <div class="auth-row" data-qa="sign-in-password-row">
+      <label class="auth-label" for="sign-in-password" data-qa="sign-in-label-password">Password</label>
+      <a class="auth-forgot" href="#" data-qa="sign-in-forgot">Forgot password?</a>
+    </div>
+    <input class="form-control auth-input" id="sign-in-password" type="password" data-qa="sign-in-input-password">
+    <button class="btn btn-primary auth-submit" type="button" data-qa="sign-in-btn-submit">Sign in</button>
+  </div>
+  <p class="auth-footer" data-qa="sign-in-footer">New to Northwind? <a class="auth-link" href="#" data-qa="sign-in-create-link">Create an account</a></p>
+  <p class="auth-legal" data-qa="sign-in-legal">By signing in you agree to the Terms and Privacy Policy.</p>
+</main>
+</section>
+<section>
+<main class="repo-settings" data-qa="danger-zone-settings">
+  <h1 class="section-title" data-qa="danger-zone-title">Danger zone</h1>
+  <div class="flash flash-warn section-warn" data-qa="danger-zone-warning">These actions can't be undone. Read each one carefully.</div>
+  <div class="Box danger-box" data-qa="danger-zone-box">
+    <div class="Box-row danger-row" data-qa="danger-zone-row-visibility">
+      <div data-qa="danger-zone-text-visibility">
+        <p class="danger-name" data-qa="danger-zone-name-visibility">Change visibility</p>
+        <p class="danger-desc" data-qa="danger-zone-desc-visibility">This repository is currently private.</p>
+      </div>
+      <button class="btn btn-danger" type="button" data-qa="danger-zone-btn-visibility">Change visibility</button>
+    </div>
+    <div class="Box-row danger-row" data-qa="danger-zone-row-delete">
+      <div data-qa="danger-zone-text-delete">
+        <p class="danger-name" data-qa="danger-zone-name-delete">Delete this repository</p>
+        <p class="danger-desc" data-qa="danger-zone-desc-delete">Once you delete a repository, there is no going back.</p>
+      </div>
+      <button class="btn btn-danger" type="button" data-qa="danger-zone-btn-delete">Delete this repository</button>
+    </div>
+  </div>
+  <div class="confirm" data-qa="danger-zone-confirm">
+    <label class="confirm-label" for="danger-zone-confirm" data-qa="danger-zone-confirm-label">Type the repository name to confirm</label>
+    <input class="form-control confirm-input" id="danger-zone-confirm" data-qa="danger-zone-confirm-input">
+  </div>
+</main>
+</section>
+<section>
+<main class="profile" data-qa="profile-card-profile">
+  <div class="Box profile-card" data-qa="profile-card-card">
+    <span class="avatar profile-avatar" data-qa="profile-card-avatar"></span>
+    <h1 class="profile-name" data-qa="profile-card-name">Mateo Alvarez</h1>
+    <p class="profile-handle" data-qa="profile-card-handle">@mateo-a</p>
+    <p class="profile-bio" data-qa="profile-card-bio">Design engineer working on accessible data tables.</p>
+    <div class="profile-status" data-qa="profile-card-status"><span class="Label Label--success" data-qa="profile-card-status-label">Available for review</span></div>
+    <ul class="profile-stats" data-qa="profile-card-stats">
+      <li data-qa="profile-card-stat-followers"><span class="profile-num" data-qa="profile-card-num-followers">214</span> followers</li>
+      <li data-qa="profile-card-stat-following"><span class="profile-num" data-qa="profile-card-num-following">87</span> following</li>
+      <li data-qa="profile-card-stat-repos"><span class="profile-num" data-qa="profile-card-num-repos">31</span> repositories</li>
+    </ul>
+    <button class="btn btn-primary profile-follow" type="button" data-qa="profile-card-btn-follow">Follow</button>
+  </div>
+</main>
+</section>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "run": "h55-heldout",
+  "runs": 54,
+  "tasks": 18,
+  "trials_per_task": 3,
+  "pass_rate": 0.667,
+  "pass^3": 0.167,
+  "pass@3": 1,
+  "detected": 0.995,
+  "fixed_exact": 0.984,
+  "planted_total": 366,
+  "net_fixed": 334,
+  "false_flags_per_run": 0.24,
+  "regressions_per_run": 0.24,
+  "by_rule_detected_fixed": {
+    "R1": "78/78 detected, 76/78 fixed",
+    "R2": "68/69 detected, 68/69 fixed",
+    "R3": "36/36 detected, 36/36 fixed",
+    "R4": "42/42 detected, 42/42 fixed",
+    "R5": "66/66 detected, 66/66 fixed",
+    "R6": "27/27 detected, 25/27 fixed",
+    "R7": "47/48 detected, 47/48 fixed"
+  },
+  "self_says_all_fixed": 1,
+  "cost_usd": 0.43,
+  "mean_turns": 13.7
+}

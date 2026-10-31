@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" data-color-mode="light" data-light-theme="light">
+<head>
+<meta charset="utf-8">
+<title>Notifications</title>
+<link rel="stylesheet" href="design-system/primer.css">
+<style>
+.inbox { max-width: 760px; margin: var(--base-size-32) auto; padding: 0 var(--base-size-16); }
+.inbox-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--base-size-16); }
+.inbox-title { margin: 0; font-size: var(--text-title-size-medium); font-weight: var(--text-title-weight-medium); }
+.note { display: flex; gap: var(--base-size-12); align-items: flex-start; }
+.note-dot { flex: none; width: var(--base-size-8); height: var(--base-size-8); margin-top: var(--base-size-6); border-radius: var(--borderRadius-full); background: var(--bgColor-accent-emphasis); }
+.note-dot-read { background: var(--bgColor-transparent); }
+.note-main { flex: 1; }
+.note-title { margin: 0 0 var(--base-size-4); font-weight: var(--base-text-weight-semibold); color: var(--fgColor-default); }
+.note-meta { margin: 0; font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+.note-label { margin-left: var(--base-size-8); }
+</style>
+</head>
+<body>
+<main class="inbox" data-qa="inbox">
+  <div class="inbox-top" data-qa="top">
+    <h1 class="inbox-title" data-qa="title">Notifications</h1>
+    <button class="btn btn-sm" type="button" data-qa="btn-mark-all">Mark all as read</button>
+  </div>
+  <div class="Box" data-qa="list">
+    <div class="Box-row note" data-qa="row-1">
+      <span class="note-dot" data-qa="dot-1"></span>
+      <div class="note-main" data-qa="main-1">
+        <p class="note-title" data-qa="title-1">Build failed on main <span class="Label Label--danger note-label" data-qa="label-1">Failed</span></p>
+        <p class="note-meta" data-qa="meta-1">deploy-pipeline · 4 minutes ago</p>
+      </div>
+    </div>
+    <div class="Box-row note" data-qa="row-2">
+      <span class="note-dot" data-qa="dot-2"></span>
+      <div class="note-main" data-qa="main-2">
+        <p class="note-title" data-qa="title-2">Ana requested your review <span class="Label Label--accent note-label" data-qa="label-2">Review</span></p>
+        <p class="note-meta" data-qa="meta-2">billing-service · 1 hour ago</p>
+      </div>
+    </div>
+    <div class="Box-row note" data-qa="row-3">
+      <span class="note-dot note-dot-read" data-qa="dot-3"></span>
+      <div class="note-main" data-qa="main-3">
+        <p class="note-title" data-qa="title-3">Release 2.4 shipped <span class="Label Label--success note-label" data-qa="label-3">Done</span></p>
+        <p class="note-meta" data-qa="meta-3">mobile-app · yesterday</p>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

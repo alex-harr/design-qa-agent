@@ -1,0 +1,133 @@
+{
+  "task": "t32-06-10-12",
+  "screen": [
+    "06-danger-zone.html",
+    "10-onboarding.html",
+    "12-upload-dialog.html"
+  ],
+  "split": "heldout",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "semantic_text",
+      "rule": "R7",
+      "target": {
+        "selector": ".onboard-sub"
+      },
+      "description": "secondary text colored var(--spectrum-negative-content-color-default), which signals a status it doesn't have",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: var(--spectrum-negative-content-color-default)",
+      "elements": [
+        "onboarding-subtitle"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "semantic_text",
+      "rule": "R7",
+      "target": {
+        "selector": ".onboard-count"
+      },
+      "description": "secondary text colored var(--spectrum-negative-content-color-default), which signals a status it doesn't have",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: var(--spectrum-negative-content-color-default)",
+      "elements": [
+        "onboarding-count"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".file"
+      },
+      "description": "margin-top uses 19px, off the spacing scale",
+      "original": "margin-top: var(--spectrum-spacing-300)",
+      "mutated": "margin-top: 19px",
+      "elements": [
+        "upload-dialog-file"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".confirm-label"
+      },
+      "description": "margin-bottom uses 7px, off the spacing scale",
+      "original": "margin-bottom: var(--spectrum-spacing-100)",
+      "mutated": "margin-bottom: 7px",
+      "elements": [
+        "danger-zone-confirm-label"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".steps"
+      },
+      "description": "background set to an off-palette hex near var(--spectrum-background-layer-2-color)",
+      "original": "background: var(--spectrum-background-layer-2-color)",
+      "mutated": "background: #ffffff",
+      "elements": [
+        "onboarding-steps"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".danger-desc"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: var(--spectrum-disabled-content-color)",
+      "accept_colors": [
+        "rgb(41, 41, 41)",
+        "rgb(80, 80, 80)"
+      ],
+      "elements": [
+        "danger-zone-desc-visibility",
+        "danger-zone-desc-delete"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "off_radius",
+      "rule": "R4",
+      "target": {
+        "selector": ".upload"
+      },
+      "description": "border-radius 14px instead of var(--spectrum-corner-radius-800)",
+      "original": "border-radius: var(--spectrum-corner-radius-800)",
+      "mutated": "border-radius: 14px",
+      "elements": [
+        "upload-dialog-dialog"
+      ]
+    },
+    {
+      "id": "m8",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".file-size"
+      },
+      "description": "text color set to var(--spectrum-gray-300), a real token that fails contrast here",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: var(--spectrum-gray-300)",
+      "accept_colors": [
+        "rgb(41, 41, 41)",
+        "rgb(80, 80, 80)"
+      ],
+      "elements": [
+        "upload-dialog-file-size"
+      ]
+    }
+  ]
+}

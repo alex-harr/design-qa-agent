@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en" data-color-mode="light" data-light-theme="light">
+<head>
+<meta charset="utf-8">
+<title>Issues · Billing · Team members</title>
+<link rel="stylesheet" href="design-system/primer.css">
+<style>
+.issues { max-width: 840px; margin: var(--base-size-32) auto; padding: 0 var(--base-size-16); }
+.issues-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--base-size-16); }
+.issues-filter { width: 320px; }
+.issues-head { display: flex; gap: var(--base-size-16); font-weight: var(--base-text-weight-semibold); color: var(--fgColor-default); }
+.issues-closed { color: var(--fgColor-muted); font-weight: var(--base-text-weight-normal); }
+.issue { display: flex; justify-content: space-between; gap: var(--base-size-12); }
+.issue-title { margin: 0 0 var(--base-size-4); font-size: var(--text-body-size-large); font-weight: var(--base-text-weight-semibold); color: var(--fgColor-default); }
+.issue-labels { display: inline-flex; gap: var(--base-size-4); margin-left: var(--base-size-8); }
+.issue-meta { margin: 0; font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+.issue-count { align-self: center; }
+.billing { max-width: 720px; margin: var(--base-size-40) auto; padding: 0 var(--base-size-16); }
+.billing-title { margin: 0 0 var(--base-size-16); font-size: var(--text-title-size-medium); font-weight: var(--text-title-weight-medium); }
+.billing-flash { margin-bottom: var(--base-size-16); }
+.bill-table { width: 100%; border-collapse: collapse; }
+.bill-th { padding: var(--base-size-8) var(--base-size-16); text-align: left; font-size: var(--text-body-size-small); font-weight: var(--base-text-weight-semibold); color: #59636e; background: var(--bgColor-muted); border-bottom: var(--borderWidth-thin) solid var(--borderColor-default); }
+.bill-td { padding: var(--base-size-12) var(--base-size-16); border-bottom: var(--borderWidth-thin) solid var(--borderColor-muted); color: var(--borderColor-default); }
+.bill-amount { text-align: right; font-weight: var(--base-text-weight-medium); }
+.bill-total { padding: var(--base-size-16); text-align: right; font-size: var(--text-body-size-large); font-weight: var(--base-text-weight-semibold); color: var(--fgColor-default); }
+.bill-actions { display: flex; justify-content: flex-end; gap: 9px; }
+.team { max-width: 760px; margin: var(--base-size-40) auto; padding: 0 var(--base-size-16); }
+.team-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--base-size-16); }
+.team-title { margin: 0; font-size: var(--text-title-size-medium); font-weight: var(--text-title-weight-medium); }
+.member { display: flex; align-items: center; gap: var(--base-size-12); }
+.member-avatar { width: var(--base-size-32); height: var(--base-size-32); }
+.member-main { flex: 1; }
+.member-name { margin: 0; font-weight: var(--base-text-weight-semibold); color: #232328; }
+.member-email { margin: 0; font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+.member-role { margin-right: var(--base-size-8); }
+.team-note { margin-top: var(--base-size-12); font-size: var(--text-body-size-small); color: var(--borderColor-default); }
+</style>
+</head>
+<body>
+<section>
+<main class="issues" data-qa="issue-list-issues">
+  <div class="issues-bar" data-qa="issue-list-bar">
+    <input class="form-control issues-filter" placeholder="Filter issues" data-qa="issue-list-filter">
+    <button style="background: rgb(31, 136, 61); color: rgb(255, 255, 255); border: 1px solid rgba(31, 35, 40, 0.15); border-radius: 6px; padding: 5px 16px; font-size: 14px; font-weight: 500" type="button" data-qa="issue-list-btn-new">New issue</button>
+  </div>
+  <div class="Box" data-qa="issue-list-list">
+    <div class="Box-header issues-head" data-qa="issue-list-head">
+      <span data-qa="issue-list-open-count">12 Open</span>
+      <span class="issues-closed" data-qa="issue-list-closed-count">48 Closed</span>
+    </div>
+    <div class="Box-row issue" data-qa="issue-list-issue-1">
+      <div data-qa="issue-list-issue-1-main">
+        <p class="issue-title" data-qa="issue-list-issue-1-title">Search results ignore archived filter<span class="issue-labels" data-qa="issue-list-issue-1-labels"><span class="Label Label--danger" data-qa="issue-list-issue-1-bug">bug</span></span></p>
+        <p class="issue-meta" data-qa="issue-list-issue-1-meta">#482 opened 2 days ago by lena-m</p>
+      </div>
+      <span class="Counter issue-count" data-qa="issue-list-issue-1-count">5</span>
+    </div>
+    <div class="Box-row issue" data-qa="issue-list-issue-2">
+      <div data-qa="issue-list-issue-2-main">
+        <p class="issue-title" data-qa="issue-list-issue-2-title">Add keyboard shortcut for quick filters<span class="issue-labels" data-qa="issue-list-issue-2-labels"><span class="Label Label--accent" data-qa="issue-list-issue-2-enh">enhancement</span><span style="display: inline-block; padding: 0 8px; font-size: 12px; font-weight: 500; color: rgb(130, 80, 223); border: 1px solid rgb(130, 80, 223); border-radius: 999px" data-qa="issue-list-issue-2-triage">triaged</span></span></p>
+        <p class="issue-meta" data-qa="issue-list-issue-2-meta">#479 opened 4 days ago by sam-k</p>
+      </div>
+      <span class="Counter issue-count" data-qa="issue-list-issue-2-count">2</span>
+    </div>
+    <div class="Box-row issue" data-qa="issue-list-issue-3">
+      <div data-qa="issue-list-issue-3-main">
+        <p class="issue-title" data-qa="issue-list-issue-3-title">Docs: clarify token rotation steps<span class="issue-labels" data-qa="issue-list-issue-3-labels"><span class="Label" data-qa="issue-list-issue-3-docs">docs</span></span></p>
+        <p class="issue-meta" data-qa="issue-list-issue-3-meta">#471 opened last week by priya-r</p>
+      </div>
+      <span class="Counter issue-count" data-qa="issue-list-issue-3-count">0</span>
+    </div>
+  </div>
+</main>
+</section>
+<section>
+<main class="billing" data-qa="billing-summary-billing">
+  <h1 class="billing-title" data-qa="billing-summary-title">Billing summary</h1>
+  <div class="flash billing-flash" data-qa="billing-summary-flash">Your next invoice is due on November 1.</div>
+  <div class="Box" data-qa="billing-summary-box">
+    <table class="bill-table" data-qa="billing-summary-table">
+      <thead>
+        <tr>
+          <th class="bill-th" data-qa="billing-summary-th-item">Item</th>
+          <th class="bill-th" data-qa="billing-summary-th-seats">Seats</th>
+          <th class="bill-th bill-amount" data-qa="billing-summary-th-amount">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="bill-td" data-qa="billing-summary-td-plan">Team plan</td>
+          <td class="bill-td" data-qa="billing-summary-td-plan-seats">12</td>
+          <td class="bill-td bill-amount" data-qa="billing-summary-td-plan-amount">$96.00</td>
+        </tr>
+        <tr>
+          <td class="bill-td" data-qa="billing-summary-td-storage">Extra storage</td>
+          <td class="bill-td" data-qa="billing-summary-td-storage-seats">n/a</td>
+          <td class="bill-td bill-amount" data-qa="billing-summary-td-storage-amount">$10.00</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="bill-total" data-qa="billing-summary-total">Total due: $106.00</div>
+    <div class="Box-footer bill-actions" data-qa="billing-summary-actions">
+      <button class="btn" type="button" data-qa="billing-summary-btn-download">Download invoice</button>
+      <button class="btn btn-primary" type="button" data-qa="billing-summary-btn-pay">Pay now</button>
+    </div>
+  </div>
+</main>
+</section>
+<section>
+<main class="team" data-qa="team-members-team">
+  <div class="team-bar" data-qa="team-members-bar">
+    <h1 class="team-title" data-qa="team-members-title">Team members</h1>
+    <button class="btn btn-primary" type="button" data-qa="team-members-btn-invite">Invite member</button>
+  </div>
+  <div class="Box" data-qa="team-members-list">
+    <div class="Box-row member" data-qa="team-members-member-1">
+      <span class="avatar member-avatar" data-qa="team-members-avatar-1"></span>
+      <div class="member-main" data-qa="team-members-main-1"><p class="member-name" data-qa="team-members-name-1">Jordan Lee</p><p class="member-email" data-qa="team-members-email-1">jordan@example.com</p></div>
+      <span class="Label Label--accent member-role" data-qa="team-members-role-1">Owner</span>
+      <button class="btn btn-sm btn-invisible" type="button" data-qa="team-members-btn-edit-1">Edit</button>
+    </div>
+    <div class="Box-row member" data-qa="team-members-member-2">
+      <span class="avatar member-avatar" data-qa="team-members-avatar-2"></span>
+      <div class="member-main" data-qa="team-members-main-2"><p class="member-name" data-qa="team-members-name-2">Priya Raman</p><p class="member-email" data-qa="team-members-email-2">priya@example.com</p></div>
+      <span class="Label member-role" data-qa="team-members-role-2">Member</span>
+      <button class="btn btn-sm btn-danger" type="button" data-qa="team-members-btn-remove-2">Remove</button>
+    </div>
+    <div class="Box-row member" data-qa="team-members-member-3">
+      <span class="avatar member-avatar" data-qa="team-members-avatar-3"></span>
+      <div class="member-main" data-qa="team-members-main-3"><p class="member-name" data-qa="team-members-name-3">Sam Kowalski</p><p class="member-email" data-qa="team-members-email-3">sam@example.com</p></div>
+      <span class="Label Label--done member-role" data-qa="team-members-role-3">Pending invite</span>
+      <button class="btn btn-sm btn-danger" type="button" data-qa="team-members-btn-remove-3">Cancel invite</button>
+    </div>
+  </div>
+  <p class="team-note" data-qa="team-members-note">Owners can change roles and billing.</p>
+</main>
+</section>
+</body>
+</html>

@@ -1,0 +1,10 @@
+/* Written for this lab. Not part of Spectrum.
+   Spectrum 2's font token is the commercial "adobe clean" with no fallback, so the lab adds a system fallback.
+   This only changes font-family; no Spectrum color, spacing, type-size or shape token is redefined here. */
+.spectrum {
+  --spectrum-sans-serif-font-family: "adobe clean", "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--spectrum-sans-serif-font-family);
+  background-color: var(--spectrum-background-base-color);
+  color: var(--spectrum-neutral-content-color-default);
+  margin: 0;
+}

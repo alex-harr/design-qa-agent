@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en" data-color-mode="light" data-light-theme="light">
+<head>
+<meta charset="utf-8">
+<title>Account settings · Billing · Team members</title>
+<link rel="stylesheet" href="design-system/primer.css">
+<style>
+.settings { max-width: 640px; margin: var(--base-size-40) auto; padding: 0 var(--base-size-16); }
+.settings-title { margin: 0 0 var(--base-size-4); font-size: var(--text-title-size-large); font-weight: var(--text-title-weight-large); color: var(--fgColor-default); }
+.settings-lede { margin: 0 0 var(--base-size-24); font-size: var(--text-body-size-large); color: var(--fgColor-muted); }
+.field { margin-bottom: var(--base-size-16); }
+.field-label { display: block; margin-bottom: var(--base-size-6); font-weight: var(--base-text-weight-semibold); color: var(--fgColor-default); }
+.field-input { width: 100%; }
+.field-help { margin: var(--base-size-4) 0 0; font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+.actions { display: flex; gap: var(--base-size-8); margin-top: var(--base-size-24); padding-top: var(--base-size-16); border-top: var(--borderWidth-thin) solid var(--borderColor-default); }
+.billing { max-width: 720px; margin: var(--base-size-40) auto; padding: 0 var(--base-size-16); }
+.billing-title { margin: 0 0 var(--base-size-16); font-size: var(--text-title-size-medium); font-weight: var(--text-title-weight-medium); }
+.billing-flash { margin-bottom: var(--base-size-16); }
+.bill-table { width: 100%; border-collapse: collapse; }
+.bill-th { padding: var(--base-size-8) var(--base-size-16); text-align: left; font-size: var(--text-body-size-small); font-weight: var(--base-text-weight-semibold); color: var(--fgColor-muted); background: var(--bgColor-muted); border-bottom: var(--borderWidth-thin) solid var(--borderColor-default); }
+.bill-td { padding: var(--base-size-12) var(--base-size-16); border-bottom: var(--borderWidth-thin) solid var(--borderColor-muted); color: var(--fgColor-default); }
+.bill-amount { text-align: right; font-weight: var(--base-text-weight-medium); }
+.bill-total { padding: var(--base-size-16); text-align: right; font-size: var(--text-body-size-large); font-weight: var(--base-text-weight-semibold); color: var(--fgColor-default); }
+.bill-actions { display: flex; justify-content: flex-end; gap: var(--base-size-8); }
+.team { max-width: 760px; margin: var(--base-size-40) auto; padding: 0 var(--base-size-16); }
+.team-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--base-size-16); }
+.team-title { margin: 0; font-size: var(--text-title-size-medium); font-weight: var(--text-title-weight-medium); }
+.member { display: flex; align-items: center; gap: var(--base-size-12); }
+.member-avatar { width: var(--base-size-32); height: var(--base-size-32); }
+.member-main { flex: 1; }
+.member-name { margin: 0; font-weight: var(--base-text-weight-semibold); color: var(--fgColor-default); }
+.member-email { margin: 0; font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+.member-role { margin-right: var(--base-size-8); }
+.team-note { margin-top: var(--base-size-12); font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+</style>
+</head>
+<body>
+<section>
+<main class="settings" data-qa="account-settings-settings">
+  <h1 class="settings-title" data-qa="account-settings-title">Account settings</h1>
+  <p class="settings-lede" data-qa="account-settings-lede">Update how your name and email appear to your team.</p>
+  <div class="Box" data-qa="account-settings-form-box">
+    <div class="Box-body" data-qa="account-settings-form-body">
+      <div class="field" data-qa="account-settings-field-name">
+        <label class="field-label" for="account-settings-name" data-qa="account-settings-label-name">Display name</label>
+        <input class="form-control field-input" id="account-settings-name" value="Rae Okafor" data-qa="account-settings-input-name">
+        <p class="field-help" data-qa="account-settings-help-name">Shown on comments and mentions.</p>
+      </div>
+      <div class="field" data-qa="account-settings-field-email">
+        <label class="field-label" for="account-settings-email" data-qa="account-settings-label-email">Email</label>
+        <input class="form-control field-input" id="account-settings-email" value="rae@example.com" data-qa="account-settings-input-email">
+        <p class="field-help" data-qa="account-settings-help-email">We'll send security alerts here.</p>
+      </div>
+      <div class="actions" data-qa="account-settings-actions">
+        <button class="btn btn-primary" type="button" data-qa="account-settings-btn-save">Save changes</button>
+        <button class="btn" type="button" data-qa="account-settings-btn-cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+</main>
+</section>
+<section>
+<main class="billing" data-qa="billing-summary-billing">
+  <h1 class="billing-title" data-qa="billing-summary-title">Billing summary</h1>
+  <div class="flash billing-flash" data-qa="billing-summary-flash">Your next invoice is due on November 1.</div>
+  <div class="Box" data-qa="billing-summary-box">
+    <table class="bill-table" data-qa="billing-summary-table">
+      <thead>
+        <tr>
+          <th class="bill-th" data-qa="billing-summary-th-item">Item</th>
+          <th class="bill-th" data-qa="billing-summary-th-seats">Seats</th>
+          <th class="bill-th bill-amount" data-qa="billing-summary-th-amount">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="bill-td" data-qa="billing-summary-td-plan">Team plan</td>
+          <td class="bill-td" data-qa="billing-summary-td-plan-seats">12</td>
+          <td class="bill-td bill-amount" data-qa="billing-summary-td-plan-amount">$96.00</td>
+        </tr>
+        <tr>
+          <td class="bill-td" data-qa="billing-summary-td-storage">Extra storage</td>
+          <td class="bill-td" data-qa="billing-summary-td-storage-seats">n/a</td>
+          <td class="bill-td bill-amount" data-qa="billing-summary-td-storage-amount">$10.00</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="bill-total" data-qa="billing-summary-total">Total due: $106.00</div>
+    <div class="Box-footer bill-actions" data-qa="billing-summary-actions">
+      <button class="btn" type="button" data-qa="billing-summary-btn-download">Download invoice</button>
+      <button class="btn btn-primary" type="button" data-qa="billing-summary-btn-pay">Pay now</button>
+    </div>
+  </div>
+</main>
+</section>
+<section>
+<main class="team" data-qa="team-members-team">
+  <div class="team-bar" data-qa="team-members-bar">
+    <h1 class="team-title" data-qa="team-members-title">Team members</h1>
+    <button class="btn btn-primary" type="button" data-qa="team-members-btn-invite">Invite member</button>
+  </div>
+  <div class="Box" data-qa="team-members-list">
+    <div class="Box-row member" data-qa="team-members-member-1">
+      <span class="avatar member-avatar" data-qa="team-members-avatar-1"></span>
+      <div class="member-main" data-qa="team-members-main-1"><p class="member-name" data-qa="team-members-name-1">Jordan Lee</p><p class="member-email" data-qa="team-members-email-1">jordan@example.com</p></div>
+      <span class="Label Label--accent member-role" data-qa="team-members-role-1">Owner</span>
+      <button class="btn btn-sm btn-invisible" type="button" data-qa="team-members-btn-edit-1">Edit</button>
+    </div>
+    <div class="Box-row member" data-qa="team-members-member-2">
+      <span class="avatar member-avatar" data-qa="team-members-avatar-2"></span>
+      <div class="member-main" data-qa="team-members-main-2"><p class="member-name" data-qa="team-members-name-2">Priya Raman</p><p class="member-email" data-qa="team-members-email-2">priya@example.com</p></div>
+      <span class="Label member-role" data-qa="team-members-role-2">Member</span>
+      <button class="btn btn-sm btn-danger" type="button" data-qa="team-members-btn-remove-2">Remove</button>
+    </div>
+    <div class="Box-row member" data-qa="team-members-member-3">
+      <span class="avatar member-avatar" data-qa="team-members-avatar-3"></span>
+      <div class="member-main" data-qa="team-members-main-3"><p class="member-name" data-qa="team-members-name-3">Sam Kowalski</p><p class="member-email" data-qa="team-members-email-3">sam@example.com</p></div>
+      <span class="Label Label--attention member-role" data-qa="team-members-role-3">Pending invite</span>
+      <button class="btn btn-sm btn-danger" type="button" data-qa="team-members-btn-remove-3">Cancel invite</button>
+    </div>
+  </div>
+  <p class="team-note" data-qa="team-members-note">Owners can change roles and billing.</p>
+</main>
+</section>
+</body>
+</html>

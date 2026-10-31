@@ -1,0 +1,154 @@
+{
+  "task": "t13-03-05-11",
+  "screen": [
+    "03-notifications.html",
+    "05-empty-state.html",
+    "11-team-members.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".empty-body"
+      },
+      "description": "color hard-coded as #505050 instead of var(--spectrum-neutral-subdued-content-color-default)",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: #505050",
+      "elements": [
+        "empty-state-body"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".note-meta"
+      },
+      "description": "text color set to var(--spectrum-gray-300), a real token that fails contrast here",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: var(--spectrum-gray-300)",
+      "accept_colors": [
+        "rgb(41, 41, 41)",
+        "rgb(80, 80, 80)"
+      ],
+      "elements": [
+        "notifications-meta-1",
+        "notifications-meta-2",
+        "notifications-meta-3"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".empty-heading"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--spectrum-neutral-content-color-default)",
+      "mutated": "color: var(--spectrum-disabled-content-color)",
+      "accept_colors": [
+        "rgb(41, 41, 41)",
+        "rgb(80, 80, 80)"
+      ],
+      "elements": [
+        "empty-state-heading"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".empty"
+      },
+      "description": "background hard-coded as #ffffff instead of var(--spectrum-background-layer-2-color)",
+      "original": "background: var(--spectrum-background-layer-2-color)",
+      "mutated": "background: #ffffff",
+      "elements": [
+        "empty-state-empty"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "rebuild_label",
+      "rule": "R6",
+      "target": {
+        "qa": "notifications-label-3"
+      },
+      "description": "status pill rebuilt by hand instead of using .spectrum-Badge (spectrum-Badge spectrum-Badge--positive)",
+      "original": "<div class=\"spectrum-Badge spectrum-Badge--positive\" data-qa=\"notifications-label-3\">",
+      "mutated": "<div style=\"display: inline-block; padding: 0 0px; font-size: 16px; font-weight: 400; color: rgb(255, 255, 255); border: 1px solid rgba(0, 0, 0, 0); border-radius: 999px\" data-qa=\"notifications-label-3\">",
+      "elements": [
+        "notifications-label-3",
+        "notifications-label-3-text"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".member"
+      },
+      "description": "gap uses 11px, off the spacing scale",
+      "original": "gap: var(--spectrum-spacing-200)",
+      "mutated": "gap: 11px",
+      "elements": [
+        "team-members-member-1",
+        "team-members-member-2",
+        "team-members-member-3"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".team"
+      },
+      "description": "margin uses 37px, off the spacing scale",
+      "original": "margin: var(--spectrum-spacing-600) auto",
+      "mutated": "margin: 37px auto",
+      "elements": [
+        "team-members-team"
+      ]
+    },
+    {
+      "id": "m8",
+      "op": "rebuild_label",
+      "rule": "R6",
+      "target": {
+        "qa": "notifications-label-1"
+      },
+      "description": "status pill rebuilt by hand instead of using .spectrum-Badge (spectrum-Badge spectrum-Badge--negative)",
+      "original": "<div class=\"spectrum-Badge spectrum-Badge--negative\" data-qa=\"notifications-label-1\">",
+      "mutated": "<div style=\"display: inline-block; padding: 0 0px; font-size: 16px; font-weight: 400; color: rgb(255, 255, 255); border: 1px solid rgba(0, 0, 0, 0); border-radius: 999px\" data-qa=\"notifications-label-1\">",
+      "elements": [
+        "notifications-label-1",
+        "notifications-label-1-text"
+      ]
+    },
+    {
+      "id": "m9",
+      "op": "off_radius",
+      "rule": "R4",
+      "target": {
+        "selector": ".member-avatar"
+      },
+      "description": "border-radius 15px instead of var(--spectrum-corner-radius-800)",
+      "original": "border-radius: var(--spectrum-corner-radius-800)",
+      "mutated": "border-radius: 15px",
+      "elements": [
+        "team-members-avatar-1",
+        "team-members-avatar-2",
+        "team-members-avatar-3"
+      ]
+    }
+  ]
+}

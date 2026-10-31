@@ -1,0 +1,439 @@
+<title>Blind Review Bench</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a review bench. Case strip on top, the screen on the left (switch Design / Received / Shipped),
+   evidence on the right, the two verdicts pinned under the evidence. One case at a time. */
+:root {
+  --bg: #f3f4f1;
+  --panel: #ffffff;
+  --ink: #1d2124;
+  --muted: #5d666c;
+  --line: #d9ddd7;
+  --accent: #1f5f8b;
+  --accent-soft: #e3edf4;
+  --ship: #1f7a45;
+  --ship-soft: #e2f1e7;
+  --stop: #b3322b;
+  --stop-soft: #f8e4e2;
+  --maybe: #8a6100;
+  --maybe-soft: #f6edd6;
+  --mark: #d1477a;
+  --add: #e4f2e6;
+  --del: #f8e6e4;
+  --font-ui: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-code: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #15181a; --panel: #1d2124; --ink: #e7eaeb; --muted: #9aa4aa; --line: #30363a;
+    --accent: #7db4dc; --accent-soft: #1d3140;
+    --ship: #6cc391; --ship-soft: #183324; --stop: #ef8a82; --stop-soft: #3a1f1d; --maybe: #e0b85a; --maybe-soft: #352b14;
+    --mark: #f07aa6; --add: #183324; --del: #3a1f1d; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #15181a; --panel: #1d2124; --ink: #e7eaeb; --muted: #9aa4aa; --line: #30363a;
+  --accent: #7db4dc; --accent-soft: #1d3140;
+  --ship: #6cc391; --ship-soft: #183324; --stop: #ef8a82; --stop-soft: #3a1f1d; --maybe: #e0b85a; --maybe-soft: #352b14;
+  --mark: #f07aa6; --add: #183324; --del: #3a1f1d; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink); font: 15px/1.5 var(--font-ui);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 48px;
+}
+.wrap { max-width: 1280px; margin: 0 auto; display: grid; gap: 16px; }
+header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; }
+h1 { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -0.01em; text-wrap: balance; }
+.lede { margin: 4px 0 0; color: var(--muted); max-width: 70ch; }
+.progress { font-variant-numeric: tabular-nums; color: var(--muted); white-space: nowrap; }
+.progress b { color: var(--ink); }
+.status { font-size: 13px; color: var(--muted); min-height: 1.5em; }
+.status.warn { color: var(--stop); }
+
+.strip { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  font: 500 12px/1 var(--font-code); width: 44px; height: 30px; border-radius: 6px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--panel); color: var(--muted);
+}
+.chip.half { border-color: var(--accent); color: var(--accent); }
+.chip.done { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+.chip.current { outline: 2px solid var(--ink); outline-offset: 1px; color: var(--ink); }
+.chip:focus-visible, button:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.case { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 16px; align-items: start; }
+@media (max-width: 860px) { .case { grid-template-columns: minmax(0, 1fr); } }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; min-width: 0; }
+.panel h2 { margin: 0 0 10px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); }
+.viewer { position: sticky; top: env(safe-area-inset-top, 0px); display: grid; gap: 10px; }
+@media (max-width: 860px) { .viewer { position: static; } }
+.viewer-top { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; }
+.case-name { font-size: 18px; font-weight: 600; }
+.case-name small { font: 500 12px var(--font-code); color: var(--muted); margin-left: 6px; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.seg button { font: 500 13px var(--font-ui); padding: 6px 12px; border: 0; background: transparent; color: var(--muted); cursor: pointer; }
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--panel); }
+.seg kbd { font: 11px var(--font-code); opacity: 0.6; margin-left: 4px; }
+.shot { border: 1px solid var(--line); border-radius: 6px; overflow: auto; max-height: 72vh; background: #fff; }
+.shot-inner { position: relative; }
+.shot img { display: block; width: 100%; height: auto; }
+.mark { position: absolute; border: 2px solid var(--mark); border-radius: 3px; pointer-events: none; }
+.mark span {
+  position: absolute; top: -10px; left: -10px; min-width: 18px; height: 18px; padding: 0 4px; border-radius: 9px;
+  background: var(--mark); color: var(--panel); font: 600 11px/18px var(--font-code); text-align: center;
+}
+.toggle { font-size: 13px; color: var(--muted); display: inline-flex; gap: 6px; align-items: center; cursor: pointer; }
+.hint { font-size: 13px; color: var(--muted); margin: 0; }
+
+.side { display: grid; gap: 16px; min-width: 0; }
+.problems { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.problems li { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 8px; }
+.num { width: 22px; height: 22px; border-radius: 11px; background: var(--mark); color: var(--panel); font: 600 11px/22px var(--font-code); text-align: center; }
+.rule { font: 600 12px var(--font-code); color: var(--accent); margin-right: 6px; }
+.intended { display: block; font: 12px/1.5 var(--font-code); color: var(--muted); overflow-wrap: anywhere; }
+.clean-note { margin: 0; color: var(--muted); }
+.diff { margin: 0; font: 12px/1.55 var(--font-code); border: 1px solid var(--line); border-radius: 6px; }
+.diff div { padding: 1px 10px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.diff .add { background: var(--add); }
+.diff .del { background: var(--del); }
+.diff .none { color: var(--muted); padding: 8px 10px; white-space: normal; }
+.report { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.report li { border-left: 2px solid var(--line); padding-left: 10px; overflow-wrap: anywhere; }
+.report .el { font: 500 12px var(--font-code); }
+.report p { margin: 2px 0 0; font-size: 14px; }
+.report .fix { color: var(--muted); }
+.self { margin: 10px 0 0; font-size: 13px; color: var(--muted); }
+.panel .sub { margin: -4px 0 12px; font-size: 13px; color: var(--muted); }
+.cards { display: grid; gap: 14px; }
+.card { border: 1px solid var(--line); border-radius: 8px; padding: 12px; display: grid; gap: 10px; min-width: 0; }
+.card-head { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 8px; align-items: start; }
+.where { font-size: 13px; font-weight: 600; color: var(--muted); }
+.ptitle { margin: 2px 0 0; font-size: 15px; font-weight: 600; }
+.note { display: inline-block; margin-top: 4px; font-size: 12px; color: var(--maybe); background: var(--maybe-soft); border-radius: 4px; padding: 1px 6px; }
+.crops { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 6px 10px; align-items: center; }
+.crops .clabel { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.crops .frame { border: 1px solid var(--line); border-radius: 4px; background: #fff; display: flex; align-items: center; justify-content: flex-start; min-height: 36px; overflow: hidden; min-width: 0; }
+.crops img { display: block; max-width: 100%; height: auto; }
+.rtag { font: 600 11px var(--font-code); color: var(--accent); background: var(--accent-soft); border-radius: 4px; padding: 1px 6px; margin-left: 6px; white-space: nowrap; }
+.about { font-size: 12px; font-weight: 600; color: var(--muted); }
+.about.miss { color: var(--maybe); }
+.crops .gone { font-size: 12px; color: #6b6f73; padding: 8px; }
+.facts { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 6px 12px; margin: 0; font-size: 14px; }
+.facts dt { font-size: 12px; font-weight: 600; color: var(--muted); padding-top: 2px; }
+.facts dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+@media (max-width: 520px) { .facts { grid-template-columns: minmax(0, 1fr); } .facts dt { padding-top: 6px; } }
+.chg { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; margin: 2px 0; }
+.chg .what { font-weight: 600; margin-right: 2px; }
+.chg .arrow { color: var(--muted); }
+.nothing { color: var(--stop); font-weight: 600; }
+.none-note { color: var(--muted); }
+.tok, .raw { display: inline-flex; align-items: center; gap: 5px; padding: 1px 7px; border-radius: 999px; font-size: 13px; line-height: 1.5; white-space: nowrap; }
+.tok { background: var(--accent-soft); color: var(--ink); }
+.raw { background: var(--stop-soft); color: var(--ink); }
+.tok small, .raw small { font-size: 11px; color: var(--muted); }
+.sw { display: inline-block; width: 11px; height: 11px; border-radius: 3px; border: 1px solid var(--line); flex: none; }
+.contrast { margin: 0; font-size: 13px; }
+.said { margin: 2px 0; font-size: 14px; }
+.said b { font-size: 12px; color: var(--muted); font-weight: 600; margin-right: 4px; }
+.checks { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.checks li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 8px; align-items: start; font-size: 15px; }
+.mark-ok, .mark-no { width: 20px; height: 20px; border-radius: 10px; font: 700 12px/20px var(--font-ui); text-align: center; }
+.mark-ok { background: var(--ship-soft); color: var(--ship); }
+.mark-no { background: var(--stop-soft); color: var(--stop); }
+.checks small { display: block; color: var(--muted); font-size: 13px; }
+details.more { margin-top: 12px; }
+details.more summary { cursor: pointer; font-size: 13px; font-weight: 600; color: var(--accent); }
+details.more[open] summary { margin-bottom: 10px; }
+details.code summary { cursor: pointer; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); }
+details.code[open] summary { margin-bottom: 10px; }
+
+.verdicts { display: grid; gap: 14px; }
+.q { display: grid; gap: 6px; }
+.q h3 { margin: 0; font-size: 16px; font-weight: 600; }
+.q .hint { max-width: 60ch; }
+.choices { display: flex; flex-wrap: wrap; gap: 8px; }
+.choices button {
+  font: 600 14px var(--font-ui); padding: 8px 14px; border-radius: 8px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--panel); color: var(--ink);
+}
+.choices button[data-v="pass"][aria-pressed="true"] { background: var(--ship-soft); border-color: var(--ship); color: var(--ship); }
+.choices button[data-v="fail"][aria-pressed="true"] { background: var(--stop-soft); border-color: var(--stop); color: var(--stop); }
+.choices button[data-v="unsure"][aria-pressed="true"] { background: var(--maybe-soft); border-color: var(--maybe); color: var(--maybe); }
+textarea {
+  width: 100%; min-height: 60px; font: 14px/1.5 var(--font-ui); color: var(--ink); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; resize: vertical;
+}
+label.small { font-size: 13px; color: var(--muted); }
+.nav { display: flex; justify-content: space-between; gap: 8px; }
+.nav button {
+  font: 600 14px var(--font-ui); padding: 9px 16px; border-radius: 8px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--panel); color: var(--ink);
+}
+.nav button.primary { background: var(--accent); border-color: var(--accent); color: var(--panel); }
+.nav button:disabled { opacity: 0.4; cursor: default; }
+@media (prefers-reduced-motion: no-preference) { .chip, .choices button, .seg button { transition: background-color .12s, border-color .12s; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Blind Review Bench</h1>
+      <p class="lede">Each case is one run of the design-system QA agent on a design-system screen with planted problems. Look at what it shipped and answer two questions. You don't see the automated grade or the judge's call. Answers save as you go.</p>
+    </div>
+    <div class="progress" id="progress"></div>
+  </header>
+  <div class="strip" id="strip" aria-label="Cases"></div>
+  <div class="status" id="status" role="status"></div>
+
+  <section class="case">
+    <div class="panel viewer">
+      <div class="viewer-top">
+        <div class="case-name" id="caseName"></div>
+        <div class="seg" role="group" aria-label="Which screen">
+          <button type="button" data-view="design">Design<kbd>1</kbd></button>
+          <button type="button" data-view="received">Received<kbd>2</kbd></button>
+          <button type="button" data-view="output">Shipped<kbd>3</kbd></button>
+        </div>
+      </div>
+      <div class="shot" id="shot"><div class="shot-inner" id="shotInner"><img id="shotImg" alt=""></div></div>
+      <div class="viewer-top">
+        <p class="hint" id="viewHint"></p>
+        <label class="toggle"><input type="checkbox" id="showMarks" checked> Show where problems were planted</label>
+      </div>
+    </div>
+
+    <div class="side">
+      <div class="panel">
+        <h2>Planted problems and what the agent did</h2>
+        <p class="sub">Each problem shows the element as designed, as the agent received it, and as it shipped.</p>
+        <div id="problems"></div>
+      </div>
+      <div class="panel">
+        <h2>Other changes the agent made</h2>
+        <p class="sub">Changes to things that weren't planted problems. On a good run this list is empty.</p>
+        <div id="others"></div>
+      </div>
+      <div class="panel">
+        <h2>Report check</h2>
+        <p class="sub">An accurate report passes all three checks. Open the details if you want to see each item.</p>
+        <div id="check"></div>
+        <details class="more"><summary>See the agent's report item by item</summary><div id="report"></div></details>
+      </div>
+      <details class="panel code">
+        <summary>Code diff (for engineers)</summary>
+        <div class="diff" id="diff"></div>
+      </details>
+      <div class="panel verdicts">
+        <div class="q" id="q-fix">
+          <h3>Would you ship the agent's fixes?</h3>
+          <p class="hint">Ship it if every planted problem is fixed the intended way or an equally good way under the rules, and nothing else on the screen visibly changed. On a screen with nothing planted, ship it only if it came back unchanged.</p>
+          <div class="choices">
+            <button type="button" data-q="fix" data-v="pass">Ship it</button>
+            <button type="button" data-q="fix" data-v="fail">Don't ship</button>
+            <button type="button" data-q="fix" data-v="unsure">Can't tell</button>
+          </div>
+        </div>
+        <div class="q" id="q-report">
+          <h3>Is the agent's report accurate?</h3>
+          <p class="hint">Use the Report check above. Accurate means all three checks pass: it mentions every planted problem, every fix it claims really happened, and it raises no false alarms.</p>
+          <div class="choices">
+            <button type="button" data-q="report" data-v="pass">Accurate</button>
+            <button type="button" data-q="report" data-v="fail">Not accurate</button>
+            <button type="button" data-q="report" data-v="unsure">Can't tell</button>
+          </div>
+        </div>
+        <div class="q">
+          <label class="small" for="note">Note (optional): anything that made this call hard</label>
+          <textarea id="note"></textarea>
+        </div>
+        <div class="nav">
+          <button type="button" id="prev">Previous</button>
+          <button type="button" id="next" class="primary">Next case</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+const CASES = /*CASES*/[];
+const VIEW_HINT = {
+  design: "The screen as designed. This is the target.",
+  received: "What the agent was given, with the planted problems.",
+  output: "What the agent shipped."
+};
+let db = null, saving = Promise.resolve();
+let labels = {};
+let idx = 0, view = "output";
+const $ = (id) => document.getElementById(id);
+
+try { const saved = JSON.parse(localStorage.getItem("brb-local") || "{}"); if (saved && typeof saved === "object") labels = saved; } catch (e) {}
+try { const i = parseInt(localStorage.getItem("brb-idx") || "0", 10); if (i >= 0 && i < CASES.length) idx = i; } catch (e) {}
+
+function esc(s) { return String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
+function isDone(l) { return l && l.fix && l.report; }
+
+function renderStrip() {
+  const strip = $("strip");
+  strip.innerHTML = CASES.map((c, i) => {
+    const l = labels[c.id];
+    const cls = ["chip", isDone(l) ? "done" : (l && (l.fix || l.report)) ? "half" : "", i === idx ? "current" : ""].join(" ");
+    return `<button type="button" class="${cls}" data-i="${i}" aria-label="Case ${i + 1}${isDone(l) ? ', labeled' : ''}">${i + 1}</button>`;
+  }).join("");
+  const done = CASES.filter(c => isDone(labels[c.id])).length;
+  $("progress").innerHTML = `<b>${done}</b> of ${CASES.length} labeled`;
+}
+
+function renderView() {
+  const c = CASES[idx];
+  document.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.view === view)));
+  const img = $("shotImg");
+  img.src = c.img[view];
+  img.alt = `${c.screen}: ${view === "output" ? "what the agent shipped" : view === "received" ? "what the agent received" : "the design"}`;
+  $("viewHint").textContent = VIEW_HINT[view];
+  const shot = $("shotInner");
+  shot.querySelectorAll(".mark").forEach(m => m.remove());
+  if ($("showMarks").checked) {
+    c.problems.forEach(p => p.marks.forEach(([x, y, w, h]) => {
+      const d = document.createElement("div");
+      d.className = "mark";
+      d.style.left = x + "%"; d.style.top = y + "%"; d.style.width = w + "%"; d.style.height = h + "%";
+      d.innerHTML = `<span>${p.n}</span>`;
+      shot.appendChild(d);
+    }));
+  }
+}
+
+function renderVerdicts() {
+  const l = labels[CASES[idx].id] || {};
+  document.querySelectorAll(".choices button").forEach(b => b.setAttribute("aria-pressed", String(l[b.dataset.q] === b.dataset.v)));
+}
+
+function renderCase() {
+  const c = CASES[idx];
+  $("caseName").innerHTML = `${esc(c.screen)}<small>case ${idx + 1} of ${CASES.length}</small>`;
+  const chg = (items) => items.map(it => `<div class="chg"><span class="what">${it.what}</span>${it.from}<span class="arrow">→</span>${it.to}</div>`).join("");
+  const fig = (label, src) => `<span class="clabel">${label}</span><div class="frame">${src ? `<img src="${src}" alt="${label}">` : `<span class="gone">Not on screen</span>`}</div>`;
+  const RULE_NAME = {R1: "Colors", R2: "Spacing", R3: "Type", R4: "Shape", R5: "Readable text", R6: "Components", R7: "Color meaning"};
+  const rtag = (r) => r ? `<span class="rtag">${esc(r)} · ${esc(RULE_NAME[r] || "")}</span>` : "";
+  $("problems").innerHTML = c.problems.length
+    ? `<div class="cards">${c.problems.map(p => `<article class="card">
+        <div class="card-head"><span class="num">${p.n}</span><div>
+          <div class="where">${esc(p.where)}${rtag(p.rule)}</div>
+          <p class="ptitle">${esc(p.title)}</p>
+          ${p.code_only ? `<span class="note">Looks the same on screen. This one lives in the code.</span>` : ""}
+        </div></div>
+        <div class="crops">${fig("Design", p.crops.design)}${fig("Received", p.crops.received)}${fig("Shipped", p.crops.shipped)}</div>
+        ${p.contrast ? `<p class="contrast">Contrast: received ${esc(p.contrast.received || "n/a")} → shipped ${esc(p.contrast.shipped || "n/a")} (needs 4.5:1, or 3:1 for large text)</p>` : ""}
+        <dl class="facts"><dt>Intended fix</dt><dd>${p.intended}</dd>
+          <dt>What the agent did</dt><dd>${p.did.length ? chg(p.did) : `<span class="nothing">Nothing. The agent didn't touch this.</span>`}</dd></dl>
+      </article>`).join("")}</div>`
+    : `<p class="clean-note">Nothing was planted. This screen was already clean, so the right move was to change nothing.</p>`;
+  $("others").innerHTML = c.others.length
+    ? `<div class="cards">${c.others.map(o => `<article class="card">
+        <div class="where">${esc(o.where)}</div>
+        <div class="crops">${fig("Received", o.crops.received)}${fig("Shipped", o.crops.shipped)}</div>
+        <div>${chg(o.items)}</div></article>`).join("")}</div>`
+    : `<p class="none-note">None. The agent only touched planted problems.</p>`;
+  $("diff").innerHTML = c.code.length
+    ? c.code.map(l => `<div class="${l[0] === "+" ? "add" : l[0] === "-" ? "del" : ""}">${esc(l)}</div>`).join("")
+    : `<div class="none">No changes. The agent returned the screen as it received it.</div>`;
+  const rep = c.report_missing ? `<p class="clean-note">The agent wrote no report.</p>`
+    : c.report.length ? `<div class="cards">${c.report.map(f => `<article class="card">
+        <div class="where">${esc(f.where)}${rtag(f.rule)}</div>
+        <div class="about ${f.about.length ? "" : "miss"}">${f.about.length ? `About planted problem ${f.about.map(n => "#" + n).join(", ")}` : "Not one of the planted problems"}</div>
+        <p class="said"><b>Agent says</b>${f.problem}</p>
+        <p class="said"><b>Agent's fix</b>${f.fix}</p>
+        <dl class="facts"><dt>Actually changed</dt><dd>${f.actual.length ? chg(f.actual) : f.found ? `<span class="nothing">Nothing changed on this element.</span>` : `<span class="none-note">Couldn't match this to an element on the page.</span>`}</dd></dl>
+      </article>`).join("")}</div>`
+    : `<p class="clean-note">The agent reported no problems.</p>`;
+  const k = c.check, row = (ok, text, sub) => `<li><span class="${ok ? "mark-ok" : "mark-no"}">${ok ? "✓" : "✗"}</span><div>${text}${sub ? `<small>${sub}</small>` : ""}</div></li>`;
+  $("check").innerHTML = c.report_missing ? `<p class="nothing">The agent wrote no report, so it can't be accurate.</p>` : `<ul class="checks">
+    ${c.clean_control ? row(!c.report.length, c.report.length ? `Reported ${c.report.length} problem(s) on a clean screen` : "Reported nothing on a clean screen", c.report.length ? "Nothing was planted, so each one is a false alarm." : "")
+      : row(!k.missing.length, k.missing.length ? `Skipped ${k.missing.length} of ${k.planted} planted problems` : `Mentions all ${k.planted} planted problems`, k.missing.map(m => `#${m.n} ${esc(m.where)}`).join("<br>"))}
+    ${row(!k.no_change.length, k.no_change.length ? `Claims a fix that didn't happen (${k.no_change.length})` : "Every fix it claims really happened", k.no_change.map(esc).join("<br>"))}
+    ${c.clean_control ? "" : row(!k.extra.length, k.extra.length ? `Reports ${k.extra.length} thing(s) that weren't planted` : "No false alarms", k.extra.length ? k.extra.map(esc).join("<br>") + "<br>Check \"Other changes\" above: if these were fine as designed, they're false alarms." : "")}
+  </ul>`;
+  const s = c.self;
+  $("report").innerHTML = rep + (s ? `<p class="self">Agent's own verdict: ${s.all_fixed ? "says it fixed everything" : "says it did not fix everything"}${s.confidence != null ? `, confidence ${esc(s.confidence)}` : ""}.</p>` : "");
+  const note = $("note");
+  if (document.activeElement !== note) note.value = (labels[c.id] || {}).note || "";
+  $("prev").disabled = idx === 0;
+  $("next").textContent = idx === CASES.length - 1 ? "Back to first case" : "Next case";
+  renderView(); renderVerdicts(); renderStrip();
+}
+
+function status(msg, warn) { const el = $("status"); el.textContent = msg; el.className = "status" + (warn ? " warn" : ""); }
+
+function persistLocal() { try { localStorage.setItem("brb-local", JSON.stringify(labels)); } catch (e) {} }
+
+function save(id) {
+  const body = Object.assign({}, labels[id], { at: new Date().toISOString() });
+  persistLocal();
+  if (!db) return;
+  saving = saving.then(() => db.collection("labels").doc(id).set(body))
+    .then(() => status("Saved"))
+    .catch(e => status(e && e.code === "invalid_argument" ? "This view can't save labels. Open the page as its owner." : "Couldn't save just now. Your answer is kept on this page; it will save with your next change.", true));
+}
+
+function setLabel(q, v) {
+  const id = CASES[idx].id;
+  labels[id] = Object.assign({}, labels[id], { [q]: v });
+  renderVerdicts(); renderStrip(); save(id);
+}
+
+function go(i) {
+  idx = (i + CASES.length) % CASES.length;
+  try { localStorage.setItem("brb-idx", String(idx)); } catch (e) {}
+  renderCase();
+  window.scrollTo({ top: 0 });
+}
+
+document.addEventListener("click", (e) => {
+  const chip = e.target.closest(".chip"); if (chip) return go(+chip.dataset.i);
+  const seg = e.target.closest(".seg button"); if (seg) { view = seg.dataset.view; return renderView(); }
+  const ch = e.target.closest(".choices button"); if (ch) return setLabel(ch.dataset.q, ch.dataset.v);
+});
+$("prev").addEventListener("click", () => go(idx - 1));
+$("next").addEventListener("click", () => go(idx + 1));
+$("showMarks").addEventListener("change", renderView);
+let noteTimer;
+$("note").addEventListener("input", () => {
+  clearTimeout(noteTimer);
+  noteTimer = setTimeout(() => { const id = CASES[idx].id; labels[id] = Object.assign({}, labels[id], { note: $("note").value }); save(id); }, 700);
+});
+document.addEventListener("keydown", (e) => {
+  if (e.target.closest("textarea, input")) return;
+  if (e.key === "1") { view = "design"; renderView(); }
+  if (e.key === "2") { view = "received"; renderView(); }
+  if (e.key === "3") { view = "output"; renderView(); }
+  if (e.key === "ArrowRight") go(idx + 1);
+  if (e.key === "ArrowLeft") go(idx - 1);
+});
+
+renderCase();
+status("Connecting to storage…");
+if (window.claude && window.claude.use) {
+  window.claude.use("db").then((d) => {
+    if (!d) { status("Labels can't be saved in this view. Open this page in Claude while signed in.", true); return; }
+    db = d;
+    status("");
+    db.collection("labels").onSnapshot((snap) => {
+      const stored = {};
+      snap.docs.forEach(doc => { stored[doc.id] = doc.data(); });
+      // stored answers are the record; local copies only fill gaps
+      CASES.forEach(c => { if (stored[c.id]) labels[c.id] = Object.assign({}, labels[c.id], stored[c.id]); });
+      persistLocal(); renderVerdicts(); renderStrip();
+      const note = $("note");
+      if (document.activeElement !== note) note.value = (labels[CASES[idx].id] || {}).note || "";
+    }, () => status("Lost the connection to storage. Reload the page to keep saving.", true));
+  });
+} else {
+  status("Labels can't be saved outside Claude. Open this page in Claude while signed in.", true);
+}
+</script>

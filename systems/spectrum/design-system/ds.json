@@ -1,0 +1,91 @@
+{
+  "name": "Spectrum",
+  "about": "Adobe Spectrum 2 via Spectrum CSS, light color, medium scale. Tokens: @spectrum-css/tokens 16.0.2 (Apache-2.0). Components: @spectrum-css packages (Apache-2.0), see vendor/PROVENANCE.md.",
+  "entry_css": "spectrum.css",
+  "own_css": ["lab-components.css"],
+
+  "token_source": {
+    "files": ["vendor/tokens/global-vars.css", "vendor/tokens/light-vars.css", "vendor/tokens/medium-vars.css"],
+    "scopes": [".spectrum", ".spectrum--light", ".spectrum--medium"]
+  },
+
+  "agent_copy": {
+    "files": ["RULES.md", "spectrum.css", "lab-components.css",
+              "vendor/tokens/global-vars.css", "vendor/tokens/light-vars.css", "vendor/tokens/medium-vars.css"],
+    "stubs": {
+      "vendor/components/typography.css": "/* Spectrum CSS component styles omitted from the agent's copy. The classes are listed in RULES.md. */\n",
+      "vendor/components/button.css": "/* Spectrum CSS component styles omitted from the agent's copy. The classes are listed in RULES.md. */\n",
+      "vendor/components/badge.css": "/* Spectrum CSS component styles omitted from the agent's copy. The classes are listed in RULES.md. */\n",
+      "vendor/components/statuslight.css": "/* Spectrum CSS component styles omitted from the agent's copy. The classes are listed in RULES.md. */\n",
+      "vendor/components/inlinealert.css": "/* Spectrum CSS component styles omitted from the agent's copy. The classes are listed in RULES.md. */\n",
+      "vendor/components/fieldlabel.css": "/* Spectrum CSS component styles omitted from the agent's copy. The classes are listed in RULES.md. */\n",
+      "vendor/components/helptext.css": "/* Spectrum CSS component styles omitted from the agent's copy. The classes are listed in RULES.md. */\n",
+      "vendor/components/textfield.css": "/* Spectrum CSS component styles omitted from the agent's copy. The classes are listed in RULES.md. */\n",
+      "vendor/components/table.css": "/* Spectrum CSS component styles omitted from the agent's copy. The classes are listed in RULES.md. */\n",
+      "vendor/components/avatar.css": "/* Spectrum CSS component styles omitted from the agent's copy. The classes are listed in RULES.md. */\n",
+      "vendor/components/divider.css": "/* Spectrum CSS component styles omitted from the agent's copy. The classes are listed in RULES.md. */\n",
+      "vendor/components/progressbar.css": "/* Spectrum CSS component styles omitted from the agent's copy. The classes are listed in RULES.md. */\n"
+    }
+  },
+
+  "tokens": {
+    "color": "--spectrum-(?:[\\w-]*-(?:content|background|border|visual)-color(?:-[\\w-]+)?|background-(?:base|layer-\\d)-color|gray-\\d+|white|black)",
+    "space": "--spectrum-spacing-\\d+",
+    "type": "--spectrum-(?:font-size-\\d+|line-height-\\d+|[\\w-]*font-weight)",
+    "radius": "--spectrum-corner-radius-[\\w-]+",
+    "border_width": "--spectrum-border-width-\\d+"
+  },
+
+  "components": {
+    "lint_classes": ["spectrum-Button", "spectrum-Badge", "spectrum-StatusLight", "spectrum-InLineAlert", "spectrum-Textfield",
+                     "spectrum-Table", "spectrum-Avatar", "spectrum-ProgressBar", "spectrum-Divider"],
+    "button": {
+      "tags": ["button"], "base": "spectrum-Button", "prefix": "spectrum-Button",
+      "primary": "spectrum-Button--accent", "danger": "spectrum-Button--negative",
+      "swap_to_danger": ["spectrum-Button--accent", "spectrum-Button--primary", "spectrum-Button--secondary"],
+      "never_danger": ["spectrum-Button--quiet"],
+      "primary_desc": "the accent (call-to-action) button"
+    },
+    "pill": {
+      "tags": ["div"], "base": "spectrum-Badge", "prefix": "spectrum-Badge",
+      "semantic": ["spectrum-Badge--positive", "spectrum-Badge--negative", "spectrum-Badge--informative"],
+      "semantic_note": "notice is left out: in @spectrum-css/badge 6.2.0 the notice badge is white on #fc7d00 (2.6:1), so swapping to it would plant an R5 problem along with the R7 one"
+    }
+  },
+
+  "mutate": {
+    "space_scale_px": "auto",
+    "type_scale_px": "auto",
+    "radius_scale_px": [0, 4, 6, 7, 8, 9, 10, 16],
+    "radius_mutable": "--spectrum-corner-radius-(?:75|100|200|300|400|500|600|700|800)",
+    "border_width_mutable": "--spectrum-border-width-(?:100|200)",
+    "weight_prefix": "var(--spectrum-",
+    "text_default": "var(--spectrum-neutral-content-color-default)",
+    "text_muted": "var(--spectrum-neutral-subdued-content-color-default)",
+    "text_link": "var(--spectrum-accent-content-color-default)",
+    "text_disabled": "var(--spectrum-disabled-content-color)",
+    "status_text": ["var(--spectrum-negative-content-color-default)", "var(--spectrum-accent-content-color-default)"],
+    "contrast_traps": ["var(--spectrum-gray-300)", "var(--spectrum-neutral-visual-color)"]
+  },
+
+  "labels": {
+    "colors": {
+      "spectrum-neutral-content-color-default": "Neutral text", "spectrum-neutral-subdued-content-color-default": "Subdued text",
+      "spectrum-accent-content-color-default": "Accent (link) text", "spectrum-negative-content-color-default": "Negative red text",
+      "spectrum-disabled-content-color": "Disabled gray", "spectrum-background-base-color": "Base background",
+      "spectrum-background-layer-1-color": "Layer 1 background", "spectrum-background-layer-2-color": "Layer 2 background",
+      "spectrum-neutral-visual-color": "Neutral visual (icons, not text)", "spectrum-gray-300": "Gray 300"
+    },
+    "classes": {
+      "spectrum-Button": "Button", "spectrum-Button--accent": "accent", "spectrum-Button--primary": "primary",
+      "spectrum-Button--secondary": "secondary", "spectrum-Button--negative": "negative (red)", "spectrum-Button--outline": "outline",
+      "spectrum-Button--fill": "fill", "spectrum-Button--sizeS": "small",
+      "spectrum-Badge": "Badge", "spectrum-Badge--positive": "positive (green)", "spectrum-Badge--negative": "negative (red)",
+      "spectrum-Badge--notice": "notice (orange)", "spectrum-Badge--informative": "informative (blue)", "spectrum-Badge--neutral": "neutral",
+      "spectrum-InLineAlert": "In-line alert", "spectrum-InLineAlert--positive": "positive", "spectrum-InLineAlert--negative": "negative",
+      "spectrum-InLineAlert--notice": "notice", "spectrum-InLineAlert--info": "informative", "spectrum-Textfield": "Text field"
+    },
+    "banner": {"base": "spectrum-InLineAlert", "prefix": "spectrum-InLineAlert--"},
+    "boxy_classes": ["spectrum-Button", "spectrum-Badge", "spectrum-InLineAlert", "spectrum-Avatar", "spectrum-StatusLight"]
+  }
+}

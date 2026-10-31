@@ -1,0 +1,121 @@
+{
+  "task": "t08-01-05-07",
+  "screen": [
+    "01-account-settings.html",
+    "05-empty-state.html",
+    "07-issue-list.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".settings-title"
+      },
+      "description": "color hard-coded as #292929 instead of var(--spectrum-neutral-content-color-default)",
+      "original": "color: var(--spectrum-neutral-content-color-default)",
+      "mutated": "color: #292929",
+      "elements": [
+        "account-settings-title"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".empty-note"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: var(--spectrum-disabled-content-color)",
+      "accept_colors": [
+        "rgb(41, 41, 41)",
+        "rgb(80, 80, 80)"
+      ],
+      "elements": [
+        "empty-state-note"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".settings-lede"
+      },
+      "description": "color hard-coded as #505050 instead of var(--spectrum-neutral-subdued-content-color-default)",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: #505050",
+      "elements": [
+        "account-settings-lede"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "semantic_text",
+      "rule": "R7",
+      "target": {
+        "selector": ".empty-body"
+      },
+      "description": "secondary text colored var(--spectrum-negative-content-color-default), which signals a status it doesn't have",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: var(--spectrum-negative-content-color-default)",
+      "elements": [
+        "empty-state-body"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".issue-meta"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: var(--spectrum-disabled-content-color)",
+      "accept_colors": [
+        "rgb(41, 41, 41)",
+        "rgb(80, 80, 80)"
+      ],
+      "elements": [
+        "issue-list-issue-1-meta",
+        "issue-list-issue-2-meta",
+        "issue-list-issue-3-meta"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "off_radius",
+      "rule": "R4",
+      "target": {
+        "selector": ".issues-list"
+      },
+      "description": "border-radius 11px instead of var(--spectrum-corner-radius-200)",
+      "original": "border-radius: var(--spectrum-corner-radius-200)",
+      "mutated": "border-radius: 11px",
+      "elements": [
+        "issue-list-list"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "rebuild_button",
+      "rule": "R6",
+      "target": {
+        "qa": "account-settings-btn-save"
+      },
+      "description": "button rebuilt by hand instead of using .spectrum-Button (spectrum-Button spectrum-Button--fill spectrum-Button--accent)",
+      "original": "<button class=\"spectrum-Button spectrum-Button--fill spectrum-Button--accent\" type=\"button\" data-qa=\"account-settings-btn-save\">",
+      "mutated": "<button style=\"background: rgb(59, 99, 251); color: rgb(255, 255, 255); border: 2px solid rgba(0, 0, 0, 0); border-radius: 16px; padding: 0px 14px; font-size: 14px; font-weight: 700\" type=\"button\" data-qa=\"account-settings-btn-save\">",
+      "elements": [
+        "account-settings-btn-save",
+        "account-settings-btn-save-label"
+      ]
+    }
+  ]
+}

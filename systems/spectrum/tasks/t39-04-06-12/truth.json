@@ -1,0 +1,120 @@
+{
+  "task": "t39-04-06-12",
+  "screen": [
+    "04-pricing.html",
+    "06-danger-zone.html",
+    "12-upload-dialog.html"
+  ],
+  "split": "heldout",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".danger-box"
+      },
+      "description": "background set to an off-palette hex near var(--spectrum-background-layer-2-color)",
+      "original": "background: var(--spectrum-background-layer-2-color)",
+      "mutated": "background: #f9ffff",
+      "elements": [
+        "danger-zone-box"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "rebuild_button",
+      "rule": "R6",
+      "target": {
+        "qa": "upload-dialog-btn-upload"
+      },
+      "description": "button rebuilt by hand instead of using .spectrum-Button (spectrum-Button spectrum-Button--fill spectrum-Button--accent)",
+      "original": "<button class=\"spectrum-Button spectrum-Button--fill spectrum-Button--accent\" type=\"button\" data-qa=\"upload-dialog-btn-upload\">",
+      "mutated": "<button style=\"background: rgb(59, 99, 251); color: rgb(255, 255, 255); border: 2px solid rgba(0, 0, 0, 0); border-radius: 16px; padding: 0px 14px; font-size: 14px; font-weight: 700\" type=\"button\" data-qa=\"upload-dialog-btn-upload\">",
+      "elements": [
+        "upload-dialog-btn-upload",
+        "upload-dialog-btn-upload-label"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".danger-row"
+      },
+      "description": "gap uses 17px, off the spacing scale",
+      "original": "gap: var(--spectrum-spacing-300)",
+      "mutated": "gap: 17px",
+      "elements": [
+        "danger-zone-row-visibility",
+        "danger-zone-row-delete"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".plan-featured"
+      },
+      "description": "border-color hard-coded as #4b75ff instead of var(--spectrum-accent-visual-color)",
+      "original": "border-color: var(--spectrum-accent-visual-color)",
+      "mutated": "border-color: #4b75ff",
+      "elements": [
+        "pricing-plan-team"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".drop-title"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--spectrum-neutral-content-color-default)",
+      "mutated": "color: var(--spectrum-disabled-content-color)",
+      "accept_colors": [
+        "rgb(41, 41, 41)",
+        "rgb(80, 80, 80)"
+      ],
+      "elements": [
+        "upload-dialog-drop-title"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".upload-title"
+      },
+      "description": "text color set to var(--spectrum-gray-300), a real token that fails contrast here",
+      "original": "color: var(--spectrum-neutral-content-color-default)",
+      "mutated": "color: var(--spectrum-gray-300)",
+      "accept_colors": [
+        "rgb(41, 41, 41)",
+        "rgb(80, 80, 80)"
+      ],
+      "elements": [
+        "upload-dialog-title"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".upload-footer"
+      },
+      "description": "gap uses 9px, off the spacing scale",
+      "original": "gap: var(--spectrum-spacing-100)",
+      "mutated": "gap: 9px",
+      "elements": [
+        "upload-dialog-footer"
+      ]
+    }
+  ]
+}

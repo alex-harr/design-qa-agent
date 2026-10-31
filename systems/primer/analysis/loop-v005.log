@@ -1,0 +1,13 @@
+{
+  "round": "v005",
+  "decision": "revert (screened out)",
+  "compare": null,
+  "proposal": {
+    "target_category": "T1 Meaning not checked",
+    "change_summary": "Add a markup-first walk: for every text element, button and .Label in the HTML body, name its role from its text and placement, then check its actual color token and button/Label variant against a role table taken from R5 and R7, fixing only clear contradictions.",
+    "why_it_generalizes": "It starts from what each element is, not from a list of suspicious tokens, and the role-to-token table comes entirely from RULES.md. So it applies to any screen, and it catches valid-but-wrong tokens for both meaning (R7) and readability (R5) in the same pass.",
+    "risk": "Assigning roles may cause more false flags (T5), such as recoloring a correct Label, adding colors to inherited text, or demoting a legitimately primary button. On long screens the walk may also crowd out the raw-value CSS sweep (T3). It also overlaps with the reverted v001 and v002 directions, so the gain may again fall short of the +48 keep bar."
+  },
+  "guard_problems": [],
+  "minutes": 6.1
+}

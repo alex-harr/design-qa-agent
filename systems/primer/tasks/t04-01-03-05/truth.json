@@ -1,0 +1,98 @@
+{
+  "task": "t04-01-03-05",
+  "screen": [
+    "01-account-settings.html",
+    "03-notifications.html",
+    "05-empty-state.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".field-help"
+      },
+      "description": "color set to an off-palette hex near var(--fgColor-muted)",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: #5d636e",
+      "elements": [
+        "account-settings-help-name",
+        "account-settings-help-email"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".projects"
+      },
+      "description": "padding uses 17px, off the spacing scale",
+      "original": "padding: 0 var(--base-size-16)",
+      "mutated": "padding: 0 17px",
+      "elements": [
+        "empty-state-projects"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".settings-lede"
+      },
+      "description": "color set to an off-palette hex near var(--fgColor-muted)",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: #595e6e",
+      "elements": [
+        "account-settings-lede"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".field-label"
+      },
+      "description": "font-weight hard-coded as 600 instead of var(--base-text-weight-semibold)",
+      "original": "font-weight: var(--base-text-weight-semibold)",
+      "mutated": "font-weight: 600",
+      "elements": [
+        "account-settings-label-name",
+        "account-settings-label-email"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "semantic_text",
+      "rule": "R7",
+      "target": {
+        "selector": ".empty-note"
+      },
+      "description": "secondary text colored var(--fgColor-success), which signals a status it doesn't have",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--fgColor-success)",
+      "elements": [
+        "empty-state-note"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "rebuild_button",
+      "rule": "R6",
+      "target": {
+        "qa": "notifications-btn-mark-all"
+      },
+      "description": "button rebuilt by hand instead of using .btn (btn btn-sm)",
+      "original": "<button class=\"btn btn-sm\" type=\"button\" data-qa=\"notifications-btn-mark-all\">",
+      "mutated": "<button style=\"background: rgb(246, 248, 250); color: rgb(37, 41, 46); border: 1px solid rgb(209, 217, 224); border-radius: 6px; padding: 3px 12px; font-size: 12px; font-weight: 500\" type=\"button\" data-qa=\"notifications-btn-mark-all\">",
+      "elements": [
+        "notifications-btn-mark-all"
+      ]
+    }
+  ]
+}

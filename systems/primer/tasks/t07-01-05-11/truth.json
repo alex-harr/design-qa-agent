@@ -1,0 +1,108 @@
+{
+  "task": "t07-01-05-11",
+  "screen": [
+    "01-account-settings.html",
+    "05-empty-state.html",
+    "11-team-members.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".field-label"
+      },
+      "description": "font-weight hard-coded as 600 instead of var(--base-text-weight-semibold)",
+      "original": "font-weight: var(--base-text-weight-semibold)",
+      "mutated": "font-weight: 600",
+      "elements": [
+        "account-settings-label-name",
+        "account-settings-label-email"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".field-help"
+      },
+      "description": "text color set to var(--fgColor-onEmphasis), a real token that fails contrast here",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--fgColor-onEmphasis)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "account-settings-help-name",
+        "account-settings-help-email"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "destructive_primary",
+      "rule": "R7",
+      "target": {
+        "qa": "team-members-btn-remove-2"
+      },
+      "description": "destructive action styled as the primary green button",
+      "original": "<button class=\"btn btn-sm btn-danger\" type=\"button\" data-qa=\"team-members-btn-remove-2\">",
+      "mutated": "<button class=\"btn btn-sm btn-primary\" type=\"button\" data-qa=\"team-members-btn-remove-2\">",
+      "elements": [
+        "team-members-btn-remove-2"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".member-name"
+      },
+      "description": "font-weight hard-coded as 600 instead of var(--base-text-weight-semibold)",
+      "original": "font-weight: var(--base-text-weight-semibold)",
+      "mutated": "font-weight: 600",
+      "elements": [
+        "team-members-name-1",
+        "team-members-name-2",
+        "team-members-name-3"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".settings-lede"
+      },
+      "description": "text color set to var(--fgColor-onEmphasis), a real token that fails contrast here",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--fgColor-onEmphasis)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "account-settings-lede"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".empty-actions"
+      },
+      "description": "gap uses 11px, off the spacing scale",
+      "original": "gap: var(--base-size-12)",
+      "mutated": "gap: 11px",
+      "elements": [
+        "empty-state-actions"
+      ]
+    }
+  ]
+}

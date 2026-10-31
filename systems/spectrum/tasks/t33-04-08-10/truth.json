@@ -1,0 +1,106 @@
+{
+  "task": "t33-04-08-10",
+  "screen": [
+    "04-pricing.html",
+    "08-profile-card.html",
+    "10-onboarding.html"
+  ],
+  "split": "heldout",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".profile-name"
+      },
+      "description": "font-weight hard-coded as 700 instead of var(--spectrum-bold-font-weight)",
+      "original": "font-weight: var(--spectrum-bold-font-weight)",
+      "mutated": "font-weight: 700",
+      "elements": [
+        "profile-card-name"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".plan-featured"
+      },
+      "description": "border-color hard-coded as #4b75ff instead of var(--spectrum-accent-visual-color)",
+      "original": "border-color: var(--spectrum-accent-visual-color)",
+      "mutated": "border-color: #4b75ff",
+      "elements": [
+        "pricing-plan-team"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".plan-name"
+      },
+      "description": "margin uses 5px, off the spacing scale",
+      "original": "margin: 0 0 var(--spectrum-spacing-75)",
+      "mutated": "margin: 0 0 5px",
+      "elements": [
+        "pricing-name-free",
+        "pricing-name-team"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".onboard-count"
+      },
+      "description": "text color set to var(--spectrum-gray-300), a real token that fails contrast here",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: var(--spectrum-gray-300)",
+      "accept_colors": [
+        "rgb(41, 41, 41)",
+        "rgb(80, 80, 80)"
+      ],
+      "elements": [
+        "onboarding-count"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".plans-sub"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: var(--spectrum-disabled-content-color)",
+      "accept_colors": [
+        "rgb(41, 41, 41)",
+        "rgb(80, 80, 80)"
+      ],
+      "elements": [
+        "pricing-subtitle"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "danger_safe",
+      "rule": "R7",
+      "target": {
+        "qa": "profile-card-btn-follow"
+      },
+      "description": "safe action \"Follow\" styled as a danger button",
+      "original": "<button class=\"spectrum-Button spectrum-Button--fill spectrum-Button--accent profile-follow\" type=\"button\" data-qa=\"profile-card-btn-follow\">",
+      "mutated": "<button class=\"spectrum-Button spectrum-Button--fill spectrum-Button--negative profile-follow\" type=\"button\" data-qa=\"profile-card-btn-follow\">",
+      "elements": [
+        "profile-card-btn-follow",
+        "profile-card-btn-follow-label"
+      ]
+    }
+  ]
+}

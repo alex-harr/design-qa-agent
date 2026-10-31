@@ -1,0 +1,11 @@
+{
+  "task": "t35-02-04-06",
+  "screen": [
+    "02-sign-in.html",
+    "04-pricing.html",
+    "06-danger-zone.html"
+  ],
+  "split": "heldout",
+  "clean_control": true,
+  "mutations": []
+}

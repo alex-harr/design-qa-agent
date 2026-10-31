@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Repository settings · Get started · Upload files</title>
+<link rel="stylesheet" href="design-system/spectrum.css">
+<style>
+.repo-settings { max-width: 720px; margin: var(--spectrum-spacing-600) auto; padding: 0 var(--spectrum-spacing-300); }
+.section-title { margin: 0 0 var(--spectrum-spacing-100); font-size: var(--spectrum-font-size-400); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-gray-300); }
+.section-warn { margin-bottom: var(--spectrum-spacing-300); }
+.danger-box { background: var(--spectrum-background-layer-2-color); border: var(--spectrum-border-width-100) solid var(--spectrum-negative-border-color-default); border-radius: var(--spectrum-corner-radius-200); }
+.danger-row { display: flex; justify-content: space-between; align-items: center; gap: var(--spectrum-spacing-300); padding: var(--spectrum-spacing-300); }
+.danger-row-next { border-top: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); }
+.danger-name { margin: 0 0 var(--spectrum-spacing-50); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.danger-desc { margin: 0; font-size: var(--spectrum-font-size-100); color: var(--spectrum-neutral-subdued-content-color-default); }
+.confirm { margin-top: var(--spectrum-spacing-400); }
+.confirm-label { display: block; margin-bottom: 7px; font-weight: var(--spectrum-bold-font-weight); }
+.confirm-input { width: 100%; }
+.onboard { max-width: 560px; margin: var(--spectrum-spacing-700) auto; padding: 0 var(--spectrum-spacing-300); }
+.onboard-title { margin: 0 0 var(--spectrum-spacing-75); font-size: var(--spectrum-font-size-400); font-weight: var(--spectrum-bold-font-weight); }
+.onboard-sub { margin: 0 0 var(--spectrum-spacing-300); color: var(--spectrum-neutral-subdued-content-color-default); }
+.onboard-progress { width: 100%; margin-bottom: var(--spectrum-spacing-100); }
+.onboard-count { margin: 0 0 var(--spectrum-spacing-400); font-size: var(--spectrum-font-size-75); color: var(--spectrum-neutral-subdued-content-color-default); }
+.steps { background: var(--spectrum-background-layer-2-color); border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); border-radius: var(--spectrum-corner-radius-200); }
+.step { display: flex; gap: var(--spectrum-spacing-200); align-items: center; padding: var(--spectrum-spacing-200) var(--spectrum-spacing-300); border-top: 1px solid var(--spectrum-gray-200); }
+.step-first { border-top: 0; }
+.step-mark { flex: none; width: var(--spectrum-spacing-300); height: var(--spectrum-spacing-300); border-radius: var(--spectrum-corner-radius-100); border: 2px solid var(--spectrum-gray-400); }
+.step-mark-done { background: var(--spectrum-positive-visual-color); border-color: var(--spectrum-positive-visual-color); }
+.step-text { margin: 0; color: var(--spectrum-neutral-content-color-default); }
+.step-done-text { color: var(--spectrum-neutral-subdued-content-color-default); text-decoration: line-through; }
+.onboard-actions { display: flex; justify-content: space-between; margin-top: var(--spectrum-spacing-400); }
+.backdrop { min-height: 100vh; padding: var(--spectrum-spacing-800) var(--spectrum-spacing-300); background: var(--spectrum-background-layer-1-color); }
+.upload { max-width: 520px; margin: 0 auto; background: var(--spectrum-background-layer-2-color); border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); border-radius: var(--spectrum-corner-radius-800); }
+.upload-header { padding: var(--spectrum-spacing-400) var(--spectrum-spacing-400) 0; }
+.upload-title { margin: 0; font-size: var(--spectrum-font-size-400); font-weight: var(--spectrum-bold-font-weight); color: #252929; }
+.upload-body { padding: var(--spectrum-spacing-300) var(--spectrum-spacing-400); }
+.drop { padding: var(--spectrum-spacing-500); text-align: center; border: var(--spectrum-border-width-200) dashed var(--spectrum-gray-400); border-radius: var(--spectrum-corner-radius-200); background: var(--spectrum-background-layer-1-color); }
+.drop-title { margin: 0 0 var(--spectrum-spacing-75); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-disabled-content-color); }
+.drop-hint { margin: 0; font-size: var(--spectrum-font-size-75); color: var(--spectrum-neutral-subdued-content-color-default); }
+.file { display: flex; justify-content: space-between; align-items: center; margin-top: var(--spectrum-spacing-300); padding: var(--spectrum-spacing-200); border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); border-radius: var(--spectrum-corner-radius-100); }
+.file-name { margin: 0; font-weight: var(--spectrum-medium-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.file-size { margin: 0; font-size: var(--spectrum-font-size-75); color: var(--spectrum-accent-content-color-default); }
+.file-error { margin: var(--spectrum-spacing-100) 0 0; }
+.upload-footer { display: flex; justify-content: flex-end; gap: var(--spectrum-spacing-100); padding: 0 var(--spectrum-spacing-400) var(--spectrum-spacing-400); }
+</style>
+</head>
+<body class="spectrum spectrum--light spectrum--medium">
+<section>
+<main class="repo-settings" data-qa="danger-zone-settings">
+  <h1 class="section-title" data-qa="danger-zone-title">Danger zone</h1>
+  <div class="spectrum-InLineAlert spectrum-InLineAlert--notice section-warn" data-qa="danger-zone-warning"><div class="spectrum-InLineAlert-content" data-qa="danger-zone-warning-text">These actions can't be undone. Read each one carefully.</div></div>
+  <div class="danger-box" data-qa="danger-zone-box">
+    <div class="danger-row" data-qa="danger-zone-row-visibility">
+      <div data-qa="danger-zone-text-visibility">
+        <p class="danger-name" data-qa="danger-zone-name-visibility">Change visibility</p>
+        <p class="danger-desc" data-qa="danger-zone-desc-visibility">This repository is currently private.</p>
+      </div>
+      <button class="spectrum-Button spectrum-Button--fill spectrum-Button--negative" type="button" data-qa="danger-zone-btn-visibility"><span class="spectrum-Button-label" data-qa="danger-zone-btn-visibility-label">Change visibility</span></button>
+    </div>
+    <div class="danger-row danger-row-next" data-qa="danger-zone-row-delete">
+      <div data-qa="danger-zone-text-delete">
+        <p class="danger-name" data-qa="danger-zone-name-delete">Delete this repository</p>
+        <p class="danger-desc" data-qa="danger-zone-desc-delete">Once you delete a repository, there is no going back.</p>
+      </div>
+      <button class="spectrum-Button spectrum-Button--fill spectrum-Button--negative" type="button" data-qa="danger-zone-btn-delete"><span class="spectrum-Button-label" data-qa="danger-zone-btn-delete-label">Delete this repository</span></button>
+    </div>
+  </div>
+  <div class="confirm" data-qa="danger-zone-confirm">
+    <label class="confirm-label" for="danger-zone-confirm" data-qa="danger-zone-confirm-label">Type the repository name to confirm</label>
+    <div class="spectrum-Textfield confirm-input" data-qa="danger-zone-confirm-input-wrap"><input class="spectrum-Textfield-input" id="danger-zone-confirm" type="text" data-qa="danger-zone-confirm-input"></div>
+  </div>
+</main>
+</section>
+<section>
+<main class="onboard" data-qa="onboarding-onboard">
+  <h1 class="onboard-title" data-qa="onboarding-title">Get started with your workspace</h1>
+  <p class="onboard-sub" data-qa="onboarding-subtitle">Finish these steps to invite your team.</p>
+  <div class="spectrum-ProgressBar spectrum-ProgressBar--sizeM onboard-progress" role="progressbar" aria-valuenow="50" aria-label="Setup progress" data-qa="onboarding-progress"><div class="spectrum-ProgressBar-track" data-qa="onboarding-progress-track"><div class="spectrum-ProgressBar-fill" style="width: 50%" data-qa="onboarding-progress-fill"></div></div></div>
+  <p class="onboard-count" data-qa="onboarding-count">2 of 4 complete</p>
+  <div class="steps" data-qa="onboarding-steps">
+    <div class="step step-first" data-qa="onboarding-step-1"><span class="step-mark step-mark-done" data-qa="onboarding-mark-1"></span><p class="step-text step-done-text" data-qa="onboarding-text-1">Create a workspace</p></div>
+    <div class="step" data-qa="onboarding-step-2"><span class="step-mark step-mark-done" data-qa="onboarding-mark-2"></span><p class="step-text step-done-text" data-qa="onboarding-text-2">Connect your repository</p></div>
+    <div class="step" data-qa="onboarding-step-3"><span class="step-mark" data-qa="onboarding-mark-3"></span><p class="step-text" data-qa="onboarding-text-3">Set up branch protection</p></div>
+    <div class="step" data-qa="onboarding-step-4"><span class="step-mark" data-qa="onboarding-mark-4"></span><p class="step-text" data-qa="onboarding-text-4">Invite teammates</p></div>
+  </div>
+  <div class="onboard-actions" data-qa="onboarding-actions">
+    <button class="spectrum-Button spectrum-Button--outline spectrum-Button--secondary" type="button" data-qa="onboarding-btn-skip"><span class="spectrum-Button-label" data-qa="onboarding-btn-skip-label">Skip for now</span></button>
+    <button class="spectrum-Button spectrum-Button--fill spectrum-Button--accent" type="button" data-qa="onboarding-btn-continue"><span class="spectrum-Button-label" data-qa="onboarding-btn-continue-label">Continue setup</span></button>
+  </div>
+</main>
+</section>
+<section>
+<div class="backdrop" data-qa="upload-dialog-backdrop">
+  <div class="upload" role="dialog" aria-labelledby="upload-title" data-qa="upload-dialog-dialog">
+    <div class="upload-header" data-qa="upload-dialog-header"><h1 class="upload-title" id="upload-dialog-upload-title" data-qa="upload-dialog-title">Upload files</h1></div>
+    <div class="upload-body" data-qa="upload-dialog-body">
+      <div class="drop" data-qa="upload-dialog-drop">
+        <p class="drop-title" data-qa="upload-dialog-drop-title">Drag files here</p>
+        <p class="drop-hint" data-qa="upload-dialog-drop-hint">PNG, JPG or PDF up to 25 MB</p>
+      </div>
+      <div class="file" data-qa="upload-dialog-file">
+        <div data-qa="upload-dialog-file-text"><p class="file-name" data-qa="upload-dialog-file-name">quarterly-report.pdf</p><p class="file-size" data-qa="upload-dialog-file-size">31.2 MB</p></div>
+        <button class="spectrum-Button spectrum-Button--outline spectrum-Button--secondary spectrum-Button--sizeS" type="button" data-qa="upload-dialog-btn-remove-file"><span class="spectrum-Button-label" data-qa="upload-dialog-btn-remove-file-label">Remove</span></button>
+      </div>
+      <div class="spectrum-InLineAlert spectrum-InLineAlert--negative file-error" data-qa="upload-dialog-error"><div class="spectrum-InLineAlert-content" data-qa="upload-dialog-error-text">This file is larger than 25 MB.</div></div>
+    </div>
+    <div class="upload-footer" data-qa="upload-dialog-footer">
+      <button class="spectrum-Button spectrum-Button--outline spectrum-Button--secondary" type="button" data-qa="upload-dialog-btn-cancel"><span class="spectrum-Button-label" data-qa="upload-dialog-btn-cancel-label">Cancel</span></button>
+      <button style="background: rgb(59, 99, 251); color: rgb(255, 255, 255); border: 2px solid rgba(0, 0, 0, 0); border-radius: 16px; padding: 0px 14px; font-size: 14px; font-weight: 700" type="button" data-qa="upload-dialog-btn-upload"><span class="spectrum-Button-label" data-qa="upload-dialog-btn-upload-label">Upload</span></button>
+    </div>
+  </div>
+</div>
+</section>
+</body>
+</html>

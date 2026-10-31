@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Choose a plan</title>
+<link rel="stylesheet" href="design-system/spectrum.css">
+<style>
+.plans { max-width: 820px; margin: var(--spectrum-spacing-700) auto; padding: 0 var(--spectrum-spacing-300); text-align: center; }
+.plans-title { margin: 0 0 var(--spectrum-spacing-100); font-size: var(--spectrum-font-size-800); font-weight: var(--spectrum-extra-bold-font-weight); }
+.plans-sub { margin: 0 0 var(--spectrum-spacing-500); font-size: var(--spectrum-font-size-200); color: var(--spectrum-neutral-subdued-content-color-default); }
+.plan-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spectrum-spacing-400); text-align: left; }
+.plan { padding: var(--spectrum-spacing-400); background: var(--spectrum-background-layer-2-color); border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); border-radius: var(--spectrum-corner-radius-200); }
+.plan-featured { border-color: var(--spectrum-accent-visual-color); border-width: var(--spectrum-border-width-200); }
+.plan-name { display: flex; align-items: center; gap: var(--spectrum-spacing-100); margin: 0 0 var(--spectrum-spacing-75); font-size: var(--spectrum-font-size-200); font-weight: var(--spectrum-bold-font-weight); }
+.plan-price { margin: 0 0 var(--spectrum-spacing-300); font-size: var(--spectrum-font-size-800); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.plan-per { font-size: var(--spectrum-font-size-100); font-weight: var(--spectrum-regular-font-weight); color: var(--spectrum-neutral-subdued-content-color-default); }
+.plan-list { margin: 0 0 var(--spectrum-spacing-400); padding-left: var(--spectrum-spacing-400); color: var(--spectrum-neutral-content-color-default); }
+.plan-item { margin-bottom: var(--spectrum-spacing-100); }
+.plan-cta { width: 100%; }
+</style>
+</head>
+<body class="spectrum spectrum--light spectrum--medium">
+<main class="plans" data-qa="plans">
+  <h1 class="plans-title" data-qa="title">Choose a plan</h1>
+  <p class="plans-sub" data-qa="subtitle">Upgrade or downgrade any time.</p>
+  <div class="plan-grid" data-qa="grid">
+    <section class="plan" data-qa="plan-free">
+      <h2 class="plan-name" data-qa="name-free">Free</h2>
+      <p class="plan-price" data-qa="price-free">$0 <span class="plan-per" data-qa="per-free">per user / month</span></p>
+      <ul class="plan-list" data-qa="list-free">
+        <li class="plan-item" data-qa="item-free-1">Unlimited public projects</li>
+        <li class="plan-item" data-qa="item-free-2">Community support</li>
+      </ul>
+      <button class="spectrum-Button spectrum-Button--outline spectrum-Button--secondary plan-cta" type="button" data-qa="cta-free"><span class="spectrum-Button-label" data-qa="cta-free-label">Current plan</span></button>
+    </section>
+    <section class="plan plan-featured" data-qa="plan-team">
+      <h2 class="plan-name" data-qa="name-team"><span data-qa="name-team-text">Team</span> <div class="spectrum-Badge spectrum-Badge--accent" data-qa="badge-team"><div class="spectrum-Badge-label" data-qa="badge-team-text">New</div></div></h2>
+      <p class="plan-price" data-qa="price-team">$8 <span class="plan-per" data-qa="per-team">per user / month</span></p>
+      <ul class="plan-list" data-qa="list-team">
+        <li class="plan-item" data-qa="item-team-1">Private projects</li>
+        <li class="plan-item" data-qa="item-team-2">Protected branches</li>
+      </ul>
+      <button class="spectrum-Button spectrum-Button--fill spectrum-Button--accent plan-cta" type="button" data-qa="cta-team"><span class="spectrum-Button-label" data-qa="cta-team-label">Upgrade to Team</span></button>
+    </section>
+  </div>
+</main>
+</body>
+</html>

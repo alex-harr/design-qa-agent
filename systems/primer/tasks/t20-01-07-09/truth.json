@@ -1,0 +1,121 @@
+{
+  "task": "t20-01-07-09",
+  "screen": [
+    "01-account-settings.html",
+    "07-issue-list.html",
+    "09-billing-summary.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".issue-title"
+      },
+      "description": "font-weight hard-coded as 600 instead of var(--base-text-weight-semibold)",
+      "original": "font-weight: var(--base-text-weight-semibold)",
+      "mutated": "font-weight: 600",
+      "elements": [
+        "issue-list-issue-1-title",
+        "issue-list-issue-2-title",
+        "issue-list-issue-3-title"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".bill-th"
+      },
+      "description": "color hard-coded as #59636e instead of var(--fgColor-muted)",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: #59636e",
+      "elements": [
+        "billing-summary-th-item",
+        "billing-summary-th-seats",
+        "billing-summary-th-amount"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".field-help"
+      },
+      "description": "text color set to var(--fgColor-onEmphasis), a real token that fails contrast here",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--fgColor-onEmphasis)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "account-settings-help-name",
+        "account-settings-help-email"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "rebuild_label",
+      "rule": "R6",
+      "target": {
+        "qa": "issue-list-issue-3-docs"
+      },
+      "description": "status pill rebuilt by hand instead of using .Label (Label)",
+      "original": "<span class=\"Label\" data-qa=\"issue-list-issue-3-docs\">",
+      "mutated": "<span style=\"display: inline-block; padding: 0 8px; font-size: 12px; font-weight: 500; color: rgb(89, 99, 110); border: 1px solid rgb(209, 217, 224); border-radius: 999px\" data-qa=\"issue-list-issue-3-docs\">",
+      "elements": [
+        "issue-list-issue-3-docs"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "semantic_text",
+      "rule": "R7",
+      "target": {
+        "selector": ".issue-meta"
+      },
+      "description": "secondary text colored var(--fgColor-success), which signals a status it doesn't have",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--fgColor-success)",
+      "elements": [
+        "issue-list-issue-1-meta",
+        "issue-list-issue-2-meta",
+        "issue-list-issue-3-meta"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".bill-total"
+      },
+      "description": "font-weight hard-coded as 600 instead of var(--base-text-weight-semibold)",
+      "original": "font-weight: var(--base-text-weight-semibold)",
+      "mutated": "font-weight: 600",
+      "elements": [
+        "billing-summary-total"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".issues-closed"
+      },
+      "description": "color set to an off-palette hex near var(--fgColor-muted)",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: #596373",
+      "elements": [
+        "issue-list-closed-count"
+      ]
+    }
+  ]
+}

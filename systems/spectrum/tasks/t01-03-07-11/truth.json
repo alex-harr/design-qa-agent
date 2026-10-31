@@ -1,0 +1,122 @@
+{
+  "task": "t01-03-07-11",
+  "screen": [
+    "03-notifications.html",
+    "07-issue-list.html",
+    "11-team-members.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".issue-meta"
+      },
+      "description": "color hard-coded as #505050 instead of var(--spectrum-neutral-subdued-content-color-default)",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: #505050",
+      "elements": [
+        "issue-list-issue-1-meta",
+        "issue-list-issue-2-meta",
+        "issue-list-issue-3-meta"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".issues-list"
+      },
+      "description": "background hard-coded as #ffffff instead of var(--spectrum-background-layer-2-color)",
+      "original": "background: var(--spectrum-background-layer-2-color)",
+      "mutated": "background: #ffffff",
+      "elements": [
+        "issue-list-list"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "semantic_label",
+      "rule": "R7",
+      "target": {
+        "qa": "notifications-label-2"
+      },
+      "description": "status pill uses spectrum-Badge--positive, which contradicts what it reports",
+      "original": "<div class=\"spectrum-Badge spectrum-Badge--informative\" data-qa=\"notifications-label-2\">",
+      "mutated": "<div class=\"spectrum-Badge spectrum-Badge--positive\" data-qa=\"notifications-label-2\">",
+      "elements": [
+        "notifications-label-2",
+        "notifications-label-2-text"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".issues-closed"
+      },
+      "description": "text color set to var(--spectrum-neutral-visual-color), a real token that fails contrast here",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: var(--spectrum-neutral-visual-color)",
+      "accept_colors": [
+        "rgb(41, 41, 41)",
+        "rgb(80, 80, 80)"
+      ],
+      "elements": [
+        "issue-list-closed-count"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "semantic_label",
+      "rule": "R7",
+      "target": {
+        "qa": "notifications-label-3"
+      },
+      "description": "status pill uses spectrum-Badge--negative, which contradicts what it reports",
+      "original": "<div class=\"spectrum-Badge spectrum-Badge--positive\" data-qa=\"notifications-label-3\">",
+      "mutated": "<div class=\"spectrum-Badge spectrum-Badge--negative\" data-qa=\"notifications-label-3\">",
+      "elements": [
+        "notifications-label-3",
+        "notifications-label-3-text"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".note"
+      },
+      "description": "gap uses 13px, off the spacing scale",
+      "original": "gap: var(--spectrum-spacing-200)",
+      "mutated": "gap: 13px",
+      "elements": [
+        "notifications-row-1",
+        "notifications-row-2",
+        "notifications-row-3"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".note-title"
+      },
+      "description": "font-weight hard-coded as 700 instead of var(--spectrum-bold-font-weight)",
+      "original": "font-weight: var(--spectrum-bold-font-weight)",
+      "mutated": "font-weight: 700",
+      "elements": [
+        "notifications-title-1",
+        "notifications-title-2",
+        "notifications-title-3"
+      ]
+    }
+  ]
+}

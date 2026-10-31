@@ -1,0 +1,96 @@
+{
+  "task": "t31-02-08-12",
+  "screen": [
+    "02-sign-in.html",
+    "08-profile-card.html",
+    "12-upload-dialog.html"
+  ],
+  "split": "heldout",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".auth-link"
+      },
+      "description": "color hard-coded as #0969da instead of var(--fgColor-accent)",
+      "original": "color: var(--fgColor-accent)",
+      "mutated": "color: #0969da",
+      "elements": [
+        "sign-in-create-link"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "off_type",
+      "rule": "R3",
+      "target": {
+        "selector": ".auth-forgot"
+      },
+      "description": "font-size 8px instead of var(--text-body-size-small)",
+      "original": "font-size: var(--text-body-size-small)",
+      "mutated": "font-size: 8px",
+      "elements": [
+        "sign-in-forgot"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".auth-footer"
+      },
+      "description": "color hard-coded as #1f2328 instead of var(--fgColor-default)",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: #1f2328",
+      "elements": [
+        "sign-in-footer"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "off_type",
+      "rule": "R3",
+      "target": {
+        "selector": ".auth-heading"
+      },
+      "description": "font-size 22px instead of var(--text-title-size-medium)",
+      "original": "font-size: var(--text-title-size-medium)",
+      "mutated": "font-size: 22px",
+      "elements": [
+        "sign-in-heading"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".profile-stats"
+      },
+      "description": "gap uses 17px, off the spacing scale",
+      "original": "gap: var(--base-size-16)",
+      "mutated": "gap: 17px",
+      "elements": [
+        "profile-card-stats"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".profile-handle"
+      },
+      "description": "margin uses 11px, off the spacing scale",
+      "original": "margin: 0 0 var(--base-size-12)",
+      "mutated": "margin: 0 0 11px",
+      "elements": [
+        "profile-card-handle"
+      ]
+    }
+  ]
+}

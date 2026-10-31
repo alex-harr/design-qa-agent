@@ -1,0 +1,114 @@
+{
+  "task": "t01-03-07-11",
+  "screen": [
+    "03-notifications.html",
+    "07-issue-list.html",
+    "11-team-members.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".issues-head"
+      },
+      "description": "color hard-coded as #1f2328 instead of var(--fgColor-default)",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: #1f2328",
+      "elements": [
+        "issue-list-head"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".note-title"
+      },
+      "description": "color hard-coded as #1f2328 instead of var(--fgColor-default)",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: #1f2328",
+      "elements": [
+        "notifications-title-1",
+        "notifications-title-2",
+        "notifications-title-3"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "rebuild_label",
+      "rule": "R6",
+      "target": {
+        "qa": "team-members-role-1"
+      },
+      "description": "status pill rebuilt by hand instead of using .Label (Label Label--accent member-role)",
+      "original": "<span class=\"Label Label--accent member-role\" data-qa=\"team-members-role-1\">",
+      "mutated": "<span class=\"member-role\" style=\"display: inline-block; padding: 0 8px; font-size: 12px; font-weight: 500; color: rgb(9, 105, 218); border: 1px solid rgb(9, 105, 218); border-radius: 999px\" data-qa=\"team-members-role-1\">",
+      "elements": [
+        "team-members-role-1"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".team"
+      },
+      "description": "padding uses 17px, off the spacing scale",
+      "original": "padding: 0 var(--base-size-16)",
+      "mutated": "padding: 0 17px",
+      "elements": [
+        "team-members-team"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "semantic_text",
+      "rule": "R7",
+      "target": {
+        "selector": ".issues-closed"
+      },
+      "description": "secondary text colored var(--fgColor-success), which signals a status it doesn't have",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--fgColor-success)",
+      "elements": [
+        "issue-list-closed-count"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".member-role"
+      },
+      "description": "margin-right uses 9px, off the spacing scale",
+      "original": "margin-right: var(--base-size-8)",
+      "mutated": "margin-right: 9px",
+      "elements": [
+        "team-members-role-1",
+        "team-members-role-2",
+        "team-members-role-3"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "off_type",
+      "rule": "R3",
+      "target": {
+        "selector": ".team-note"
+      },
+      "description": "font-size 10px instead of var(--text-body-size-small)",
+      "original": "font-size: var(--text-body-size-small)",
+      "mutated": "font-size: 10px",
+      "elements": [
+        "team-members-note"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "task": "t38-06-08-10",
+  "screen": [
+    "06-danger-zone.html",
+    "08-profile-card.html",
+    "10-onboarding.html"
+  ],
+  "split": "heldout",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".onboard"
+      },
+      "description": "padding uses 15px, off the spacing scale",
+      "original": "padding: 0 var(--base-size-16)",
+      "mutated": "padding: 0 15px",
+      "elements": [
+        "onboarding-onboard"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "rebuild_button",
+      "rule": "R6",
+      "target": {
+        "qa": "onboarding-btn-continue"
+      },
+      "description": "button rebuilt by hand instead of using .btn (btn btn-primary)",
+      "original": "<button class=\"btn btn-primary\" type=\"button\" data-qa=\"onboarding-btn-continue\">",
+      "mutated": "<button style=\"background: rgb(31, 136, 61); color: rgb(255, 255, 255); border: 1px solid rgba(31, 35, 40, 0.15); border-radius: 6px; padding: 5px 16px; font-size: 14px; font-weight: 500\" type=\"button\" data-qa=\"onboarding-btn-continue\">",
+      "elements": [
+        "onboarding-btn-continue"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".step-text"
+      },
+      "description": "color hard-coded as #1f2328 instead of var(--fgColor-default)",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: #1f2328",
+      "elements": [
+        "onboarding-text-1",
+        "onboarding-text-2",
+        "onboarding-text-3",
+        "onboarding-text-4"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".danger-name"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: var(--fgColor-disabled)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "danger-zone-name-visibility",
+        "danger-zone-name-delete"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".section-title"
+      },
+      "description": "color set to an off-palette hex near var(--fgColor-default)",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: #1f2728",
+      "elements": [
+        "danger-zone-title"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".profile-num"
+      },
+      "description": "text color set to var(--fgColor-onEmphasis), a real token that fails contrast here",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: var(--fgColor-onEmphasis)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "profile-card-num-followers",
+        "profile-card-num-following",
+        "profile-card-num-repos"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "off_type",
+      "rule": "R3",
+      "target": {
+        "selector": ".profile-name"
+      },
+      "description": "font-size 23px instead of var(--text-title-size-medium)",
+      "original": "font-size: var(--text-title-size-medium)",
+      "mutated": "font-size: 23px",
+      "elements": [
+        "profile-card-name"
+      ]
+    },
+    {
+      "id": "m8",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".profile-status"
+      },
+      "description": "margin-bottom uses 17px, off the spacing scale",
+      "original": "margin-bottom: var(--base-size-16)",
+      "mutated": "margin-bottom: 17px",
+      "elements": [
+        "profile-card-status"
+      ]
+    },
+    {
+      "id": "m9",
+      "op": "semantic_text",
+      "rule": "R7",
+      "target": {
+        "selector": ".onboard-count"
+      },
+      "description": "secondary text colored var(--fgColor-attention), which signals a status it doesn't have",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--fgColor-attention)",
+      "elements": [
+        "onboarding-count"
+      ]
+    }
+  ]
+}

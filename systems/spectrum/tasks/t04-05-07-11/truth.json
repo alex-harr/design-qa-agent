@@ -1,0 +1,125 @@
+{
+  "task": "t04-05-07-11",
+  "screen": [
+    "05-empty-state.html",
+    "07-issue-list.html",
+    "11-team-members.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "rebuild_button",
+      "rule": "R6",
+      "target": {
+        "qa": "team-members-btn-remove-2"
+      },
+      "description": "button rebuilt by hand instead of using .spectrum-Button (spectrum-Button spectrum-Button--outline spectrum-Button--negative spectrum-Button--sizeS)",
+      "original": "<button class=\"spectrum-Button spectrum-Button--outline spectrum-Button--negative spectrum-Button--sizeS\" type=\"button\" data-qa=\"team-members-btn-remove-2\">",
+      "mutated": "<button style=\"background: rgba(0, 0, 0, 0); color: rgb(215, 50, 32); border: 2px solid rgb(215, 50, 32); border-radius: 12px; padding: 0px 11px; font-size: 12px; font-weight: 700\" type=\"button\" data-qa=\"team-members-btn-remove-2\">",
+      "elements": [
+        "team-members-btn-remove-2",
+        "team-members-btn-remove-2-label"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".team"
+      },
+      "description": "margin uses 41px, off the spacing scale",
+      "original": "margin: var(--spectrum-spacing-600) auto",
+      "mutated": "margin: 41px auto",
+      "elements": [
+        "team-members-team"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".issue-title"
+      },
+      "description": "color set to an off-palette hex near var(--spectrum-neutral-content-color-default)",
+      "original": "color: var(--spectrum-neutral-content-color-default)",
+      "mutated": "color: #2d2929",
+      "elements": [
+        "issue-list-issue-1-title",
+        "issue-list-issue-2-title",
+        "issue-list-issue-3-title"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".member-role"
+      },
+      "description": "margin-right uses 7px, off the spacing scale",
+      "original": "margin-right: var(--spectrum-spacing-100)",
+      "mutated": "margin-right: 7px",
+      "elements": [
+        "team-members-role-1",
+        "team-members-role-2",
+        "team-members-role-3"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".empty-heading"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--spectrum-neutral-content-color-default)",
+      "mutated": "color: var(--spectrum-disabled-content-color)",
+      "accept_colors": [
+        "rgb(41, 41, 41)",
+        "rgb(80, 80, 80)"
+      ],
+      "elements": [
+        "empty-state-heading"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".issues-closed"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: var(--spectrum-disabled-content-color)",
+      "accept_colors": [
+        "rgb(41, 41, 41)",
+        "rgb(80, 80, 80)"
+      ],
+      "elements": [
+        "issue-list-closed-count"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".issue-meta"
+      },
+      "description": "color hard-coded as #505050 instead of var(--spectrum-neutral-subdued-content-color-default)",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: #505050",
+      "elements": [
+        "issue-list-issue-1-meta",
+        "issue-list-issue-2-meta",
+        "issue-list-issue-3-meta"
+      ]
+    }
+  ]
+}

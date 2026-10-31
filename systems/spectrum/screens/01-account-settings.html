@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Account settings</title>
+<link rel="stylesheet" href="design-system/spectrum.css">
+<style>
+.settings { max-width: 640px; margin: var(--spectrum-spacing-600) auto; padding: 0 var(--spectrum-spacing-300); }
+.settings-title { margin: 0 0 var(--spectrum-spacing-75); font-size: var(--spectrum-font-size-800); font-weight: var(--spectrum-extra-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.settings-lede { margin: 0 0 var(--spectrum-spacing-400); font-size: var(--spectrum-font-size-200); color: var(--spectrum-neutral-subdued-content-color-default); }
+.settings-card { padding: var(--spectrum-spacing-400); background: var(--spectrum-background-layer-2-color); border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); border-radius: var(--spectrum-corner-radius-200); }
+.field { margin-bottom: var(--spectrum-spacing-300); }
+.field-label { display: block; margin-bottom: var(--spectrum-spacing-75); font-size: var(--spectrum-font-size-100); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.field-input { width: 100%; }
+.field-help { margin: var(--spectrum-spacing-75) 0 0; font-size: var(--spectrum-font-size-75); color: var(--spectrum-neutral-subdued-content-color-default); }
+.actions { display: flex; gap: var(--spectrum-spacing-100); margin-top: var(--spectrum-spacing-400); padding-top: var(--spectrum-spacing-300); border-top: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); }
+</style>
+</head>
+<body class="spectrum spectrum--light spectrum--medium">
+<main class="settings" data-qa="settings">
+  <h1 class="settings-title" data-qa="title">Account settings</h1>
+  <p class="settings-lede" data-qa="lede">Update how your name and email appear to your team.</p>
+  <div class="settings-card" data-qa="form-card">
+    <div class="field" data-qa="field-name">
+      <label class="field-label" for="name" data-qa="label-name">Display name</label>
+      <div class="spectrum-Textfield field-input" data-qa="input-name-wrap"><input class="spectrum-Textfield-input" id="name" type="text" value="Rae Okafor" data-qa="input-name"></div>
+      <p class="field-help" data-qa="help-name">Shown on comments and mentions.</p>
+    </div>
+    <div class="field" data-qa="field-email">
+      <label class="field-label" for="email" data-qa="label-email">Email</label>
+      <div class="spectrum-Textfield field-input" data-qa="input-email-wrap"><input class="spectrum-Textfield-input" id="email" type="text" value="rae@example.com" data-qa="input-email"></div>
+      <p class="field-help" data-qa="help-email">We'll send security alerts here.</p>
+    </div>
+    <div class="actions" data-qa="actions">
+      <button class="spectrum-Button spectrum-Button--fill spectrum-Button--accent" type="button" data-qa="btn-save"><span class="spectrum-Button-label" data-qa="btn-save-label">Save changes</span></button>
+      <button class="spectrum-Button spectrum-Button--outline spectrum-Button--secondary" type="button" data-qa="btn-cancel"><span class="spectrum-Button-label" data-qa="btn-cancel-label">Cancel</span></button>
+    </div>
+  </div>
+</main>
+</body>
+</html>

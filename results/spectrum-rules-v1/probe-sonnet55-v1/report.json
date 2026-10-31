@@ -1,0 +1,27 @@
+{
+  "run": "probe-sonnet55-v1",
+  "runs": 44,
+  "tasks": 44,
+  "trials_per_task": 1,
+  "pass_rate": 0.727,
+  "pass^1": 0.727,
+  "pass@1": 0.727,
+  "detected": 1.0,
+  "fixed_exact": 0.957,
+  "planted_total": 303,
+  "net_fixed": 290,
+  "false_flags_per_run": 0,
+  "regressions_per_run": 0,
+  "by_rule_detected_fixed": {
+    "R1": "69/69 detected, 68/69 fixed",
+    "R2": "57/57 detected, 50/57 fixed",
+    "R3": "25/25 detected, 25/25 fixed",
+    "R4": "35/35 detected, 34/35 fixed",
+    "R5": "48/48 detected, 48/48 fixed",
+    "R6": "30/30 detected, 28/30 fixed",
+    "R7": "39/39 detected, 37/39 fixed"
+  },
+  "self_says_all_fixed": 1,
+  "cost_usd": 4.43,
+  "mean_turns": 12.2
+}

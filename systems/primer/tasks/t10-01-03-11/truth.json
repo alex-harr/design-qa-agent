@@ -1,0 +1,133 @@
+{
+  "task": "t10-01-03-11",
+  "screen": [
+    "01-account-settings.html",
+    "03-notifications.html",
+    "11-team-members.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "off_type",
+      "rule": "R3",
+      "target": {
+        "selector": ".inbox-title"
+      },
+      "description": "font-size 24px instead of var(--text-title-size-medium)",
+      "original": "font-size: var(--text-title-size-medium)",
+      "mutated": "font-size: 24px",
+      "elements": [
+        "notifications-title"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".team-note"
+      },
+      "description": "text color set to var(--fgColor-onEmphasis), a real token that fails contrast here",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--fgColor-onEmphasis)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "team-members-note"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".field-label"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: var(--fgColor-disabled)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "account-settings-label-name",
+        "account-settings-label-email"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "rebuild_label",
+      "rule": "R6",
+      "target": {
+        "qa": "team-members-role-3"
+      },
+      "description": "status pill rebuilt by hand instead of using .Label (Label Label--attention member-role)",
+      "original": "<span class=\"Label Label--attention member-role\" data-qa=\"team-members-role-3\">",
+      "mutated": "<span class=\"member-role\" style=\"display: inline-block; padding: 0 8px; font-size: 12px; font-weight: 500; color: rgb(154, 103, 0); border: 1px solid rgb(154, 103, 0); border-radius: 999px\" data-qa=\"team-members-role-3\">",
+      "elements": [
+        "team-members-role-3"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "rebuild_label",
+      "rule": "R6",
+      "target": {
+        "qa": "notifications-label-1"
+      },
+      "description": "status pill rebuilt by hand instead of using .Label (Label Label--danger note-label)",
+      "original": "<span class=\"Label Label--danger note-label\" data-qa=\"notifications-label-1\">",
+      "mutated": "<span class=\"note-label\" style=\"display: inline-block; padding: 0 8px; font-size: 12px; font-weight: 500; color: rgb(209, 36, 47); border: 1px solid rgb(207, 34, 46); border-radius: 999px\" data-qa=\"notifications-label-1\">",
+      "elements": [
+        "notifications-label-1"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".team"
+      },
+      "description": "padding uses 17px, off the spacing scale",
+      "original": "padding: 0 var(--base-size-16)",
+      "mutated": "padding: 0 17px",
+      "elements": [
+        "team-members-team"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "destructive_primary",
+      "rule": "R7",
+      "target": {
+        "qa": "team-members-btn-remove-3"
+      },
+      "description": "destructive action styled as the primary green button",
+      "original": "<button class=\"btn btn-sm btn-danger\" type=\"button\" data-qa=\"team-members-btn-remove-3\">",
+      "mutated": "<button class=\"btn btn-sm btn-primary\" type=\"button\" data-qa=\"team-members-btn-remove-3\">",
+      "elements": [
+        "team-members-btn-remove-3"
+      ]
+    },
+    {
+      "id": "m8",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".actions"
+      },
+      "description": "margin-top uses 23px, off the spacing scale",
+      "original": "margin-top: var(--base-size-24)",
+      "mutated": "margin-top: 23px",
+      "elements": [
+        "account-settings-actions"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "task": "t27-04-10-12",
+  "screen": [
+    "04-pricing.html",
+    "10-onboarding.html",
+    "12-upload-dialog.html"
+  ],
+  "split": "heldout",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "rebuild_button",
+      "rule": "R6",
+      "target": {
+        "qa": "upload-dialog-btn-remove-file"
+      },
+      "description": "button rebuilt by hand instead of using .btn (btn btn-sm btn-invisible)",
+      "original": "<button class=\"btn btn-sm btn-invisible\" type=\"button\" data-qa=\"upload-dialog-btn-remove-file\">",
+      "mutated": "<button style=\"background: rgba(0, 0, 0, 0); color: rgb(9, 105, 218); border: 0px solid rgb(9, 105, 218); border-radius: 6px; padding: 3px 12px; font-size: 12px; font-weight: 500\" type=\"button\" data-qa=\"upload-dialog-btn-remove-file\">",
+      "elements": [
+        "upload-dialog-btn-remove-file"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".drop"
+      },
+      "description": "padding uses 33px, off the spacing scale",
+      "original": "padding: var(--base-size-32)",
+      "mutated": "padding: 33px",
+      "elements": [
+        "upload-dialog-drop"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".file"
+      },
+      "description": "padding uses 11px, off the spacing scale",
+      "original": "padding: var(--base-size-12)",
+      "mutated": "padding: 11px",
+      "elements": [
+        "upload-dialog-file"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "semantic_text",
+      "rule": "R7",
+      "target": {
+        "selector": ".step-done-text"
+      },
+      "description": "secondary text colored var(--fgColor-attention), which signals a status it doesn't have",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--fgColor-attention)",
+      "elements": [
+        "onboarding-text-1",
+        "onboarding-text-2"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "rebuild_label",
+      "rule": "R6",
+      "target": {
+        "qa": "pricing-badge-team"
+      },
+      "description": "status pill rebuilt by hand instead of using .Label (Label Label--accent plan-badge)",
+      "original": "<span class=\"Label Label--accent plan-badge\" data-qa=\"pricing-badge-team\">",
+      "mutated": "<span class=\"plan-badge\" style=\"display: inline-block; padding: 0 8px; font-size: 12px; font-weight: 500; color: rgb(9, 105, 218); border: 1px solid rgb(9, 105, 218); border-radius: 999px\" data-qa=\"pricing-badge-team\">",
+      "elements": [
+        "pricing-badge-team"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".plans-sub"
+      },
+      "description": "text color set to var(--borderColor-default), a real token that fails contrast here",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--borderColor-default)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "pricing-subtitle"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "off_type",
+      "rule": "R3",
+      "target": {
+        "selector": ".plan-price"
+      },
+      "description": "font-size 36px instead of var(--text-title-size-large)",
+      "original": "font-size: var(--text-title-size-large)",
+      "mutated": "font-size: 36px",
+      "elements": [
+        "pricing-price-free",
+        "pricing-price-team"
+      ]
+    },
+    {
+      "id": "m8",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".step-mark-done"
+      },
+      "description": "background set to an off-palette hex near var(--bgColor-success-emphasis)",
+      "original": "background: var(--bgColor-success-emphasis)",
+      "mutated": "background: #1f8842",
+      "elements": [
+        "onboarding-mark-1",
+        "onboarding-mark-2"
+      ]
+    },
+    {
+      "id": "m9",
+      "op": "danger_safe",
+      "rule": "R7",
+      "target": {
+        "qa": "onboarding-btn-continue"
+      },
+      "description": "safe action \"Continue setup\" styled as a danger button",
+      "original": "<button class=\"btn btn-primary\" type=\"button\" data-qa=\"onboarding-btn-continue\">",
+      "mutated": "<button class=\"btn btn-danger\" type=\"button\" data-qa=\"onboarding-btn-continue\">",
+      "elements": [
+        "onboarding-btn-continue"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en" data-color-mode="light" data-light-theme="light">
+<head>
+<meta charset="utf-8">
+<title>Profile · Get started · Upload files</title>
+<link rel="stylesheet" href="design-system/primer.css">
+<style>
+.profile { max-width: 380px; margin: var(--base-size-48) auto; padding: 0 var(--base-size-16); }
+.profile-card { padding: var(--base-size-24); text-align: center; }
+.profile-avatar { width: var(--base-size-80); height: var(--base-size-80); margin-bottom: var(--base-size-12); }
+.profile-name { margin: 0; font-size: var(--text-title-size-medium); font-weight: var(--text-title-weight-medium); color: var(--fgColor-default); }
+.profile-handle { margin: 0 0 var(--base-size-12); font-size: var(--text-body-size-large); color: var(--fgColor-muted); }
+.profile-bio { margin: 0 0 var(--base-size-16); color: var(--fgColor-default); }
+.profile-status { margin-bottom: var(--base-size-16); }
+.profile-stats { display: flex; justify-content: center; gap: var(--base-size-16); margin: 0 0 var(--base-size-20); padding: 0; list-style: none; font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+.profile-num { font-weight: var(--base-text-weight-semibold); color: var(--fgColor-default); }
+.profile-follow { width: 100%; }
+.onboard { max-width: 560px; margin: var(--base-size-48) auto; padding: 0 var(--base-size-16); }
+.onboard-title { margin: 0 0 var(--base-size-4); font-size: var(--text-title-size-medium); font-weight: var(--text-title-weight-medium); }
+.onboard-sub { margin: 0 0 var(--base-size-16); color: var(--fgColor-muted); }
+.onboard-progress { margin-bottom: var(--base-size-8); }
+.onboard-count { margin: 0 0 var(--base-size-24); font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+.step { display: flex; gap: var(--base-size-12); align-items: center; }
+.step-mark { flex: none; width: var(--base-size-20); height: var(--base-size-20); border-radius: var(--borderRadius-full); border: var(--borderWidth-thick) solid var(--borderColor-default); }
+.step-mark-done { background: var(--bgColor-success-emphasis); border-color: var(--borderColor-success-emphasis); }
+.step-text { margin: 0; color: var(--fgColor-default); }
+.step-done-text { color: var(--fgColor-muted); text-decoration: line-through; }
+.onboard-actions { display: flex; justify-content: space-between; margin-top: var(--base-size-24); }
+.backdrop { min-height: 100vh; padding: var(--base-size-64) var(--base-size-16); background: var(--bgColor-inset); }
+.upload { max-width: 520px; margin: 0 auto; }
+.drop { padding: var(--base-size-32); text-align: center; border: var(--borderWidth-thick) dashed var(--borderColor-default); border-radius: var(--borderRadius-medium); background: var(--bgColor-muted); }
+.drop-title { margin: 0 0 var(--base-size-4); font-weight: var(--base-text-weight-semibold); color: var(--fgColor-default); }
+.drop-hint { margin: 0; font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+.file { display: flex; justify-content: space-between; align-items: center; margin-top: var(--base-size-16); padding: var(--base-size-12); border: var(--borderWidth-thin) solid var(--borderColor-default); border-radius: var(--borderRadius-medium); }
+.file-name { margin: 0; font-weight: var(--base-text-weight-medium); color: var(--fgColor-default); }
+.file-size { margin: 0; font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+.file-error { margin: var(--base-size-8) 0 0; }
+</style>
+</head>
+<body>
+<section>
+<main class="profile" data-qa="profile-card-profile">
+  <div class="Box profile-card" data-qa="profile-card-card">
+    <span class="avatar profile-avatar" data-qa="profile-card-avatar"></span>
+    <h1 class="profile-name" data-qa="profile-card-name">Mateo Alvarez</h1>
+    <p class="profile-handle" data-qa="profile-card-handle">@mateo-a</p>
+    <p class="profile-bio" data-qa="profile-card-bio">Design engineer working on accessible data tables.</p>
+    <div class="profile-status" data-qa="profile-card-status"><span class="Label Label--success" data-qa="profile-card-status-label">Available for review</span></div>
+    <ul class="profile-stats" data-qa="profile-card-stats">
+      <li data-qa="profile-card-stat-followers"><span class="profile-num" data-qa="profile-card-num-followers">214</span> followers</li>
+      <li data-qa="profile-card-stat-following"><span class="profile-num" data-qa="profile-card-num-following">87</span> following</li>
+      <li data-qa="profile-card-stat-repos"><span class="profile-num" data-qa="profile-card-num-repos">31</span> repositories</li>
+    </ul>
+    <button class="btn btn-primary profile-follow" type="button" data-qa="profile-card-btn-follow">Follow</button>
+  </div>
+</main>
+</section>
+<section>
+<main class="onboard" data-qa="onboarding-onboard">
+  <h1 class="onboard-title" data-qa="onboarding-title">Get started with your workspace</h1>
+  <p class="onboard-sub" data-qa="onboarding-subtitle">Finish these steps to invite your team.</p>
+  <div class="Progress onboard-progress" data-qa="onboarding-progress"><span class="Progress-item" style="width: 50%" data-qa="onboarding-progress-fill"></span></div>
+  <p class="onboard-count" data-qa="onboarding-count">2 of 4 complete</p>
+  <div class="Box" data-qa="onboarding-steps">
+    <div class="Box-row step" data-qa="onboarding-step-1"><span class="step-mark step-mark-done" data-qa="onboarding-mark-1"></span><p class="step-text step-done-text" data-qa="onboarding-text-1">Create a workspace</p></div>
+    <div class="Box-row step" data-qa="onboarding-step-2"><span class="step-mark step-mark-done" data-qa="onboarding-mark-2"></span><p class="step-text step-done-text" data-qa="onboarding-text-2">Connect your repository</p></div>
+    <div class="Box-row step" data-qa="onboarding-step-3"><span class="step-mark" data-qa="onboarding-mark-3"></span><p class="step-text" data-qa="onboarding-text-3">Set up branch protection</p></div>
+    <div class="Box-row step" data-qa="onboarding-step-4"><span class="step-mark" data-qa="onboarding-mark-4"></span><p class="step-text" data-qa="onboarding-text-4">Invite teammates</p></div>
+  </div>
+  <div class="onboard-actions" data-qa="onboarding-actions">
+    <button class="btn btn-invisible" type="button" data-qa="onboarding-btn-skip">Skip for now</button>
+    <button class="btn btn-primary" type="button" data-qa="onboarding-btn-continue">Continue setup</button>
+  </div>
+</main>
+</section>
+<section>
+<div class="backdrop" data-qa="upload-dialog-backdrop">
+  <div class="Dialog upload" role="dialog" data-qa="upload-dialog-dialog">
+    <div class="Dialog-header" data-qa="upload-dialog-header"><h1 class="Dialog-title" data-qa="upload-dialog-title">Upload files</h1></div>
+    <div class="Dialog-body" data-qa="upload-dialog-body">
+      <div class="drop" data-qa="upload-dialog-drop">
+        <p class="drop-title" data-qa="upload-dialog-drop-title">Drag files here</p>
+        <p class="drop-hint" data-qa="upload-dialog-drop-hint">PNG, JPG or PDF up to 25 MB</p>
+      </div>
+      <div class="file" data-qa="upload-dialog-file">
+        <div data-qa="upload-dialog-file-text"><p class="file-name" data-qa="upload-dialog-file-name">quarterly-report.pdf</p><p class="file-size" data-qa="upload-dialog-file-size">31.2 MB</p></div>
+        <button class="btn btn-sm btn-invisible" type="button" data-qa="upload-dialog-btn-remove-file">Remove</button>
+      </div>
+      <div class="flash flash-error file-error" data-qa="upload-dialog-error">This file is larger than 25 MB.</div>
+    </div>
+    <div class="Dialog-footer" data-qa="upload-dialog-footer">
+      <button class="btn" type="button" data-qa="upload-dialog-btn-cancel">Cancel</button>
+      <button class="btn btn-primary" type="button" data-qa="upload-dialog-btn-upload">Upload</button>
+    </div>
+  </div>
+</div>
+</section>
+</body>
+</html>

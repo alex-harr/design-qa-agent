@@ -1,0 +1,13 @@
+/* Lab design system entry point.
+   Tokens: GitHub Primer primitives v11.10.0 (MIT), light theme.
+   Components: Primer CSS v22.3.3 (MIT) for base, buttons, forms, Counter,
+   plus lab-components.css (written for this lab on Primer tokens only). */
+@import url("vendor/base-size.css");
+@import url("vendor/base-typography.css");
+@import url("vendor/functional-size.css");
+@import url("vendor/radius.css");
+@import url("vendor/border.css");
+@import url("vendor/functional-typography.css");
+@import url("vendor/theme-light.css");
+@import url("vendor/primer-components.css");
+@import url("lab-components.css");

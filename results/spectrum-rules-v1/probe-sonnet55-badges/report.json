@@ -1,0 +1,27 @@
+{
+  "run": "probe-sonnet55-badges",
+  "runs": 12,
+  "tasks": 12,
+  "trials_per_task": 1,
+  "pass_rate": 0.75,
+  "pass^1": 0.75,
+  "pass@1": 0.75,
+  "detected": 1.0,
+  "fixed_exact": 0.969,
+  "planted_total": 97,
+  "net_fixed": 94,
+  "false_flags_per_run": 0,
+  "regressions_per_run": 0,
+  "by_rule_detected_fixed": {
+    "R1": "22/22 detected, 22/22 fixed",
+    "R2": "19/19 detected, 16/19 fixed",
+    "R3": "9/9 detected, 9/9 fixed",
+    "R4": "8/8 detected, 8/8 fixed",
+    "R5": "10/10 detected, 10/10 fixed",
+    "R6": "16/16 detected, 16/16 fixed",
+    "R7": "13/13 detected, 13/13 fixed"
+  },
+  "self_says_all_fixed": 1,
+  "cost_usd": 1.15,
+  "mean_turns": 13.1
+}

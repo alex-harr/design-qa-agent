@@ -1,0 +1,150 @@
+{
+  "task": "t02-07-09-11",
+  "screen": [
+    "07-issue-list.html",
+    "09-billing-summary.html",
+    "11-team-members.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "off_radius",
+      "rule": "R4",
+      "target": {
+        "selector": ".member-avatar"
+      },
+      "description": "border-radius 18px instead of var(--spectrum-corner-radius-800)",
+      "original": "border-radius: var(--spectrum-corner-radius-800)",
+      "mutated": "border-radius: 18px",
+      "elements": [
+        "team-members-avatar-1",
+        "team-members-avatar-2",
+        "team-members-avatar-3"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".team-title"
+      },
+      "description": "font-weight hard-coded as 700 instead of var(--spectrum-bold-font-weight)",
+      "original": "font-weight: var(--spectrum-bold-font-weight)",
+      "mutated": "font-weight: 700",
+      "elements": [
+        "team-members-title"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".team-list"
+      },
+      "description": "background hard-coded as #ffffff instead of var(--spectrum-background-layer-2-color)",
+      "original": "background: var(--spectrum-background-layer-2-color)",
+      "mutated": "background: #ffffff",
+      "elements": [
+        "team-members-list"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".issue-labels"
+      },
+      "description": "gap uses 5px, off the spacing scale",
+      "original": "gap: var(--spectrum-spacing-75)",
+      "mutated": "gap: 5px",
+      "elements": [
+        "issue-list-issue-1-labels",
+        "issue-list-issue-2-labels",
+        "issue-list-issue-3-labels"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "semantic_text",
+      "rule": "R7",
+      "target": {
+        "selector": ".issue-count"
+      },
+      "description": "secondary text colored var(--spectrum-negative-content-color-default), which signals a status it doesn't have",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: var(--spectrum-negative-content-color-default)",
+      "elements": [
+        "issue-list-issue-1-count",
+        "issue-list-issue-2-count",
+        "issue-list-issue-3-count"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".member-name"
+      },
+      "description": "font-weight hard-coded as 700 instead of var(--spectrum-bold-font-weight)",
+      "original": "font-weight: var(--spectrum-bold-font-weight)",
+      "mutated": "font-weight: 700",
+      "elements": [
+        "team-members-name-1",
+        "team-members-name-2",
+        "team-members-name-3"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "rebuild_button",
+      "rule": "R6",
+      "target": {
+        "qa": "billing-summary-btn-pay"
+      },
+      "description": "button rebuilt by hand instead of using .spectrum-Button (spectrum-Button spectrum-Button--fill spectrum-Button--accent)",
+      "original": "<button class=\"spectrum-Button spectrum-Button--fill spectrum-Button--accent\" type=\"button\" data-qa=\"billing-summary-btn-pay\">",
+      "mutated": "<button style=\"background: rgb(59, 99, 251); color: rgb(255, 255, 255); border: 2px solid rgba(0, 0, 0, 0); border-radius: 16px; padding: 0px 14px; font-size: 14px; font-weight: 700\" type=\"button\" data-qa=\"billing-summary-btn-pay\">",
+      "elements": [
+        "billing-summary-btn-pay",
+        "billing-summary-btn-pay-label"
+      ]
+    },
+    {
+      "id": "m8",
+      "op": "rebuild_label",
+      "rule": "R6",
+      "target": {
+        "qa": "team-members-role-2"
+      },
+      "description": "status pill rebuilt by hand instead of using .spectrum-Badge (spectrum-Badge spectrum-Badge--neutral member-role)",
+      "original": "<div class=\"spectrum-Badge spectrum-Badge--neutral member-role\" data-qa=\"team-members-role-2\">",
+      "mutated": "<div class=\"member-role\" style=\"display: inline-block; padding: 0 0px; font-size: 16px; font-weight: 400; color: rgb(255, 255, 255); border: 1px solid rgba(0, 0, 0, 0); border-radius: 999px\" data-qa=\"team-members-role-2\">",
+      "elements": [
+        "team-members-role-2",
+        "team-members-role-2-text"
+      ]
+    },
+    {
+      "id": "m9",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".member-email"
+      },
+      "description": "color set to an off-palette hex near var(--spectrum-neutral-subdued-content-color-default)",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: #505056",
+      "elements": [
+        "team-members-email-1",
+        "team-members-email-2",
+        "team-members-email-3"
+      ]
+    }
+  ]
+}

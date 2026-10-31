@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" data-color-mode="light" data-light-theme="light">
+<head>
+<meta charset="utf-8">
+<title>Upload files</title>
+<link rel="stylesheet" href="design-system/primer.css">
+<style>
+.backdrop { min-height: 100vh; padding: var(--base-size-64) var(--base-size-16); background: var(--bgColor-inset); }
+.upload { max-width: 520px; margin: 0 auto; }
+.drop { padding: var(--base-size-32); text-align: center; border: var(--borderWidth-thick) dashed var(--borderColor-default); border-radius: var(--borderRadius-medium); background: var(--bgColor-muted); }
+.drop-title { margin: 0 0 var(--base-size-4); font-weight: var(--base-text-weight-semibold); color: var(--fgColor-default); }
+.drop-hint { margin: 0; font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+.file { display: flex; justify-content: space-between; align-items: center; margin-top: var(--base-size-16); padding: var(--base-size-12); border: var(--borderWidth-thin) solid var(--borderColor-default); border-radius: var(--borderRadius-medium); }
+.file-name { margin: 0; font-weight: var(--base-text-weight-medium); color: var(--fgColor-default); }
+.file-size { margin: 0; font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+.file-error { margin: var(--base-size-8) 0 0; }
+</style>
+</head>
+<body>
+<div class="backdrop" data-qa="backdrop">
+  <div class="Dialog upload" role="dialog" data-qa="dialog">
+    <div class="Dialog-header" data-qa="header"><h1 class="Dialog-title" data-qa="title">Upload files</h1></div>
+    <div class="Dialog-body" data-qa="body">
+      <div class="drop" data-qa="drop">
+        <p class="drop-title" data-qa="drop-title">Drag files here</p>
+        <p class="drop-hint" data-qa="drop-hint">PNG, JPG or PDF up to 25 MB</p>
+      </div>
+      <div class="file" data-qa="file">
+        <div data-qa="file-text"><p class="file-name" data-qa="file-name">quarterly-report.pdf</p><p class="file-size" data-qa="file-size">31.2 MB</p></div>
+        <button class="btn btn-sm btn-invisible" type="button" data-qa="btn-remove-file">Remove</button>
+      </div>
+      <div class="flash flash-error file-error" data-qa="error">This file is larger than 25 MB.</div>
+    </div>
+    <div class="Dialog-footer" data-qa="footer">
+      <button class="btn" type="button" data-qa="btn-cancel">Cancel</button>
+      <button class="btn btn-primary" type="button" data-qa="btn-upload">Upload</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>

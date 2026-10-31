@@ -1,0 +1,118 @@
+{
+  "task": "t36-02-06-12",
+  "screen": [
+    "02-sign-in.html",
+    "06-danger-zone.html",
+    "12-upload-dialog.html"
+  ],
+  "split": "heldout",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".auth-legal"
+      },
+      "description": "color hard-coded as #59636e instead of var(--fgColor-muted)",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: #59636e",
+      "elements": [
+        "sign-in-legal"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "destructive_primary",
+      "rule": "R7",
+      "target": {
+        "qa": "danger-zone-btn-visibility"
+      },
+      "description": "destructive action styled as the primary green button",
+      "original": "<button class=\"btn btn-danger\" type=\"button\" data-qa=\"danger-zone-btn-visibility\">",
+      "mutated": "<button class=\"btn btn-primary\" type=\"button\" data-qa=\"danger-zone-btn-visibility\">",
+      "elements": [
+        "danger-zone-btn-visibility"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".file-name"
+      },
+      "description": "text color set to var(--borderColor-default), a real token that fails contrast here",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: var(--borderColor-default)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "upload-dialog-file-name"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".file"
+      },
+      "description": "padding uses 11px, off the spacing scale",
+      "original": "padding: var(--base-size-12)",
+      "mutated": "padding: 11px",
+      "elements": [
+        "upload-dialog-file"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "off_type",
+      "rule": "R3",
+      "target": {
+        "selector": ".file-size"
+      },
+      "description": "font-size 9px instead of var(--text-body-size-small)",
+      "original": "font-size: var(--text-body-size-small)",
+      "mutated": "font-size: 9px",
+      "elements": [
+        "upload-dialog-file-size"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".auth-footer"
+      },
+      "description": "text color set to var(--borderColor-default), a real token that fails contrast here",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: var(--borderColor-default)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "sign-in-footer"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "off_radius",
+      "rule": "R4",
+      "target": {
+        "selector": ".auth-card"
+      },
+      "description": "border-radius 7px instead of var(--borderRadius-medium)",
+      "original": "border-radius: var(--borderRadius-medium)",
+      "mutated": "border-radius: 7px",
+      "elements": [
+        "sign-in-card"
+      ]
+    }
+  ]
+}

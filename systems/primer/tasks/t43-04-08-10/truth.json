@@ -1,0 +1,106 @@
+{
+  "task": "t43-04-08-10",
+  "screen": [
+    "04-pricing.html",
+    "08-profile-card.html",
+    "10-onboarding.html"
+  ],
+  "split": "heldout",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "semantic_label",
+      "rule": "R7",
+      "target": {
+        "qa": "profile-card-status-label"
+      },
+      "description": "status pill uses Label--done, which contradicts what it reports",
+      "original": "<span class=\"Label Label--success\" data-qa=\"profile-card-status-label\">",
+      "mutated": "<span class=\"Label Label--done\" data-qa=\"profile-card-status-label\">",
+      "elements": [
+        "profile-card-status-label"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".plan-list"
+      },
+      "description": "padding-left uses 19px, off the spacing scale",
+      "original": "padding-left: var(--base-size-20)",
+      "mutated": "padding-left: 19px",
+      "elements": [
+        "pricing-list-free",
+        "pricing-list-team"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".profile-handle"
+      },
+      "description": "text color set to var(--borderColor-default), a real token that fails contrast here",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--borderColor-default)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "profile-card-handle"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".plan-price"
+      },
+      "description": "text color set to var(--borderColor-default), a real token that fails contrast here",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: var(--borderColor-default)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "pricing-price-free",
+        "pricing-price-team"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".onboard-sub"
+      },
+      "description": "margin uses 17px, off the spacing scale",
+      "original": "margin: 0 0 var(--base-size-16)",
+      "mutated": "margin: 0 0 17px",
+      "elements": [
+        "onboarding-subtitle"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "off_type",
+      "rule": "R3",
+      "target": {
+        "selector": ".plans-title"
+      },
+      "description": "font-size 36px instead of var(--text-title-size-large)",
+      "original": "font-size: var(--text-title-size-large)",
+      "mutated": "font-size: 36px",
+      "elements": [
+        "pricing-title"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "task": "t44-04-10-12",
+  "screen": [
+    "04-pricing.html",
+    "10-onboarding.html",
+    "12-upload-dialog.html"
+  ],
+  "split": "heldout",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".onboard-count"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--fgColor-disabled)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "onboarding-count"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "semantic_text",
+      "rule": "R7",
+      "target": {
+        "selector": ".plans-sub"
+      },
+      "description": "secondary text colored var(--fgColor-success), which signals a status it doesn't have",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--fgColor-success)",
+      "elements": [
+        "pricing-subtitle"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".drop-title"
+      },
+      "description": "text color set to var(--fgColor-onEmphasis), a real token that fails contrast here",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: var(--fgColor-onEmphasis)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "upload-dialog-drop-title"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".plan-list"
+      },
+      "description": "margin uses 23px, off the spacing scale",
+      "original": "margin: 0 0 var(--base-size-24)",
+      "mutated": "margin: 0 0 23px",
+      "elements": [
+        "pricing-list-free",
+        "pricing-list-team"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "semantic_text",
+      "rule": "R7",
+      "target": {
+        "selector": ".onboard-sub"
+      },
+      "description": "secondary text colored var(--fgColor-attention), which signals a status it doesn't have",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--fgColor-attention)",
+      "elements": [
+        "onboarding-subtitle"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".plan-badge"
+      },
+      "description": "margin-left uses 9px, off the spacing scale",
+      "original": "margin-left: var(--base-size-8)",
+      "mutated": "margin-left: 9px",
+      "elements": [
+        "pricing-badge-team"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".backdrop"
+      },
+      "description": "background set to an off-palette hex near var(--bgColor-inset)",
+      "original": "background: var(--bgColor-inset)",
+      "mutated": "background: #f6f8fe",
+      "elements": [
+        "upload-dialog-backdrop"
+      ]
+    },
+    {
+      "id": "m8",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".plan-price"
+      },
+      "description": "color set to an off-palette hex near var(--fgColor-default)",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: #1a2328",
+      "elements": [
+        "pricing-price-free",
+        "pricing-price-team"
+      ]
+    }
+  ]
+}

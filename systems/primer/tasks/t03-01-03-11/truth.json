@@ -1,0 +1,102 @@
+{
+  "task": "t03-01-03-11",
+  "screen": [
+    "01-account-settings.html",
+    "03-notifications.html",
+    "11-team-members.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".actions"
+      },
+      "description": "padding-top uses 15px, off the spacing scale",
+      "original": "padding-top: var(--base-size-16)",
+      "mutated": "padding-top: 15px",
+      "elements": [
+        "account-settings-actions"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "danger_safe",
+      "rule": "R7",
+      "target": {
+        "qa": "notifications-btn-mark-all"
+      },
+      "description": "safe action \"Mark all as read\" styled as a danger button",
+      "original": "<button class=\"btn btn-sm\" type=\"button\" data-qa=\"notifications-btn-mark-all\">",
+      "mutated": "<button class=\"btn btn-danger btn-sm\" type=\"button\" data-qa=\"notifications-btn-mark-all\">",
+      "elements": [
+        "notifications-btn-mark-all"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".note-title"
+      },
+      "description": "font-weight hard-coded as 600 instead of var(--base-text-weight-semibold)",
+      "original": "font-weight: var(--base-text-weight-semibold)",
+      "mutated": "font-weight: 600",
+      "elements": [
+        "notifications-title-1",
+        "notifications-title-2",
+        "notifications-title-3"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".team"
+      },
+      "description": "padding uses 17px, off the spacing scale",
+      "original": "padding: 0 var(--base-size-16)",
+      "mutated": "padding: 0 17px",
+      "elements": [
+        "team-members-team"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".member-email"
+      },
+      "description": "color set to an off-palette hex near var(--fgColor-muted)",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: #595f6e",
+      "elements": [
+        "team-members-email-1",
+        "team-members-email-2",
+        "team-members-email-3"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".note-meta"
+      },
+      "description": "color set to an off-palette hex near var(--fgColor-muted)",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: #55636e",
+      "elements": [
+        "notifications-meta-1",
+        "notifications-meta-2",
+        "notifications-meta-3"
+      ]
+    }
+  ]
+}

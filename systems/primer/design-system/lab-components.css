@@ -1,0 +1,47 @@
+/* Components Primer CSS v22 no longer ships, rebuilt on Primer tokens only.
+   Every value below is a token. This file is part of the design system:
+   screens use these classes, they do not restyle them. */
+
+body {
+  margin: 0;
+  background: var(--bgColor-default);
+  color: var(--fgColor-default);
+  font: var(--text-body-shorthand-medium);
+}
+
+/* Box: bordered container */
+.Box { background: var(--bgColor-default); border: var(--borderWidth-thin) solid var(--borderColor-default); border-radius: var(--borderRadius-medium); }
+.Box-header { padding: var(--base-size-16); background: var(--bgColor-muted); border-bottom: var(--borderWidth-thin) solid var(--borderColor-default); border-radius: var(--borderRadius-medium) var(--borderRadius-medium) 0 0; }
+.Box-title { margin: 0; font-size: var(--text-title-size-small); font-weight: var(--text-title-weight-small); }
+.Box-body { padding: var(--base-size-16); }
+.Box-row { padding: var(--base-size-16); border-top: var(--borderWidth-thin) solid var(--borderColor-muted); }
+.Box-row:first-child { border-top: 0; }
+.Box-footer { padding: var(--base-size-16); border-top: var(--borderWidth-thin) solid var(--borderColor-default); }
+
+/* Label: small status pill */
+.Label { display: inline-block; padding: 0 var(--base-size-8); font-size: var(--text-body-size-small); font-weight: var(--base-text-weight-medium); line-height: var(--base-size-20); border: var(--borderWidth-thin) solid var(--borderColor-default); border-radius: var(--borderRadius-full); color: var(--fgColor-muted); }
+.Label--accent { color: var(--fgColor-accent); border-color: var(--borderColor-accent-emphasis); }
+.Label--success { color: var(--fgColor-success); border-color: var(--borderColor-success-emphasis); }
+.Label--attention { color: var(--fgColor-attention); border-color: var(--borderColor-attention-emphasis); }
+.Label--danger { color: var(--fgColor-danger); border-color: var(--borderColor-danger-emphasis); }
+.Label--done { color: var(--fgColor-done); border-color: var(--borderColor-done-emphasis); }
+
+/* Flash: inline banner message */
+.flash { padding: var(--base-size-16); border: var(--borderWidth-thin) solid var(--borderColor-accent-muted); border-radius: var(--borderRadius-medium); background: var(--bgColor-accent-muted); color: var(--fgColor-default); }
+.flash-warn { background: var(--bgColor-attention-muted); border-color: var(--borderColor-attention-muted); }
+.flash-error { background: var(--bgColor-danger-muted); border-color: var(--borderColor-danger-muted); }
+.flash-success { background: var(--bgColor-success-muted); border-color: var(--borderColor-success-muted); }
+
+/* Progress bar */
+.Progress { display: flex; height: var(--base-size-8); overflow: hidden; background: var(--bgColor-neutral-muted); border-radius: var(--borderRadius-medium); }
+.Progress-item { background: var(--bgColor-success-emphasis); }
+
+/* Avatar */
+.avatar { display: inline-block; overflow: hidden; border-radius: var(--borderRadius-full); background: var(--bgColor-neutral-muted); }
+
+/* Dialog */
+.Dialog { background: var(--bgColor-default); border: var(--borderWidth-thin) solid var(--borderColor-default); border-radius: var(--borderRadius-large); box-shadow: var(--shadow-floating-large); }
+.Dialog-header { padding: var(--base-size-16); border-bottom: var(--borderWidth-thin) solid var(--borderColor-default); }
+.Dialog-title { margin: 0; font-size: var(--text-title-size-small); font-weight: var(--text-title-weight-small); }
+.Dialog-body { padding: var(--base-size-16); }
+.Dialog-footer { display: flex; justify-content: flex-end; gap: var(--base-size-8); padding: var(--base-size-16); border-top: var(--borderWidth-thin) solid var(--borderColor-default); }

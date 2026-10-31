@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Account settings · Issues · Billing summary</title>
+<link rel="stylesheet" href="design-system/spectrum.css">
+<style>
+.settings { max-width: 640px; margin: var(--spectrum-spacing-600) auto; padding: 0 var(--spectrum-spacing-300); }
+.settings-title { margin: 0 0 var(--spectrum-spacing-75); font-size: var(--spectrum-font-size-800); font-weight: var(--spectrum-extra-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.settings-lede { margin: 0 0 var(--spectrum-spacing-400); font-size: var(--spectrum-font-size-200); color: var(--spectrum-neutral-subdued-content-color-default); }
+.settings-card { padding: var(--spectrum-spacing-400); background: var(--spectrum-background-layer-2-color); border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); border-radius: var(--spectrum-corner-radius-200); }
+.field { margin-bottom: var(--spectrum-spacing-300); }
+.field-label { display: block; margin-bottom: var(--spectrum-spacing-75); font-size: var(--spectrum-font-size-100); font-weight: 700; color: var(--spectrum-neutral-content-color-default); }
+.field-input { width: 100%; }
+.field-help { margin: var(--spectrum-spacing-75) 0 0; font-size: var(--spectrum-font-size-75); color: #505054; }
+.actions { display: flex; gap: var(--spectrum-spacing-100); margin-top: var(--spectrum-spacing-400); padding-top: var(--spectrum-spacing-300); border-top: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); }
+.issues { max-width: 840px; margin: var(--spectrum-spacing-500) auto; padding: 0 var(--spectrum-spacing-300); }
+.issues-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spectrum-spacing-300); }
+.issues-filter { width: 320px; }
+.issues-list { background: var(--spectrum-background-layer-2-color); border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); border-radius: var(--spectrum-corner-radius-200); }
+.issues-head { display: flex; gap: 15px; padding: var(--spectrum-spacing-200) var(--spectrum-spacing-300); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); background: var(--spectrum-background-layer-1-color); border-radius: var(--spectrum-corner-radius-200) var(--spectrum-corner-radius-200) 0 0; }
+.issues-closed { color: #4c5050; font-weight: var(--spectrum-regular-font-weight); }
+.issue { display: flex; justify-content: space-between; gap: var(--spectrum-spacing-200); padding: var(--spectrum-spacing-300); border-top: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); }
+.issue-title { display: flex; align-items: center; flex-wrap: wrap; gap: var(--spectrum-spacing-100); margin: 0 0 var(--spectrum-spacing-75); font-size: var(--spectrum-font-size-200); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.issue-labels { display: inline-flex; gap: var(--spectrum-spacing-75); }
+.issue-meta { margin: 0; font-size: var(--spectrum-font-size-75); color: var(--spectrum-neutral-subdued-content-color-default); }
+.issue-count { align-self: center; font-size: var(--spectrum-font-size-75); color: var(--spectrum-neutral-subdued-content-color-default); }
+.billing { max-width: 720px; margin: var(--spectrum-spacing-600) auto; padding: 0 var(--spectrum-spacing-300); }
+.billing-title { margin: 0 0 var(--spectrum-spacing-300); font-size: var(--spectrum-font-size-400); font-weight: 700; }
+.billing-alert { margin-bottom: var(--spectrum-spacing-300); }
+.bill-table { width: 100%; }
+.bill-amount { text-align: right; }
+.bill-strong { font-weight: var(--spectrum-medium-font-weight); }
+.bill-total { padding: var(--spectrum-spacing-300) 0; text-align: right; font-size: var(--spectrum-font-size-200); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.bill-actions { display: flex; justify-content: flex-end; gap: var(--spectrum-spacing-100); padding-top: 18px; border-top: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); }
+</style>
+</head>
+<body class="spectrum spectrum--light spectrum--medium">
+<section>
+<main class="settings" data-qa="account-settings-settings">
+  <h1 class="settings-title" data-qa="account-settings-title">Account settings</h1>
+  <p class="settings-lede" data-qa="account-settings-lede">Update how your name and email appear to your team.</p>
+  <div class="settings-card" data-qa="account-settings-form-card">
+    <div class="field" data-qa="account-settings-field-name">
+      <label class="field-label" for="account-settings-name" data-qa="account-settings-label-name">Display name</label>
+      <div class="spectrum-Textfield field-input" data-qa="account-settings-input-name-wrap"><input class="spectrum-Textfield-input" id="account-settings-name" type="text" value="Rae Okafor" data-qa="account-settings-input-name"></div>
+      <p class="field-help" data-qa="account-settings-help-name">Shown on comments and mentions.</p>
+    </div>
+    <div class="field" data-qa="account-settings-field-email">
+      <label class="field-label" for="account-settings-email" data-qa="account-settings-label-email">Email</label>
+      <div class="spectrum-Textfield field-input" data-qa="account-settings-input-email-wrap"><input class="spectrum-Textfield-input" id="account-settings-email" type="text" value="rae@example.com" data-qa="account-settings-input-email"></div>
+      <p class="field-help" data-qa="account-settings-help-email">We'll send security alerts here.</p>
+    </div>
+    <div class="actions" data-qa="account-settings-actions">
+      <button class="spectrum-Button spectrum-Button--fill spectrum-Button--accent" type="button" data-qa="account-settings-btn-save"><span class="spectrum-Button-label" data-qa="account-settings-btn-save-label">Save changes</span></button>
+      <button class="spectrum-Button spectrum-Button--outline spectrum-Button--secondary" type="button" data-qa="account-settings-btn-cancel"><span class="spectrum-Button-label" data-qa="account-settings-btn-cancel-label">Cancel</span></button>
+    </div>
+  </div>
+</main>
+</section>
+<section>
+<main class="issues" data-qa="issue-list-issues">
+  <div class="issues-bar" data-qa="issue-list-bar">
+    <div class="spectrum-Textfield issues-filter" data-qa="issue-list-filter-wrap"><input class="spectrum-Textfield-input" id="issue-list-filter" type="text" placeholder="Filter issues" data-qa="issue-list-filter"></div>
+    <button class="spectrum-Button spectrum-Button--fill spectrum-Button--accent" type="button" data-qa="issue-list-btn-new"><span class="spectrum-Button-label" data-qa="issue-list-btn-new-label">New issue</span></button>
+  </div>
+  <div class="issues-list" data-qa="issue-list-list">
+    <div class="issues-head" data-qa="issue-list-head">
+      <span data-qa="issue-list-open-count">12 Open</span>
+      <span class="issues-closed" data-qa="issue-list-closed-count">48 Closed</span>
+    </div>
+    <div class="issue" data-qa="issue-list-issue-1">
+      <div data-qa="issue-list-issue-1-main">
+        <p class="issue-title" data-qa="issue-list-issue-1-title"><span data-qa="issue-list-issue-1-name">Search results ignore archived filter</span><span class="issue-labels" data-qa="issue-list-issue-1-labels"><div class="spectrum-Badge spectrum-Badge--negative" data-qa="issue-list-issue-1-bug"><div class="spectrum-Badge-label" data-qa="issue-list-issue-1-bug-text">bug</div></div></span></p>
+        <p class="issue-meta" data-qa="issue-list-issue-1-meta">#482 opened 2 days ago by lena-m</p>
+      </div>
+      <span class="issue-count" data-qa="issue-list-issue-1-count">5 comments</span>
+    </div>
+    <div class="issue" data-qa="issue-list-issue-2">
+      <div data-qa="issue-list-issue-2-main">
+        <p class="issue-title" data-qa="issue-list-issue-2-title"><span data-qa="issue-list-issue-2-name">Add keyboard shortcut for quick filters</span><span class="issue-labels" data-qa="issue-list-issue-2-labels"><div class="spectrum-Badge spectrum-Badge--accent" data-qa="issue-list-issue-2-enh"><div class="spectrum-Badge-label" data-qa="issue-list-issue-2-enh-text">new</div></div><div class="spectrum-Badge spectrum-Badge--informative" data-qa="issue-list-issue-2-triage"><div class="spectrum-Badge-label" data-qa="issue-list-issue-2-triage-text">in progress</div></div></span></p>
+        <p class="issue-meta" data-qa="issue-list-issue-2-meta">#479 opened 4 days ago by sam-k</p>
+      </div>
+      <span class="issue-count" data-qa="issue-list-issue-2-count">2 comments</span>
+    </div>
+    <div class="issue" data-qa="issue-list-issue-3">
+      <div data-qa="issue-list-issue-3-main">
+        <p class="issue-title" data-qa="issue-list-issue-3-title"><span data-qa="issue-list-issue-3-name">Docs: clarify token rotation steps</span><span class="issue-labels" data-qa="issue-list-issue-3-labels"><div class="spectrum-Badge spectrum-Badge--neutral" data-qa="issue-list-issue-3-docs"><div class="spectrum-Badge-label" data-qa="issue-list-issue-3-docs-text">docs</div></div></span></p>
+        <p class="issue-meta" data-qa="issue-list-issue-3-meta">#471 opened last week by priya-r</p>
+      </div>
+      <span class="issue-count" data-qa="issue-list-issue-3-count">0 comments</span>
+    </div>
+  </div>
+</main>
+</section>
+<section>
+<main class="billing" data-qa="billing-summary-billing">
+  <h1 class="billing-title" data-qa="billing-summary-title">Billing summary</h1>
+  <div class="spectrum-InLineAlert spectrum-InLineAlert--info billing-alert" data-qa="billing-summary-flash"><div class="spectrum-InLineAlert-content" data-qa="billing-summary-flash-text">Your next invoice is due on November 1.</div></div>
+  <table class="spectrum-Table spectrum-Table--sizeM bill-table" data-qa="billing-summary-table">
+    <thead class="spectrum-Table-head" data-qa="billing-summary-thead">
+      <tr data-qa="billing-summary-head-row">
+        <th class="spectrum-Table-headCell" data-qa="billing-summary-th-item">Item</th>
+        <th class="spectrum-Table-headCell" data-qa="billing-summary-th-seats">Seats</th>
+        <th class="spectrum-Table-headCell bill-amount" data-qa="billing-summary-th-amount">Amount</th>
+      </tr>
+    </thead>
+    <tbody class="spectrum-Table-body" data-qa="billing-summary-tbody">
+      <tr class="spectrum-Table-row" data-qa="billing-summary-row-plan">
+        <td class="spectrum-Table-cell" data-qa="billing-summary-td-plan">Team plan</td>
+        <td class="spectrum-Table-cell" data-qa="billing-summary-td-plan-seats">12</td>
+        <td class="spectrum-Table-cell bill-amount bill-strong" data-qa="billing-summary-td-plan-amount">$96.00</td>
+      </tr>
+      <tr class="spectrum-Table-row" data-qa="billing-summary-row-storage">
+        <td class="spectrum-Table-cell" data-qa="billing-summary-td-storage">Extra storage</td>
+        <td class="spectrum-Table-cell" data-qa="billing-summary-td-storage-seats">n/a</td>
+        <td class="spectrum-Table-cell bill-amount bill-strong" data-qa="billing-summary-td-storage-amount">$10.00</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="bill-total" data-qa="billing-summary-total">Total due: $106.00</div>
+  <div class="bill-actions" data-qa="billing-summary-actions">
+    <button class="spectrum-Button spectrum-Button--outline spectrum-Button--secondary" type="button" data-qa="billing-summary-btn-download"><span class="spectrum-Button-label" data-qa="billing-summary-btn-download-label">Download invoice</span></button>
+    <button class="spectrum-Button spectrum-Button--fill spectrum-Button--accent" type="button" data-qa="billing-summary-btn-pay"><span class="spectrum-Button-label" data-qa="billing-summary-btn-pay-label">Pay now</span></button>
+  </div>
+</main>
+</section>
+</body>
+</html>

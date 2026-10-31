@@ -1,0 +1,120 @@
+{
+  "task": "t19-03-05-09",
+  "screen": [
+    "03-notifications.html",
+    "05-empty-state.html",
+    "09-billing-summary.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "raw_border_width",
+      "rule": "R4",
+      "target": {
+        "selector": ".empty-icon"
+      },
+      "description": "border width hard-coded instead of var(--spectrum-border-width-100)",
+      "original": "border: var(--spectrum-border-width-100) solid var(--spectrum-accent-visual-color)",
+      "mutated": "border: 1px solid var(--spectrum-accent-visual-color)",
+      "elements": [
+        "empty-state-icon"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".empty-link"
+      },
+      "description": "color set to an off-palette hex near var(--spectrum-accent-content-color-default)",
+      "original": "color: var(--spectrum-accent-content-color-default)",
+      "mutated": "color: #3b63ff",
+      "elements": [
+        "empty-state-link-learn"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".bill-total"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--spectrum-neutral-content-color-default)",
+      "mutated": "color: var(--spectrum-disabled-content-color)",
+      "accept_colors": [
+        "rgb(41, 41, 41)",
+        "rgb(80, 80, 80)"
+      ],
+      "elements": [
+        "billing-summary-total"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "off_radius",
+      "rule": "R4",
+      "target": {
+        "selector": ".empty"
+      },
+      "description": "border-radius 11px instead of var(--spectrum-corner-radius-200)",
+      "original": "border-radius: var(--spectrum-corner-radius-200)",
+      "mutated": "border-radius: 11px",
+      "elements": [
+        "empty-state-empty"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".projects-title"
+      },
+      "description": "font-weight hard-coded as 700 instead of var(--spectrum-bold-font-weight)",
+      "original": "font-weight: var(--spectrum-bold-font-weight)",
+      "mutated": "font-weight: 700",
+      "elements": [
+        "empty-state-title"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".empty-body"
+      },
+      "description": "color hard-coded as #505050 instead of var(--spectrum-neutral-subdued-content-color-default)",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: #505050",
+      "elements": [
+        "empty-state-body"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".note-meta"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: var(--spectrum-disabled-content-color)",
+      "accept_colors": [
+        "rgb(41, 41, 41)",
+        "rgb(80, 80, 80)"
+      ],
+      "elements": [
+        "notifications-meta-1",
+        "notifications-meta-2",
+        "notifications-meta-3"
+      ]
+    }
+  ]
+}

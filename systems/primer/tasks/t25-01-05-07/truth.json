@@ -1,0 +1,145 @@
+{
+  "task": "t25-01-05-07",
+  "screen": [
+    "01-account-settings.html",
+    "05-empty-state.html",
+    "07-issue-list.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "rebuild_button",
+      "rule": "R6",
+      "target": {
+        "qa": "issue-list-btn-new"
+      },
+      "description": "button rebuilt by hand instead of using .btn (btn btn-primary)",
+      "original": "<button class=\"btn btn-primary\" type=\"button\" data-qa=\"issue-list-btn-new\">",
+      "mutated": "<button style=\"background: rgb(31, 136, 61); color: rgb(255, 255, 255); border: 1px solid rgba(31, 35, 40, 0.15); border-radius: 6px; padding: 5px 16px; font-size: 14px; font-weight: 500\" type=\"button\" data-qa=\"issue-list-btn-new\">",
+      "elements": [
+        "issue-list-btn-new"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".empty-link"
+      },
+      "description": "color set to an off-palette hex near var(--fgColor-accent)",
+      "original": "color: var(--fgColor-accent)",
+      "mutated": "color: #0969df",
+      "elements": [
+        "empty-state-link-learn"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".field-help"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--fgColor-disabled)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "account-settings-help-name",
+        "account-settings-help-email"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".empty-note"
+      },
+      "description": "margin-top uses 17px, off the spacing scale",
+      "original": "margin-top: var(--base-size-16)",
+      "mutated": "margin-top: 17px",
+      "elements": [
+        "empty-state-note"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "off_type",
+      "rule": "R3",
+      "target": {
+        "selector": ".settings-lede"
+      },
+      "description": "font-size 17px instead of var(--text-body-size-large)",
+      "original": "font-size: var(--text-body-size-large)",
+      "mutated": "font-size: 17px",
+      "elements": [
+        "account-settings-lede"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "rebuild_button",
+      "rule": "R6",
+      "target": {
+        "qa": "account-settings-btn-cancel"
+      },
+      "description": "button rebuilt by hand instead of using .btn (btn)",
+      "original": "<button class=\"btn\" type=\"button\" data-qa=\"account-settings-btn-cancel\">",
+      "mutated": "<button style=\"background: rgb(246, 248, 250); color: rgb(37, 41, 46); border: 1px solid rgb(209, 217, 224); border-radius: 6px; padding: 5px 16px; font-size: 14px; font-weight: 500\" type=\"button\" data-qa=\"account-settings-btn-cancel\">",
+      "elements": [
+        "account-settings-btn-cancel"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".issues"
+      },
+      "description": "margin uses 33px, off the spacing scale",
+      "original": "margin: var(--base-size-32) auto",
+      "mutated": "margin: 33px auto",
+      "elements": [
+        "issue-list-issues"
+      ]
+    },
+    {
+      "id": "m8",
+      "op": "off_type",
+      "rule": "R3",
+      "target": {
+        "selector": ".projects-title"
+      },
+      "description": "font-size 22px instead of var(--text-title-size-medium)",
+      "original": "font-size: var(--text-title-size-medium)",
+      "mutated": "font-size: 22px",
+      "elements": [
+        "empty-state-title"
+      ]
+    },
+    {
+      "id": "m9",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".issue-meta"
+      },
+      "description": "color hard-coded as #59636e instead of var(--fgColor-muted)",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: #59636e",
+      "elements": [
+        "issue-list-issue-1-meta",
+        "issue-list-issue-2-meta",
+        "issue-list-issue-3-meta"
+      ]
+    }
+  ]
+}

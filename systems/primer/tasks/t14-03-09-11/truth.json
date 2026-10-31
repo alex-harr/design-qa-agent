@@ -1,0 +1,143 @@
+{
+  "task": "t14-03-09-11",
+  "screen": [
+    "03-notifications.html",
+    "09-billing-summary.html",
+    "11-team-members.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "danger_safe",
+      "rule": "R7",
+      "target": {
+        "qa": "billing-summary-btn-pay"
+      },
+      "description": "safe action \"Pay now\" styled as a danger button",
+      "original": "<button class=\"btn btn-primary\" type=\"button\" data-qa=\"billing-summary-btn-pay\">",
+      "mutated": "<button class=\"btn btn-danger\" type=\"button\" data-qa=\"billing-summary-btn-pay\">",
+      "elements": [
+        "billing-summary-btn-pay"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".note-meta"
+      },
+      "description": "color hard-coded as #59636e instead of var(--fgColor-muted)",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: #59636e",
+      "elements": [
+        "notifications-meta-1",
+        "notifications-meta-2",
+        "notifications-meta-3"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".member-email"
+      },
+      "description": "text color set to var(--borderColor-default), a real token that fails contrast here",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--borderColor-default)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "team-members-email-1",
+        "team-members-email-2",
+        "team-members-email-3"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".bill-td"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: var(--fgColor-disabled)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "billing-summary-td-plan",
+        "billing-summary-td-plan-seats",
+        "billing-summary-td-plan-amount",
+        "billing-summary-td-storage",
+        "billing-summary-td-storage-seats",
+        "billing-summary-td-storage-amount"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "rebuild_label",
+      "rule": "R6",
+      "target": {
+        "qa": "notifications-label-1"
+      },
+      "description": "status pill rebuilt by hand instead of using .Label (Label Label--danger note-label)",
+      "original": "<span class=\"Label Label--danger note-label\" data-qa=\"notifications-label-1\">",
+      "mutated": "<span class=\"note-label\" style=\"display: inline-block; padding: 0 8px; font-size: 12px; font-weight: 500; color: rgb(209, 36, 47); border: 1px solid rgb(207, 34, 46); border-radius: 999px\" data-qa=\"notifications-label-1\">",
+      "elements": [
+        "notifications-label-1"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".bill-th"
+      },
+      "description": "background hard-coded as #f6f8fa instead of var(--bgColor-muted)",
+      "original": "background: var(--bgColor-muted)",
+      "mutated": "background: #f6f8fa",
+      "elements": [
+        "billing-summary-th-item",
+        "billing-summary-th-seats",
+        "billing-summary-th-amount"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".team-note"
+      },
+      "description": "margin-top uses 11px, off the spacing scale",
+      "original": "margin-top: var(--base-size-12)",
+      "mutated": "margin-top: 11px",
+      "elements": [
+        "team-members-note"
+      ]
+    },
+    {
+      "id": "m8",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".inbox"
+      },
+      "description": "padding uses 15px, off the spacing scale",
+      "original": "padding: 0 var(--base-size-16)",
+      "mutated": "padding: 0 15px",
+      "elements": [
+        "notifications-inbox"
+      ]
+    }
+  ]
+}

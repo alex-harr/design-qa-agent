@@ -1,0 +1,120 @@
+{
+  "task": "t28-02-06-08",
+  "screen": [
+    "02-sign-in.html",
+    "06-danger-zone.html",
+    "08-profile-card.html"
+  ],
+  "split": "heldout",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".auth-legal"
+      },
+      "description": "text color set to var(--fgColor-onEmphasis), a real token that fails contrast here",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--fgColor-onEmphasis)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "sign-in-legal"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".profile-handle"
+      },
+      "description": "text color set to var(--borderColor-default), a real token that fails contrast here",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--borderColor-default)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "profile-card-handle"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".danger-box"
+      },
+      "description": "border-color set to an off-palette hex near var(--borderColor-danger-emphasis)",
+      "original": "border-color: var(--borderColor-danger-emphasis)",
+      "mutated": "border-color: #cf222a",
+      "elements": [
+        "danger-zone-box"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".auth-heading"
+      },
+      "description": "font-weight hard-coded as 400 instead of var(--base-text-weight-normal)",
+      "original": "font-weight: var(--base-text-weight-normal)",
+      "mutated": "font-weight: 400",
+      "elements": [
+        "sign-in-heading"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".profile-num"
+      },
+      "description": "font-weight hard-coded as 600 instead of var(--base-text-weight-semibold)",
+      "original": "font-weight: var(--base-text-weight-semibold)",
+      "mutated": "font-weight: 600",
+      "elements": [
+        "profile-card-num-followers",
+        "profile-card-num-following",
+        "profile-card-num-repos"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".auth-forgot"
+      },
+      "description": "color hard-coded as #0969da instead of var(--fgColor-accent)",
+      "original": "color: var(--fgColor-accent)",
+      "mutated": "color: #0969da",
+      "elements": [
+        "sign-in-forgot"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "raw_border_width",
+      "rule": "R4",
+      "target": {
+        "selector": ".auth-footer"
+      },
+      "description": "border width hard-coded instead of var(--borderWidth-thin)",
+      "original": "border: var(--borderWidth-thin) solid var(--borderColor-default)",
+      "mutated": "border: 1px solid var(--borderColor-default)",
+      "elements": [
+        "sign-in-footer"
+      ]
+    }
+  ]
+}

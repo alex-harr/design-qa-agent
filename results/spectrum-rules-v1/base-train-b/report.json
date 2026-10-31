@@ -1,0 +1,27 @@
+{
+  "run": "base-train-b",
+  "runs": 52,
+  "tasks": 26,
+  "trials_per_task": 2,
+  "pass_rate": 0.135,
+  "pass^2": 0.077,
+  "pass@2": 0.192,
+  "detected": 0.787,
+  "fixed_exact": 0.74,
+  "planted_total": 362,
+  "net_fixed": 263,
+  "false_flags_per_run": 0.1,
+  "regressions_per_run": 0,
+  "by_rule_detected_fixed": {
+    "R1": "86/86 detected, 81/86 fixed",
+    "R2": "56/68 detected, 49/68 fixed",
+    "R3": "24/26 detected, 24/26 fixed",
+    "R4": "39/42 detected, 38/42 fixed",
+    "R5": "27/52 detected, 27/52 fixed",
+    "R6": "41/42 detected, 37/42 fixed",
+    "R7": "12/46 detected, 12/46 fixed"
+  },
+  "self_says_all_fixed": 1,
+  "cost_usd": 5.48,
+  "mean_turns": 13.1
+}

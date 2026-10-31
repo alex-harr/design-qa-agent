@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "problems": [],
+  "changed_lines": 8,
+  "proposal": {
+    "target_category": "T6 Overconfident report",
+    "change_summary": "Before the report, add a required audit of the edited screen, one rule at a time (R1-R7), with one evidence line per rule. Only allow an all-fixed claim when every rule was actually checked, and otherwise name the unchecked or uncertain rules and lower confidence.",
+    "why_it_generalizes": "It's a verification and calibration habit keyed to RULES.md's own rule IDs, with no screen, class or value references, so it works on any screen. It also gives the agent a second look at the rules it most often skips (R5, R7, raw values in layout CSS).",
+    "risk": "The audit may push the agent to make new changes, so false flags and regressions (T5) could rise. Lower stated confidence could also cost points on runs that were actually clean. Longer runs could cut the sweep short on large screens."
+  },
+  "cost_usd": 0.2322208,
+  "diff": "--- before\n+++ after\n@@ -12,2 +12,8 @@\n 3. Fix each problem in the screen using the design system's tokens and components.\n-4. Record each problem you found and how you fixed it.\n+4. Before writing the report, re-read the edited screen in full and do a rule-by-rule audit, R1 through R7, one rule at a time:\n+   - For each rule, write one line: the rule ID, which parts of the screen you checked against it (the page's own layout CSS, inline styles, and every component), and what you found.\n+   - A rule counts as checked only if you looked at evidence for it. Token names alone are not evidence for R5 (you must judge the text color against its actual background) or R7 (you must read what the element says or does).\n+   - If the audit turns up something new, fix it and audit that rule again.\n+5. Record each problem you found and how you fixed it. Be honest about doubt:\n+   - Claim everything is fixed only if every rule in the audit was actually checked and nothing is left.\n+   - If any rule was skipped, only partly checked, or has something you were unsure about, say so in the report, name the rule, and lower your confidence to match."
+}

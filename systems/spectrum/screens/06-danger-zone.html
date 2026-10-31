@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Repository settings</title>
+<link rel="stylesheet" href="design-system/spectrum.css">
+<style>
+.repo-settings { max-width: 720px; margin: var(--spectrum-spacing-600) auto; padding: 0 var(--spectrum-spacing-300); }
+.section-title { margin: 0 0 var(--spectrum-spacing-100); font-size: var(--spectrum-font-size-400); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.section-warn { margin-bottom: var(--spectrum-spacing-300); }
+.danger-box { background: var(--spectrum-background-layer-2-color); border: var(--spectrum-border-width-100) solid var(--spectrum-negative-border-color-default); border-radius: var(--spectrum-corner-radius-200); }
+.danger-row { display: flex; justify-content: space-between; align-items: center; gap: var(--spectrum-spacing-300); padding: var(--spectrum-spacing-300); }
+.danger-row-next { border-top: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); }
+.danger-name { margin: 0 0 var(--spectrum-spacing-50); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.danger-desc { margin: 0; font-size: var(--spectrum-font-size-100); color: var(--spectrum-neutral-subdued-content-color-default); }
+.confirm { margin-top: var(--spectrum-spacing-400); }
+.confirm-label { display: block; margin-bottom: var(--spectrum-spacing-100); font-weight: var(--spectrum-bold-font-weight); }
+.confirm-input { width: 100%; }
+</style>
+</head>
+<body class="spectrum spectrum--light spectrum--medium">
+<main class="repo-settings" data-qa="settings">
+  <h1 class="section-title" data-qa="title">Danger zone</h1>
+  <div class="spectrum-InLineAlert spectrum-InLineAlert--notice section-warn" data-qa="warning"><div class="spectrum-InLineAlert-content" data-qa="warning-text">These actions can't be undone. Read each one carefully.</div></div>
+  <div class="danger-box" data-qa="box">
+    <div class="danger-row" data-qa="row-visibility">
+      <div data-qa="text-visibility">
+        <p class="danger-name" data-qa="name-visibility">Change visibility</p>
+        <p class="danger-desc" data-qa="desc-visibility">This repository is currently private.</p>
+      </div>
+      <button class="spectrum-Button spectrum-Button--fill spectrum-Button--negative" type="button" data-qa="btn-visibility"><span class="spectrum-Button-label" data-qa="btn-visibility-label">Change visibility</span></button>
+    </div>
+    <div class="danger-row danger-row-next" data-qa="row-delete">
+      <div data-qa="text-delete">
+        <p class="danger-name" data-qa="name-delete">Delete this repository</p>
+        <p class="danger-desc" data-qa="desc-delete">Once you delete a repository, there is no going back.</p>
+      </div>
+      <button class="spectrum-Button spectrum-Button--fill spectrum-Button--negative" type="button" data-qa="btn-delete"><span class="spectrum-Button-label" data-qa="btn-delete-label">Delete this repository</span></button>
+    </div>
+  </div>
+  <div class="confirm" data-qa="confirm">
+    <label class="confirm-label" for="confirm" data-qa="confirm-label">Type the repository name to confirm</label>
+    <div class="spectrum-Textfield confirm-input" data-qa="confirm-input-wrap"><input class="spectrum-Textfield-input" id="confirm" type="text" data-qa="confirm-input"></div>
+  </div>
+</main>
+</body>
+</html>

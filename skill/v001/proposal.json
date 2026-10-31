@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "problems": [],
+  "changed_lines": 13,
+  "proposal": {
+    "target_category": "T1 Meaning not checked",
+    "change_summary": "Add a separate R7 meaning pass: list every element carrying a meaning color, button variant or Label variant, write what its visible text means, and check that against R7's mapping, changing only clear contradictions.",
+    "why_it_generalizes": "It's a procedure keyed to RULES.md's meaning categories and component names, not to any screen's classes or values, so it applies to any element on any screen that pairs a status color with text.",
+    "risk": "More false alarms (T5) from over-reading meaning, e.g. recoloring a correct Label or muting text that legitimately signals status; the pass also adds steps that could crowd out the token sweep (T3) on long screens."
+  },
+  "cost_usd": 0.4678518,
+  "diff": "--- before\n+++ after\n@@ -13 +13,14 @@\n 4. Record each problem you found and how you fixed it.\n+\n+## Meaning pass (R7): do this after the token fixes\n+\n+A valid token can still carry the wrong meaning. Token checks never catch this, so do a separate pass:\n+\n+1. List every element that carries a meaning color: any `danger`, `success`, `attention`, `accent` or `done` token in the CSS, every `.btn-primary` and `.btn-danger`, and every `.Label--*`. For a CSS class, find the elements that use it in the HTML.\n+2. For each one, read the element's visible text and write one line: \"<text> \u2192 means <destructive / safe / error / success / pending / link / secondary info>\".\n+3. Check that line against R7:\n+   - Plain secondary text (metadata, counts, notes, ledes, help text) \u2192 `--fgColor-muted`, never a status color.\n+   - Actions that destroy data or access, or are hard to undo (anything in a Danger zone) \u2192 `.btn-danger`, never `.btn-primary`.\n+   - Every other action (it keeps, exports, completes or backs out of something) \u2192 `.btn`, or `.btn-primary` for the main one, never `.btn-danger`.\n+   - A `.Label` variant must match the status its text reports (a failure is danger, not success).\n+4. Change only what clearly contradicts its text. Success also covers completion, so a finished or shipped item in success is fine; leave anything the rules allow."
+}

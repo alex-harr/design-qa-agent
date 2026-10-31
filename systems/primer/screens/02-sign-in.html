@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" data-color-mode="light" data-light-theme="light">
+<head>
+<meta charset="utf-8">
+<title>Sign in</title>
+<link rel="stylesheet" href="design-system/primer.css">
+<style>
+.auth { max-width: 340px; margin: var(--base-size-64) auto; padding: 0 var(--base-size-16); }
+.auth-heading { margin: 0 0 var(--base-size-16); text-align: center; font-size: var(--text-title-size-medium); font-weight: var(--base-text-weight-normal); color: var(--fgColor-default); }
+.auth-card { padding: var(--base-size-20); background: var(--bgColor-muted); border: var(--borderWidth-thin) solid var(--borderColor-default); border-radius: var(--borderRadius-medium); }
+.auth-label { display: block; margin-bottom: var(--base-size-8); font-weight: var(--base-text-weight-semibold); }
+.auth-row { display: flex; justify-content: space-between; align-items: baseline; }
+.auth-forgot { font-size: var(--text-body-size-small); color: var(--fgColor-accent); }
+.auth-input { width: 100%; margin-bottom: var(--base-size-16); }
+.auth-submit { width: 100%; }
+.auth-footer { margin-top: var(--base-size-16); padding: var(--base-size-16); text-align: center; border: var(--borderWidth-thin) solid var(--borderColor-default); border-radius: var(--borderRadius-medium); color: var(--fgColor-default); }
+.auth-link { color: var(--fgColor-accent); }
+.auth-legal { margin-top: var(--base-size-24); text-align: center; font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+</style>
+</head>
+<body>
+<main class="auth" data-qa="auth">
+  <h1 class="auth-heading" data-qa="heading">Sign in to Northwind</h1>
+  <div class="auth-card" data-qa="card">
+    <label class="auth-label" for="login" data-qa="label-login">Username or email address</label>
+    <input class="form-control auth-input" id="login" data-qa="input-login">
+    <div class="auth-row" data-qa="password-row">
+      <label class="auth-label" for="password" data-qa="label-password">Password</label>
+      <a class="auth-forgot" href="#" data-qa="forgot">Forgot password?</a>
+    </div>
+    <input class="form-control auth-input" id="password" type="password" data-qa="input-password">
+    <button class="btn btn-primary auth-submit" type="button" data-qa="btn-submit">Sign in</button>
+  </div>
+  <p class="auth-footer" data-qa="footer">New to Northwind? <a class="auth-link" href="#" data-qa="create-link">Create an account</a></p>
+  <p class="auth-legal" data-qa="legal">By signing in you agree to the Terms and Privacy Policy.</p>
+</main>
+</body>
+</html>

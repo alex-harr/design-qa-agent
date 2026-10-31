@@ -1,0 +1,149 @@
+{
+  "task": "t19-01-03-11",
+  "screen": [
+    "01-account-settings.html",
+    "03-notifications.html",
+    "11-team-members.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".field-help"
+      },
+      "description": "text color set to var(--borderColor-default), a real token that fails contrast here",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--borderColor-default)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "account-settings-help-name",
+        "account-settings-help-email"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".note-meta"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--fgColor-disabled)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "notifications-meta-1",
+        "notifications-meta-2",
+        "notifications-meta-3"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "rebuild_label",
+      "rule": "R6",
+      "target": {
+        "qa": "team-members-role-3"
+      },
+      "description": "status pill rebuilt by hand instead of using .Label (Label Label--attention member-role)",
+      "original": "<span class=\"Label Label--attention member-role\" data-qa=\"team-members-role-3\">",
+      "mutated": "<span class=\"member-role\" style=\"display: inline-block; padding: 0 8px; font-size: 12px; font-weight: 500; color: rgb(154, 103, 0); border: 1px solid rgb(154, 103, 0); border-radius: 999px\" data-qa=\"team-members-role-3\">",
+      "elements": [
+        "team-members-role-3"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "rebuild_button",
+      "rule": "R6",
+      "target": {
+        "qa": "team-members-btn-remove-3"
+      },
+      "description": "button rebuilt by hand instead of using .btn (btn btn-sm btn-danger)",
+      "original": "<button class=\"btn btn-sm btn-danger\" type=\"button\" data-qa=\"team-members-btn-remove-3\">",
+      "mutated": "<button style=\"background: rgb(246, 248, 250); color: rgb(209, 36, 47); border: 1px solid rgb(209, 217, 224); border-radius: 6px; padding: 3px 12px; font-size: 12px; font-weight: 500\" type=\"button\" data-qa=\"team-members-btn-remove-3\">",
+      "elements": [
+        "team-members-btn-remove-3"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "destructive_primary",
+      "rule": "R7",
+      "target": {
+        "qa": "team-members-btn-remove-2"
+      },
+      "description": "destructive action styled as the primary green button",
+      "original": "<button class=\"btn btn-sm btn-danger\" type=\"button\" data-qa=\"team-members-btn-remove-2\">",
+      "mutated": "<button class=\"btn btn-sm btn-primary\" type=\"button\" data-qa=\"team-members-btn-remove-2\">",
+      "elements": [
+        "team-members-btn-remove-2"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".settings"
+      },
+      "description": "margin uses 39px, off the spacing scale",
+      "original": "margin: var(--base-size-40) auto",
+      "mutated": "margin: 39px auto",
+      "elements": [
+        "account-settings-settings"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".inbox"
+      },
+      "description": "margin uses 31px, off the spacing scale",
+      "original": "margin: var(--base-size-32) auto",
+      "mutated": "margin: 31px auto",
+      "elements": [
+        "notifications-inbox"
+      ]
+    },
+    {
+      "id": "m8",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".settings-title"
+      },
+      "description": "color hard-coded as #1f2328 instead of var(--fgColor-default)",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: #1f2328",
+      "elements": [
+        "account-settings-title"
+      ]
+    },
+    {
+      "id": "m9",
+      "op": "off_type",
+      "rule": "R3",
+      "target": {
+        "selector": ".team-note"
+      },
+      "description": "font-size 8px instead of var(--text-body-size-small)",
+      "original": "font-size: var(--text-body-size-small)",
+      "mutated": "font-size: 8px",
+      "elements": [
+        "team-members-note"
+      ]
+    }
+  ]
+}

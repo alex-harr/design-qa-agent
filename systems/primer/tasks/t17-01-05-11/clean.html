@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en" data-color-mode="light" data-light-theme="light">
+<head>
+<meta charset="utf-8">
+<title>Account settings · Projects · Team members</title>
+<link rel="stylesheet" href="design-system/primer.css">
+<style>
+.settings { max-width: 640px; margin: var(--base-size-40) auto; padding: 0 var(--base-size-16); }
+.settings-title { margin: 0 0 var(--base-size-4); font-size: var(--text-title-size-large); font-weight: var(--text-title-weight-large); color: var(--fgColor-default); }
+.settings-lede { margin: 0 0 var(--base-size-24); font-size: var(--text-body-size-large); color: var(--fgColor-muted); }
+.field { margin-bottom: var(--base-size-16); }
+.field-label { display: block; margin-bottom: var(--base-size-6); font-weight: var(--base-text-weight-semibold); color: var(--fgColor-default); }
+.field-input { width: 100%; }
+.field-help { margin: var(--base-size-4) 0 0; font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+.actions { display: flex; gap: var(--base-size-8); margin-top: var(--base-size-24); padding-top: var(--base-size-16); border-top: var(--borderWidth-thin) solid var(--borderColor-default); }
+.projects { max-width: 720px; margin: var(--base-size-40) auto; padding: 0 var(--base-size-16); }
+.projects-title { margin: 0 0 var(--base-size-16); font-size: var(--text-title-size-medium); font-weight: var(--text-title-weight-medium); }
+.empty { padding: var(--base-size-48) var(--base-size-32); text-align: center; }
+.empty-icon { display: inline-block; width: var(--base-size-48); height: var(--base-size-48); margin-bottom: var(--base-size-16); border-radius: var(--borderRadius-large); background: var(--bgColor-accent-muted); border: var(--borderWidth-thin) solid var(--borderColor-accent-muted); }
+.empty-heading { margin: 0 0 var(--base-size-8); font-size: var(--text-title-size-medium); font-weight: var(--text-title-weight-medium); color: var(--fgColor-default); }
+.empty-body { max-width: 420px; margin: 0 auto var(--base-size-24); font-size: var(--text-body-size-large); color: var(--fgColor-muted); }
+.empty-actions { display: flex; justify-content: center; gap: var(--base-size-12); }
+.empty-link { color: var(--fgColor-accent); }
+.empty-note { margin-top: var(--base-size-16); font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+.team { max-width: 760px; margin: var(--base-size-40) auto; padding: 0 var(--base-size-16); }
+.team-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--base-size-16); }
+.team-title { margin: 0; font-size: var(--text-title-size-medium); font-weight: var(--text-title-weight-medium); }
+.member { display: flex; align-items: center; gap: var(--base-size-12); }
+.member-avatar { width: var(--base-size-32); height: var(--base-size-32); }
+.member-main { flex: 1; }
+.member-name { margin: 0; font-weight: var(--base-text-weight-semibold); color: var(--fgColor-default); }
+.member-email { margin: 0; font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+.member-role { margin-right: var(--base-size-8); }
+.team-note { margin-top: var(--base-size-12); font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+</style>
+</head>
+<body>
+<section>
+<main class="settings" data-qa="account-settings-settings">
+  <h1 class="settings-title" data-qa="account-settings-title">Account settings</h1>
+  <p class="settings-lede" data-qa="account-settings-lede">Update how your name and email appear to your team.</p>
+  <div class="Box" data-qa="account-settings-form-box">
+    <div class="Box-body" data-qa="account-settings-form-body">
+      <div class="field" data-qa="account-settings-field-name">
+        <label class="field-label" for="account-settings-name" data-qa="account-settings-label-name">Display name</label>
+        <input class="form-control field-input" id="account-settings-name" value="Rae Okafor" data-qa="account-settings-input-name">
+        <p class="field-help" data-qa="account-settings-help-name">Shown on comments and mentions.</p>
+      </div>
+      <div class="field" data-qa="account-settings-field-email">
+        <label class="field-label" for="account-settings-email" data-qa="account-settings-label-email">Email</label>
+        <input class="form-control field-input" id="account-settings-email" value="rae@example.com" data-qa="account-settings-input-email">
+        <p class="field-help" data-qa="account-settings-help-email">We'll send security alerts here.</p>
+      </div>
+      <div class="actions" data-qa="account-settings-actions">
+        <button class="btn btn-primary" type="button" data-qa="account-settings-btn-save">Save changes</button>
+        <button class="btn" type="button" data-qa="account-settings-btn-cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+</main>
+</section>
+<section>
+<main class="projects" data-qa="empty-state-projects">
+  <h1 class="projects-title" data-qa="empty-state-title">Projects</h1>
+  <div class="Box empty" data-qa="empty-state-empty">
+    <span class="empty-icon" data-qa="empty-state-icon"></span>
+    <h2 class="empty-heading" data-qa="empty-state-heading">No projects yet</h2>
+    <p class="empty-body" data-qa="empty-state-body">Projects group issues and pull requests so your team can plan work in one place.</p>
+    <div class="empty-actions" data-qa="empty-state-actions">
+      <button class="btn btn-primary" type="button" data-qa="empty-state-btn-new">New project</button>
+      <a class="btn btn-invisible empty-link" href="#" data-qa="empty-state-link-learn">Learn about projects</a>
+    </div>
+    <p class="empty-note" data-qa="empty-state-note">Templates are available on the Team plan.</p>
+  </div>
+</main>
+</section>
+<section>
+<main class="team" data-qa="team-members-team">
+  <div class="team-bar" data-qa="team-members-bar">
+    <h1 class="team-title" data-qa="team-members-title">Team members</h1>
+    <button class="btn btn-primary" type="button" data-qa="team-members-btn-invite">Invite member</button>
+  </div>
+  <div class="Box" data-qa="team-members-list">
+    <div class="Box-row member" data-qa="team-members-member-1">
+      <span class="avatar member-avatar" data-qa="team-members-avatar-1"></span>
+      <div class="member-main" data-qa="team-members-main-1"><p class="member-name" data-qa="team-members-name-1">Jordan Lee</p><p class="member-email" data-qa="team-members-email-1">jordan@example.com</p></div>
+      <span class="Label Label--accent member-role" data-qa="team-members-role-1">Owner</span>
+      <button class="btn btn-sm btn-invisible" type="button" data-qa="team-members-btn-edit-1">Edit</button>
+    </div>
+    <div class="Box-row member" data-qa="team-members-member-2">
+      <span class="avatar member-avatar" data-qa="team-members-avatar-2"></span>
+      <div class="member-main" data-qa="team-members-main-2"><p class="member-name" data-qa="team-members-name-2">Priya Raman</p><p class="member-email" data-qa="team-members-email-2">priya@example.com</p></div>
+      <span class="Label member-role" data-qa="team-members-role-2">Member</span>
+      <button class="btn btn-sm btn-danger" type="button" data-qa="team-members-btn-remove-2">Remove</button>
+    </div>
+    <div class="Box-row member" data-qa="team-members-member-3">
+      <span class="avatar member-avatar" data-qa="team-members-avatar-3"></span>
+      <div class="member-main" data-qa="team-members-main-3"><p class="member-name" data-qa="team-members-name-3">Sam Kowalski</p><p class="member-email" data-qa="team-members-email-3">sam@example.com</p></div>
+      <span class="Label Label--attention member-role" data-qa="team-members-role-3">Pending invite</span>
+      <button class="btn btn-sm btn-danger" type="button" data-qa="team-members-btn-remove-3">Cancel invite</button>
+    </div>
+  </div>
+  <p class="team-note" data-qa="team-members-note">Owners can change roles and billing.</p>
+</main>
+</section>
+</body>
+</html>

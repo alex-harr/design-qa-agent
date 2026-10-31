@@ -1,0 +1,128 @@
+{
+  "task": "t12-05-07-11",
+  "screen": [
+    "05-empty-state.html",
+    "07-issue-list.html",
+    "11-team-members.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".empty-heading"
+      },
+      "description": "margin uses 9px, off the spacing scale",
+      "original": "margin: 0 0 var(--base-size-8)",
+      "mutated": "margin: 0 0 9px",
+      "elements": [
+        "empty-state-heading"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "semantic_text",
+      "rule": "R7",
+      "target": {
+        "selector": ".issues-closed"
+      },
+      "description": "secondary text colored var(--fgColor-danger), which signals a status it doesn't have",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--fgColor-danger)",
+      "elements": [
+        "issue-list-closed-count"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "rebuild_label",
+      "rule": "R6",
+      "target": {
+        "qa": "issue-list-issue-3-docs"
+      },
+      "description": "status pill rebuilt by hand instead of using .Label (Label)",
+      "original": "<span class=\"Label\" data-qa=\"issue-list-issue-3-docs\">",
+      "mutated": "<span style=\"display: inline-block; padding: 0 8px; font-size: 12px; font-weight: 500; color: rgb(89, 99, 110); border: 1px solid rgb(209, 217, 224); border-radius: 999px\" data-qa=\"issue-list-issue-3-docs\">",
+      "elements": [
+        "issue-list-issue-3-docs"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".issues-head"
+      },
+      "description": "color hard-coded as #1f2328 instead of var(--fgColor-default)",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: #1f2328",
+      "elements": [
+        "issue-list-head"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "rebuild_label",
+      "rule": "R6",
+      "target": {
+        "qa": "issue-list-issue-2-enh"
+      },
+      "description": "status pill rebuilt by hand instead of using .Label (Label Label--accent)",
+      "original": "<span class=\"Label Label--accent\" data-qa=\"issue-list-issue-2-enh\">",
+      "mutated": "<span style=\"display: inline-block; padding: 0 8px; font-size: 12px; font-weight: 500; color: rgb(9, 105, 218); border: 1px solid rgb(9, 105, 218); border-radius: 999px\" data-qa=\"issue-list-issue-2-enh\">",
+      "elements": [
+        "issue-list-issue-2-enh"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "semantic_text",
+      "rule": "R7",
+      "target": {
+        "selector": ".member-email"
+      },
+      "description": "secondary text colored var(--fgColor-success), which signals a status it doesn't have",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--fgColor-success)",
+      "elements": [
+        "team-members-email-1",
+        "team-members-email-2",
+        "team-members-email-3"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "off_type",
+      "rule": "R3",
+      "target": {
+        "selector": ".issue-meta"
+      },
+      "description": "font-size 11px instead of var(--text-body-size-small)",
+      "original": "font-size: var(--text-body-size-small)",
+      "mutated": "font-size: 11px",
+      "elements": [
+        "issue-list-issue-1-meta",
+        "issue-list-issue-2-meta",
+        "issue-list-issue-3-meta"
+      ]
+    },
+    {
+      "id": "m8",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".empty-icon"
+      },
+      "description": "background set to an off-palette hex near var(--bgColor-accent-muted)",
+      "original": "background: var(--bgColor-accent-muted)",
+      "mutated": "background: #ddfaff",
+      "elements": [
+        "empty-state-icon"
+      ]
+    }
+  ]
+}

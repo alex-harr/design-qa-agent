@@ -1,0 +1,11 @@
+{
+  "task": "t18-03-07-11",
+  "screen": [
+    "03-notifications.html",
+    "07-issue-list.html",
+    "11-team-members.html"
+  ],
+  "split": "train",
+  "clean_control": true,
+  "mutations": []
+}

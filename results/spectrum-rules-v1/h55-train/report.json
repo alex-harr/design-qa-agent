@@ -1,0 +1,27 @@
+{
+  "run": "h55-train",
+  "runs": 52,
+  "tasks": 26,
+  "trials_per_task": 2,
+  "pass_rate": 0.731,
+  "pass^2": 0.654,
+  "pass@2": 0.808,
+  "detected": 0.992,
+  "fixed_exact": 0.961,
+  "planted_total": 362,
+  "net_fixed": 348,
+  "false_flags_per_run": 0,
+  "regressions_per_run": 0,
+  "by_rule_detected_fixed": {
+    "R1": "86/86 detected, 81/86 fixed",
+    "R2": "68/68 detected, 68/68 fixed",
+    "R3": "26/26 detected, 26/26 fixed",
+    "R4": "42/42 detected, 42/42 fixed",
+    "R5": "52/52 detected, 52/52 fixed",
+    "R6": "42/42 detected, 42/42 fixed",
+    "R7": "43/46 detected, 37/46 fixed"
+  },
+  "self_says_all_fixed": 1,
+  "cost_usd": 0.43,
+  "mean_turns": 13.1
+}

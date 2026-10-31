@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" data-color-mode="light" data-light-theme="light">
+<head>
+<meta charset="utf-8">
+<title>Profile</title>
+<link rel="stylesheet" href="design-system/primer.css">
+<style>
+.profile { max-width: 380px; margin: var(--base-size-48) auto; padding: 0 var(--base-size-16); }
+.profile-card { padding: var(--base-size-24); text-align: center; }
+.profile-avatar { width: var(--base-size-80); height: var(--base-size-80); margin-bottom: var(--base-size-12); }
+.profile-name { margin: 0; font-size: var(--text-title-size-medium); font-weight: var(--text-title-weight-medium); color: var(--fgColor-default); }
+.profile-handle { margin: 0 0 var(--base-size-12); font-size: var(--text-body-size-large); color: var(--fgColor-muted); }
+.profile-bio { margin: 0 0 var(--base-size-16); color: var(--fgColor-default); }
+.profile-status { margin-bottom: var(--base-size-16); }
+.profile-stats { display: flex; justify-content: center; gap: var(--base-size-16); margin: 0 0 var(--base-size-20); padding: 0; list-style: none; font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+.profile-num { font-weight: var(--base-text-weight-semibold); color: var(--fgColor-default); }
+.profile-follow { width: 100%; }
+</style>
+</head>
+<body>
+<main class="profile" data-qa="profile">
+  <div class="Box profile-card" data-qa="card">
+    <span class="avatar profile-avatar" data-qa="avatar"></span>
+    <h1 class="profile-name" data-qa="name">Mateo Alvarez</h1>
+    <p class="profile-handle" data-qa="handle">@mateo-a</p>
+    <p class="profile-bio" data-qa="bio">Design engineer working on accessible data tables.</p>
+    <div class="profile-status" data-qa="status"><span class="Label Label--success" data-qa="status-label">Available for review</span></div>
+    <ul class="profile-stats" data-qa="stats">
+      <li data-qa="stat-followers"><span class="profile-num" data-qa="num-followers">214</span> followers</li>
+      <li data-qa="stat-following"><span class="profile-num" data-qa="num-following">87</span> following</li>
+      <li data-qa="stat-repos"><span class="profile-num" data-qa="num-repos">31</span> repositories</li>
+    </ul>
+    <button class="btn btn-primary profile-follow" type="button" data-qa="btn-follow">Follow</button>
+  </div>
+</main>
+</body>
+</html>

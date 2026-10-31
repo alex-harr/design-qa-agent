@@ -1,0 +1,11 @@
+{
+  "task": "t15-03-07-09",
+  "screen": [
+    "03-notifications.html",
+    "07-issue-list.html",
+    "09-billing-summary.html"
+  ],
+  "split": "train",
+  "clean_control": true,
+  "mutations": []
+}

@@ -1,0 +1,123 @@
+{
+  "task": "t02-01-05-11",
+  "screen": [
+    "01-account-settings.html",
+    "05-empty-state.html",
+    "11-team-members.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "rebuild_label",
+      "rule": "R6",
+      "target": {
+        "qa": "team-members-role-1"
+      },
+      "description": "status pill rebuilt by hand instead of using .Label (Label Label--accent member-role)",
+      "original": "<span class=\"Label Label--accent member-role\" data-qa=\"team-members-role-1\">",
+      "mutated": "<span class=\"member-role\" style=\"display: inline-block; padding: 0 8px; font-size: 12px; font-weight: 500; color: rgb(9, 105, 218); border: 1px solid rgb(9, 105, 218); border-radius: 999px\" data-qa=\"team-members-role-1\">",
+      "elements": [
+        "team-members-role-1"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".empty-note"
+      },
+      "description": "color hard-coded as #59636e instead of var(--fgColor-muted)",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: #59636e",
+      "elements": [
+        "empty-state-note"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".field-label"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: var(--fgColor-disabled)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "account-settings-label-name",
+        "account-settings-label-email"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".member-email"
+      },
+      "description": "color hard-coded as #59636e instead of var(--fgColor-muted)",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: #59636e",
+      "elements": [
+        "team-members-email-1",
+        "team-members-email-2",
+        "team-members-email-3"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "off_type",
+      "rule": "R3",
+      "target": {
+        "selector": ".team-note"
+      },
+      "description": "font-size 10px instead of var(--text-body-size-small)",
+      "original": "font-size: var(--text-body-size-small)",
+      "mutated": "font-size: 10px",
+      "elements": [
+        "team-members-note"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".empty-body"
+      },
+      "description": "margin uses 25px, off the spacing scale",
+      "original": "margin: 0 auto var(--base-size-24)",
+      "mutated": "margin: 0 auto 25px",
+      "elements": [
+        "empty-state-body"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "token_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".member-name"
+      },
+      "description": "text color set to var(--borderColor-default), a real token that fails contrast here",
+      "original": "color: var(--fgColor-default)",
+      "mutated": "color: var(--borderColor-default)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "team-members-name-1",
+        "team-members-name-2",
+        "team-members-name-3"
+      ]
+    }
+  ]
+}

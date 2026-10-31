@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Account settings · Projects · Issues</title>
+<link rel="stylesheet" href="design-system/spectrum.css">
+<style>
+.settings { max-width: 640px; margin: var(--spectrum-spacing-600) auto; padding: 0 var(--spectrum-spacing-300); }
+.settings-title { margin: 0 0 var(--spectrum-spacing-75); font-size: var(--spectrum-font-size-800); font-weight: var(--spectrum-extra-bold-font-weight); color: #292929; }
+.settings-lede { margin: 0 0 var(--spectrum-spacing-400); font-size: var(--spectrum-font-size-200); color: #505050; }
+.settings-card { padding: var(--spectrum-spacing-400); background: var(--spectrum-background-layer-2-color); border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); border-radius: var(--spectrum-corner-radius-200); }
+.field { margin-bottom: var(--spectrum-spacing-300); }
+.field-label { display: block; margin-bottom: var(--spectrum-spacing-75); font-size: var(--spectrum-font-size-100); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.field-input { width: 100%; }
+.field-help { margin: var(--spectrum-spacing-75) 0 0; font-size: var(--spectrum-font-size-75); color: var(--spectrum-neutral-subdued-content-color-default); }
+.actions { display: flex; gap: var(--spectrum-spacing-100); margin-top: var(--spectrum-spacing-400); padding-top: var(--spectrum-spacing-300); border-top: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); }
+.projects { max-width: 720px; margin: var(--spectrum-spacing-600) auto; padding: 0 var(--spectrum-spacing-300); }
+.projects-title { margin: 0 0 var(--spectrum-spacing-300); font-size: var(--spectrum-font-size-400); font-weight: var(--spectrum-bold-font-weight); }
+.empty { padding: var(--spectrum-spacing-700) var(--spectrum-spacing-500); text-align: center; background: var(--spectrum-background-layer-2-color); border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); border-radius: var(--spectrum-corner-radius-200); }
+.empty-icon { display: inline-block; width: var(--spectrum-spacing-700); height: var(--spectrum-spacing-700); margin-bottom: var(--spectrum-spacing-300); border-radius: var(--spectrum-corner-radius-800); background: var(--spectrum-accent-subtle-background-color-default); border: var(--spectrum-border-width-100) solid var(--spectrum-accent-visual-color); }
+.empty-heading { margin: 0 0 var(--spectrum-spacing-100); font-size: var(--spectrum-font-size-400); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.empty-body { max-width: 420px; margin: 0 auto var(--spectrum-spacing-400); font-size: var(--spectrum-font-size-200); color: var(--spectrum-negative-content-color-default); }
+.empty-actions { display: flex; justify-content: center; align-items: center; gap: var(--spectrum-spacing-200); }
+.empty-link { font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-accent-content-color-default); }
+.empty-note { margin-top: var(--spectrum-spacing-300); font-size: var(--spectrum-font-size-75); color: var(--spectrum-disabled-content-color); }
+.issues { max-width: 840px; margin: var(--spectrum-spacing-500) auto; padding: 0 var(--spectrum-spacing-300); }
+.issues-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spectrum-spacing-300); }
+.issues-filter { width: 320px; }
+.issues-list { background: var(--spectrum-background-layer-2-color); border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); border-radius: 11px; }
+.issues-head { display: flex; gap: var(--spectrum-spacing-300); padding: var(--spectrum-spacing-200) var(--spectrum-spacing-300); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); background: var(--spectrum-background-layer-1-color); border-radius: var(--spectrum-corner-radius-200) var(--spectrum-corner-radius-200) 0 0; }
+.issues-closed { color: var(--spectrum-neutral-subdued-content-color-default); font-weight: var(--spectrum-regular-font-weight); }
+.issue { display: flex; justify-content: space-between; gap: var(--spectrum-spacing-200); padding: var(--spectrum-spacing-300); border-top: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); }
+.issue-title { display: flex; align-items: center; flex-wrap: wrap; gap: var(--spectrum-spacing-100); margin: 0 0 var(--spectrum-spacing-75); font-size: var(--spectrum-font-size-200); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.issue-labels { display: inline-flex; gap: var(--spectrum-spacing-75); }
+.issue-meta { margin: 0; font-size: var(--spectrum-font-size-75); color: var(--spectrum-disabled-content-color); }
+.issue-count { align-self: center; font-size: var(--spectrum-font-size-75); color: var(--spectrum-neutral-subdued-content-color-default); }
+</style>
+</head>
+<body class="spectrum spectrum--light spectrum--medium">
+<section>
+<main class="settings" data-qa="account-settings-settings">
+  <h1 class="settings-title" data-qa="account-settings-title">Account settings</h1>
+  <p class="settings-lede" data-qa="account-settings-lede">Update how your name and email appear to your team.</p>
+  <div class="settings-card" data-qa="account-settings-form-card">
+    <div class="field" data-qa="account-settings-field-name">
+      <label class="field-label" for="account-settings-name" data-qa="account-settings-label-name">Display name</label>
+      <div class="spectrum-Textfield field-input" data-qa="account-settings-input-name-wrap"><input class="spectrum-Textfield-input" id="account-settings-name" type="text" value="Rae Okafor" data-qa="account-settings-input-name"></div>
+      <p class="field-help" data-qa="account-settings-help-name">Shown on comments and mentions.</p>
+    </div>
+    <div class="field" data-qa="account-settings-field-email">
+      <label class="field-label" for="account-settings-email" data-qa="account-settings-label-email">Email</label>
+      <div class="spectrum-Textfield field-input" data-qa="account-settings-input-email-wrap"><input class="spectrum-Textfield-input" id="account-settings-email" type="text" value="rae@example.com" data-qa="account-settings-input-email"></div>
+      <p class="field-help" data-qa="account-settings-help-email">We'll send security alerts here.</p>
+    </div>
+    <div class="actions" data-qa="account-settings-actions">
+      <button style="background: rgb(59, 99, 251); color: rgb(255, 255, 255); border: 2px solid rgba(0, 0, 0, 0); border-radius: 16px; padding: 0px 14px; font-size: 14px; font-weight: 700" type="button" data-qa="account-settings-btn-save"><span class="spectrum-Button-label" data-qa="account-settings-btn-save-label">Save changes</span></button>
+      <button class="spectrum-Button spectrum-Button--outline spectrum-Button--secondary" type="button" data-qa="account-settings-btn-cancel"><span class="spectrum-Button-label" data-qa="account-settings-btn-cancel-label">Cancel</span></button>
+    </div>
+  </div>
+</main>
+</section>
+<section>
+<main class="projects" data-qa="empty-state-projects">
+  <h1 class="projects-title" data-qa="empty-state-title">Projects</h1>
+  <div class="empty" data-qa="empty-state-empty">
+    <span class="empty-icon" data-qa="empty-state-icon"></span>
+    <h2 class="empty-heading" data-qa="empty-state-heading">No projects yet</h2>
+    <p class="empty-body" data-qa="empty-state-body">Projects group issues and pull requests so your team can plan work in one place.</p>
+    <div class="empty-actions" data-qa="empty-state-actions">
+      <button class="spectrum-Button spectrum-Button--fill spectrum-Button--accent" type="button" data-qa="empty-state-btn-new"><span class="spectrum-Button-label" data-qa="empty-state-btn-new-label">New project</span></button>
+      <a class="empty-link" href="#" data-qa="empty-state-link-learn">Learn about projects</a>
+    </div>
+    <p class="empty-note" data-qa="empty-state-note">Templates are available on the Team plan.</p>
+  </div>
+</main>
+</section>
+<section>
+<main class="issues" data-qa="issue-list-issues">
+  <div class="issues-bar" data-qa="issue-list-bar">
+    <div class="spectrum-Textfield issues-filter" data-qa="issue-list-filter-wrap"><input class="spectrum-Textfield-input" id="issue-list-filter" type="text" placeholder="Filter issues" data-qa="issue-list-filter"></div>
+    <button class="spectrum-Button spectrum-Button--fill spectrum-Button--accent" type="button" data-qa="issue-list-btn-new"><span class="spectrum-Button-label" data-qa="issue-list-btn-new-label">New issue</span></button>
+  </div>
+  <div class="issues-list" data-qa="issue-list-list">
+    <div class="issues-head" data-qa="issue-list-head">
+      <span data-qa="issue-list-open-count">12 Open</span>
+      <span class="issues-closed" data-qa="issue-list-closed-count">48 Closed</span>
+    </div>
+    <div class="issue" data-qa="issue-list-issue-1">
+      <div data-qa="issue-list-issue-1-main">
+        <p class="issue-title" data-qa="issue-list-issue-1-title"><span data-qa="issue-list-issue-1-name">Search results ignore archived filter</span><span class="issue-labels" data-qa="issue-list-issue-1-labels"><div class="spectrum-Badge spectrum-Badge--negative" data-qa="issue-list-issue-1-bug"><div class="spectrum-Badge-label" data-qa="issue-list-issue-1-bug-text">bug</div></div></span></p>
+        <p class="issue-meta" data-qa="issue-list-issue-1-meta">#482 opened 2 days ago by lena-m</p>
+      </div>
+      <span class="issue-count" data-qa="issue-list-issue-1-count">5 comments</span>
+    </div>
+    <div class="issue" data-qa="issue-list-issue-2">
+      <div data-qa="issue-list-issue-2-main">
+        <p class="issue-title" data-qa="issue-list-issue-2-title"><span data-qa="issue-list-issue-2-name">Add keyboard shortcut for quick filters</span><span class="issue-labels" data-qa="issue-list-issue-2-labels"><div class="spectrum-Badge spectrum-Badge--accent" data-qa="issue-list-issue-2-enh"><div class="spectrum-Badge-label" data-qa="issue-list-issue-2-enh-text">new</div></div><div class="spectrum-Badge spectrum-Badge--informative" data-qa="issue-list-issue-2-triage"><div class="spectrum-Badge-label" data-qa="issue-list-issue-2-triage-text">in progress</div></div></span></p>
+        <p class="issue-meta" data-qa="issue-list-issue-2-meta">#479 opened 4 days ago by sam-k</p>
+      </div>
+      <span class="issue-count" data-qa="issue-list-issue-2-count">2 comments</span>
+    </div>
+    <div class="issue" data-qa="issue-list-issue-3">
+      <div data-qa="issue-list-issue-3-main">
+        <p class="issue-title" data-qa="issue-list-issue-3-title"><span data-qa="issue-list-issue-3-name">Docs: clarify token rotation steps</span><span class="issue-labels" data-qa="issue-list-issue-3-labels"><div class="spectrum-Badge spectrum-Badge--neutral" data-qa="issue-list-issue-3-docs"><div class="spectrum-Badge-label" data-qa="issue-list-issue-3-docs-text">docs</div></div></span></p>
+        <p class="issue-meta" data-qa="issue-list-issue-3-meta">#471 opened last week by priya-r</p>
+      </div>
+      <span class="issue-count" data-qa="issue-list-issue-3-count">0 comments</span>
+    </div>
+  </div>
+</main>
+</section>
+</body>
+</html>

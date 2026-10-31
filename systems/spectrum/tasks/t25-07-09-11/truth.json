@@ -1,0 +1,132 @@
+{
+  "task": "t25-07-09-11",
+  "screen": [
+    "07-issue-list.html",
+    "09-billing-summary.html",
+    "11-team-members.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".issues-head"
+      },
+      "description": "background set to an off-palette hex near var(--spectrum-background-layer-1-color)",
+      "original": "background: var(--spectrum-background-layer-1-color)",
+      "mutated": "background: #f8f8fc",
+      "elements": [
+        "issue-list-head"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "rebuild_label",
+      "rule": "R6",
+      "target": {
+        "qa": "issue-list-issue-1-bug"
+      },
+      "description": "status pill rebuilt by hand instead of using .spectrum-Badge (spectrum-Badge spectrum-Badge--negative)",
+      "original": "<div class=\"spectrum-Badge spectrum-Badge--negative\" data-qa=\"issue-list-issue-1-bug\">",
+      "mutated": "<div style=\"display: inline-block; padding: 0 0px; font-size: 16px; font-weight: 400; color: rgb(255, 255, 255); border: 1px solid rgba(0, 0, 0, 0); border-radius: 999px\" data-qa=\"issue-list-issue-1-bug\">",
+      "elements": [
+        "issue-list-issue-1-bug",
+        "issue-list-issue-1-bug-text"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".issue"
+      },
+      "description": "gap uses 11px, off the spacing scale",
+      "original": "gap: var(--spectrum-spacing-200)",
+      "mutated": "gap: 11px",
+      "elements": [
+        "issue-list-issue-1",
+        "issue-list-issue-2",
+        "issue-list-issue-3"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".issues"
+      },
+      "description": "margin uses 35px, off the spacing scale",
+      "original": "margin: var(--spectrum-spacing-500) auto",
+      "mutated": "margin: 35px auto",
+      "elements": [
+        "issue-list-issues"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".issue-title"
+      },
+      "description": "font-weight hard-coded as 700 instead of var(--spectrum-bold-font-weight)",
+      "original": "font-weight: var(--spectrum-bold-font-weight)",
+      "mutated": "font-weight: 700",
+      "elements": [
+        "issue-list-issue-1-title",
+        "issue-list-issue-2-title",
+        "issue-list-issue-3-title"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "raw_weight",
+      "rule": "R3",
+      "target": {
+        "selector": ".issues-closed"
+      },
+      "description": "font-weight hard-coded as 400 instead of var(--spectrum-regular-font-weight)",
+      "original": "font-weight: var(--spectrum-regular-font-weight)",
+      "mutated": "font-weight: 400",
+      "elements": [
+        "issue-list-closed-count"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "semantic_text",
+      "rule": "R7",
+      "target": {
+        "selector": ".issue-meta"
+      },
+      "description": "secondary text colored var(--spectrum-accent-content-color-default), which signals a status it doesn't have",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: var(--spectrum-accent-content-color-default)",
+      "elements": [
+        "issue-list-issue-1-meta",
+        "issue-list-issue-2-meta",
+        "issue-list-issue-3-meta"
+      ]
+    },
+    {
+      "id": "m8",
+      "op": "destructive_primary",
+      "rule": "R7",
+      "target": {
+        "qa": "team-members-btn-remove-2"
+      },
+      "description": "destructive action styled as the accent (call-to-action) button",
+      "original": "<button class=\"spectrum-Button spectrum-Button--outline spectrum-Button--negative spectrum-Button--sizeS\" type=\"button\" data-qa=\"team-members-btn-remove-2\">",
+      "mutated": "<button class=\"spectrum-Button spectrum-Button--outline spectrum-Button--accent spectrum-Button--sizeS\" type=\"button\" data-qa=\"team-members-btn-remove-2\">",
+      "elements": [
+        "team-members-btn-remove-2",
+        "team-members-btn-remove-2-label"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "task": "t13-05-07-11",
+  "screen": [
+    "05-empty-state.html",
+    "07-issue-list.html",
+    "11-team-members.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "semantic_text",
+      "rule": "R7",
+      "target": {
+        "selector": ".empty-note"
+      },
+      "description": "secondary text colored var(--fgColor-success), which signals a status it doesn't have",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--fgColor-success)",
+      "elements": [
+        "empty-state-note"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".issues"
+      },
+      "description": "margin uses 31px, off the spacing scale",
+      "original": "margin: var(--base-size-32) auto",
+      "mutated": "margin: 31px auto",
+      "elements": [
+        "issue-list-issues"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".issues-bar"
+      },
+      "description": "margin-bottom uses 17px, off the spacing scale",
+      "original": "margin-bottom: var(--base-size-16)",
+      "mutated": "margin-bottom: 17px",
+      "elements": [
+        "issue-list-bar"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".empty-body"
+      },
+      "description": "color set to an off-palette hex near var(--fgColor-muted)",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: #59676e",
+      "elements": [
+        "empty-state-body"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "off_radius",
+      "rule": "R4",
+      "target": {
+        "selector": ".empty-icon"
+      },
+      "description": "border-radius 10px instead of var(--borderRadius-large)",
+      "original": "border-radius: var(--borderRadius-large)",
+      "mutated": "border-radius: 10px",
+      "elements": [
+        "empty-state-icon"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "near_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".team-note"
+      },
+      "description": "color set to an off-palette hex near var(--fgColor-muted)",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: #596369",
+      "elements": [
+        "team-members-note"
+      ]
+    },
+    {
+      "id": "m7",
+      "op": "low_contrast",
+      "rule": "R5",
+      "target": {
+        "selector": ".issues-closed"
+      },
+      "description": "text uses the disabled color and fails contrast",
+      "original": "color: var(--fgColor-muted)",
+      "mutated": "color: var(--fgColor-disabled)",
+      "accept_colors": [
+        "rgb(31, 35, 40)",
+        "rgb(89, 99, 110)"
+      ],
+      "elements": [
+        "issue-list-closed-count"
+      ]
+    }
+  ]
+}

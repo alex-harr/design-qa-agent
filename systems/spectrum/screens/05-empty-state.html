@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Projects</title>
+<link rel="stylesheet" href="design-system/spectrum.css">
+<style>
+.projects { max-width: 720px; margin: var(--spectrum-spacing-600) auto; padding: 0 var(--spectrum-spacing-300); }
+.projects-title { margin: 0 0 var(--spectrum-spacing-300); font-size: var(--spectrum-font-size-400); font-weight: var(--spectrum-bold-font-weight); }
+.empty { padding: var(--spectrum-spacing-700) var(--spectrum-spacing-500); text-align: center; background: var(--spectrum-background-layer-2-color); border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); border-radius: var(--spectrum-corner-radius-200); }
+.empty-icon { display: inline-block; width: var(--spectrum-spacing-700); height: var(--spectrum-spacing-700); margin-bottom: var(--spectrum-spacing-300); border-radius: var(--spectrum-corner-radius-800); background: var(--spectrum-accent-subtle-background-color-default); border: var(--spectrum-border-width-100) solid var(--spectrum-accent-visual-color); }
+.empty-heading { margin: 0 0 var(--spectrum-spacing-100); font-size: var(--spectrum-font-size-400); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.empty-body { max-width: 420px; margin: 0 auto var(--spectrum-spacing-400); font-size: var(--spectrum-font-size-200); color: var(--spectrum-neutral-subdued-content-color-default); }
+.empty-actions { display: flex; justify-content: center; align-items: center; gap: var(--spectrum-spacing-200); }
+.empty-link { font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-accent-content-color-default); }
+.empty-note { margin-top: var(--spectrum-spacing-300); font-size: var(--spectrum-font-size-75); color: var(--spectrum-neutral-subdued-content-color-default); }
+</style>
+</head>
+<body class="spectrum spectrum--light spectrum--medium">
+<main class="projects" data-qa="projects">
+  <h1 class="projects-title" data-qa="title">Projects</h1>
+  <div class="empty" data-qa="empty">
+    <span class="empty-icon" data-qa="icon"></span>
+    <h2 class="empty-heading" data-qa="heading">No projects yet</h2>
+    <p class="empty-body" data-qa="body">Projects group issues and pull requests so your team can plan work in one place.</p>
+    <div class="empty-actions" data-qa="actions">
+      <button class="spectrum-Button spectrum-Button--fill spectrum-Button--accent" type="button" data-qa="btn-new"><span class="spectrum-Button-label" data-qa="btn-new-label">New project</span></button>
+      <a class="empty-link" href="#" data-qa="link-learn">Learn about projects</a>
+    </div>
+    <p class="empty-note" data-qa="note">Templates are available on the Team plan.</p>
+  </div>
+</main>
+</body>
+</html>

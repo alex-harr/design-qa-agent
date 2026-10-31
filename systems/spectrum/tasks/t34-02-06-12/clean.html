@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sign in to Northwind · Repository settings · Upload files</title>
+<link rel="stylesheet" href="design-system/spectrum.css">
+<style>
+.auth { max-width: 340px; margin: var(--spectrum-spacing-800) auto; padding: 0 var(--spectrum-spacing-300); }
+.auth-heading { margin: 0 0 var(--spectrum-spacing-300); text-align: center; font-size: var(--spectrum-font-size-400); font-weight: var(--spectrum-regular-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.auth-card { padding: var(--spectrum-spacing-400); background: var(--spectrum-background-layer-1-color); border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); border-radius: var(--spectrum-corner-radius-100); }
+.auth-label { display: block; margin-bottom: var(--spectrum-spacing-100); font-size: var(--spectrum-font-size-100); font-weight: var(--spectrum-bold-font-weight); }
+.auth-row { display: flex; justify-content: space-between; align-items: baseline; }
+.auth-forgot { font-size: var(--spectrum-font-size-75); color: var(--spectrum-accent-content-color-default); }
+.auth-input { width: 100%; margin-bottom: var(--spectrum-spacing-300); }
+.auth-submit { width: 100%; }
+.auth-footer { margin-top: var(--spectrum-spacing-300); padding: var(--spectrum-spacing-300); text-align: center; border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); border-radius: var(--spectrum-corner-radius-100); color: var(--spectrum-neutral-content-color-default); }
+.auth-link { color: var(--spectrum-accent-content-color-default); }
+.auth-legal { margin-top: var(--spectrum-spacing-400); text-align: center; font-size: var(--spectrum-font-size-75); color: var(--spectrum-neutral-subdued-content-color-default); }
+.repo-settings { max-width: 720px; margin: var(--spectrum-spacing-600) auto; padding: 0 var(--spectrum-spacing-300); }
+.section-title { margin: 0 0 var(--spectrum-spacing-100); font-size: var(--spectrum-font-size-400); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.section-warn { margin-bottom: var(--spectrum-spacing-300); }
+.danger-box { background: var(--spectrum-background-layer-2-color); border: var(--spectrum-border-width-100) solid var(--spectrum-negative-border-color-default); border-radius: var(--spectrum-corner-radius-200); }
+.danger-row { display: flex; justify-content: space-between; align-items: center; gap: var(--spectrum-spacing-300); padding: var(--spectrum-spacing-300); }
+.danger-row-next { border-top: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); }
+.danger-name { margin: 0 0 var(--spectrum-spacing-50); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.danger-desc { margin: 0; font-size: var(--spectrum-font-size-100); color: var(--spectrum-neutral-subdued-content-color-default); }
+.confirm { margin-top: var(--spectrum-spacing-400); }
+.confirm-label { display: block; margin-bottom: var(--spectrum-spacing-100); font-weight: var(--spectrum-bold-font-weight); }
+.confirm-input { width: 100%; }
+.backdrop { min-height: 100vh; padding: var(--spectrum-spacing-800) var(--spectrum-spacing-300); background: var(--spectrum-background-layer-1-color); }
+.upload { max-width: 520px; margin: 0 auto; background: var(--spectrum-background-layer-2-color); border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); border-radius: var(--spectrum-corner-radius-800); }
+.upload-header { padding: var(--spectrum-spacing-400) var(--spectrum-spacing-400) 0; }
+.upload-title { margin: 0; font-size: var(--spectrum-font-size-400); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.upload-body { padding: var(--spectrum-spacing-300) var(--spectrum-spacing-400); }
+.drop { padding: var(--spectrum-spacing-500); text-align: center; border: var(--spectrum-border-width-200) dashed var(--spectrum-gray-400); border-radius: var(--spectrum-corner-radius-200); background: var(--spectrum-background-layer-1-color); }
+.drop-title { margin: 0 0 var(--spectrum-spacing-75); font-weight: var(--spectrum-bold-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.drop-hint { margin: 0; font-size: var(--spectrum-font-size-75); color: var(--spectrum-neutral-subdued-content-color-default); }
+.file { display: flex; justify-content: space-between; align-items: center; margin-top: var(--spectrum-spacing-300); padding: var(--spectrum-spacing-200); border: var(--spectrum-border-width-100) solid var(--spectrum-gray-300); border-radius: var(--spectrum-corner-radius-100); }
+.file-name { margin: 0; font-weight: var(--spectrum-medium-font-weight); color: var(--spectrum-neutral-content-color-default); }
+.file-size { margin: 0; font-size: var(--spectrum-font-size-75); color: var(--spectrum-neutral-subdued-content-color-default); }
+.file-error { margin: var(--spectrum-spacing-100) 0 0; }
+.upload-footer { display: flex; justify-content: flex-end; gap: var(--spectrum-spacing-100); padding: 0 var(--spectrum-spacing-400) var(--spectrum-spacing-400); }
+</style>
+</head>
+<body class="spectrum spectrum--light spectrum--medium">
+<section>
+<main class="auth" data-qa="sign-in-auth">
+  <h1 class="auth-heading" data-qa="sign-in-heading">Sign in to Northwind</h1>
+  <div class="auth-card" data-qa="sign-in-card">
+    <label class="auth-label" for="sign-in-login" data-qa="sign-in-label-login">Username or email address</label>
+    <div class="spectrum-Textfield auth-input" data-qa="sign-in-input-login-wrap"><input class="spectrum-Textfield-input" id="sign-in-login" type="text" data-qa="sign-in-input-login"></div>
+    <div class="auth-row" data-qa="sign-in-password-row">
+      <label class="auth-label" for="sign-in-password" data-qa="sign-in-label-password">Password</label>
+      <a class="auth-forgot" href="#" data-qa="sign-in-forgot">Forgot password?</a>
+    </div>
+    <div class="spectrum-Textfield auth-input" data-qa="sign-in-input-password-wrap"><input class="spectrum-Textfield-input" id="sign-in-password" type="password" data-qa="sign-in-input-password"></div>
+    <button class="spectrum-Button spectrum-Button--fill spectrum-Button--accent auth-submit" type="button" data-qa="sign-in-btn-submit"><span class="spectrum-Button-label" data-qa="sign-in-btn-submit-label">Sign in</span></button>
+  </div>
+  <p class="auth-footer" data-qa="sign-in-footer">New to Northwind? <a class="auth-link" href="#" data-qa="sign-in-create-link">Create an account</a></p>
+  <p class="auth-legal" data-qa="sign-in-legal">By signing in you agree to the Terms and Privacy Policy.</p>
+</main>
+</section>
+<section>
+<main class="repo-settings" data-qa="danger-zone-settings">
+  <h1 class="section-title" data-qa="danger-zone-title">Danger zone</h1>
+  <div class="spectrum-InLineAlert spectrum-InLineAlert--notice section-warn" data-qa="danger-zone-warning"><div class="spectrum-InLineAlert-content" data-qa="danger-zone-warning-text">These actions can't be undone. Read each one carefully.</div></div>
+  <div class="danger-box" data-qa="danger-zone-box">
+    <div class="danger-row" data-qa="danger-zone-row-visibility">
+      <div data-qa="danger-zone-text-visibility">
+        <p class="danger-name" data-qa="danger-zone-name-visibility">Change visibility</p>
+        <p class="danger-desc" data-qa="danger-zone-desc-visibility">This repository is currently private.</p>
+      </div>
+      <button class="spectrum-Button spectrum-Button--fill spectrum-Button--negative" type="button" data-qa="danger-zone-btn-visibility"><span class="spectrum-Button-label" data-qa="danger-zone-btn-visibility-label">Change visibility</span></button>
+    </div>
+    <div class="danger-row danger-row-next" data-qa="danger-zone-row-delete">
+      <div data-qa="danger-zone-text-delete">
+        <p class="danger-name" data-qa="danger-zone-name-delete">Delete this repository</p>
+        <p class="danger-desc" data-qa="danger-zone-desc-delete">Once you delete a repository, there is no going back.</p>
+      </div>
+      <button class="spectrum-Button spectrum-Button--fill spectrum-Button--negative" type="button" data-qa="danger-zone-btn-delete"><span class="spectrum-Button-label" data-qa="danger-zone-btn-delete-label">Delete this repository</span></button>
+    </div>
+  </div>
+  <div class="confirm" data-qa="danger-zone-confirm">
+    <label class="confirm-label" for="danger-zone-confirm" data-qa="danger-zone-confirm-label">Type the repository name to confirm</label>
+    <div class="spectrum-Textfield confirm-input" data-qa="danger-zone-confirm-input-wrap"><input class="spectrum-Textfield-input" id="danger-zone-confirm" type="text" data-qa="danger-zone-confirm-input"></div>
+  </div>
+</main>
+</section>
+<section>
+<div class="backdrop" data-qa="upload-dialog-backdrop">
+  <div class="upload" role="dialog" aria-labelledby="upload-title" data-qa="upload-dialog-dialog">
+    <div class="upload-header" data-qa="upload-dialog-header"><h1 class="upload-title" id="upload-dialog-upload-title" data-qa="upload-dialog-title">Upload files</h1></div>
+    <div class="upload-body" data-qa="upload-dialog-body">
+      <div class="drop" data-qa="upload-dialog-drop">
+        <p class="drop-title" data-qa="upload-dialog-drop-title">Drag files here</p>
+        <p class="drop-hint" data-qa="upload-dialog-drop-hint">PNG, JPG or PDF up to 25 MB</p>
+      </div>
+      <div class="file" data-qa="upload-dialog-file">
+        <div data-qa="upload-dialog-file-text"><p class="file-name" data-qa="upload-dialog-file-name">quarterly-report.pdf</p><p class="file-size" data-qa="upload-dialog-file-size">31.2 MB</p></div>
+        <button class="spectrum-Button spectrum-Button--outline spectrum-Button--secondary spectrum-Button--sizeS" type="button" data-qa="upload-dialog-btn-remove-file"><span class="spectrum-Button-label" data-qa="upload-dialog-btn-remove-file-label">Remove</span></button>
+      </div>
+      <div class="spectrum-InLineAlert spectrum-InLineAlert--negative file-error" data-qa="upload-dialog-error"><div class="spectrum-InLineAlert-content" data-qa="upload-dialog-error-text">This file is larger than 25 MB.</div></div>
+    </div>
+    <div class="upload-footer" data-qa="upload-dialog-footer">
+      <button class="spectrum-Button spectrum-Button--outline spectrum-Button--secondary" type="button" data-qa="upload-dialog-btn-cancel"><span class="spectrum-Button-label" data-qa="upload-dialog-btn-cancel-label">Cancel</span></button>
+      <button class="spectrum-Button spectrum-Button--fill spectrum-Button--accent" type="button" data-qa="upload-dialog-btn-upload"><span class="spectrum-Button-label" data-qa="upload-dialog-btn-upload-label">Upload</span></button>
+    </div>
+  </div>
+</div>
+</section>
+</body>
+</html>

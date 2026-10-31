@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" data-color-mode="light" data-light-theme="light">
+<head>
+<meta charset="utf-8">
+<title>Get started</title>
+<link rel="stylesheet" href="design-system/primer.css">
+<style>
+.onboard { max-width: 560px; margin: var(--base-size-48) auto; padding: 0 var(--base-size-16); }
+.onboard-title { margin: 0 0 var(--base-size-4); font-size: var(--text-title-size-medium); font-weight: var(--text-title-weight-medium); }
+.onboard-sub { margin: 0 0 var(--base-size-16); color: var(--fgColor-muted); }
+.onboard-progress { margin-bottom: var(--base-size-8); }
+.onboard-count { margin: 0 0 var(--base-size-24); font-size: var(--text-body-size-small); color: var(--fgColor-muted); }
+.step { display: flex; gap: var(--base-size-12); align-items: center; }
+.step-mark { flex: none; width: var(--base-size-20); height: var(--base-size-20); border-radius: var(--borderRadius-full); border: var(--borderWidth-thick) solid var(--borderColor-default); }
+.step-mark-done { background: var(--bgColor-success-emphasis); border-color: var(--borderColor-success-emphasis); }
+.step-text { margin: 0; color: var(--fgColor-default); }
+.step-done-text { color: var(--fgColor-muted); text-decoration: line-through; }
+.onboard-actions { display: flex; justify-content: space-between; margin-top: var(--base-size-24); }
+</style>
+</head>
+<body>
+<main class="onboard" data-qa="onboard">
+  <h1 class="onboard-title" data-qa="title">Get started with your workspace</h1>
+  <p class="onboard-sub" data-qa="subtitle">Finish these steps to invite your team.</p>
+  <div class="Progress onboard-progress" data-qa="progress"><span class="Progress-item" style="width: 50%" data-qa="progress-fill"></span></div>
+  <p class="onboard-count" data-qa="count">2 of 4 complete</p>
+  <div class="Box" data-qa="steps">
+    <div class="Box-row step" data-qa="step-1"><span class="step-mark step-mark-done" data-qa="mark-1"></span><p class="step-text step-done-text" data-qa="text-1">Create a workspace</p></div>
+    <div class="Box-row step" data-qa="step-2"><span class="step-mark step-mark-done" data-qa="mark-2"></span><p class="step-text step-done-text" data-qa="text-2">Connect your repository</p></div>
+    <div class="Box-row step" data-qa="step-3"><span class="step-mark" data-qa="mark-3"></span><p class="step-text" data-qa="text-3">Set up branch protection</p></div>
+    <div class="Box-row step" data-qa="step-4"><span class="step-mark" data-qa="mark-4"></span><p class="step-text" data-qa="text-4">Invite teammates</p></div>
+  </div>
+  <div class="onboard-actions" data-qa="actions">
+    <button class="btn btn-invisible" type="button" data-qa="btn-skip">Skip for now</button>
+    <button class="btn btn-primary" type="button" data-qa="btn-continue">Continue setup</button>
+  </div>
+</main>
+</body>
+</html>

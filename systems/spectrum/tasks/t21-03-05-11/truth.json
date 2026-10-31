@@ -1,0 +1,103 @@
+{
+  "task": "t21-03-05-11",
+  "screen": [
+    "03-notifications.html",
+    "05-empty-state.html",
+    "11-team-members.html"
+  ],
+  "split": "train",
+  "clean_control": false,
+  "mutations": [
+    {
+      "id": "m1",
+      "op": "semantic_text",
+      "rule": "R7",
+      "target": {
+        "selector": ".member-email"
+      },
+      "description": "secondary text colored var(--spectrum-negative-content-color-default), which signals a status it doesn't have",
+      "original": "color: var(--spectrum-neutral-subdued-content-color-default)",
+      "mutated": "color: var(--spectrum-negative-content-color-default)",
+      "elements": [
+        "team-members-email-1",
+        "team-members-email-2",
+        "team-members-email-3"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "raw_border_width",
+      "rule": "R4",
+      "target": {
+        "selector": ".member"
+      },
+      "description": "border width hard-coded instead of var(--spectrum-border-width-100)",
+      "original": "border-top: var(--spectrum-border-width-100) solid var(--spectrum-gray-200)",
+      "mutated": "border-top: 1px solid var(--spectrum-gray-200)",
+      "elements": [
+        "team-members-member-1",
+        "team-members-member-2",
+        "team-members-member-3"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "raw_color",
+      "rule": "R1",
+      "target": {
+        "selector": ".empty"
+      },
+      "description": "background hard-coded as #ffffff instead of var(--spectrum-background-layer-2-color)",
+      "original": "background: var(--spectrum-background-layer-2-color)",
+      "mutated": "background: #ffffff",
+      "elements": [
+        "empty-state-empty"
+      ]
+    },
+    {
+      "id": "m4",
+      "op": "rebuild_button",
+      "rule": "R6",
+      "target": {
+        "qa": "team-members-btn-remove-2"
+      },
+      "description": "button rebuilt by hand instead of using .spectrum-Button (spectrum-Button spectrum-Button--outline spectrum-Button--negative spectrum-Button--sizeS)",
+      "original": "<button class=\"spectrum-Button spectrum-Button--outline spectrum-Button--negative spectrum-Button--sizeS\" type=\"button\" data-qa=\"team-members-btn-remove-2\">",
+      "mutated": "<button style=\"background: rgba(0, 0, 0, 0); color: rgb(215, 50, 32); border: 2px solid rgb(215, 50, 32); border-radius: 12px; padding: 0px 11px; font-size: 12px; font-weight: 700\" type=\"button\" data-qa=\"team-members-btn-remove-2\">",
+      "elements": [
+        "team-members-btn-remove-2",
+        "team-members-btn-remove-2-label"
+      ]
+    },
+    {
+      "id": "m5",
+      "op": "off_space",
+      "rule": "R2",
+      "target": {
+        "selector": ".team-bar"
+      },
+      "description": "margin-bottom uses 19px, off the spacing scale",
+      "original": "margin-bottom: var(--spectrum-spacing-300)",
+      "mutated": "margin-bottom: 19px",
+      "elements": [
+        "team-members-bar"
+      ]
+    },
+    {
+      "id": "m6",
+      "op": "off_radius",
+      "rule": "R4",
+      "target": {
+        "selector": ".note-dot"
+      },
+      "description": "border-radius 3px instead of var(--spectrum-corner-radius-75)",
+      "original": "border-radius: var(--spectrum-corner-radius-75)",
+      "mutated": "border-radius: 3px",
+      "elements": [
+        "notifications-dot-1",
+        "notifications-dot-2",
+        "notifications-dot-3"
+      ]
+    }
+  ]
+}
