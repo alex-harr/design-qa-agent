@@ -1,6 +1,6 @@
 # Design QA Agent
 
-A small AI agent that reviews a UI screen against your design system, fixes what breaks the rules, and tells you what it changed. Around it sits a test bench that measures how often the agent is actually right, because an agent that says "all fixed" is not the same as an agent that fixed everything.
+An AI agent that reviews a UI screen against your design system, fixes what breaks the rules, and tells you what it changed. Around it sits a test bench that measures how often the agent is actually right, because an agent that says "all fixed" is not the same as an agent that fixed everything.
 
 I built this as a designer learning how agent harnesses work, and I tested it on two open design systems: GitHub's Primer and Adobe's Spectrum. The agent itself is four lines of instructions. Almost everything interesting turned out to live in the rules doc and in the measuring.
 
