@@ -466,3 +466,10 @@ Net fixed (strict pass):
 - [x] **Never from the agent's own report.** Every model said "all fixed" on every run.
 - [x] **The work is in the rules doc, and it has a test.** State every token's value, say which of several look-alike tokens to use, check that each rule's meanings match the system's own docs, then run the agent on your clean screens and fix any rule it trips on before measuring anything.
 - [ ] Limits: planted problems on made-up screens, one second system, held-out not blind for v2–v4, no held-out noise floor.
+
+## Fix, Nov 4 2026: Spectrum badges nested inside paragraphs
+
+- [x] Six titles in `03-notifications.html` and `07-issue-list.html` were `<p>` elements holding a Spectrum Badge, which is a `<div>`. Browsers don't allow a div inside a paragraph, so they closed the title early and dropped each badge onto its own line, and side-by-side badges lost their gap. The titles are now `<div>`s, so each badge sits inline next to its title as the screens' flex styles intended.
+- [x] Spectrum's Badge sets no font weight of its own, so inside a bold title it turned bold. `lab-components.css` now pins `.spectrum-Badge` to `--spectrum-regular-font-weight`.
+- [x] Rebuilt all 44 Spectrum tasks: the planted problems are identical on every task (same ids, rules, operations and targets); 43 of 44 answer keys are byte-identical, and the one change is the pricing "New" badge's hand-built lookalike now copying weight 400 instead of 700. `validate_screens`: 0 problems. `validate_tasks`: 0 problems. Clean-screen audit (current small model): 12/12 untouched.
+- [ ] The Stage 4 Spectrum results above were measured on the earlier markup. Grading compares computed styles per element, so the numbers should hold, but they were not re-run.

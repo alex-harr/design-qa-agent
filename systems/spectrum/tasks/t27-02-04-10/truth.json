@@ -31,7 +31,7 @@
       },
       "description": "status pill rebuilt by hand instead of using .spectrum-Badge (spectrum-Badge spectrum-Badge--accent)",
       "original": "<div class=\"spectrum-Badge spectrum-Badge--accent\" data-qa=\"pricing-badge-team\">",
-      "mutated": "<div style=\"display: inline-block; padding: 0 0px; font-size: 16px; font-weight: 700; color: rgb(255, 255, 255); border: 1px solid rgba(0, 0, 0, 0); border-radius: 999px\" data-qa=\"pricing-badge-team\">",
+      "mutated": "<div style=\"display: inline-block; padding: 0 0px; font-size: 16px; font-weight: 400; color: rgb(255, 255, 255); border: 1px solid rgba(0, 0, 0, 0); border-radius: 999px\" data-qa=\"pricing-badge-team\">",
       "elements": [
         "pricing-badge-team",
         "pricing-badge-team-text"

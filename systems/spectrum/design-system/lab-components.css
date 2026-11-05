@@ -8,3 +8,8 @@
   color: var(--spectrum-neutral-content-color-default);
   margin: 0;
 }
+
+/* Badges keep Spectrum's regular weight when they sit inside a bold title row. */
+.spectrum-Badge {
+  font-weight: var(--spectrum-regular-font-weight);
+}
