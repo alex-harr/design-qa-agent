@@ -4,8 +4,8 @@
   "clean_control": false,
   "pass": false,
   "planted": 7,
-  "detected": 5,
-  "fixed": 4,
+  "detected": 6,
+  "fixed": 6,
   "false_flags": 0,
   "regressions": 0,
   "lint_left": 0,
@@ -39,19 +39,12 @@
       "id": "m3",
       "op": "semantic_label",
       "rule": "R7",
-      "detected": false,
-      "fixed": false,
+      "detected": true,
+      "fixed": true,
       "left": {
         "lint": [],
         "contrast": [],
-        "style": {
-          "notifications-label-2": {
-            "background-color": [
-              "rgb(59, 99, 251)",
-              "rgb(5, 131, 78)"
-            ]
-          }
-        }
+        "style": {}
       }
     },
     {
@@ -115,42 +108,11 @@
       "op": "off_space",
       "rule": "R2",
       "detected": true,
-      "fixed": false,
+      "fixed": true,
       "left": {
         "lint": [],
         "contrast": [],
-        "style": {
-          "notifications-row-1": {
-            "row-gap": [
-              "12px",
-              "8px"
-            ],
-            "column-gap": [
-              "12px",
-              "8px"
-            ]
-          },
-          "notifications-row-3": {
-            "row-gap": [
-              "12px",
-              "8px"
-            ],
-            "column-gap": [
-              "12px",
-              "8px"
-            ]
-          },
-          "notifications-row-2": {
-            "row-gap": [
-              "12px",
-              "8px"
-            ],
-            "column-gap": [
-              "12px",
-              "8px"
-            ]
-          }
-        }
+        "style": {}
       }
     },
     {
@@ -176,11 +138,11 @@
   "run": {
     "task": "t01-03-07-11",
     "skill": "skill/v000",
-    "trial": 1,
+    "trial": 3,
     "model": "claude-haiku-4-5",
-    "elapsed_s": 53.0,
-    "cost_usd": 0.0858433,
-    "num_turns": 12,
+    "elapsed_s": 42.4,
+    "cost_usd": 0.10522520000000002,
+    "num_turns": 13,
     "stop": "success",
     "is_error": false,
     "returncode": 0

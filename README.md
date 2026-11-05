@@ -2,7 +2,7 @@
 
 An AI agent that reviews a UI screen against your design system, fixes what breaks the rules, and tells you what it changed. Around it sits a test bench that measures how often the agent is actually right, because an agent that says "all fixed" is not the same as an agent that fixed everything.
 
-I built this as a designer learning how agent harnesses work, and I tested it on two open design systems: GitHub's Primer and Adobe's Spectrum. The agent itself is four lines of instructions. Almost everything interesting turned out to live in the rules doc and in the measuring.
+I'm a product designer, and I built this to find out what a good agent harness looks like when the job is design QA. I tested it on two open design systems: GitHub's Primer and Adobe's Spectrum. The agent itself is four lines of instructions. Almost everything interesting turned out to live in the rules doc and in the measuring.
 
 ## What it does
 
@@ -76,11 +76,11 @@ Two identical runs can differ a lot (by 24 net fixed on Primer's train set), so 
 
 **The rest of the distance to "reliable" is the model.** Under the same audited rules, Haiku 4.5 fixed about 75% of problems and fully cleaned about 1 page in 4, while Haiku 5.5 fixed 98% and left about 9 in 10 pages exactly as designed, with no false alarms. Better rules bought the old agent up to 8.5 points; a newer model bought it more than 20.
 
-**A better model makes your rules doc's mistakes louder.** One rule I added ("cards use layer 2") contradicted a sign-in card in my own clean screens. The old agent mostly ignored it; the new one followed it and "fixed" that card in 23 of 54 runs, dropping its score from 91% to 82%. The check that catches this costs about a penny: run the agent on your untouched screens and see what it flags. It found every contradiction the full measurements did, so it's now step one in [`systems/README.md`](systems/README.md).
+**A better model makes your rules doc's mistakes louder.** One rule I added ("cards use layer 2") contradicted a sign-in card in my own clean screens. The old agent mostly ignored it; the new one followed it and "fixed" that card in 23 of 54 runs, dropping its score from 91% to 85%. The check that catches this costs about a penny: run the agent on your untouched screens and see what it flags. It found every contradiction the full measurements did, so it's now step one in [`systems/README.md`](systems/README.md).
 
 **What else didn't carry over was in the bench and in Spectrum itself.** All the Primer-specific code lived in the test bench, so it moved into one config file per system. Spectrum's notice badge renders white on orange at 2.6:1, under the contrast bar Spectrum's own accessibility page sets, and its "full" corner radius is a unitless multiplier that renders square when used directly.
 
-**Some things didn't change at all.** On every system and every model, the agent said "all fixed" on every single run, including the ones that failed. Use the grader or your own eyes for the final call, never the agent's report.
+**Some things didn't change at all.** Every agent report I recorded said "all fixed", including the reports from runs that failed. Use the grader or your own eyes for the final call, never the agent's report.
 
 | Held-out screens | Primer | Spectrum, ported rules | Spectrum, audited rules |
 | --- | --- | --- | --- |
@@ -92,7 +92,7 @@ Two identical runs can differ a lot (by 24 net fixed on Primer's train set), so 
 
 Same four-line skill everywhere. The Spectrum rules shipped here are the audited version; earlier versions are in `systems/spectrum/design-system/rules-history/`. One caveat: the later rules were written after looking at held-out failures, so treat the held-out gains as likely rather than proven. The practice-set gains, which were never looked at that way, point the same direction.
 
-The full record, with every number and the runs it came from, is in [`NOTEBOOK.md`](NOTEBOOK.md). Per-run summaries are in [`results/`](results/), and [`examples/spectrum-one-run/`](examples/spectrum-one-run/) shows one run end to end.
+The full record, with every number and the runs it came from, is in [`NOTEBOOK.md`](NOTEBOOK.md). Per-run summaries are in [`results/`](results/), and [`examples/spectrum-one-run/`](examples/spectrum-one-run/) shows one run end to end: the older model fixed 6 of 7 planted problems, missed a closed-issue count too faint to read, and still reported "all fixed" at 95% confidence.
 
 ## What's in here
 

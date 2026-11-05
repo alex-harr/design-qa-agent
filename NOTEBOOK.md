@@ -167,7 +167,7 @@ Noise floor (A vs B, same skill, same tasks): 5 strict passes, 24 net fixed. Kee
 
 - Target: T6 Overconfident report. Change: before reporting, re-audit the edited screen rule by rule with one line of evidence per rule; only claim "all fixed" if every rule was checked.
 - Train: strict passes 7.5 → 11; net fixed 249 → 265 (+16). Reverted.
-- Sweep misses dropped 11.5 → 6 and meaning misses 33 → 26, but the agent still claimed "all fixed" on 41 of 52 runs while passing 11. A self-audit step didn't fix overconfidence. [INFERENCE] Consistent with the harness-design finding that agents grade their own work too generously; asking the same agent to check harder doesn't create an independent check.
+- Sweep misses dropped 11.5 → 6 and meaning misses 33 → 26, but the agent still claimed "all fixed" on all 52 runs while passing 11, so 41 of those claims were wrong. A self-audit step didn't fix overconfidence. [INFERENCE] Consistent with the harness-design finding that agents grade their own work too generously; asking the same agent to check harder doesn't create an independent check.
 
 Paused after round 3 at Alex's request (usage). Rounds 4–6 not started.
 
@@ -463,7 +463,7 @@ Net fixed (strict pass):
 
 - [x] **With a current model and an audited rules doc: yes for token-level QA, with a human or the grader as the final check.** 98% of planted problems fixed, 0 false alarms, about 9 in 10 pages left exactly as designed, on a design system the agent had never been tuned for.
 - [x] **With an older or smaller model: no.** About 3 in 4 problems fixed, 1 page in 4 fully clean, and over a third of problems fixed in some runs and missed in others.
-- [x] **Never from the agent's own report.** Every model said "all fixed" on every run.
+- [x] **Never from the agent's own report.** Every report recorded said "all fixed", including every failed run. (Sonnet 5.5's self-report was recorded on the Primer probe only.)
 - [x] **The work is in the rules doc, and it has a test.** State every token's value, say which of several look-alike tokens to use, check that each rule's meanings match the system's own docs, then run the agent on your clean screens and fix any rule it trips on before measuring anything.
 - [ ] Limits: planted problems on made-up screens, one second system, held-out not blind for v2–v4, no held-out noise floor.
 
@@ -473,3 +473,4 @@ Net fixed (strict pass):
 - [x] Spectrum's Badge sets no font weight of its own, so inside a bold title it turned bold. `lab-components.css` now pins `.spectrum-Badge` to `--spectrum-regular-font-weight`.
 - [x] Rebuilt all 44 Spectrum tasks: the planted problems are identical on every task (same ids, rules, operations and targets); 43 of 44 answer keys are byte-identical, and the one change is the pricing "New" badge's hand-built lookalike now copying weight 400 instead of 700. `validate_screens`: 0 problems. `validate_tasks`: 0 problems. Clean-screen audit (current small model): 12/12 untouched.
 - [ ] The Stage 4 Spectrum results above were measured on the earlier markup. Grading compares computed styles per element, so the numbers should hold, but they were not re-run.
+- [x] Replaced `examples/spectrum-one-run/` with a run on the fixed markup: same task (t01-03-07-11), same model (Haiku 4.5), skill v000, 3 tries (7/7 pass, 4/7, 6/7). The example is the middle try, 6/7: it missed the low-contrast closed count (3.05:1) and reported "all fixed" at 0.95 confidence. The earlier example was a 4/7 run on the old markup.

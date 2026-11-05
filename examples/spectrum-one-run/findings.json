@@ -1,6 +1,44 @@
-{"findings": [{"element": ".note", "rule": "R2", "problem": "Used raw pixel value gap: 13px instead of a spacing token", "fix": "Changed gap from 13px to var(--spectrum-spacing-100)"},
- {"element": ".note-title", "rule": "R3", "problem": "Used raw font-weight: 700 instead of a weight token", "fix": "Changed font-weight from 700 to var(--spectrum-bold-font-weight)"},
- {"element": ".issues-list", "rule": "R1", "problem": "Used hex color #ffffff instead of a Spectrum color token", "fix": "Changed background from #ffffff to var(--spectrum-background-base-color)"},
- {"element": ".issue-meta", "rule": "R1", "problem": "Used hex color #505050 instead of a Spectrum color token", "fix": "Changed color from #505050 to var(--spectrum-neutral-subdued-content-color-default)"},
- {"element": "[data-qa='notifications-label-3']", "rule": "R7", "problem": "Used spectrum-Badge--negative for 'Done' which represents success/completion, not a negative/destructive action", "fix": "Changed badge variant from spectrum-Badge--negative to spectrum-Badge--positive"}],
- "self_assessment": {"all_fixed": true, "confidence": 0.95}}
+{
+  "findings": [
+    {
+      "element": ".note",
+      "rule": "R2",
+      "problem": "gap: 13px uses a raw pixel value instead of a spacing token",
+      "fix": "Changed to gap: var(--spectrum-spacing-200) (12px, the closest scale value)"
+    },
+    {
+      "element": ".note-title",
+      "rule": "R3",
+      "problem": "font-weight: 700 uses a raw weight value instead of a token",
+      "fix": "Changed to font-weight: var(--spectrum-bold-font-weight)"
+    },
+    {
+      "element": ".issues-list",
+      "rule": "R1",
+      "problem": "background: #ffffff uses a raw hex color instead of a token",
+      "fix": "Changed to background: var(--spectrum-background-base-color)"
+    },
+    {
+      "element": ".issue-meta",
+      "rule": "R1",
+      "problem": "color: #505050 uses a raw hex color instead of a token",
+      "fix": "Changed to color: var(--spectrum-neutral-subdued-content-color-default)"
+    },
+    {
+      "element": "notifications-label-2",
+      "rule": "R7",
+      "problem": "Badge for 'Live' uses spectrum-Badge--positive, but live/active items should use informative (positive is for success/completion only)",
+      "fix": "Changed spectrum-Badge--positive to spectrum-Badge--informative"
+    },
+    {
+      "element": "notifications-label-3",
+      "rule": "R7",
+      "problem": "Badge for 'Done' uses spectrum-Badge--negative, but done/completion should use positive (negative is for errors/failures only)",
+      "fix": "Changed spectrum-Badge--negative to spectrum-Badge--positive"
+    }
+  ],
+  "self_assessment": {
+    "all_fixed": true,
+    "confidence": 0.95
+  }
+}
