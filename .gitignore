@@ -230,3 +230,6 @@ systems/*/tasks/*/design-system
 .design-qa-lab-work/
 # Keep the improvement-loop round logs (evidence, already path-scrubbed)
 !systems/*/analysis/*.log
+
+# clean-screen audit output (lab/audit.py)
+systems/*/audit/

@@ -29,40 +29,44 @@ Write the rules doc carefully. On Primer, rewording two unclear rules moved the 
 
 ## Run it
 
-You need Python 3.10+, [Claude Code](https://docs.claude.com) installed and logged in, and Playwright's Chromium.
+You need Python 3.10+ and [Claude Code](https://docs.claude.com) installed and logged in (check that `claude -p "hi"` answers). The bench calls Claude through Claude Code, so **it spends real usage**: the full sequence below took about 22 minutes and about $8.50 on a cold run (audit about $0.06, probe about $2.70, the measurement about $5.70).
 
 ```bash
+git clone https://github.com/alex-harr/design-qa-agent
+cd design-qa-agent
+python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-python -m playwright install chromium
+python -m playwright install --with-deps chromium   # --with-deps installs the system libraries Chromium needs on Linux
 
 export DQA_SYSTEM=spectrum            # or primer, or your own folder name
 # export DQA_SYSTEM_DIR=/path/to/your-system   # if your system lives elsewhere
+export LAB_WORK_ROOT=~/.design-qa-lab-work     # the agent's working folders; must sit outside this repo
 
 python lab/validate_screens.py        # your clean screens break no rules
 python lab/audit.py                   # the agent leaves your clean screens alone (else a rule contradicts your design)
-python -c "import sys; sys.path.insert(0,'lab'); import mutate; mutate.build_v3()"   # plant problems, write tasks/
+python -c "import sys; sys.path.insert(0,'lab'); import mutate; mutate.build_v3()"   # plant problems into tasks/ (about a minute, prints nothing; Spectrum and Primer already ship their tasks, so you only need this for your own system)
 python lab/validate_tasks.py          # every planted problem is visible to a grader
 
-# one strong model over every task first: a task it fails is usually a broken task
+# one strong model over every task first: a task it fails is usually a broken task (about 3 minutes)
 python lab/run_agent.py --skill skill/v000 --run probe --split train --model claude-sonnet-5-5
 
-# the measurement
+# the measurement: 52 runs on the default model, Haiku 4.5 (about 15 minutes; add --model to change it)
 python lab/run_agent.py --skill skill/v000 --run base-a --split train --trials 2
-python lab/report.py base-a
-python lab/taxonomy.py base-a
+python lab/report.py base-a           # the scores, as JSON (key names below)
+python lab/taxonomy.py base-a         # why runs failed, T1 to T6
 ```
 
-The agent's working folders go to `~/.design-qa-lab-work` (change it with `LAB_WORK_ROOT`). They must sit outside this repo, and the agent is denied read access to the repo, so it never sees the answers.
+The agent is denied read access to this repo, so it never sees the answers. Run results (screens, grades, transcripts) land in `systems/<name>/runs/<run>/` and the audit in `systems/<name>/audit/`; both are gitignored.
 
 ## What the scores mean
 
-| Score | Plain meaning |
+| Score (`report.py` key) | Plain meaning |
 | --- | --- |
-| Strict pass | The whole page came back exactly as designed: every planted problem fixed, nothing else touched. Hard on purpose. |
-| Net fixed | Problems fixed, minus anything the agent broke and anything it wrongly flagged. The best single number for "did it help". |
-| Detected | Share of planted problems the agent mentioned at all. |
-| Says "all fixed" | How often the agent claimed it was done. Compare it with the pass rate. |
-| T1 to T6 | Why runs failed: meaning not checked, readability not checked, incomplete sweep, wrong fix, false alarm, overconfident report. |
+| Strict pass (`pass_rate`) | The whole page came back exactly as designed: every planted problem fixed, nothing else touched. Hard on purpose. |
+| Net fixed (`net_fixed`, a count out of `planted_total`) | Problems fixed, minus anything the agent broke and anything it wrongly flagged. The best single number for "did it help". |
+| Detected (`detected`) | Share of planted problems the agent mentioned at all. |
+| Says "all fixed" (`self_says_all_fixed`, 1 = every run) | How often the agent claimed it was done. Compare it with the pass rate. |
+| T1 to T6 (from `taxonomy.py`) | Why runs failed: meaning not checked, readability not checked, incomplete sweep, wrong fix, false alarm, overconfident report. |
 
 Two identical runs can differ a lot (by 24 net fixed on Primer's train set), so compare averages of repeated runs, never single runs.
 
